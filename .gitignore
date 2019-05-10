@@ -1,0 +1,3 @@
+# Project files; add whatever IDE-specific files for the project here
+*.komodoproject
+.komodotools
