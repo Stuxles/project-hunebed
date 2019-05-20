@@ -15,9 +15,9 @@
         }
 
         // Inlcude head
-        require_once($templatePath . "/head.php");
+        require_once($templatePath . "/head/head.php");
         // Iinclude header with navbar
-        require_once($templatePath . "/header.php");
+        require_once($templatePath . "/header/header.php");
      
         // Executes the content of the page
         if (file_exists($contentFileFullPath)) {
@@ -30,6 +30,6 @@
             require_once("error.php");
         }
      
-        require_once($templatePath . "/footer.php");
+        require_once($templatePath . "/footer/footer.php");
     }
 ?>

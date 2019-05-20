@@ -9,7 +9,7 @@
 
         <!-- CSS  -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.png'/>
+        <link href="../../assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="../../assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link rel='shortcut icon' type='image/x-icon' href='../../assets/img/favicon.png'/>
     </head>
