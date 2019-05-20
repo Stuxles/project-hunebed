@@ -1,0 +1,92 @@
+body {
+    background: #cccccc url("../img/bg1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  
+  .nav {
+    border-top: solid 10px #4299bd;
+  }
+  
+  nav ul li:hover {
+    background-color: white;
+  }
+  
+  nav ul li:hover a {
+    color: black !important;
+    background-color: transparent;
+  }
+  
+  .brand-logo {
+    height: 100%;
+  }
+  
+  .brand-logo p{
+    top: 0;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
+  #logo-img {
+    padding: 10px 0;
+    height: 100%;
+  }
+  
+  .hb-ico {
+    background-image: url(../img/Logo-1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+  }
+  
+  .black {
+    background-color: #353939 !important;
+  }
+  
+  .hb-blue-text {
+    color: #4299bd;
+  }
+  
+  .content {
+    background-color: white;
+  }
+  
+  .small-card-content {
+    padding: 14px !important;
+  }
+  
+  .login {
+      margin-top: 100px;
+      margin-bottom: 100px;
+  }
+  
+  .login .card {
+      background: rgba(0, 0, 0, .6);
+  }
+  
+  .login label {
+      font-size: 16px;
+      color: #ccc;
+  }
+  
+  .login input {
+      font-size: 22px !important;
+      color: #fff;
+  
+  }
+  
+  .login button:hover {
+      padding: 0px 40px;
+  }
+  
+  @media all and (max-width: 1000px) {
+    .content {
+      margin: 0 !important;
+      width: 100%;
+    }
+  }

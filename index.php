@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-        <!--Let browser know website is optimized for mobile-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-        <title>Hunebed wiki</title>
-    </head>
-    <body>
-        <?php
-            echo "Hunebed wiki hier";
-        ?>
-
-        <!--JavaScript at end of body for optimized loading-->
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-        <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-        <script type="text/javascript" src="js/init.js.js"></script>
-    </body>
-</html>
+<?php
+ 
+    // require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
+ 
+    require_once("php" . "/templateFunctions.php");
+ 
+    /*
+        Now you can handle all your php logic outside of the template
+        file which makes for very clean code!
+    */
+     
+    $setInIndexDotPhp = "Zo kan ook jij een steentje bijdragen";
+     
+    // Must pass in variables (as an array) to use in template
+    $variables = array(
+        'setInIndexDotPhp' => $setInIndexDotPhp
+    );
+     
+    renderLayoutWithContentFile("home.php", $variables);
+ 
+?>
