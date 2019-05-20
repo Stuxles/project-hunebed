@@ -1,4 +1,3 @@
-
     <body>
         <div class="nav">
         <nav class="black nav-extended" role="none">
@@ -6,7 +5,7 @@
             <a href="#" class="brand-logo"><i class="hb-ico">Hunico</i>logo</a>
             <a href="#" data-target="side-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li class="waves-effect waves-dark"><a href="login.php">Logout</a></li>
+                <li class="waves-effect waves-dark"><a href="Pages/login.php">Logout</a></li>
             </ul>
             <div class="nav-content">
                 <ul class="tabs tabs-transparent">
