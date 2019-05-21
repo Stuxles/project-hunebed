@@ -1,4 +1,8 @@
 <?php
+    // COMPOSER MUST BE INSTALLED AND IN THE DIRECTORY THE DEPENDENCIES WILLE BE MANAGED IN ORDER FOR THIS SCRIPT TO WORK
+    //sendgrid/php-http-client dependency must be added to composer
+    
+
     //autoload from composer
     require '../vendor/autoload.php';
     //this file contains the API key however, THIS FILE IS IN THE .GITIGNORE and thus WILL NOT BE SHARED.
