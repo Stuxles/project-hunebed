@@ -23,8 +23,12 @@ if(!isset($_GET['email']) && !isset($_GET['passReset'])) {
 	if(strcmp(date("dmY-L"), $info[0]) != 0) {
 		printf("This reset link is invalid or has expired. Please <a href='../index.php'>try logging in</a> or reset the password from there.");
 	} else {
+		//This is where basic HTML becomes relevant
+		echo "<!DOCTYPE html>";
+		echo "<html><head></head><body>";
 		echo "<p style='display: none;' id='hiddenMailP'>" . $info[1] . "</p>";
 		include("../html/newPassword.html");
+		echo "</body></html>";
 	}
 }
 ?>
