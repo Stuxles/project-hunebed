@@ -1,0 +1,7 @@
+{
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.6",
+        "sendgrid/php-http-client": " ~3.9.6",
+        "sendgrid/sendgrid": " ~7"
+    }
+}
