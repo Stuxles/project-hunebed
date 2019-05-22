@@ -10,7 +10,6 @@
         <!-- CSS  -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="<?=base_url('assets/css/materialize.css')?>" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <?php echo link_tag('assets/css/materialize.css'); ?>
-        <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" >
-        <link rel='shortcut icon' type='image/x-icon' href='<?php echo base_url(); ?>assets/img/favicon.png'/>
+        <link href="<?=base_url('assets/css/style.css'); ?>" rel="stylesheet" type="text/css" >
+        <link rel='shortcut icon' type='image/x-icon' href='<?=base_url('assets/img/favicon.png'); ?>'/>
     </head>
