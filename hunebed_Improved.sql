@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2019 at 01:40 PM
+-- Generation Time: May 20, 2019 at 01:21 PM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -56,11 +56,22 @@ CREATE TABLE `account_question` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account_role`
+-- Table structure for table `account_staffrole`
 --
 
-CREATE TABLE `account_role` (
+CREATE TABLE `account_staffrole` (
   `Role_ID` int(11) DEFAULT NULL,
+  `Email` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account_userrole`
+--
+
+CREATE TABLE `account_userrole` (
+  `UserRole_ID` int(11) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -184,10 +195,21 @@ CREATE TABLE `question` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Table structure for table `right`
 --
 
-CREATE TABLE `role` (
+CREATE TABLE `right` (
+  `Right_ID` int(11) NOT NULL,
+  `Right_Name` char(12) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staffrole`
+--
+
+CREATE TABLE `staffrole` (
   `Role_ID` int(11) NOT NULL,
   `RoleName` char(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -202,6 +224,28 @@ CREATE TABLE `theme` (
   `Theme_ID` int(11) NOT NULL,
   `Theme_color` varchar(50) DEFAULT NULL,
   `Theme_name` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userrole`
+--
+
+CREATE TABLE `userrole` (
+  `UserRole_ID` int(11) NOT NULL,
+  `RoleName` char(12) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userrole_right`
+--
+
+CREATE TABLE `userrole_right` (
+  `UserRole_ID` int(11) DEFAULT NULL,
+  `Right_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -249,11 +293,18 @@ ALTER TABLE `account_question`
   ADD KEY `Question_ID` (`Question_ID`);
 
 --
--- Indexes for table `account_role`
+-- Indexes for table `account_staffrole`
 --
-ALTER TABLE `account_role`
+ALTER TABLE `account_staffrole`
   ADD KEY `Email` (`Email`),
   ADD KEY `Role_ID` (`Role_ID`);
+
+--
+-- Indexes for table `account_userrole`
+--
+ALTER TABLE `account_userrole`
+  ADD KEY `UserRole_ID` (`UserRole_ID`),
+  ADD KEY `Email` (`Email`);
 
 --
 -- Indexes for table `category`
@@ -317,9 +368,15 @@ ALTER TABLE `question`
   ADD KEY `Difficulty_Level_ID` (`Difficulty_Level_ID`);
 
 --
--- Indexes for table `role`
+-- Indexes for table `right`
 --
-ALTER TABLE `role`
+ALTER TABLE `right`
+  ADD PRIMARY KEY (`Right_ID`);
+
+--
+-- Indexes for table `staffrole`
+--
+ALTER TABLE `staffrole`
   ADD PRIMARY KEY (`Role_ID`);
 
 --
@@ -327,6 +384,19 @@ ALTER TABLE `role`
 --
 ALTER TABLE `theme`
   ADD PRIMARY KEY (`Theme_ID`);
+
+--
+-- Indexes for table `userrole`
+--
+ALTER TABLE `userrole`
+  ADD PRIMARY KEY (`UserRole_ID`);
+
+--
+-- Indexes for table `userrole_right`
+--
+ALTER TABLE `userrole_right`
+  ADD KEY `UserRole_ID` (`UserRole_ID`),
+  ADD KEY `Right_ID` (`Right_ID`);
 
 --
 -- Indexes for table `wikipage`
@@ -360,11 +430,18 @@ ALTER TABLE `account_question`
   ADD CONSTRAINT `account_question_ibfk_2` FOREIGN KEY (`Question_ID`) REFERENCES `question` (`Question_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `account_role`
+-- Constraints for table `account_staffrole`
 --
-ALTER TABLE `account_role`
+ALTER TABLE `account_staffrole`
   ADD CONSTRAINT `account_role_ibfk_1` FOREIGN KEY (`Email`) REFERENCES `account` (`Email`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `account_role_ibfk_2` FOREIGN KEY (`Role_ID`) REFERENCES `role` (`Role_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `account_role_ibfk_2` FOREIGN KEY (`Role_ID`) REFERENCES `staffrole` (`Role_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `account_userrole`
+--
+ALTER TABLE `account_userrole`
+  ADD CONSTRAINT `accountuser_ibfk_1` FOREIGN KEY (`UserRole_ID`) REFERENCES `userrole` (`UserRole_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `accountuser_ibfk_2` FOREIGN KEY (`Email`) REFERENCES `account` (`Email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `editpage`
@@ -405,6 +482,13 @@ ALTER TABLE `knowledgehub_wikipage`
 --
 ALTER TABLE `question`
   ADD CONSTRAINT `question_ibfk_1` FOREIGN KEY (`Difficulty_Level_ID`) REFERENCES `difficulty_level` (`Difficulty_Level_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `userrole_right`
+--
+ALTER TABLE `userrole_right`
+  ADD CONSTRAINT `accountright_ibfk_1` FOREIGN KEY (`UserRole_ID`) REFERENCES `userrole` (`UserRole_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `accountright_ibfk_2` FOREIGN KEY (`Right_ID`) REFERENCES `right` (`Right_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `wikipage_category`
