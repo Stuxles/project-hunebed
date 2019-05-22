@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Sander Paping
- * Date: 20-5-2019
- * Time: 14:30
- */
-?>
 <div class="container content">
 
 
@@ -50,7 +42,7 @@
 
     <div class="section no-pad-bot">
         <div class="container">
-            <h4>Meerder gebruikers tegelijk toevoegen</h4>
+            <h4>Meerdere gebruikers tegelijk toevoegen</h4>
             <form action="#">
                 <div class="row">
 
