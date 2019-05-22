@@ -19,7 +19,7 @@
 	"require-dev": {
 		"mikey179/vfsStream": "1.1.*",
 		"phpunit/phpunit": "4.* || 5.*"
-	}
+	},
   "require": {
       "phpoffice/phpspreadsheet": "^1.6",
       "sendgrid/php-http-client": " ~3.9.6",
