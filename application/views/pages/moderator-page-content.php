@@ -170,7 +170,7 @@
                 <div class="col s12 m6">
                     <div class="card">
                         <div class="card-image">
-                            <img src="./assets/img/plattegrond.jpg">
+                            <img src="../../../assets/img/plattegrond.jpg">
                             <span class="card-title black-text">$naam</span>
                             <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">edit</i></a>
                         </div>
@@ -190,7 +190,7 @@
                 <div class="col s12 m6">
                     <div class="card">
                         <div class="card-image">
-                            <img src="./assets/img/favicon.png">
+                            <img src="../../../assets/img/favicon.png">
                             <span class="card-title black-text">Grafiek</span>
                             <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">insert_chart</i></a>
                         </div>
@@ -202,7 +202,7 @@
                 <div class="col s12 m6">
                     <div class="card">
                         <div class="card-image">
-                            <img src="./assets/img/favicon.png">
+                            <img src="../../../assets/img/favicon.png">
                             <span class="card-title black-text">Grafiek</span>
                             <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">insert_chart</i></a>
                         </div>
