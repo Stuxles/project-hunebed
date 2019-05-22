@@ -20,5 +20,7 @@ Following up you might want to route a link to the new account page. You do this
 
     $route['<link>'] = '<controller>/<function>';
 >More about [views](https://codeigniter.com/user_guide/general/views.html)
-More about [controllers](https://codeigniter.com/user_guide/general/controllers.html)
-More about [routing](https://codeigniter.com/user_guide/general/routing.html)
+
+>More about [controllers](https://codeigniter.com/user_guide/general/controllers.html)
+
+>More about [routing](https://codeigniter.com/user_guide/general/routing.html)
