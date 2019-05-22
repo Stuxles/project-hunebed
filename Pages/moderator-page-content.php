@@ -139,88 +139,106 @@
         </div>
     </div>
 
-    <div class="section no-pad-bot" id="index-banner">
+
+    <div class="section no-pad-bot">
         <div class="container">
-            <br><br>
-            <h1 class="header center hb-blue-text">Welkom</h1>
-            <div class="row center">
-                <h5 class="header col s12 light"><?php $setInIndexDotPhp ?></h5>
+            <h4>Vraag toevoegen</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
+                            <label for="textarea1">Voeg een vraag toe</label>
+                        </div>
+                        <div class="row center">
+                            <button class="btn waves-effect orange waves-light" type="submit" name="action">Toevoegen
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="row center">
-                <a href="#" id="download-button" class="btn-large waves-effect waves-light orange">Maak vragen!</a>
-            </div>
-            <br><br>
+            <div class="divider"></div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="section">
-            <!--   Icon Section   -->
+    <div class="section no-pad-bot">
+        <div class="container">
+            <h4>Statestieken $naam</h4>
             <div class="row">
-                <div class="row-content">
-                    <div class="col s12 m6">
-                        <div class="icon-block">
-                            <h2 class="center hb-blue-text"><i class="medium material-icons">question_answer</i></h2>
-                            <h5 class="center">Top 3 vragen</h5>
-                            <div class="card">
-                                <div class="card-content small-card-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
-                                </div>
-                                <div class="card-action">
-                                    <a href="#"><strong>Zie het antwoord</strong></a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-content small-card-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
-                                </div>
-                                <div class="card-action">
-                                    <a href="#"><strong>Zie het antwoord</strong></a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-content small-card-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
-                                </div>
-                                <div class="card-action">
-                                    <a href="#"><strong>Zie het antwoord</strong></a>
-                                </div>
-                            </div>
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="./assets/img/plattegrond.jpg">
+                            <span class="card-title black-text">$naam</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">edit</i></a>
                         </div>
-                    </div>
-                    <div class="col s12 m6">
-                        <div class="icon-block">
-                            <h2 class="center hb-blue-text"><i class="medium material-icons">book</i></h2>
-                            <h5 class="center">Top 20 pagina's</h5>
-                            <div class="card">
-                                <div class="card-content small-card-content">
-                                    <h6>Lorem ipsum dolor sit amet</h6>
-                                </div>
-                                <div class="card-action">
-                                    <a href="#"><strong>lees meer</strong></a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-content small-card-content">
-                                    <h6>Lorem ipsum dolor sit amet</h6>
-                                </div>
-                                <div class="card-action">
-                                    <a href="#"><strong>lees meer</strong></a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-content small-card-content">
-                                    <h6>Lorem ipsum dolor sit amet</h6>
-                                </div>
-                                <div class="card-action">
-                                    <a href="#"><strong>lees meer</strong></a>
-                                </div>
-                            </div>
+                        <div class="card-content">
+                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
                         </div>
                     </div>
                 </div>
-            </div
+            </div>
+            <div class="divider"></div>
+            <div class="row">
+                <div class="col s12">
+                    <!-- grafiek -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="./assets/img/favicon.png">
+                            <span class="card-title black-text">Grafiek</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">insert_chart</i></a>
+                        </div>
+                        <div class="card-content">
+                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="./assets/img/favicon.png">
+                            <span class="card-title black-text">Grafiek</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">insert_chart</i></a>
+                        </div>
+                        <div class="card-content">
+                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <table class="highlight responsive-table">
+                    <thead>
+                    <tr>
+                        <th>Functie</th>
+                        <th>Niveau</th>
+
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>Winkel</td>
+                        <td>Kiezelsteen</td>
+                    </tr>
+                    <tr>
+                        <td>Horeca</td>
+                        <td>Kei</td>
+                    </tr>
+                    <tr>
+                        <td>Museum</td>
+                        <td>Hunebed</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <br><br>
     </div>
+
 </div>
