@@ -49,7 +49,21 @@
     </ul>
 </div>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="<?=base_url('assets/js/materialize.js')?>"></script>
-<script src="<?=base_url('assets/js/init.js')?>"></script>
+    <script type="text/javascript" src="<?=base_url('assets/js/materialize.js')?>"></script>
+    <script type="text/javascript" src="<?=base_url('assets/js/init.js')?>"></script>
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+      direction: 'up',
+      hoverEnabled: false
+    });
+  });
+
+    // Or with jQuery
+    $(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
+</script>
 </body>
 </html>
