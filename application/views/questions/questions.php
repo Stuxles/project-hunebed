@@ -22,7 +22,7 @@
                     <p>I am a very simple card. I am good at containing small bits of information?</p>
                 </div>
                 <div class="card-action">
-                    <a class="hb-yellow-text" href="#">Lees meer</a>
+                    <a class="hb-yellow-text" href="<?=base_url('questions/show')?>">Lees meer</a>
                 </div>
             </div>
             <?php } ?>

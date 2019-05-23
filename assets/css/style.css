@@ -137,6 +137,40 @@ nav ul li:hover a {
   color: #665A43 !important;
 }
 
+.question-header {
+  padding-bottom: 1rem;
+  border-bottom: 1.3px solid #9e9e9e;
+}
+
+.large-container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 95%;
+}
+
+.responsive-img {
+  display: block;
+  margin: 0 auto;
+}
+
+.dislike-button {
+  border-right: 2px solid black;
+  color: red;
+}
+
+.dislike-button i:hover {
+  cursor: pointer;
+}
+
+.like-button {
+  border-left: 2px solid black;
+  color: green;
+}
+
+.like-button i:hover {
+  cursor: pointer;
+}
+
 @media all and (max-width: 1000px) {
   .content {
     margin: 0 !important;
