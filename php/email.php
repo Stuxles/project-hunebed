@@ -13,26 +13,25 @@
     $email = new \SendGrid\Mail\Mail(); 
 
     // Sender email (Can be any email as long as the <text>@<text>.com/net suffix is added)
-    $email->setFrom("SPAM@gmail.com", "SPAM");
+    $email->setFrom("willy@live.nl", "jw");
 
     //uncommment this line below to send to a single user
-    //$email->addTo("test@example.com", "Example User");
+    $email->addTo("email@email.com", "email");
 
     //comment this line if you aren't sending a mail to multiple users
-    $tos = [ 
+    /*$tos = [ 
         "naam@gmail.com" => "naam",
         "naam@gmail.com" => "naam",
         "naam@gmail.com" => "naam",
         "naam@gmail.com" => "naam"
-    ];
+    ];*/
     //comment this line if you aren't sending a mail to multiple users
-    $email->addTos($tos);
+    //$email->addTos($tos);
     //adds the subject of the mail
     $email->setSubject("Project");
     // adds the actual text to the mail , HTML TAGS can also be used
-    $email->addContent("text/plain", "hakloo  !!! <br><br>");
     $email->addContent(
-        "text/html", "<strong>IS SPAM NIET ANTWOORDEN!!!!<br></strong>
+        "text/html", "beste henk, <br><br> hoe gaat het, met mij goed. <br><strong>IS SPAM NIET ANTWOORDEN!!!!<br></strong>
         <br> Groeten, <br><br> SPAM"
     );
     
