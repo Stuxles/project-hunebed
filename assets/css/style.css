@@ -1,92 +1,145 @@
+* {
+  font-family: museo-sans, sans-serif;
+}
+
 body {
-    background: #cccccc url("../img/bg1.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-  }
-  
-  .nav {
-    border-top: solid 10px #4299bd;
-  }
-  
-  nav ul li:hover {
-    background-color: white;
-  }
-  
-  nav ul li:hover a {
-    color: black !important;
-    background-color: transparent;
-  }
-  
-  .brand-logo {
-    height: 100%;
-  }
-  
-  .brand-logo p{
-    top: 0;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
-  
-  #logo-img {
-    padding: 10px 0;
-    height: 100%;
-  }
-  
-  .hb-ico {
-    background-image: url(../img/Logo-1.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    color: transparent;
-  }
-  
-  .black {
-    background-color: #353939 !important;
-  }
-  
-  .hb-blue-text {
-    color: #4299bd;
-  }
-  
+  background: #cccccc url("../img/bg1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#search-question {
+  max-width: 20em;
+  margin: 0;
+  position: relative;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+#search-question:active {
+  border-bottom-color: #92B83E;
+}
+
+.nav {
+  border-top: solid 10px #4299bd;
+}
+
+nav ul li:hover {
+  background-color: white;
+}
+
+nav ul li:hover a {
+  color: black !important;
+  background-color: transparent;
+}
+
+.pagination li.active {
+  background-color: rgb(229, 29, 68);
+}
+
+.brand-logo {
+  height: 100%;
+}
+
+.brand-logo p{
+  top: 0;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#logo-img {
+  padding: 10px 0;
+  height: 100%;
+}
+
+.hb-ico {
+  background-image: url(../img/Logo-1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: transparent;
+}
+
+.black {
+  background-color: #353939 !important;
+}
+
+.hb-blue-text {
+  color: #4299bd !important;
+}
+
+.hb-yellow-text {
+  color: #DC9F29 !important;
+}
+
+.hb-green-text {
+  color: #92B83E !important;
+}
+
+.hb-red-text {
+  color: #EE2B4F !important;
+}
+
+.hb-red-bg {
+  background-color: #EE2B4F;
+}
+
+.content {
+  background-color: white;
+}
+
+.small-card-content {
+  padding: 14px !important;
+}
+
+.login {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.login .card {
+  background: rgba(0, 0, 0, .6);
+}
+
+.login label {
+  font-size: 16px;
+  color: #ccc;
+}
+
+.login input {
+  font-size: 22px !important;
+  color: #fff;
+
+}
+
+.login button:hover {
+  padding: 0px 40px;
+}
+
+.question-card:hover {
+  cursor: pointer;
+}
+
+.question-card .card-content, .question-card .card-action {
+  padding: 15px;  
+}
+
+.question-card .card-content p {
+  font-size: 16px;
+}
+
+.question-card a:hover {
+  color: #665A43 !important;
+}
+
+@media all and (max-width: 1000px) {
   .content {
-    background-color: white;
+    margin: 0 !important;
+    width: 100%;
   }
-  
-  .small-card-content {
-    padding: 14px !important;
-  }
-  
-  .login {
-      margin-top: 100px;
-      margin-bottom: 100px;
-  }
-  
-  .login .card {
-      background: rgba(0, 0, 0, .6);
-  }
-  
-  .login label {
-      font-size: 16px;
-      color: #ccc;
-  }
-  
-  .login input {
-      font-size: 22px !important;
-      color: #fff;
-  
-  }
-  
-  .login button:hover {
-      padding: 0px 40px;
-  }
-  
-  @media all and (max-width: 1000px) {
-    .content {
-      margin: 0 !important;
-      width: 100%;
-    }
-  }
+}
