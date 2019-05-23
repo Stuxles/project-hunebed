@@ -16,7 +16,7 @@
                         <span class="card-title black-text">Gebruiker toevoegen</span>
                     </div>
                     <div class="card-action center">
-                        <a href="<?= base_url('addUser') ?>">Voeg een gebruiker toe</a>
+                        <a href="<?= base_url('moderator/addUser') ?>">Voeg een gebruiker toe</a>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                         <span class="card-title black-text">Vraag toevoegen</span>
                     </div>
                     <div class="card-action center">
-                        <a href="<?= base_url('addQuestion') ?>">Voeg een vraag toe</a>
+                        <a href="<?= base_url('moderator/addQuestion') ?>">Voeg een vraag toe</a>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                         <span class="card-title black-text">Statistieken</span>
                     </div>
                     <div class="card-action center">
-                        <a href="<?= base_url('showUsers') ?>">This is a link</a>
+                        <a href="<?= base_url('moderator/showUsers') ?>">Bekijk Statistieken</a>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         <span class="card-title black-text">Ingezonden vragen</span>
                     </div>
                     <div class="card-action center">
-                        <a href="<?= base_url('#') ?>">Controleer vragen</a>
+                        <a href="<?= base_url('moderator/showQuestions') ?>">Ingezonden vragen</a>
                     </div>
                 </div>
             </div>

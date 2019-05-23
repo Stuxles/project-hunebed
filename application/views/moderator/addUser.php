@@ -82,7 +82,7 @@
                 </div>
                 </div>
                 <div class="row center">
-                <a href="<?=base_url('moderator')?>" class="btn waves-effect orange waves-light"><i class="material-icons left">arrow_back</i>Terug</a>
+                <a onclick="history.back(-1)" class="btn waves-effect orange waves-light"><i class="material-icons left">arrow_back</i>Terug</a>
                     <button class="btn waves-effect orange waves-light" type="submit" name="action">Toevoegen
                         <i class="material-icons right">send</i>
                     </button>

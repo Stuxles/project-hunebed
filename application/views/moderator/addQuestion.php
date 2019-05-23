@@ -25,28 +25,28 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix">check</i>
+                            <i class="material-icons prefix green-text">check</i>
                             <textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
                             <label for="textarea2">Vul hier het goed antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix">cancel</i>
+                            <i class="material-icons prefix red-text">cancel</i>
                             <textarea id="textarea3" class="materialize-textarea" data-length="120"></textarea>
                             <label for="textarea3">vul hier een fout antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix">cancel</i>
+                            <i class="material-icons prefix red-text">cancel</i>
                             <textarea id="textarea4" class="materialize-textarea" data-length="120"></textarea>
                             <label for="textarea4">vul hier een fout antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix">cancel</i>
+                            <i class="material-icons prefix red-text">cancel</i>
                             <textarea id="textarea5" class="materialize-textarea" data-length="120"></textarea>
                             <label for="textarea5">vul hier een fout antwoord in</label>
                         </div>
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <div class="row center">
-                        <a href="<?= base_url('moderator') ?>" class="btn waves-effect orange waves-light"><i class="material-icons left">arrow_back</i>Terug</a>
+                        <a onclick="history.back(-1)" class="btn waves-effect orange waves-light"><i class="material-icons left">arrow_back</i>Terug</a>
                         <button class="btn waves-effect orange waves-light" type="submit" name="action">Toevoegen
                             <i class="material-icons right">send</i>
                         </button>
