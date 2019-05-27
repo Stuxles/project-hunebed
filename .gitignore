@@ -110,3 +110,4 @@ fabric.properties
 # End of https://www.gitignore.io/api/phpstorm,composer,komodoedit,visualstudiocode
 
 .lando.yml
+assets/js/firebase.js
