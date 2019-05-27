@@ -1,6 +1,6 @@
 <div class="container content">
 
-<div class="section">
+    <div class="section">
         <div class="container">
             <h4>Gebruiker toevoegen</h4>
             <div class="row">
@@ -27,28 +27,28 @@
                         <div class="input-field col s12">
                             <p>Kies de functie van de persoon die u wilt toevoegen</p>
                             <p>
-                            <label>
-                                <input class="with-gap" name="group1" type="radio"  />
-                                <span>Winkel</span>
-                            </label>
+                                <label>
+                                    <input class="with-gap" name="group1" type="radio" />
+                                    <span>Winkel</span>
+                                </label>
                             </p>
                             <p>
-                            <label>
-                                <input class="with-gap" name="group1" type="radio"  />
-                                <span>Horeca</span>
-                            </label>
+                                <label>
+                                    <input class="with-gap" name="group1" type="radio" />
+                                    <span>Horeca</span>
+                                </label>
                             </p>
                             <p>
-                            <label>
-                                <input class="with-gap" name="group1" type="radio"  />
-                                <span>Museum</span>
-                            </label>
+                                <label>
+                                    <input class="with-gap" name="group1" type="radio" />
+                                    <span>Museum</span>
+                                </label>
                             </p>
                             <p>
-                            <label>
-                                <input class="with-gap" name="group1" type="radio"  />
-                                <span>Iets anders</span>
-                            </label>
+                                <label>
+                                    <input class="with-gap" name="group1" type="radio" />
+                                    <span>Iets anders</span>
+                                </label>
                             </p>
                         </div>
                     </div>
@@ -63,26 +63,26 @@
         </div>
     </div>
 
-<div class="section no-pad-bot">
+    <div class="section no-pad-bot">
         <div class="container">
             <h4>Meerdere gebruikers tegelijk toevoegen</h4>
             <form action="#">
                 <div class="row">
 
 
-                <div class="file-field input-field">
-                    <div class="btn orange">
-                        <span>File</span>
-                        <input type="file" multiple>
+                    <div class="file-field input-field">
+                        <div class="btn orange">
+                            <span>File</span>
+                            <input type="file" multiple>
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="Voeg excel bestand in." id="file-upload">
+                            <label for="file-upload">Voeg hier een Excel bestand in om meerdere nieuwe medewerkers tegelijk toe te voegen.</label>
+                        </div>
                     </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Voeg excel bestand in." id="file-upload">
-                        <label for="file-upload">Voeg hier een Excel bestand in om meerdere nieuwe medewerkers tegelijk toe te voegen.</label>
-                    </div>
-                </div>
                 </div>
                 <div class="row center">
-                <a onclick="history.back(-1)" class="btn waves-effect orange waves-light"><i class="material-icons left">arrow_back</i>Terug</a>
+                    <a onclick="history.back(-1)" class="btn waves-effect orange waves-light"><i class="material-icons left">arrow_back</i>Terug</a>
                     <button class="btn waves-effect orange waves-light" type="submit" name="action">Toevoegen
                         <i class="material-icons right">send</i>
                     </button>
@@ -91,4 +91,3 @@
             <div class="divider"></div>
         </div>
     </div>
-</div>
