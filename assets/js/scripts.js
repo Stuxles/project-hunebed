@@ -24,3 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
     $('.modal').modal();
   });
           
+  // Script voor character counter voor Textareas
+  $(document).ready(function() {
+    $('input#input_text, textarea#textarea2').characterCounter();
+  });
+      
