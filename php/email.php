@@ -5,6 +5,7 @@
 
     //autoload from composer
     require '../vendor/autoload.php';
+    require_once 'passgen.php';
     //this file contains the API key however, THIS FILE IS IN THE .GITIGNORE and thus WILL NOT BE SHARED.
     //therefor you wil need to obtain YOUR OWN SENDGRID API KEY AND CREATE YOUR OWN <apicred.php> file if you want to make this script work.
     require_once ("../vendor\sendgrid\sendgrid\apicred.php");
