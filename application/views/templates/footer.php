@@ -67,34 +67,7 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/materialize.js') ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/init.js') ?>"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.fixed-action-btn');
-        var instances = M.FloatingActionButton.init(elems, {
-            direction: 'up',
-            hoverEnabled: false
-        });
-    });
-
-    // Or with jQuery
-    $(document).ready(function() {
-        $('.materialboxed').materialbox();
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.modal');
-        var instances = M.Modal.init(elems, options);
-    });
-
-    // Or with jQuery
-
-    $(document).ready(function() {
-        $('.modal').modal();
-    });
-
-    $(document).ready(function() {
-        $('input#input_text, textarea#textarea1, textarea#textarea2, textarea#textarea3, textarea#textarea4, textarea#textarea5, textarea#textarea6').characterCounter();
-    });
-</script>
+<!-- Load in custom javascript -->
+<script src="<?= base_url('assets/js/scripts.js') ?>"></script>
 </body>
 </html>

@@ -1,31 +1,20 @@
-//Script voor de floating button
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.fixed-action-btn');
-    var instances = M.FloatingActionButton.init(elems, {
-      direction: 'up',
-      hoverEnabled: false
-    });
-  });
+// For the modal boxes
+$(document).ready(function(){
+  $('.modal').modal();
+});
 
-    // Or with jQuery
-    $(document).ready(function(){
-    $('.materialboxed').materialbox();
-  });
+// To show the amount of characters in textareas
+$(document).ready(function() {
+  $('input#input_text, textarea#textarea1, textarea#textarea2, textarea#textarea3, textarea#textarea4, textarea#textarea5, textarea#textarea6').characterCounter();
+});
 
-  //Script voor modals
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems, options);
-  });
+// For the floating action button
+$('.fixed-action-btn').floatingActionButton({
+  direction: 'up',
+  hoverEnabled: false
+});
 
-  // Or with jQuery
-
-  $(document).ready(function(){
-    $('.modal').modal();
-  });
-          
-  // Script voor character counter voor Textareas
-  $(document).ready(function() {
-    $('input#input_text, textarea#textarea2').characterCounter();
-  });
-      
+// For the images
+$(document).ready(function() {
+  $('.materialboxed').materialbox();
+});
