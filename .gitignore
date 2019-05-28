@@ -1,6 +1,14 @@
 
-# Created by https://www.gitignore.io/api/phpstorm,komodoedit,visualstudiocode
-# Edit at https://www.gitignore.io/?templates=phpstorm,komodoedit,visualstudiocode
+# Created by https://www.gitignore.io/api/phpstorm,composer,komodoedit,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=phpstorm,composer,komodoedit,visualstudiocode
+
+### Composer ###
+composer.phar
+/vendor/
+
+# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+# composer.lock
 
 ### KomodoEdit ###
 *.komodoproject
@@ -89,7 +97,7 @@ fabric.properties
 .idea/sonarlint
 
 ### VisualStudioCode ###
-.vscode/
+.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -99,7 +107,7 @@ fabric.properties
 # Ignore all local history of files
 .history
 
-# End of https://www.gitignore.io/api/phpstorm,komodoedit,visualstudiocode
+# End of https://www.gitignore.io/api/phpstorm,composer,komodoedit,visualstudiocode
 
 **/db_logon.php
 
@@ -115,3 +123,5 @@ composer.phar
 # composer.lock
 
 # End of https://www.gitignore.io/api/composer
+.lando.yml
+assets/js/firebase.js

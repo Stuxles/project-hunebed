@@ -48,6 +48,22 @@
         <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
     </ul>
 </div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-firestore.js"></script>
+
+<!-- Include firebase cibfig file -->
+<script src="<?=base_url('assets/js/firebase.js')?>"></script>
+
+<!-- Firebase variables -->
+<script>
+    const db = firebase.firestore();
+</script>
+
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/materialize.js') ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/init.js') ?>"></script>
@@ -81,5 +97,4 @@
     });
 </script>
 </body>
-
 </html>
