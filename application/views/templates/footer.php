@@ -59,15 +59,11 @@
 <!-- Include firebase cibfig file -->
 <script src="<?=base_url('assets/js/firebase.js')?>"></script>
 
-<!-- Firebase variables -->
-<script>
-    const db = firebase.firestore();
-</script>
-
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="<?= base_url('assets/js/materialize.js') ?>"></script>
+<script type="text/javascript" src="<?= base_url('assets/js/materialize.min.js') ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/init.js') ?>"></script>
 <!-- Load in custom javascript -->
+<script src="<?= base_url('assets/js/firestore.js') ?>"></script>
 <script src="<?= base_url('assets/js/scripts.js') ?>"></script>
 </body>
 </html>

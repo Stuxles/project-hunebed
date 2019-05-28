@@ -6,6 +6,9 @@
                 <input class="center" id="search-question" placeholder="Zoeken" id="first_name" type="text">
             </div>
         </div>
+        <form id="testForm" class="center">
+            <button class="btn testButton">Show Questions</button>
+        </form>
         <div class="container">
             <ul class="pagination center">
                 <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
@@ -16,7 +19,8 @@
                 <li class="waves-effect"><a href="#!">5</a></li>
                 <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
             </ul>
-            <?php for ($x = 0; $x <= 5; $x++) { ?>
+            <div class="questionListContainer"></div>
+            <!-- <?php for ($x = 0; $x <= 5; $x++) { ?>
             <div class="card question-card hoverable">
                 <div class="card-content">
                     <p>I am a very simple card. I am good at containing small bits of information?</p>
@@ -25,7 +29,7 @@
                     <a class="hb-yellow-text" href="<?=base_url('questions/show')?>">Lees meer</a>
                 </div>
             </div>
-            <?php } ?>
+            <?php } ?> -->
         </div>
     </div>
     <br><br>
