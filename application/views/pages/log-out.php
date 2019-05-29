@@ -1,20 +1,25 @@
 <div class="container content">
 
-    <div class="container"
-        <div class="col s12 m6 offset-m3">
-            <div class="card">
-                <div class="card-action light-blue white-text center-align">
-                    <h3>Je bent uitgelogt</h3>
-                </div>
-                <div class="card-content blue-grey-text">
-                    <br>
-                    <p>Je wordt over 5 seconden doorverwezen naar de hoofdpagina.</p>
-                    <br>
-                </div>
+    <div class="section no-pad-bot">
+        <div class="container">
+            <h4>Je bent uitgelogt</h4>
+                <p>Je wordt over enkele seconde doorgestuurd naar de home pagina.</p>
+
+            <div class="progress">
+                <div class="indeterminate"></div>
             </div>
+
         </div>
     </div>
 </div>
+
+
+
+<script>
+    setTimeout(function(){
+        window.location.href = "home";
+    }, 5000);
+</script>
 
 
 
