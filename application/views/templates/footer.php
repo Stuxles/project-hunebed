@@ -69,5 +69,6 @@
 <script type="text/javascript" src="<?= base_url('assets/js/init.js') ?>"></script>
 <!-- Load in custom javascript -->
 <script src="<?= base_url('assets/js/scripts.js') ?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/showQuestions.js')?>"></script>
 </body>
 </html>
