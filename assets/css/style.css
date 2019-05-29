@@ -1,8 +1,9 @@
 body {
-    background: #cccccc url("../img/bg1.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    /*background: #cccccc url("../img/bg1.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: fixed;*/
+    /*background-size: cover;*/
+    background-color: grey;
   }
   
   .nav {
