@@ -1,6 +1,5 @@
-<body>
-<div class="container">
-    <div class="row login">
+
+    <div class="row">
         <div class="col s12 m6 offset-m3">
             <div class="card">
                 <div class="card-action light-blue white-text center-align">
