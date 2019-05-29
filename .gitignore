@@ -115,3 +115,4 @@ fabric.properties
 .idea/php.xml
 .idea/project-hunebed.iml
 .idea/vcs.xml
+assets/js/firebase.js
