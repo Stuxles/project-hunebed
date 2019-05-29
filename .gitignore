@@ -125,3 +125,5 @@ composer.phar
 # End of https://www.gitignore.io/api/composer
 .lando.yml
 assets/js/firebase.js
+
+application/config/config\.php
