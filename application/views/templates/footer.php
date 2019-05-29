@@ -55,17 +55,23 @@
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->
 <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-functions.js"></script>
 
-<!-- Include firebase cibfig file -->
+<!-- Include firebase config file -->
 <script src="<?=base_url('assets/js/firebase.js')?>"></script>
 
 <!-- Firebase variables -->
 <script>
+    const auth = firebase.auth();
     const db = firebase.firestore();
+    const functions = firebase.functions();
 </script>
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="<?=base_url('assets/js/materialize.min.js')?>"></script>
 <script src="<?=base_url('assets/js/init.js')?>"></script>
+<script src="<?=base_url('assets/js/auth.js')?>"></script>
+<script src="<?=base_url('assets/js/index.js')?>"></script>
 </body>
 </html>
