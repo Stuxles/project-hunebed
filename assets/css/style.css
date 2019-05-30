@@ -1,12 +1,13 @@
 body {
-    background: #cccccc url("../img/bg1.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    /*background: #cccccc url("../img/bg1.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: fixed;*/
+    /*background-size: cover;*/
+    background-color: grey;
   }
   
   .nav {
-    border-top: solid 10px #4299bd;
+    border-top: solid 10px #3E9ABE;
   }
   
   nav ul li:hover {
@@ -49,9 +50,13 @@ body {
   }
   
   .hb-blue-text {
-    color: #4299bd;
+    color: #4299bd !important;
   }
   
+  .hb-blue {
+    background-color: #3E9ABE !important;
+  }
+
   .content {
     background-color: white;
   }
@@ -90,3 +95,12 @@ body {
       width: 100%;
     }
   }
+
+
+
+.content {
+  display: flex;
+  min-height: 30vh;
+  flex-direction: column;
+  flex: 1 0 auto;
+}

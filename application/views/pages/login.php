@@ -1,9 +1,8 @@
-<body>
-<div class="container">
-    <div class="row login">
+
+    <div class="row">
         <div class="col s12 m6 offset-m3">
             <div class="card">
-                <div class="card-action light-blue white-text center-align">
+                <div class="card-action hb-blue white-text center-align">
                     <h3>Login form</h3>
                 </div>
                 <div class="card-content">
@@ -26,7 +25,7 @@
                     </div>
                     <br>
                     <div class="form-field center-align">
-                        <a href="<?=base_url()?>" class="btn-large light-blue">Login</a>
+                        <a href="<?=base_url()?>" class="btn-large hb-blue">Login</a>
                     </div>
                     <br>
                 </div>
