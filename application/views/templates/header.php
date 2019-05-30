@@ -11,7 +11,7 @@
                 <ul class="tabs tabs-transparent">
                 <li class="tab"><a href="<?=base_url('home')?>">Home</a></li>
                 <li class="tab"><a href="<?=base_url('#')?>">Vragen</a></li>
-                <li class="tab"><a href="<?=base_url('Pages')?>">Pagina's</a></li>
+                <li class="tab"><a href="<?=base_url('#')?>">Pagina's</a></li>
                 </ul>
             </div>  
             <ul class="sidenav" id="side-menu">
