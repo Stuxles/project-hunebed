@@ -1,4 +1,4 @@
-<footer class="page-footer blue-grey content">
+<footer class="page-footer blue-grey container">
     <div class="row">
         <div class="col l6 s12">
             <h5 class="white-text">Hunebedcentrum</h5>
