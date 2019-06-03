@@ -56,25 +56,25 @@
                             <p>Kies de functie waar de vraag bij hoort</p>
                             <p>
                                 <label>
-                                    <input class="with-gap" name="group1" type="radio" />
+                                    <input class="with-gap" name="group1" value = "Winkel"  type="radio" />
                                     <span>Winkel</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input class="with-gap" name="group1" type="radio" />
+                                    <input class="with-gap" name="group1" value = "Horeca" type="radio" />
                                     <span>Horeca</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input class="with-gap" name="group1" type="radio" />
+                                    <input class="with-gap" name="group1" value = "Museum" type="radio" />
                                     <span>Museum</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input class="with-gap" name="group1" type="radio" />
+                                    <input class="with-gap" name="group1" value = "Algemeen" type="radio" />
                                     <span>Algemeen</span>
                                 </label>
                             </p>

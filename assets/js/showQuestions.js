@@ -19,17 +19,25 @@ db.collection('Questions').get().then((snapshot) => {
         questionP.textContent = doc.data().Question_answer;
         var a = document.createElement('A');
         a.href = pathArray[3].replace("moderator", "").concat("addQuestion");
-        a.textContent = ">>"
+        a.setAttribute('data-id', doc.id);
+        var butt = document.createElement('BUTTON');
+        butt.className = "waves-effect waves-light btn";
+        butt.addEventListener('click', (e) => {
+            var id = e.target.parentElement.getAttribute('data-id');
+            window.sessionStorage.setItem('data-id', id);
+            
+        })
+        a.appendChild(butt);
+        
+
         li.appendChild(b);
         li.appendChild(persoonP);
-        li.appendChild(questionP);
+        li.appendChild(questionP); 
         li.appendChild(a);
         ul.appendChild(li);
     
     })
 })
 }
-create_il()
 
-
-
+create_il();
