@@ -100,12 +100,13 @@
                             <h4>Weet u zeker dat u deze vraag wilt toevoegen?</h4>
                             <p>Klik op Toevoegen om de vraag toe te voegen.<br>
                             Klik op Nog een vraag toevoegen om de vraag toe tevoegen en daarna nog een vraag toe te voegen.<br>
-                        Klik op annuleren om de vraag niet toe tevoegen.</p>
+                        Klik op annuleren om de vraa
+                        g niet toe tevoegen.</p>
                         </div>
                         <div class="modal-footer">
                             <a href="#!" class="modal-close waves-effect red waves-red btn">Annuleren</a>
                             <a href="#modal2" class="modal-close waves-effect orange waves-orange btn btn modal-trigger">Nog een vraag toevoegen</a>
-                            <a href="#modal3" class="modal-close waves-effect green waves-green btn modal-trigger">Toevoegen</a>
+                            <a href="#modal3" class="modal-close waves-effect green waves-green btn modal-trigger" id = "toevoegen">Toevoegen</a>
                         </div>
                     </div>
 
