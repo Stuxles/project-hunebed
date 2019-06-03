@@ -1,9 +1,8 @@
-<body>
-<div class="container">
-    <div class="row login">
+
+    <div class="row">
         <div class="col s12 m6 offset-m3">
             <div class="card">
-                <div class="card-action light-blue white-text center-align">
+                <div class="card-action hb-blue white-text center-align">
                     <h3>Login form</h3>
                 </div>
                 <div class="card-content">
@@ -26,11 +25,17 @@
                     </div>
                     <br>
                     <div class="form-field center-align">
-                        <a href="<?=base_url()?>" class="btn-large light-blue">Login</a>
+                        <a href="<?=base_url()?>" class="btn-large hb-blue">Login</a>
                     </div>
                     <br>
                 </div>
             </div>
         </div>
     </div>
+    
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="<?=base_url('assets/js/materialize.js')?>"></script>
+<script src="<?=base_url('assets/js/init.js')?>"></script>
+</body>
+</html>
 
