@@ -1,10 +1,19 @@
 let currentTab = 1;
 let maxTab = 1;
+let url = window.location.href;
+let aurl = url.split("/");
 
 // Load questions form database
-db.collection('Questions').get().then(snapshot => {
-    loadQuestions(snapshot);
-})
+if(aurl[aurl.length-1] == "questions") {
+    db.collection('Questions').get().then(snapshot => {
+        loadQuestions(snapshot);
+    })
+}
+
+if(aurl[aurl.length-1] == "show") {
+    const docRef = db.collection('Questions').doc(document.querySelector('#questionContainter').getAttribute('value'));
+    docRef.get().then(doc => showQuestionDetails(doc.data()));
+}
 
 /*
 Generates the html with all the questions from the database.
@@ -14,7 +23,7 @@ const loadQuestions = (data => {
     let html = '';      // HTML to load
     let tabHTML = '<li class="prev-tab disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>'; // The tab controller
     let tempArray;      // Temporary array whichw will store single tab
-    const chunk = 1;    // The amount of items in a tab
+    const chunk = 2;    // The amount of items in a tab
     let tabAmount = 1;  // The amount of tabs on the page
 
     // Puts the object with all the docs in an array which can be split
@@ -33,7 +42,6 @@ const loadQuestions = (data => {
         tempArray = array.slice(i, i+chunk);
         tempArray.forEach(doc => {
         const question = doc.data();
-
         // Write the html with the data
         const item = `
             <div class="card question-card hoverable">
@@ -41,7 +49,9 @@ const loadQuestions = (data => {
                 <p>${question.Question}</p>
                 </div>
                 <div class="card-action">
-                <a class="hb-yellow-text" href="/test">Lees meer</a>
+                <form action="questions/show" method="POST">
+                    <button type="submit" name="showButton" class="btn  hb-blue" value="${doc.id}">Lees meer</button>
+                </form>
                 </div>
             </div>
         `;
@@ -111,4 +121,31 @@ const showQuestions = (tab => {
     document.querySelector(`#tablink${tab}`).className += " active";
     // Set current tab
     currentTab = tab;
+})
+
+const showQuestionDetails = (data => {
+    console.log(data);
+    const mediaLink = '../assets/img/hunebed1800x400.jpg';
+    let html = `
+        <div class="col xl9 s12">
+            <h4>${data.Question}</h4>
+                <img class="responsive-img materialboxed"  src="${mediaLink}" alt="questionImage">
+                <h5 class="header">Kort antwoord</h5>
+                <p id="short-answer">${data.Question_answer}</p>
+                <h5 class="header">Uitleg</h5> 
+                <p id="long-answer"></p>
+            </div>
+        </div>
+        <div class="col xl3 s12">
+            <div class="row">
+                <div class="col 6 dislike-button">
+                    <i class="large material-icons">keyboard_arrow_down</i>
+                </div>
+                <div class="col 6 like-button">
+                    <i class="large material-icons">keyboard_arrow_up</i>
+                </div>
+            </div>
+        </div>
+    `
+    document.getElementById('questionContent').innerHTML = html;
 })
