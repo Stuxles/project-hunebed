@@ -37,17 +37,7 @@
     </div>
 </footer>
 </div>
-<div class="fixed-action-btn">
-    <a class="btn-floating btn-large red">
-        <i class="large material-icons">mode_edit</i>
-    </a>
-    <ul>
-        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-        <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-        <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-    </ul>
-</div>
+
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
@@ -71,5 +61,6 @@
 <script src="<?= base_url('assets/js/scripts.js') ?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/js/showQuestions.js')?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/js/updateQuestion.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/editUser.js')?>"></script>
 </body>
 </html>
