@@ -1,4 +1,5 @@
 var dataID  = window.sessionStorage.getItem('data-id');
+console.log(dataID);
 var ref = db.collection('Questions').doc(dataID);
 ref.get().then((doc) => {
     if (doc.exists) {
@@ -18,7 +19,12 @@ ref.get().then((doc) => {
         text4.textContent = doc.data().Question_wrong[1];
         text5.textContent = doc.data().Question_wrong[2];
         text6.textContent = doc.data().Source;
-        var ButtPress = document.getElementById("toevoegen").addEventListener('click', (e) => {
+        //werk niet soort van
+        document.getElementById("terug").addEventListener('click', (e) => {
+            window.sessionStorage.clear();
+            console.log("it works the link atleast");
+            });
+        document.getElementById("toevoegen").addEventListener('click', (e) => {
             var functionName;
             rad.forEach((group) =>{
                 if( group.checked == true){
