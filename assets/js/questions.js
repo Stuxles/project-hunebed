@@ -10,11 +10,6 @@ if(aurl[aurl.length-1] == "questions") {
     })
 }
 
-if(aurl[aurl.length-1] == "show") {
-    const docRef = db.collection('Questions').doc(document.querySelector('#questionContainter').getAttribute('value'));
-    docRef.get().then(doc => showQuestionDetails(doc.data()));
-}
-
 /*
 Generates the html with all the questions from the database.
 @param data Is a snapshot with all the documnents from a firestore database.
@@ -149,3 +144,33 @@ const showQuestionDetails = (data => {
     `
     document.getElementById('questionContent').innerHTML = html;
 })
+
+const showQuestionError = (() => {
+    console.log("test");
+    const html = `<br><br>
+    <h4 class="header container center">Could not find that question.</h4>
+    `    
+    document.getElementById('questionContent').innerHTML = html;
+})
+
+if(aurl[aurl.length-1] == "show") {
+    const docID = document.querySelector('#questionContainter').getAttribute('value');
+    console.log(docID);
+    if(docID == ""){
+        showQuestionError();
+    }else {
+        const docRef = db.collection('Questions').doc(docID);
+        docRef.get().then(doc => showQuestionDetails(doc.data()));
+    }
+
+    // if(docID != ""){
+    //     const docRef = db.collection('Questions').doc();
+    //     docRef.get().then(doc => {
+    //         if(doc.exists){
+    //         showQuestionDetails(doc.data())
+    //         }
+    //     })
+    // }else {
+    //     showQuestionError();
+    // }
+}

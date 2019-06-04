@@ -10,10 +10,6 @@ body {
   background-color: grey;
 }
 
-footer {
-  /* width: 100% !important; */
-}
-
 #search-question {
   max-width: 20em;
   margin: 0;
