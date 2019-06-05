@@ -11,7 +11,7 @@
             <div class="nav-content container">
                 <ul class="tabs tabs-transparent">
                 <li class="tab"><a href="<?=base_url()?>">Home</a></li>
-                <li class="tab"><a href="<?=base_url('questions')?>">Vragen</a></li>
+                <li class="tab"><a href="<?=base_url('user-page')?>">Vragen</a></li>
                 <li class="tab"><a href="<?=base_url()?>">Pagina's</a></li>
                 </ul>
             </div>
