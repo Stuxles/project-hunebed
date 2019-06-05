@@ -56,25 +56,25 @@
                             <p>Kies de functie waar de vraag bij hoort</p>
                             <p>
                                 <label>
-                                    <input type="checkbox" />
+                                    <input type="checkbox" name = "group1" value="Winkel"/>
                                     <span>Winkel</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input type="checkbox" />
+                                    <input type="checkbox" name = "group1" value="Horeca"/>
                                     <span>Horeca</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input type="checkbox" />
+                                    <input type="checkbox" name = "group1" value="Museum"/>
                                     <span>Museum</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input type="checkbox" />
+                                    <input type="checkbox" name = "group1" value="Algemeen"/>
                                     <span>Algemeen</span>
                                 </label>
                             </p>
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="row center">
-                        <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect orange waves-light"><i class="material-icons left" id = "terug">arrow_back</i>Terug</a>
+                        <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect orange waves-light" id = "terug"><i class="material-icons left" >arrow_back</i>Terug</a>
                         <button data-target="modal1" class="btn modal-trigger waves-effect orange waves-light">Toevoegen
                             <i class="material-icons right">send</i>
                         </button>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="modal-footer">
                             <a href="#!" class="modal-close waves-effect red waves-red btn">Annuleren</a>
-                            <a href="#modal2" class="modal-close waves-effect orange waves-orange btn btn modal-trigger">Nog een vraag toevoegen</a>
+                            <a href="#modal2" class="modal-close waves-effect orange waves-orange btn btn modal-trigger" id = "nieuweVraag" >Nog een vraag toevoegen</a>
                             <a href="#modal3" class="modal-close waves-effect green waves-green btn modal-trigger" id = "toevoegen">Toevoegen</a>
                         </div>
                     </div>
