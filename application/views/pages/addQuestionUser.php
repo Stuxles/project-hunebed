@@ -2,13 +2,14 @@
 
     <div class="section">
         <div class="container">
+            <button onclick="addQuestion()" class="btn">Hoi</button>
             <div class="row">
                 <form class="col s12">
                     <h4 class="header center hb-blue-text">Vraag toevoegen</h4>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">question_answer</i>
-                            <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
+                            <textarea id="questionText" class="materialize-textarea" data-length="120"></textarea>
                             <label for="textarea1">Voeg een vraag toe</label>
                         </div>
                     </div>
@@ -28,25 +29,25 @@
                             <p>Kies de functie waar de vraag bij hoort</p>
                             <p>
                                 <label>
-                                    <input type="checkbox" />
+                                    <input class="catCheckbox" type="checkbox" value="Winkel" />
                                     <span>Winkel</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input type="checkbox" />
+                                    <input class="catCheckbox" type="checkbox" value="Horeca" />
                                     <span>Horeca</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input type="checkbox" />
+                                    <input class="catCheckbox" type="checkbox" value="Museum" />
                                     <span>Museum</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input type="checkbox" />
+                                    <input class="catCheckbox" type="checkbox" value="Algemeen" />
                                     <span>Algemeen</span>
                                 </label>
                             </p>
@@ -69,9 +70,9 @@
                                 g niet toe tevoegen.</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect hb-red-bg btn">Annuleren</a>
-                            <a href="#modal2" class="modal-close waves-effect hb-blue btn btn modal-trigger">Nog een vraag toevoegen</a>
-                            <a href="#modal3" class="modal-close waves-effect hb-red-bg btn modal-trigger" id="toevoegen">Toevoegen</a>
+                            <a href="#!" class="modal-close waves-effect hb-red-bg btn" onclick="addQuestion(true)">Annuleren</a>
+                            <a href="#modal2" class="modal-close waves-effect hb-blue btn btn modal-trigger" onclick="addQuestion()">Nog een vraag toevoegen</a>
+                            <a href="#modal3" class="modal-close waves-effect hb-red-bg btn modal-trigger" id="toevoegen"  onclick="addQuestion()">Toevoegen</a>
                         </div>
                     </div>
 

@@ -4,6 +4,39 @@ let url = window.location.href;
 let aurl = url.split("/");
 
 /*
+Add data from the form in the database
+@param resetForm fill in anything when form needs to be resetted.
+*/
+const addQuestion = (resetForm => {
+    let question;
+    let categories = [];
+
+    // Get the data from the form
+    question = document.querySelector('#questionText').value;
+    const checkboxes = document.querySelectorAll(".catCheckbox");
+    checkboxes.forEach(checkbox => {
+        if(checkbox.checked){
+            categories.push(checkbox.value)
+        }
+    })
+
+    // Add the data to the database
+    db.collection('Questions').add({
+        Question: question,
+        Categories: categories,
+        Approved: false
+    })
+
+    // Reset the form if needed
+    if(resetForm == null){
+        document.querySelector('#questionText').value = "";
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        })
+    }
+})
+
+/*
 Generates the html with all the questions from the database.
 @param data Is a snapshot with all the documnents from a firestore database.
 */
