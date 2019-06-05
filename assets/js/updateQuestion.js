@@ -38,14 +38,22 @@ ref.get().then((doc) => {
         
         //werk niet soort van
         document.getElementById("toevoegen").addEventListener('click', (e) => {
-            ref.update({
-                //Function: [],
-                Question: text.textContent,
-                Question_wrong: [text3.textContent,text4.textContent,text5.textContent],
-                Source: text6.textContent,
-                Question_answer: text2.textContent,
+            var funcName = [];
+            checkbox.forEach((group) =>{
+                if(group.checked == true){
+                    funcName.push(group.value);
+                    console.log(group.value);
+                }
+                console.log(funcName);
             });
-    
+            ref.update({
+                Function: funcName,
+                Question: text.value,
+                Question_wrong: [text3.value,text4.value,text5.value],
+                Source: text6.value,
+                Question_answer: text2.value,
+            });
+            
         });
         
     } else {
@@ -55,4 +63,3 @@ ref.get().then((doc) => {
 }).catch((error) => {
     console.log("Error getting document:", error);
 });
-
