@@ -1,9 +1,90 @@
 let currentTab = 1;
 let maxTab = 1;
+let url = window.location.href;
+let aurl = url.split("/");
 
-// Load questions form database
-db.collection('Questions').get().then(snapshot => {
-    loadQuestions(snapshot);
+/*
+Add data from the form in the database
+@param resetForm fill in anything when form needs to be resetted.
+*/
+const addQuestion = (resetForm => {
+    let question;
+    let categories = [];
+
+    // Get the data from the form
+    question = document.querySelector('#questionText').value;
+    const checkboxes = document.querySelectorAll(".catCheckbox");
+    checkboxes.forEach(checkbox => {
+        if(checkbox.checked){
+            categories.push(checkbox.value)
+        }
+    })
+
+    // Add the data to the database
+    db.collection('Questions').add({
+        Question: question,
+        Categories: categories,
+        Approved: false
+    })
+
+    // Reset the form if needed
+    if(resetForm == null){
+        document.querySelector('#questionText').value = "";
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        })
+    }
+})
+
+/*
+Add data from the form in the database
+@param resetForm fill in anything when form needs to be resetted.
+*/
+const addModQuestion = (resetForm => {
+    let question;
+    let categories = [];
+    let answer;
+    let wrongAnswers = [];
+    let source;
+
+    // Get the data from the form
+    question = document.querySelector('#textarea1').value;
+    answer = document.querySelector('#textarea2').value;
+    source = document.querySelector('#textarea6').value;
+    const checkboxes = document.querySelectorAll(".catCheckbox");
+    checkboxes.forEach(checkbox => {
+        if(checkbox.checked){
+            categories.push(checkbox.value)
+        }
+    })
+    const wrongs = document.querySelectorAll(".wrong-answer-text");
+    wrongs.forEach(wrong => {
+        wrongAnswers.push(wrong.value)
+    })
+
+    // Add the data to the database
+    db.collection('Questions').add({
+        Question: question,
+        Categories: categories,
+        Approved: true,
+        Question_answer: answer,
+        Question_wrong: wrongAnswers,
+        Source: source
+    })
+
+    // Reset the form
+    // Reset the form if needed
+    if(resetForm == null){        
+        document.querySelector('#textarea1').value = "";
+        document.querySelector('#textarea2').value = "";
+        document.querySelector('#textarea6').value = "";
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        })
+        wrongs.forEach(wrong => {
+            wrong.value = "";
+        })
+    }
 })
 
 /*
@@ -14,7 +95,7 @@ const loadQuestions = (data => {
     let html = '';      // HTML to load
     let tabHTML = '<li class="prev-tab disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>'; // The tab controller
     let tempArray;      // Temporary array whichw will store single tab
-    const chunk = 1;    // The amount of items in a tab
+    const chunk = 4;    // The amount of items in a tab
     let tabAmount = 1;  // The amount of tabs on the page
 
     // Puts the object with all the docs in an array which can be split
@@ -33,7 +114,6 @@ const loadQuestions = (data => {
         tempArray = array.slice(i, i+chunk);
         tempArray.forEach(doc => {
         const question = doc.data();
-
         // Write the html with the data
         const item = `
             <div class="card question-card hoverable">
@@ -41,7 +121,9 @@ const loadQuestions = (data => {
                 <p>${question.Question}</p>
                 </div>
                 <div class="card-action">
-                <a class="hb-yellow-text" href="/test">Lees meer</a>
+                <form action="questions/show" method="POST">
+                    <button type="submit" name="showButton" class="btn  hb-blue" value="${doc.id}">Lees meer</button>
+                </form>
                 </div>
             </div>
         `;
@@ -112,3 +194,53 @@ const showQuestions = (tab => {
     // Set current tab
     currentTab = tab;
 })
+
+// Writes the html for question details
+const showQuestionDetails = (data => {
+    const mediaLink = '../assets/img/hunebed1800x400.jpg';  // Media link of the question
+    let html = `
+        <div class="col xl12 s12 question-content">
+            <h4>${data.Question}</h4>
+                <img class="responsive-img materialboxed" src="${mediaLink}" alt="questionImage">
+                <h5 class="header">Antwoord</h5>
+                <p id="short-answer">${data.Question_answer}</p>
+            </div>
+        </div>
+    `
+    // Put the like and dislike bttons here aswell ^^^^
+    document.getElementById('questionContent').innerHTML += html;
+
+    // Reload materialize script
+    $(document).ready(function() {
+        $('.materialboxed').materialbox();
+    });
+})
+
+// Show an error on the page when a question that doesnt exist is asked
+const showQuestionError = (() => {
+    console.log("test");
+    const html = `<br><br>
+    <h4 class="header container center">Could not find that question.</h4>
+    `    
+    document.getElementById('questionContent').innerHTML = html;
+})
+
+// Load questions form database
+if(aurl[aurl.length-1] == "questions") {
+    db.collection('Questions').get().then(snapshot => {
+        loadQuestions(snapshot);
+    })
+}
+
+// Show the details of a question if the url ends with show
+// And get the data from post
+if(aurl[aurl.length-1] == "show") {
+    const docID = document.querySelector('#questionContainter').getAttribute('value');
+    console.log(docID);
+    if(docID == ""){
+        showQuestionError();
+    }else {
+        const docRef = db.collection('Questions').doc(docID);
+        docRef.get().then(doc => showQuestionDetails(doc.data()));
+    }
+}
