@@ -15,4 +15,17 @@ class Questions extends CI_Controller {
         $this->load->view('questions/'.$page);
         $this->load->view('templates/footer');
     }
+
+    public function show($question = 0)
+    {
+        $data['questionID'] = $this->input->post('showButton');
+
+        $this->load->helper('url');
+        $this->load->view('templates/head');
+        $this->load->view('templates/header');
+        $this->load->view('questions/show', $data);
+        $this->load->view('templates/footer');
+    }
+
+    
 }
