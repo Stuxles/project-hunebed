@@ -3,13 +3,6 @@ let maxTab = 1;
 let url = window.location.href;
 let aurl = url.split("/");
 
-// Load questions form database
-if(aurl[aurl.length-1] == "questions") {
-    db.collection('Questions').get().then(snapshot => {
-        loadQuestions(snapshot);
-    })
-}
-
 /*
 Generates the html with all the questions from the database.
 @param data Is a snapshot with all the documnents from a firestore database.
@@ -118,33 +111,24 @@ const showQuestions = (tab => {
     currentTab = tab;
 })
 
+// Writes the html for question details
 const showQuestionDetails = (data => {
-    console.log(data);
-    const mediaLink = '../assets/img/hunebed1800x400.jpg';
+    const mediaLink = '../assets/img/hunebed1800x400.jpg';  // Media link of the question
     let html = `
         <div class="col xl9 s12">
             <h4>${data.Question}</h4>
-                <img class="responsive-img materialboxed"  src="${mediaLink}" alt="questionImage">
-                <h5 class="header">Kort antwoord</h5>
+                <img class="responsive-img materialboxed" src="${mediaLink}" alt="questionImage">
+                <h5 class="header">Antwoord</h5>
                 <p id="short-answer">${data.Question_answer}</p>
-                <h5 class="header">Uitleg</h5> 
-                <p id="long-answer"></p>
             </div>
         </div>
-        <div class="col xl3 s12">
-            <div class="row">
-                <div class="col 6 dislike-button">
-                    <i class="large material-icons">keyboard_arrow_down</i>
-                </div>
-                <div class="col 6 like-button">
-                    <i class="large material-icons">keyboard_arrow_up</i>
-                </div>
-            </div>
-        </div>
+        
     `
+    // Put the like and dislike bttons here aswell ^^^^
     document.getElementById('questionContent').innerHTML = html;
 })
 
+// Show an error on the page when a question that doesnt exist is asked
 const showQuestionError = (() => {
     console.log("test");
     const html = `<br><br>
@@ -153,6 +137,15 @@ const showQuestionError = (() => {
     document.getElementById('questionContent').innerHTML = html;
 })
 
+// Load questions form database
+if(aurl[aurl.length-1] == "questions") {
+    db.collection('Questions').get().then(snapshot => {
+        loadQuestions(snapshot);
+    })
+}
+
+// Show the details of a question if the url ends with show
+// And get the data from post
 if(aurl[aurl.length-1] == "show") {
     const docID = document.querySelector('#questionContainter').getAttribute('value');
     console.log(docID);
@@ -162,15 +155,4 @@ if(aurl[aurl.length-1] == "show") {
         const docRef = db.collection('Questions').doc(docID);
         docRef.get().then(doc => showQuestionDetails(doc.data()));
     }
-
-    // if(docID != ""){
-    //     const docRef = db.collection('Questions').doc();
-    //     docRef.get().then(doc => {
-    //         if(doc.exists){
-    //         showQuestionDetails(doc.data())
-    //         }
-    //     })
-    // }else {
-    //     showQuestionError();
-    // }
 }
