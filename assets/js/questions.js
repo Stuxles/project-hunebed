@@ -115,17 +115,21 @@ const showQuestions = (tab => {
 const showQuestionDetails = (data => {
     const mediaLink = '../assets/img/hunebed1800x400.jpg';  // Media link of the question
     let html = `
-        <div class="col xl9 s12">
+        <div class="col xl12 s12 question-content">
             <h4>${data.Question}</h4>
                 <img class="responsive-img materialboxed" src="${mediaLink}" alt="questionImage">
                 <h5 class="header">Antwoord</h5>
                 <p id="short-answer">${data.Question_answer}</p>
             </div>
         </div>
-        
     `
     // Put the like and dislike bttons here aswell ^^^^
-    document.getElementById('questionContent').innerHTML = html;
+    document.getElementById('questionContent').innerHTML += html;
+
+    // Reload materialize script
+    $(document).ready(function() {
+        $('.materialboxed').materialbox();
+    });
 })
 
 // Show an error on the page when a question that doesnt exist is asked
