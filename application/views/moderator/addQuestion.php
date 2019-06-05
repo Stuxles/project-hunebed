@@ -33,21 +33,21 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix red-text">cancel</i>
-                            <textarea id="textarea3" class="materialize-textarea" data-length="120"></textarea>
+                            <textarea id="textarea3" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
                             <label for="textarea3">vul hier een fout antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix red-text">cancel</i>
-                            <textarea id="textarea4" class="materialize-textarea" data-length="120"></textarea>
+                            <textarea id="textarea4" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
                             <label for="textarea4">vul hier een fout antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix red-text">cancel</i>
-                            <textarea id="textarea5" class="materialize-textarea" data-length="120"></textarea>
+                            <textarea id="textarea5" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
                             <label for="textarea5">vul hier een fout antwoord in</label>
                         </div>
                     </div>
@@ -56,25 +56,25 @@
                             <p>Kies de functie waar de vraag bij hoort</p>
                             <p>
                                 <label>
-                                    <input type="checkbox" />
+                                    <input class="catCheckbox" type="checkbox" value="Winkel" />
                                     <span>Winkel</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input type="checkbox" />
+                                    <input class="catCheckbox" type="checkbox" value="Horeca" />
                                     <span>Horeca</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input type="checkbox" />
+                                    <input class="catCheckbox" type="checkbox" value="Museum" />
                                     <span>Museum</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input type="checkbox" />
+                                    <input class="catCheckbox" type="checkbox" value="Algemeen" />
                                     <span>Algemeen</span>
                                 </label>
                             </p>
@@ -104,9 +104,9 @@
                         g niet toe tevoegen.</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect red waves-red btn">Annuleren</a>
-                            <a href="#modal2" class="modal-close waves-effect orange waves-orange btn btn modal-trigger">Nog een vraag toevoegen</a>
-                            <a href="#modal3" class="modal-close waves-effect green waves-green btn modal-trigger" id = "toevoegen">Toevoegen</a>
+                            <a href="#!" class="modal-close waves-effect red waves-red btn" onclick="addModQuestion(true)">Annuleren</a>
+                            <a href="#modal2" class="modal-close waves-effect orange waves-orange btn btn modal-trigger" onclick="addModQuestion()">Nog een vraag toevoegen</a>
+                            <a href="#modal3" class="modal-close waves-effect green waves-green btn modal-trigger" id = "toevoegen" onclick="addModQuestion()">Toevoegen</a>
                         </div>
                     </div>
 
