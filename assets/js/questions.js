@@ -4,6 +4,90 @@ let url = window.location.href;
 let aurl = url.split("/");
 
 /*
+Add data from the form in the database
+@param resetForm fill in anything when form needs to be resetted.
+*/
+const addQuestion = (resetForm => {
+    let question;
+    let categories = [];
+
+    // Get the data from the form
+    question = document.querySelector('#questionText').value;
+    const checkboxes = document.querySelectorAll(".catCheckbox");
+    checkboxes.forEach(checkbox => {
+        if(checkbox.checked){
+            categories.push(checkbox.value)
+        }
+    })
+
+    // Add the data to the database
+    db.collection('Questions').add({
+        Question: question,
+        Categories: categories,
+        Approved: false
+    })
+
+    // Reset the form if needed
+    if(resetForm == null){
+        document.querySelector('#questionText').value = "";
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        })
+    }
+})
+
+/*
+Add data from the form in the database
+@param resetForm fill in anything when form needs to be resetted.
+*/
+const addModQuestion = (resetForm => {
+    let question;
+    let categories = [];
+    let answer;
+    let wrongAnswers = [];
+    let source;
+
+    // Get the data from the form
+    question = document.querySelector('#textarea1').value;
+    answer = document.querySelector('#textarea2').value;
+    source = document.querySelector('#textarea6').value;
+    const checkboxes = document.querySelectorAll(".catCheckbox");
+    checkboxes.forEach(checkbox => {
+        if(checkbox.checked){
+            categories.push(checkbox.value)
+        }
+    })
+    const wrongs = document.querySelectorAll(".wrong-answer-text");
+    wrongs.forEach(wrong => {
+        wrongAnswers.push(wrong.value)
+    })
+
+    // Add the data to the database
+    db.collection('Questions').add({
+        Question: question,
+        Categories: categories,
+        Approved: true,
+        Question_answer: answer,
+        Question_wrong: wrongAnswers,
+        Source: source
+    })
+
+    // Reset the form
+    // Reset the form if needed
+    if(resetForm == null){        
+        document.querySelector('#textarea1').value = "";
+        document.querySelector('#textarea2').value = "";
+        document.querySelector('#textarea6').value = "";
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        })
+        wrongs.forEach(wrong => {
+            wrong.value = "";
+        })
+    }
+})
+
+/*
 Generates the html with all the questions from the database.
 @param data Is a snapshot with all the documnents from a firestore database.
 */
@@ -11,7 +95,7 @@ const loadQuestions = (data => {
     let html = '';      // HTML to load
     let tabHTML = '<li class="prev-tab disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>'; // The tab controller
     let tempArray;      // Temporary array whichw will store single tab
-    const chunk = 2;    // The amount of items in a tab
+    const chunk = 4;    // The amount of items in a tab
     let tabAmount = 1;  // The amount of tabs on the page
 
     // Puts the object with all the docs in an array which can be split
