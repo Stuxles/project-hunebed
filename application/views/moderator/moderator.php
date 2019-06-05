@@ -2,7 +2,7 @@
     <div class="section">
         <div class="row">
             <div class="col s12 center">
-                <h3>Beheerder</h3>
+                <h3 class="hb-blue-text">Beheerder</h3>
             </div>
         </div>
         </section>
@@ -16,7 +16,7 @@
                         <span class="card-title black-text">Gebruiker toevoegen</span>
                     </div>
                     <div class="card-action center">
-                        <a href="<?= base_url('moderator/addUser') ?>">Voeg een gebruiker toe</a>
+                        <a href="<?= base_url('moderator/addUser') ?>" class="hb-blue-text">Voeg een gebruiker toe</a>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                         <span class="card-title black-text">Vraag toevoegen</span>
                     </div>
                     <div class="card-action center">
-                        <a href="<?= base_url('moderator/addQuestion') ?>">Voeg een vraag toe</a>
+                        <a href="<?= base_url('moderator/addQuestion') ?>" class="hb-blue-text">Voeg een vraag toe</a>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                         <span class="card-title black-text">Statistieken</span>
                     </div>
                     <div class="card-action center">
-                        <a href="<?= base_url('moderator/showUsers') ?>">Bekijk Statistieken</a>
+                        <a href="<?= base_url('moderator/showUsers') ?>" class="hb-blue-text">Bekijk Statistieken</a>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         <span class="card-title black-text">Ingezonden vragen</span>
                     </div>
                     <div class="card-action center">
-                        <a href="<?= base_url('moderator/showQuestions') ?>">Ingezonden vragen</a>
+                        <a href="<?= base_url('moderator/showQuestions') ?>" class="hb-blue-text">Ingezonden vragen</a>
                     </div>
                 </div>
             </div>
@@ -79,19 +79,19 @@
                             <td>Harrie Wolters</td>
                             <td>hwolters@hunebedcentrum.nl</td>
                             <td>Algemeen Directeur</td>
-                            <td><a href="<?= base_url('moderator/editUser') ?>" class="waves-effect waves-light orange btn-floating"><i class="material-icons left">edit</i></a></td>
+                            <td><a href="<?= base_url('moderator/editUser') ?>" class="waves-effect waves-light hb-red-bg btn-floating"><i class="material-icons left">edit</i></a></td>
                         </tr>
                         <tr>
                             <td>Gijs Klompmaker</td>
                             <td>gklompmaker@hunebedcentrum.nl</td>
                             <td>Marketing</td>
-                            <td><a href="<?= base_url('moderator/editUser') ?>" class="waves-effect waves-light orange btn-floating"><i class="material-icons left">edit</i></a></td>
+                            <td><a href="<?= base_url('moderator/editUser') ?>" class="waves-effect waves-light hb-red-bg btn-floating"><i class="material-icons left">edit</i></a></td>
                         </tr>
                         <tr>
                             <td>Jopie Jakkerman</td>
                             <td>Jjakkerman@hunebedcentrum.nl</td>
                             <td>Winkel</td>
-                            <td><a href="<?= base_url('moderator/editUser') ?>" class="waves-effect waves-light orange btn-floating"><i class="material-icons left">edit</i></a></td>
+                            <td><a href="<?= base_url('moderator/editUser') ?>" class="waves-effect waves-light hb-red-bg btn-floating"><i class="material-icons left">edit</i></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -99,3 +99,4 @@
             </div>
         </div>
     </div>
+</div>
