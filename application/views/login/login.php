@@ -3,7 +3,7 @@
     <div class="section no-pad-bot">
         <div class="container">
             <div class="col s12 m6 offset-m3">
-                <div class="card">
+                <div class="card" id="login-container">
                     <div class="card-action hb-blue white-text center-align">
                         <h3>Login form</h3>
                     </div>
@@ -21,6 +21,7 @@
                             <br>
                             <div class="form-field center-align">
                                 <button class="btn-large hb-blue">Login</button>
+                                <p class="error pink-text center-align"></p>
                             </div>
                         </form>
                     </div>
