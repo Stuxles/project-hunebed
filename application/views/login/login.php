@@ -10,17 +10,17 @@
                     <div class="card-content">
                         <form id="login-form">
                             <div class="form-field">
-                                <label for="username">Emailadres</label>
-                                <input type="email" id="username">
+                                <label for="login-email">Emailadres</label>
+                                <input type="email" id="login-email">
                             </div>
                             <br>
                             <div class="form-field">
-                                <label for="password">Wachtwoord</label>
-                                <input type="password" id="password">
+                                <label for="login-password">Wachtwoord</label>
+                                <input type="password" id="login-password">
                             </div>
                             <br>
                             <div class="form-field center-align">
-                                <a href="<?=base_url()?>" class="btn-large hb-blue">Login</a>
+                                <button class="btn-large hb-blue">Login</button>
                             </div>
                         </form>
                     </div>
