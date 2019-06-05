@@ -1,6 +1,5 @@
 
 var dataID  = window.sessionStorage.getItem('data-id');
-console.log(dataID);
 var ref = db.collection('Questions').doc(dataID);
 
 ref.get().then((doc) => {
@@ -42,9 +41,9 @@ ref.get().then((doc) => {
             checkbox.forEach((group) =>{
                 if(group.checked == true){
                     funcName.push(group.value);
-                    console.log(group.value);
+                    
                 }
-                console.log(funcName);
+                
             });
             ref.update({
                 Function: funcName,
