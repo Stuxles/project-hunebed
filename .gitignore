@@ -127,3 +127,8 @@ composer.phar
 assets/js/firebase.js
 
 application/config/config\.php
+.idea/misc.xml
+.idea/modules.xml
+.idea/php.xml
+.idea/project-hunebed.iml
+.idea/vcs.xml
