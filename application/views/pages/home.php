@@ -6,7 +6,7 @@
             <h5 class="header col s12 light"><?php $setInIndexDotPhp ?></h5>
         </div>
         <div class="row center">
-            <a href="#" id="download-button" class="btn-large waves-effect waves-light orange">Maak vragen!</a>
+            <a href="<?= base_url('addQuestionUser') ?>" id="download-button" class="btn-large waves-effect waves-light hb-red-bg">Stel je vraag!</a>
         </div>
         <br><br>
     </div>
@@ -24,8 +24,8 @@
                                 <div class="card-content small-card-content">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
                                 </div>
-                                <div class="card-action">
-                                    <a href="#"><strong>Zie het antwoord</strong></a>
+                                <div class="card-action ">
+                                    <a href="#" class="hb-blue-text"><strong>Zie het antwoord</strong></a>
                                 </div>
                             </div>
                             <div class="card">
@@ -33,7 +33,7 @@
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
                                 </div>
                                 <div class="card-action">
-                                    <a href="#"><strong>Zie het antwoord</strong></a>
+                                    <a href="#" class="hb-blue-text"><strong>Zie het antwoord</strong></a>
                                 </div>
                             </div>
                             <div class="card">
@@ -41,7 +41,7 @@
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
                                 </div>
                                 <div class="card-action">
-                                    <a href="#"><strong>Zie het antwoord</strong></a>
+                                    <a href="#" class="hb-blue-text"><strong>Zie het antwoord</strong></a>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                                     <h6>Lorem ipsum dolor sit amet</h6>
                                 </div>
                                 <div class="card-action">
-                                    <a href="#"><strong>lees meer</strong></a>
+                                    <a href="#" class="hb-blue-text"><strong>lees meer</strong></a>
                                 </div>
                             </div>
                             <div class="card">
@@ -63,7 +63,7 @@
                                     <h6>Lorem ipsum dolor sit amet</h6>
                                 </div>
                                 <div class="card-action">
-                                    <a href="#"><strong>lees meer</strong></a>
+                                    <a href="#" class="hb-blue-text"><strong>lees meer</strong></a>
                                 </div>
                             </div>
                             <div class="card">
@@ -71,7 +71,7 @@
                                     <h6>Lorem ipsum dolor sit amet</h6>
                                 </div>
                                 <div class="card-action">
-                                    <a href="#"><strong>lees meer</strong></a>
+                                    <a href="#" class="hb-blue-text"><strong>lees meer</strong></a>
                                 </div>
                             </div>
                         </div>

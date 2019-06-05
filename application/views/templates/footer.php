@@ -21,7 +21,6 @@
         </div>
     </div>
 </footer>
-</div>
 <!--FAB Button-->
 <div class="fixed-action-btn">
     <a class="btn-floating btn-large red">
