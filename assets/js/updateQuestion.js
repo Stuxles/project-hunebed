@@ -38,7 +38,14 @@ ref.get().then((doc) => {
         
         //werk niet soort van
         document.getElementById("toevoegen").addEventListener('click', (e) => {
-
+            ref.set({
+                Function: {0: "henkieboi", 1: "bobbieboi", 2: "grabby", 3: "snappy"},
+                Question: "hoe kan henk dat",
+                Question_wrong: {0: "henk", 1: "bob", 2: "schaap"},
+                Source: "van henk",
+                Question_answer: "hij kan niet",
+            });
+    
         });
         
     } else {
