@@ -200,9 +200,6 @@ nav ul li:hover a {
   display: table;
 }
 
-
-
-
 .dislike-button {
   border: 2px solid red;
   border-radius: 0.1875rem;
@@ -229,4 +226,10 @@ nav ul li:hover a {
 
 .question-meta {
   text-align: center;
+}
+
+@media only screen and (max-width: 993px) {
+  footer {
+    width: 100% !important;
+  }
 }
