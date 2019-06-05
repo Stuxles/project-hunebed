@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 // Questions
 $route['questions'] = 'questions/view';
-$route['questions/(:any)'] = 'questions/view/$1';
+$route['questions/(:num)'] = 'questions/show/$1';
 
 // Moderator
 $route['moderator'] = 'moderator/view';

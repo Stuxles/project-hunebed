@@ -10,10 +10,6 @@ body {
   background-color: grey;
 }
 
-footer {
-  /* width: 100% !important; */
-}
-
 #search-question {
   max-width: 20em;
   margin: 0;
@@ -159,33 +155,36 @@ nav ul li:hover a {
 
 .responsive-img {
   display: block;
-  margin: 0 auto;
 }
 
-.dislike-button {
-  border-right: 2px solid black;
+.dislike-button-box {
+  /* border-right: 2px solid black; */
   color: red;
 }
 
-.dislike-button i:hover {
+.dislike-button-box i:hover {
   cursor: pointer;
 }
 
-.like-button {
-  border-left: 2px solid black;
+.like-button-box {
+  /* border-left: 2px solid black; */
   color: green;
 }
 
-.like-button i:hover {
+.like-button-box i:hover {
   cursor: pointer;
 }
 
-
-  
-@media all and (max-width: 1000px) {
+@media all and (max-width: 1201px) {
   .content {
     margin: 0 !important;
     width: 100%;
+  }
+}
+
+@media all and (min-width: 1201px) {
+  .question-content {
+    padding: 0 7rem !important;
   }
 }
 
@@ -197,4 +196,43 @@ nav ul li:hover a {
 
 .main{
   flex: 1 0 auto;
+}
+
+.rate-buttons {
+  margin: 0 auto;
+  display: table;
+}
+
+.dislike-button {
+  border: 2px solid red;
+  border-radius: 0.1875rem;
+  text-align: center;
+  width: 60px;
+  height: 60px;
+}
+
+.dislike-button i {
+  padding: 5px;
+}
+
+.like-button {
+  border: 2px solid green;
+  border-radius: 0.1875rem;
+  text-align: center;
+  width: 60px;
+  height: 60px;
+}
+
+.like-button i {
+  padding: 5px;
+}
+
+.question-meta {
+  text-align: center;
+}
+
+@media only screen and (max-width: 993px) {
+  footer {
+    width: 100% !important;
+  }
 }

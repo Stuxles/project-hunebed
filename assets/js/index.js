@@ -4,8 +4,8 @@ const setupUI = (user) => {
       if(user.admin){
         console.log('user is admin')
       }
-        console.log('user logged in: ', user);
+        const loggedIn = true;
     } else {
-        console.log('user logged out');
+      const loggedIn = false;
     }
   }
