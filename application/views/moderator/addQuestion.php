@@ -14,7 +14,7 @@
                     </div>
                     <div class="row">
                         <div class="file-field input-field col s6 offset-s3">
-                            <div class="btn orange">
+                            <div class="btn hb-red-bg">
                                 <span>File</span>
                                 <input type="file" multiple>
                             </div>
@@ -99,9 +99,9 @@
                         <div class="modal-content">
                             <h4>Weet u zeker dat u deze vraag wilt toevoegen?</h4>
                             <p>Klik op Toevoegen om de vraag toe te voegen.<br>
-                            Klik op Nog een vraag toevoegen om de vraag toe tevoegen en daarna nog een vraag toe te voegen.<br>
-                        Klik op annuleren om de vraa
-                        g niet toe tevoegen.</p>
+                                Klik op Nog een vraag toevoegen om de vraag toe tevoegen en daarna nog een vraag toe te voegen.<br>
+                                Klik op annuleren om de vraa
+                                g niet toe tevoegen.</p>
                         </div>
                         <div class="modal-footer">
                             <a href="#!" class="modal-close waves-effect red waves-red btn">Annuleren</a>
@@ -117,7 +117,7 @@
                             <p>Klik op doorgaan om een nieuwe vraag toe te voegen</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect orange waves-orange btn">Doorgaan</a>
+                            <a href="#!" class="modal-close waves-effect hb-red-bg btn">Doorgaan</a>
                         </div>
                     </div>
 
@@ -128,7 +128,7 @@
                             <p>Klik op terug om terug te gaan naar het hoofdscherm</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="<?= base_url('moderator/moderator') ?>" class="modal-close waves-effect orange waves-orange btn">Terug</a>
+                            <a href="<?= base_url('moderator/moderator') ?>" class="modal-close waves-effect hb-red-bg btn">Terug</a>
                         </div>
                     </div>
 
@@ -136,3 +136,4 @@
             </form>
         </div>
     </div>
+</div>
