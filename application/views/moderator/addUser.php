@@ -28,32 +28,32 @@
                             <p>Kies de functie van de persoon die u wilt toevoegen</p>
                             <p>
                                 <label>
-                                    <input class="with-gap" name="group1" type="radio" />
+                                    <input type="checkbox" />
                                     <span>Winkel</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input class="with-gap" name="group1" type="radio" />
+                                    <input type="checkbox" />
                                     <span>Horeca</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input class="with-gap" name="group1" type="radio" />
+                                    <input type="checkbox" />
                                     <span>Museum</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input class="with-gap" name="group1" type="radio" />
-                                    <span>Iets anders</span>
+                                    <input type="checkbox" />
+                                    <span>Algemeen</span>
                                 </label>
                             </p>
                         </div>
                     </div>
                     <div class="row center">
-                        <button class="btn waves-effect orange waves-light" type="submit" name="action">Toevoegen
+                        <button class="btn waves-effect hb-red-bg waves-light" type="submit" name="action">Toevoegen
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -71,7 +71,7 @@
 
 
                     <div class="file-field input-field">
-                        <div class="btn orange">
+                        <div class="btn hb-red-bg">
                             <span>File</span>
                             <input type="file" multiple>
                         </div>
@@ -82,8 +82,8 @@
                     </div>
                 </div>
                 <div class="row center">
-                    <a onclick="history.back(-1)" class="btn waves-effect orange waves-light"><i class="material-icons left">arrow_back</i>Terug</a>
-                    <button class="btn waves-effect orange waves-light" type="submit" name="action">Toevoegen
+                    <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect hb-red-bg waves-light"><i class="material-icons left">arrow_back</i>Terug</a>
+                    <button class="btn waves-effect hb-red-bg waves-light" type="submit" name="action">Toevoegen
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
@@ -91,3 +91,4 @@
             <div class="divider"></div>
         </div>
     </div>
+</div>
