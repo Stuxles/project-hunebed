@@ -19,7 +19,6 @@
                     <li class="tab"><a href="<?=base_url('user/userpage')?>">Mijn account</a></li>
                 </ul>
             </div>
-            isofkanfsek
             <ul class="sidenav" id="side-menu">
                 <li><a href="log-out">Logout</a></li>
             </ul>
