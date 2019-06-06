@@ -9,6 +9,7 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li class="waves-effect waves-dark logged-in" style="display:none;" ><a href="<?=base_url('log-out')?>">Logout</a></li>
                     <li class="waves-effect waves-dark logged-out" style="display:none;" ><a href="<?=base_url('login')?>">Login</a></li>
+                    <i class="material-icons">account_circle</i>
                 </ul>
             </div>
             <div class="nav-content container">
