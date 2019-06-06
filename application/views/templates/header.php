@@ -7,9 +7,8 @@
                 <a href="<?=base_url()?>" class="brand-logo"><i class="hb-ico" style="width:73px;"></i>Hunebedcentrum</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li class="waves-effect waves-dark logged-in" style="display:none;" ><a href="<?=base_url('log-out')?>">Logout</a></li>
-                    <li class="waves-effect waves-dark logged-out" style="display:none;" ><a href="<?=base_url('login')?>">Login</a></li>
-                    <i class="material-icons">account_circle</i>
+                    <li class="waves-effect waves-dark logged-in" style="display:none;" ><a class="waves-effect waves-light btn hb-red-bg" href="<?=base_url('log-out')?>"></i>Logout</a></li>
+                    <li class="waves-effect waves-dark logged-out" style="display:none;" ><a class="waves-effect waves-light btn hb-red-bg" href="<?=base_url('login')?>">Login</a></li>
                 </ul>
             </div>
             <div class="nav-content container">
