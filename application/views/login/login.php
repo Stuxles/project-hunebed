@@ -3,7 +3,7 @@
     <div class="section no-pad-bot">
         <div class="container">
             <div class="col s12 m6 offset-m3">
-                <div class="card" id="login-container">
+                <div class="card logged-out" id="login-container" style="display:block">
                     <div class="card-action hb-blue white-text center-align">
                         <h3>Login form</h3>
                     </div>
@@ -26,9 +26,31 @@
                         </form>
                     </div>
                 </div>
+                <div class="card logged-in" id="logged-container" style="display:block">
+                    <div class="card-action hb-blue white-text center-align">
+                        <h3>Gebruiker al ingelogd</h3>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    //login
+    const loginForm = document.querySelector('#login-form');
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
+        //get user info
+        const email = loginForm['login-email'].value;
+        const password = loginForm['login-password'].value;
+
+        auth.signInWithEmailAndPassword(email, password).then(cred => {
+            loginForm.reset();
+            loginForm.querySelector('.error').innerHTML = '';
+        }).catch(err => {
+            loginForm.querySelector('.error').innerHTML = "Combinatie van emaill en/of wachtwoord wordt niet herkend!";
+        });
+    });
+</script>
 
