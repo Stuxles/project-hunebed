@@ -11,7 +11,7 @@
             <div class="nav-content container">
                 <ul class="tabs tabs-transparent">
                 <li class="tab"><a href="<?=base_url()?>">Home</a></li>
-                <li class="tab"><a href="<?=base_url('user-page')?>">Vragen</a></li>
+                <li class="tab"><a href="<?=base_url('')?>">Vragen</a></li>
                     <li class="tab"><a href="<?=base_url('user/userpage')?>">Mijn account</a></li>
                 </ul>
             </div>
@@ -20,6 +20,15 @@
             </ul>
         </nav>
     </div>
-    
 
-        
+
+
+
+    <script>
+        window.onload = function() {
+            //call to your function here
+
+            )
+        };
+
+    </script>
