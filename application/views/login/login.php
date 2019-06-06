@@ -3,7 +3,7 @@
     <div class="section no-pad-bot">
         <div class="container">
             <div class="col s12 m6 offset-m3">
-                <div class="card logged-out" id="login-container" style="display:block">
+                <div class="card logged-out" id="login-container" style="display:none">
                     <div class="card-action hb-blue white-text center-align">
                         <h3>Login form</h3>
                     </div>
@@ -26,7 +26,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="card logged-in" id="logged-container" style="display:block">
+                <div class="card logged-in" id="logged-container" style="display:none">
                     <div class="card-action hb-blue white-text center-align">
                         <h3>Gebruiker al ingelogd</h3>
                     </div>
