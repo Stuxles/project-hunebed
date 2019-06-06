@@ -13,9 +13,10 @@
             </div>
             <div class="nav-content container">
                 <ul class="tabs tabs-transparent">
-                <li class="tab"><a href="<?=base_url()?>">Home</a></li>
-                <li class="tab"><a href="<?=base_url('')?>">Vragen</a></li>
+                    <li class="tab"><a href="<?=base_url()?>">Home</a></li>
+                    <li class="tab"><a href="<?=base_url('')?>">Vragen</a></li>
                     <li class="tab"><a href="<?=base_url('user/userpage')?>">Mijn account</a></li>
+                    <li class="tab admin" style="display:none"><a href="<?=base_url('moderator')?>">Moderatie</a></li>
                 </ul>
             </div>
             <ul class="sidenav" id="side-menu">
