@@ -14,10 +14,11 @@
                                     <i class="material-icons">account_circle</i>
                                 </div>
                                 <div class="col s10">
-                            <span class="black-text">
-                                Firstname Lastname
-                            </span>
+                                    <span class="black-text">
+                                        Firstname Lastname
+                                    </span>
                                 </div>
+                                <a class="btn-floating btn-small waves-effect waves-light hb-red"><i class="material-icons">edit</i></a>
                             </div>
 
                             <div class="row valign-wrapper">
@@ -25,10 +26,11 @@
                                     <i class="material-icons">email</i>
                                 </div>
                                 <div class="col s10">
-                            <span class="black-text">
-                                Email Adres
-                            </span>
+                                    <span class="black-text">
+                                        Email Adres
+                                    </span>
                                 </div>
+                                <a class="btn-floating btn-small waves-effect waves-light hb-red"><i class="material-icons">edit</i></a>
                             </div>
 
                             <div class="row valign-wrapper">
