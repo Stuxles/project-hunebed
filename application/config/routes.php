@@ -60,6 +60,9 @@ $route['moderator/(:any)'] = 'moderator/view/$1';
 
 // Login
 $route['login'] = 'login/view/';
+// Logout
+$route['log-out'] = 'logout/view/';
+
 
 // User
 $route['user'] = 'user/view';

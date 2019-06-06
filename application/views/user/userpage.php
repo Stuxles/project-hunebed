@@ -67,7 +67,7 @@
                                             Taal
                                         </span>
                                     </div>
-                                    
+
 
                                 </div>
 
