@@ -29,7 +29,7 @@
                         <span class="card-title black-text">Vraag toevoegen</span>
                     </div>
                     <div class="card-action center">
-                        <a href="<?= base_url('moderator/addQuestion') ?>" class="hb-blue-text">Voeg een vraag toe</a>
+                        <a href="<?= base_url('moderator/addQuestion') ?>" onclick="clearSessionStorage()" class="hb-blue-text">Voeg een vraag toe</a>
                     </div>
                 </div>
             </div>
