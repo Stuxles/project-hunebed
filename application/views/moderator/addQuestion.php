@@ -19,7 +19,7 @@
                                 <input type="file" multiple>
                             </div>
                             <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" placeholder="Upload een foto of video">
+                                <input class="file-path validate" type="text" id="file" placeholder="Upload een foto of video">
                             </div>
                         </div>
                     </div>

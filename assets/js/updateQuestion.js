@@ -29,7 +29,7 @@ ref.get().then((doc) => {
         text4.textContent = doc.data().Question_wrong[1];
         text5.textContent = doc.data().Question_wrong[2];
         text6.textContent = doc.data().Source;
-        
+        text7.value = doc.data().Picture;
         //when back button press clear sessionstorage
         document.getElementById("terug").addEventListener('click', (e) => {
             clearSessionStorage();
