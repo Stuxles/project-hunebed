@@ -42,7 +42,7 @@ Add data from the form in the database
 */
 const addModQuestion = (resetForm => {
     let question;
-    let categories = [];
+    let userRole = [];
     let answer;
     let wrongAnswers = [];
     let source;
@@ -54,7 +54,7 @@ const addModQuestion = (resetForm => {
     const checkboxes = document.querySelectorAll(".catCheckbox");
     checkboxes.forEach(checkbox => {
         if(checkbox.checked){
-            categories.push(checkbox.value)
+            userRole.push(checkbox.value)
         }
     })
     const wrongs = document.querySelectorAll(".wrong-answer-text");
@@ -65,7 +65,7 @@ const addModQuestion = (resetForm => {
     // Add the data to the database
     db.collection('Questions').add({
         Question: question,
-        Categories: categories,
+        Related_User_Role: userRole,
         Approved: true,
         Question_answer: answer,
         Question_wrong: wrongAnswers,
