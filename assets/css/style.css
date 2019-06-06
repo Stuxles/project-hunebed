@@ -236,3 +236,7 @@ nav ul li:hover a {
     width: 100% !important;
   }
 }
+
+.name-field {
+  margin: 0 45px;
+}
