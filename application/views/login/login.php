@@ -26,6 +26,23 @@
                         </form>
                     </div>
                 </div>
+                <div class="card">
+                    <button class="btn-large hb-blue logged-out" id="showPwdForget">Wachtwoord vergeten</button>
+                    <div class="card-content showForgotten" style="display:none">
+                        <form id="forgotten-form">
+                            <div class="form-field">
+                                <label for="forgotten-email">Emailadres</label>
+                                <input type="email" id="forgotten-email">
+                            </div>
+                            <br>
+                            <div class="form-field center-align">
+                                <button class="btn-large hb-blue">Wachtwoord resetten</button>
+                                <p class="error pink-text center-align"></p>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
                 <div class="card logged-in" id="logged-container" style="display:none">
                     <div class="card-action hb-blue white-text center-align">
                         <h3>Gebruiker al ingelogd</h3>
@@ -52,5 +69,27 @@
             loginForm.querySelector('.error').innerHTML = "Combinatie van emaill en/of wachtwoord wordt niet herkend!";
         });
     });
+
+    //password reset show
+    document.getElementById("showPwdForget").addEventListener("click", function(){
+        document.querySelectorAll('.showForgotten').forEach(item => item.style.display = 'block');
+        document.querySelectorAll('.logged-in').forEach(item => item.style.display = 'none');
+        document.querySelectorAll('.logged-out').forEach(item => item.style.display = 'none');
+    });
+
+    //password reset
+    const resetForm = document.querySelector('#forgotten-form');
+    resetForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = resetForm['forgotten-email'].value;
+
+        auth.sendPasswordResetEmail(email).then(function() {
+        // Email sent.
+        resetForm.reset();
+        }).catch(function(error) {
+        // An error happened.
+        });
+    });
+
 </script>
 
