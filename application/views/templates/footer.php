@@ -51,6 +51,12 @@
     const auth = firebase.auth();
     const db = firebase.firestore();
     const functions = firebase.functions();
+	const userRoles = {
+		Algemeen: "/Roles/dIQfWKaJSNZ9raCPu1QN",
+		Horeca: "/Roles/HHLpbBJXp9Od7ExLHBKD",
+		Museum: "/Roles/JAvkRbnS1GzZcLGAa7P5",
+		Winkel: "/Roles/vt2CPNKWcAhWMHVVq5iw"
+	};
 </script>
 
 <script type="text/javascript" src="<?= base_url('assets/js/init.js') ?>"></script>
