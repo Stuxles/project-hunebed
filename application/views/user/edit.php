@@ -1,7 +1,7 @@
 <div class="container content">
     <div class="section">
         <div class="container">
-            <div class="row">
+            <div class="row editUserContent">
                 <form class="col s12 m6 offset-m3">
                     <h4>Gebruiker aanpasen</h4>
                     <h4>Gegevens</h4>

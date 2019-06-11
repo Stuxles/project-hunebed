@@ -14,73 +14,76 @@ const addEditFields = (() => {
     }
 })
 
-const test123 = (user => {
+/*
+Shows the data of the logged in user on the /user/edit page
+@param user The user who is logged in
+*/
+const showUserData = (user => {
     let url = window.location.href;
-    let aurl = url.split("/");
+	let aurl = url.split("/");
+	let html = ``;
+	let userRoles = [];
 
-    // Load questions form database
-    if(aurl[aurl.length-2] == "user" && aurl[aurl.length-1] == "edit") {
-        let html;
-        console.log(user)
-        console.log(db.collection('Users').doc(user.uid))
-        db.collection('Users').doc(user.uid).get().then(doc => {
-            console.log(doc)
-            if(doc.exists) {
-                const userInfo = doc.data();
-                db.collection('Roles').get().then(roles => {
+	// Check if this is the /user/edit page
+    if(!(aurl[aurl.length-2] == "user" && aurl[aurl.length-1] == "edit"))
+		return;
 
-                })
-                userInfo.roles.forEach(element => {
-                    
-                });
-                
-                html = `
-                    <div class="row">
-                        <div id="firstdiv1">Voornaam : <span id="change-firstname-label">${userInfo.firstName}</span><a href="#!" id="textChanger1" class="secondary-content "><i class="material-icons">edit</i></a></div>
-                    </div>
-                    <div class="row">
-                        <div id="firstdiv2">Achternaam : <span id="change-lastname-label">${userInfo.lastName}</span><a href="#!" id="textChanger2" class="secondary-content "><i class="material-icons">edit</i></a></div>
-                    </div>
-                    <div class="row">
-                        <div id="firstdiv3">Email adres : <span id="change-email-label">${userInfo.email}</span><a href="#!" id="textChanger3" class="secondary-content "><i class="material-icons">edit</i></a></div>
-                    </div>
-                    <div class="row">
-                        <div>Functie:
-                            <div class="input-field col s12">
-                                <p>
-                                    <label>
-                                        <input type="checkbox" />
-                                        <span>Winkel</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input type="checkbox" checked="checked" />
-                                        <span>Horeca</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input type="checkbox" />
-                                        <span>Museum</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input type="checkbox" checked="checked" />
-                                        <span>Algemeen</span>
-                                    </label>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                `
-                
-                document.querySelector('.edit-fields').innerHTML = html;
-                addEditFields();
-            } else {
-                document.querySelector('#change-firstname-label').innerHTML = "Error"
-            }
-        });
-    }
+	// Get and write user info
+	db.collection('Users').doc(user.uid).get().then(doc => {
+		// Get roles
+		db.collection('Roles').get().then(roles => {
+			if(!doc.exists) {
+				document.querySelector('.editUserContent').innerHTML = '<h1 class="header center">Error: could not load data</h1>'
+				return;
+			}
+
+			// User data
+			const userInfo = doc.data();
+			// Get the user roles
+			userInfo.Roles.forEach(userRole => {
+				userRoles.push(userRole.id);
+			})	
+			// Write user data
+			html += `
+				<div class="row">
+					<div id="firstdiv1">Voornaam : <span id="change-firstname-label">${userInfo.FirstName}</span><a href="#!" id="textChanger1" class="secondary-content "><i class="material-icons">edit</i></a></div>
+				</div>
+				<div class="row">
+					<div id="firstdiv2">Achternaam : <span id="change-lastname-label">${userInfo.LastName}</span><a href="#!" id="textChanger2" class="secondary-content "><i class="material-icons">edit</i></a></div>
+				</div>
+				<div class="row">
+					<div id="firstdiv3">Email adres : <span id="change-email-label">${userInfo.Email}</span><a href="#!" id="textChanger3" class="secondary-content "><i class="material-icons">edit</i></a></div>
+				</div>
+				<div class="row">
+					<div>Functie:
+						<div class="input-field col s12">
+					`
+
+			// Write the roles and check the user roles
+			roles.forEach(role => {
+				let checked = "";
+				if(userRoles.includes(role.id)){
+					checked = 'checked="checked"';
+				}
+				html += `
+				<p>
+					<label>
+						<input type="checkbox" ${checked} />
+						<span>${role.data().Naam}</span>
+					</label>
+				</p>
+				`
+			})
+
+			html += `
+					</div>
+				</div>
+			</div>
+			`
+			
+			// Write all the HTML and load the JS
+			document.querySelector('.edit-fields').innerHTML = html;
+			addEditFields();
+		})
+	});
 })

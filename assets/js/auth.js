@@ -5,7 +5,7 @@ auth.onAuthStateChanged(user => {
         user.getIdTokenResult().then(idTokenResult => {
             user.admin = idTokenResult.claims.admin;
             setupUI(user);
-            test123(user);
+            showUserData(user);
         })
     } else {
         setupUI();
