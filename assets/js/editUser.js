@@ -13,7 +13,6 @@ function updateUser() {
 	userRef.get().then(function(doc){
 		let user = { };
 		if(doc.exists){
-			alert("exists");
 		if(document.getElementById("first_name") != null) { //this was processed from moderator pages
 			user.FirstName = document.getElementById("first_name");
 			user.LastName = document.getElementById("last_name");
@@ -21,8 +20,12 @@ function updateUser() {
 		if(document.getElementById("email") != null){
 			user.Email = document.getElementById("email");
 		}
-		let activeRoles = {};
-		activeRoles.Algemeen = db.doc(userRoles.Algemeen);
+		let activeRoles = {
+			Algemeen: db.doc(userRoles.Algemeen),
+			Horeca: null,
+			Museum: null,
+			Winkel: null
+			};
 		if(document.getElementById("horecaRole").value === true) {
 			activeRoles.Horeca = db.doc(userRoles.Horeca);
 		}
