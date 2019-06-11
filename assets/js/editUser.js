@@ -21,18 +21,18 @@ function updateUser() {
 		if(document.getElementById("email") != null){
 			user.Email = document.getElementById("email");
 		}
-		let activeRoles = [];
-		activeRoles.push(db.doc(userRoles.Algemeen));
+		let activeRoles = {};
+		activeRoles.Algemeen = db.doc(userRoles.Algemeen);
 		if(document.getElementById("horecaRole").value === true) {
-			activeRoles.push(db.doc(userRoles.Horeca));
+			activeRoles.Horeca = db.doc(userRoles.Horeca);
 		}
 
 		if(document.getElementById("museumRole").value === true) {
-			activeRoles.push(db.doc(userRoles.Museum));
+			activeRoles.Museum = db.doc(userRoles.Museum);
 		}
 
 		if(document.getElementById("winkelRole").value === true) {
-			activeRoles.push(db.doc(userRoles.Winkel));
+			activeRoles.Winkel = db.doc(userRoles.Winkel);
 		}
 		user.Roles = activeRoles;
 		userRef.update(user);
