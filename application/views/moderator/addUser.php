@@ -1,10 +1,9 @@
 <div class="container content">
-
     <div class="section">
         <div class="container">
             <h4>Gebruiker toevoegen</h4>
             <div class="row">
-                <form class="col s12">
+                <form class="col s12" id="signup-form">
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">account_circle</i>
@@ -19,14 +18,15 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">email</i>
-                            <input id="email" type="email" class="validate">
-                            <label for="email">Email</label>
+                            <input id="signup_email" type="email" class="validate">
+                            <label for="signup_email">Email</label>
                         </div>
                     </div>
                     <div class="row center">
                         <button class="btn waves-effect hb-red-bg waves-light" type="submit" name="action">Toevoegen
                             <i class="material-icons right">send</i>
                         </button>
+                        <p class="error pink-text center-align"></p>
                     </div>
                 </form>
             </div>
@@ -64,5 +64,27 @@
     </div>
 </div>
 <script>
+
+const signupForm = document.querySelector('#signup-form');
+signupForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  // get user info
+  const email = signupForm['signup_email'].value;
+
+  // sign up the user & add firestore data
+  auth.createUserWithEmailAndPassword(email, "password").then(cred => {
+    return db.collection('Users').doc(cred.user.uid).set({
+      FirstName: signupForm['first_name'].value,
+      LastName: signupForm['last_name'].value
+    });
+  }).then(() => {
+    // close the signup modal & reset form
+    signupForm.reset();
+    signupForm.querySelector('.error').innerHTML = 'Gebruiker aangemaakt';
+  }).catch(err => {
+    signupForm.querySelector('.error').innerHTML = 'Er is iets misgegaan bij het aanmaken!';
+  });
+});
 
 </script>
