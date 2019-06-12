@@ -1,63 +1,28 @@
 <?php
-    //autoload from composer
-    require '../vendor/autoload.php';
 
-    use PhpOffice\PhpSpreadsheet\Spreadsheet;
-    use PhpOffice\PhpSpreadsheet\Writer\Csv;
-    use PhpOffice\PhpSpreadsheet\WorkSheet\ColumnDimension;
+require 'vendor/autoload.php';
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Reader\Csv;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
-    //creates new spreadsheet object
-    //$spreadsheet = new Spreadsheet();
-    $inputFileName = "";
-    $arrayCell = [];
-    
-    //create CSV reader and read existing CSV file 
-    $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
-    $spreadsheet = $reader->load($inputFileName);
+$file_mimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+if(isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mimes)) {
+
+    $arr_file = explode('.', $_FILES['file']['name']);
+    $extension = end($arr_file);
+
+    if('csv' == $extension) {
+        $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+    } else {
+        echo "FOUT: Dit is geen .CSV bestand, zie handleiding";
+    }
     $reader->setDelimiter(';');
-    $reader->setEnclosure('');
-    $reader->setSheetIndex(5);
-    $spreadsheet = $reader->load($inputFileName);
-    $worksheet = $spreadsheet->getActiveSheet();
+    $spreadsheet = $reader->load($_FILES['file']['tmp_name']);
 
-    //elke csv row wordt door geloopt
-    foreach ($worksheet->getRowIterator() as $row) {
-        $cellIterator = $row->getCellIterator();
-        $cellIterator->setIterateOnlyExistingCells(FALSE); 
-        //waarde van cell zelf wordt gepushed naar array
-        foreach ($cellIterator as $cell) {
-            $cell->getValue();
-            $arrayCell->array_push($cell);
-        }
-        
-    }
-    /*$sheet = $spreadsheet->getActiveSheet();
-    //write set data to a specifice coordinate 
-    $sheet->setCellValue('A1', 'Achternaam, Voornaam');
-    $sheet->setCellValue('B1','E-mail');
-    //automatically set width of spreadsheet cells
-    $sheet->calculateColumnWidths(); // line werkt niet */
-    
-    /*
-    // creates writer
-    $writer = new Csv($spreadsheet);
+    $sheetData = $spreadsheet->getActiveSheet()->toArray();
+    print_r($sheetData);
+}
 
-    //these four lines of code make sure that the data is inserted properly instead of being concat
-    $writer->setDelimiter(';');
-    $writer->setEnclosure('');
-    $writer->setLineEnding("\r\n");
-    $writer->setSheetIndex(0);*/
-
-    /*
-    //saves written file to php folder
-    $writer->save('personeel.csv');
-    // if the CSV file is saved and written rename file and move file to another directory 
-    if($writer){
-        rename("personeel.csv", "../CSV_Files/personeel.csv");
-        echo "file created";
-    }
-    //unsets spreadsheet inorder to prevent memory leaks
-    unset($spreadsheet);
-    */
 ?>
