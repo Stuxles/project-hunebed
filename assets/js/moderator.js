@@ -1,5 +1,5 @@
 const userList = document.querySelector('#usertable');
-
+var user = ;
 // create element & render user
 function renderUser(doc) {
 
@@ -16,6 +16,8 @@ function renderUser(doc) {
     FirstName.textContent = doc.data().FirstName;
     LastName.textContent = doc.data().LastName;
     Email.textContent = doc.data().Email;
+    // need id and independently query the role
+    console.log(doc.data().Roles);
     Roles.textContent = doc.data().Roles;
     Button.className = 'waves-effect waves-light hb-red-bg btn-floating';
     Icon.className = 'material-icons left'; 
@@ -31,32 +33,18 @@ function renderUser(doc) {
 
     userList.appendChild(tr);
 
-    // redirecting to edit user page
-    // Button.addEventListener('click', (e) => {
-    //     e.stopPropagation();
-    //     let id = e.target.parentElement.getAttribute('data-id');
-    //     
-    // });
+}
+
+function deleteUser(doc){
+
 }
 
 // getting data
 db.collection('Users').get().then(snapshot => {
     snapshot.docs.forEach(doc => {
         renderUser(doc);
-        console.log(doc.data())
     });
 });
 
-// real-time listener
-// db.collection('Users').orderBy('Firstname').onSnapshot(snapshot => {
-//     let changes = snapshot.docChanges();
-//     changes.forEach(change => {
-//         console.log(change.doc.data());
-//         if(change.type == 'added'){
-//             renderUser(change.doc);
-//         } else if (change.type == 'removed'){
-//             let tr = userList.querySelector('[data-id=' + change.doc.id + ']');
-//             userList.removeChild(tr);
-//         }
-//     });
-// });
+
+

@@ -8,24 +8,38 @@
 
 
     //creates new spreadsheet object
-    $spreadsheet = new Spreadsheet();
-
-    /*
+    //$spreadsheet = new Spreadsheet();
+    $inputFileName = "";
+    $arrayCell = [];
+    
     //create CSV reader and read existing CSV file 
     $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+    $spreadsheet = $reader->load($inputFileName);
     $reader->setDelimiter(';');
     $reader->setEnclosure('');
     $reader->setSheetIndex(5);
-    //Import existing CSV file into active spreadsheet
-    $reader->loadIntoExisting("CSV_FILE_TO_BE_IMPORTED_TO_NEWLY_CREATED_FILE.csv", $spreadsheet);*/
+    $spreadsheet = $reader->load($inputFileName);
+    $worksheet = $spreadsheet->getActiveSheet();
 
-    $sheet = $spreadsheet->getActiveSheet();
+    //elke csv row wordt door geloopt
+    foreach ($worksheet->getRowIterator() as $row) {
+        $cellIterator = $row->getCellIterator();
+        $cellIterator->setIterateOnlyExistingCells(FALSE); 
+        //waarde van cell zelf wordt gepushed naar array
+        foreach ($cellIterator as $cell) {
+            $cell->getValue();
+            $arrayCell->array_push($cell);
+        }
+        
+    }
+    /*$sheet = $spreadsheet->getActiveSheet();
     //write set data to a specifice coordinate 
     $sheet->setCellValue('A1', 'Achternaam, Voornaam');
     $sheet->setCellValue('B1','E-mail');
     //automatically set width of spreadsheet cells
-    $sheet->calculateColumnWidths(); // line werkt niet 
+    $sheet->calculateColumnWidths(); // line werkt niet */
     
+    /*
     // creates writer
     $writer = new Csv($spreadsheet);
 
@@ -33,8 +47,9 @@
     $writer->setDelimiter(';');
     $writer->setEnclosure('');
     $writer->setLineEnding("\r\n");
-    $writer->setSheetIndex(0);
+    $writer->setSheetIndex(0);*/
 
+    /*
     //saves written file to php folder
     $writer->save('personeel.csv');
     // if the CSV file is saved and written rename file and move file to another directory 
@@ -44,4 +59,5 @@
     }
     //unsets spreadsheet inorder to prevent memory leaks
     unset($spreadsheet);
+    */
 ?>
