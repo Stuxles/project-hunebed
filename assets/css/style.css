@@ -239,3 +239,8 @@ nav ul li:hover a {
     width: 100% !important;
   }
 }
+
+.like-number, .dislike-number {
+  display: block;
+  margin-block-start: 0.5em;
+}

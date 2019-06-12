@@ -196,10 +196,11 @@ const showQuestions = (tab => {
 })
 
 // Writes the html for question details
-const showQuestionDetails = (data => {
+const showQuestionDetails = (doc => {
+    const data = doc.data();
     const mediaLink = '../assets/img/hunebed1800x400.jpg';  // Media link of the question
     let html = `
-        <div class="col xl12 s12 question-content">
+        <div class="question-content">
             <h4>${data.Question}</h4>
                 <img class="responsive-img materialboxed" src="${mediaLink}" alt="questionImage">
                 <h5 class="header">Antwoord</h5>
@@ -208,12 +209,27 @@ const showQuestionDetails = (data => {
         </div>
     `
     // Put the like and dislike bttons here aswell ^^^^
-    document.getElementById('questionContent').innerHTML += html;
+    document.getElementById('questionContent').innerHTML = html;
+
+    if(typeof data.Likes !== 'undefined')
+        document.querySelector('.like-number').innerHTML = data.Likes;
+    if(typeof data.Disikes !== 'undefined')
+        document.querySelector('.like-number').innerHTML = data.Dislikes;
+
+    document.querySelector('.like-button-box').addEventListener('click', () => {
+        const likeQuestion = functions.httpsCallable('likeQuestion');
+        likeQuestion({ id: doc.id }).then(result => {
+            console.log(result);
+        })
+        // console.log(doc.id.toString())
+    });
+    
 
     // Reload materialize script
     $(document).ready(function() {
         $('.materialboxed').materialbox();
     });
+
 })
 
 // Show an error on the page when a question that doesnt exist is asked
@@ -241,6 +257,8 @@ if(aurl[aurl.length-1] == "show") {
         showQuestionError();
     }else {
         const docRef = db.collection('Questions').doc(docID);
-        docRef.get().then(doc => showQuestionDetails(doc.data()));
+        docRef.get().then(doc => showQuestionDetails(doc));
     }
 }
+
+
