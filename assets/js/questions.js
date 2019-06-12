@@ -42,19 +42,20 @@ Add data from the form in the database
 */
 const addModQuestion = (resetForm => {
     let question;
-    let categories = [];
+    let userRole = [];
     let answer;
     let wrongAnswers = [];
     let source;
 
     // Get the data from the form
     question = document.querySelector('#textarea1').value;
+    file = document.querySelector('#file').value;
     answer = document.querySelector('#textarea2').value;
     source = document.querySelector('#textarea6').value;
     const checkboxes = document.querySelectorAll(".catCheckbox");
     checkboxes.forEach(checkbox => {
         if(checkbox.checked){
-            categories.push(checkbox.value)
+            userRole.push(checkbox.value)
         }
     })
     const wrongs = document.querySelectorAll(".wrong-answer-text");
@@ -65,8 +66,8 @@ const addModQuestion = (resetForm => {
     // Add the data to the database
     db.collection('Questions').add({
         Question: question,
-        Categories: categories,
-        Approved: true,
+        Related_User_Role: userRole,
+        Picture: file,
         Question_answer: answer,
         Question_wrong: wrongAnswers,
         Source: source
@@ -76,6 +77,7 @@ const addModQuestion = (resetForm => {
     // Reset the form if needed
     if(resetForm == null){        
         document.querySelector('#textarea1').value = "";
+        document.querySelector('#file').value = "";
         document.querySelector('#textarea2').value = "";
         document.querySelector('#textarea6').value = "";
         checkboxes.forEach(checkbox => {
