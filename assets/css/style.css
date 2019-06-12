@@ -236,3 +236,11 @@ nav ul li:hover a {
     width: 100% !important;
   }
 }
+
+.answer-selected{
+  background-color: #EE2B4F !important;
+}
+.answer{
+  cursor: pointer;
+  background-color: #3E9ABE !important;
+}

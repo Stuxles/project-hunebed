@@ -50,6 +50,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
+// Quiz
+$route['quiz'] = 'quiz/view';
+$route['quiz/(:any)'] = 'quiz/view/$1';
+
 // Questions
 $route['questions'] = 'questions/view';
 $route['questions/(:num)'] = 'questions/show/$1';
