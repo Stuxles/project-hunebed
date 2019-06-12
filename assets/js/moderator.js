@@ -16,7 +16,7 @@ function renderUser(doc) {
     FirstName.textContent = doc.data().FirstName;
     LastName.textContent = doc.data().LastName;
     Email.textContent = doc.data().Email;
-    Roles.textContent = doc.data().Roles.join(" - ");
+    Roles.textContent = doc.data().Roles;
     Button.className = 'waves-effect waves-light hb-red-bg btn-floating';
     Icon.className = 'material-icons left'; 
     Icon.textContent = 'edit';
