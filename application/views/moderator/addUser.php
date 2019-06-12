@@ -23,35 +23,6 @@
                             <label for="email">Email</label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <p>Kies de functie van de persoon die u wilt toevoegen</p>
-                            <p>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>Winkel</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>Horeca</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>Museum</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>Algemeen</span>
-                                </label>
-                            </p>
-                        </div>
-                    </div>
                     <div class="row center">
                         <button class="btn waves-effect hb-red-bg waves-light" type="submit" name="action">Toevoegen
                             <i class="material-icons right">send</i>
@@ -92,3 +63,6 @@
         </div>
     </div>
 </div>
+<script>
+
+</script>
