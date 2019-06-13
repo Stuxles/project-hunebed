@@ -91,7 +91,7 @@ const signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  addUserFunction(signupForm['first_name'].value, signupForm['last_name'].value, signupForm['signup_email'].value, 'password', '');
+  addUserFunction(signupForm['first_name'].value, signupForm['last_name'].value, signupForm['signup_email'].value, 'password', signupForm);
   
   // get user info
   const email = signupForm['signup_email'].value;

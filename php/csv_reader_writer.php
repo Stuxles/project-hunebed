@@ -44,10 +44,6 @@ if(isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mim
 
         print("User " . $c . " First name " . $firstName . " Last name " . $lastName . " email " . $email ."<br>");
     }
-
-
-    //print_r($sheetDataLength);
-    //print_r ($username[1]);
 }
 
 
@@ -59,17 +55,17 @@ if(isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mim
     var sheetDataLength = sheetData.length;
 
 
+    $( document ).ready(function() {
+        for (var c = 0; c <  sheetDataLength; c++) {
+            var fullName   = sheetData[c][0];                // Set full name
+            var email      = sheetData[c][1];                // Set email
+            var fullName   = fullName.split(",");           // explode on the , to separate first name from last name
+            var firstName  = fullName[1].trim();               // set first name and remove the spaces
+            var lastName   = fullName[0].trim();               // set last name  and remove the spaces
 
-    for (var c = 0; c <  sheetDataLength; c++) {
-        var fullName   = sheetData[c][0];                // Set full name
-        var email      = sheetData[c][1];                // Set email
-        var fullName   = fullName.split(",");           // explode on the , to separate first name from last name
-        var firstName  = fullName[1].trim();               // set first name and remove the spaces
-        var lastName   = fullName[0].trim();               // set last name  and remove the spaces
-
-
-        console.log(firstName);
-    }
-
+            addUserFunction(firstName, lastName, email, "wachtwoord", "");
+            console.log(email);
+        }
+    });
 
 </script>
