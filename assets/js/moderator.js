@@ -22,6 +22,14 @@ function renderUser(doc) {
     console.log(doc.data().Roles);
     Roles.textContent = doc.data().Roles;
     */
+    db.collection('Users').doc('2NKOS5kSeCbJlc0VQbob95xvCgq2').get().then(doc => {
+        doc.data().Roles.forEach(ref => {
+            ref.get().then(role => {
+                console.log(role.data.Naam);
+                //Roles.textContent = 
+            })
+        })
+    })
     Button.className = 'waves-effect waves-light hb-red-bg btn-floating';
     Icon.className = 'material-icons left'; 
     Icon.textContent = 'edit';

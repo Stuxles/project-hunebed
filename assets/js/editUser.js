@@ -39,6 +39,7 @@ opslaan.addEventListener('click', (e) => {
             funcName.push(group.value);
                     
         }
+    });
     /*
     userRef.update({
         Email: ,
