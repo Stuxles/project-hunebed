@@ -14,6 +14,10 @@ const addEditFields = (() => {
     document.getElementById("textChanger3").onclick = function() {
         document.getElementById("firstdiv3").innerHTML = "<div class='input-field col s12'><i class='material-icons prefix'>email</i><input id='email' type='email' class='validate'><label for='email'>Email</label></div>";
     };
+	document.getElementsByTagName('form')[0].addEventListener('submit', (e) => {
+		e.preventDefault();
+		updateUser();
+	});
 });
 
 /*
@@ -95,23 +99,19 @@ function updateUser() {
 		let usr = { };
 		if(doc.exists){
 			if(document.getElementById("first_name") != null) { //this was processed from moderator pages
-				usr.FirstName = document.getElementById("first_name");
-				usr.LastName = document.getElementById("last_name");
+				usr.FirstName = document.getElementById("first_name").value;
+				usr.LastName = document.getElementById("last_name").value;
 			}
 			if(document.getElementById("email") != null){
-				usr.Email = document.getElementById("email");
+				usr.Email = document.getElementById("email").value;
 			}
 			let checkboxes = document.getElementsByClassName("roleCheckbox");
 			for(let r of checkboxes){
-				alert(r.id);
 				if(r.checked) {
-					alert(r + "\r\n" + r.value);
 					activeRoles.push(db.doc("/" + r.id));
 				}
 			}
-			alert(Object.entries(activeRoles));
 			usr.Roles = activeRoles;
-			alert(Object.entries(usr));
 			userRef.update(usr);
 		}
 	});
