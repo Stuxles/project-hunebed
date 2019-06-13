@@ -1,34 +1,74 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
+const db = admin.firestore();
 
+/*
+Like or Dislike a question
+@param question.id The question id
+@param question.rate "like" for like "dislike" for a dislike
+*/
 exports.likeQuestion = functions.https.onCall((question, context) => {
-    const db = admin.firestore();
-    const user = context.auth;
-    // Check if a user is logged in
-    if (user.uid == null) {
-        return {error: "Not logged in"}
-    }
+    const user = context.auth;  // Set user
+    let setLike = true; // Initial setLike to like a question
 
-    const likes = db.collection('User_Rate_Question').where('User', '==', user.uid.toString()).where('Question', '==', question.id.toString());
-    likes.get().then(snapshot => {
+    // Check if quesiton is disliked
+    if (question.rate === 'dislike')
+        setLike = false;
+
+    // Check if a user is logged in
+    if (typeof user === `undefined`)
+        return {error: "Error: Not logged in!"};
+
+    // Get like or dislike of the user for the question if there is one, else create one
+    const questionLikes = db.collection('User_Rate_Question').where('User', '==', user.uid).where('Question', '==', question.id);
+    return questionLikes.get().then(snapshot => {
+        // If no like or dislike exist for this quesiton of the user then create one
         if (snapshot.docs.length == 0){
-            db.collection('User_Rate_Question').add({
+            return db.collection('User_Rate_Question').add({
                 User: user.uid.toString(),
                 Question: question.id.toString(),
-                Like: true
+                Like: setLike
+            }).then(() => {
+                // Add likes or dislikes to the question depending if question is liked or disliked
+                if (setLike) {
+                    return db.collection('Questions').doc(question.id).update({
+                        Likes: admin.firestore.FieldValue.increment(1)
+                    })
+                } else if (!setLike) {
+                    return db.collection('Questions').doc(question.id).update({
+                        Dislikes: admin.firestore.FieldValue.increment(1)
+                    })
+                }
             })
-            return {message: "Succes!"};
         } else if (snapshot.docs.length == 1) {
-            snapshot.docs[0].ref.update({
-                Like: true
+            // If the the user already liked or disliked the quesiton update the choice if necessary
+            snapshot.docs[0].ref.get().then(doc => {
+                if (doc.data().Like != setLike) {
+                    snapshot.docs[0].ref.update({
+                        Like: setLike
+                    }).then(() => {
+                        // Set the new like or dislike to the quesiton
+                        if (setLike) {
+                            return db.collection('Questions').doc(question.id).update({
+                                Likes: admin.firestore.FieldValue.increment(1),
+                                Dislikes: admin.firestore.FieldValue.increment(-1)
+                            })
+                        } else if (!setLike) {
+                            return db.collection('Questions').doc(question.id).update({
+                                Likes: admin.firestore.FieldValue.increment(-1),
+                                Dislikes: admin.firestore.FieldValue.increment(1)
+                            })
+                        }
+                    })
+                }
             })
-            return {message: "Succes!"};
         }
+    }).then(() => {
+        // Message to return when successful
+        return { message: "Succes!" };
     }).catch(err => {
-        return err
-    })
-
-
-    return;
+        // Return error message wheb fail
+        return err;
+    })  
 })

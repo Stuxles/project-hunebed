@@ -213,12 +213,19 @@ const showQuestionDetails = (doc => {
 
     if(typeof data.Likes !== 'undefined')
         document.querySelector('.like-number').innerHTML = data.Likes;
-    if(typeof data.Disikes !== 'undefined')
-        document.querySelector('.like-number').innerHTML = data.Dislikes;
+    if(typeof data.Dislikes !== 'undefined')
+        document.querySelector('.dislike-number').innerHTML = data.Dislikes;
 
-    document.querySelector('.like-button-box').addEventListener('click', () => {
+    document.querySelector('.like-button').addEventListener('click', () => {
         const likeQuestion = functions.httpsCallable('likeQuestion');
-        likeQuestion({ id: doc.id }).then(result => {
+        likeQuestion({ id: doc.id, rate: 'like' }).then(result => {
+            console.log(result);
+        })
+    });
+
+    document.querySelector('.dislike-button').addEventListener('click', () => {
+        const likeQuestion = functions.httpsCallable('likeQuestion');
+        likeQuestion({ id: doc.id, rate: 'dislike' }).then(result => {
             console.log(result);
         })
     });
@@ -259,5 +266,3 @@ if(aurl[aurl.length-1] == "show") {
         docRef.get().then(doc => showQuestionDetails(doc));
     }
 }
-
-

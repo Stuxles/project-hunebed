@@ -135,3 +135,4 @@ application/config/config\.php
 
 # Ignore node modules
 node_modules/
+firebase-debug.log
