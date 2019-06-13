@@ -1,6 +1,6 @@
 <div class="container content">
     <?php
-    require '/Applications/MAMP/htdocs/hunebed/project-hunebed/php/csv_reader_writer.php';
+    require APPPATH.'php/csv_reader_writer.php';
     ?>
     <div class="section">
         <div class="container">
