@@ -17,19 +17,17 @@ function renderUser(doc) {
     FirstName.textContent = doc.data().FirstName;
     LastName.textContent = doc.data().LastName;
     Email.textContent = doc.data().Email;
-    /*
-    // need id and independently query the role
-    console.log(doc.data().Roles);
-    Roles.textContent = doc.data().Roles;
-    */
-    db.collection('Users').doc('2NKOS5kSeCbJlc0VQbob95xvCgq2').get().then(doc => {
-        doc.data().Roles.forEach(ref => {
-            ref.get().then(role => {
-                console.log(role.data.Naam);
-                //Roles.textContent = 
-            })
+    
+    
+    //weergeeft de rollen (want rol is een reference in de user collection)
+    doc.data().Roles.forEach(ref => {
+        ref.get().then(role => {
+            console.log(role.data().Naam);
+            Roles.textContent = role.data().Naam;
         })
     })
+    
+
     Button.className = 'waves-effect waves-light hb-red-bg btn-floating';
     Icon.className = 'material-icons left'; 
     Icon.textContent = 'edit';

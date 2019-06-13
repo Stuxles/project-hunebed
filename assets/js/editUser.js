@@ -2,58 +2,69 @@ var userID2  = window.sessionStorage.getItem('idd');
 var userRef = db.collection('Users').doc(userID2);
 console.log(userID2);
 
-// laad in data van doc als er op de input wordt gedrukt dan sla op in update funtie
-document.getElementById("textChanger1").onclick = function() {
-    document.getElementById("firstdiv1").innerHTML = "<div class='input-field col s12'><i class='material-icons prefix'>account_circle</i><input id='first_name' type='text' class='validate'><label for='first_name'>Voornaam</label></div>";
-}
-document.getElementById("textChanger2").onclick = function() {
-    document.getElementById("firstdiv2").innerHTML = "<div class='input-field col s12'><i class='material-icons prefix'>account_circle</i><input id='last_name' type='text' class='validate'><label for='last_name'>Achternaam</label></div>";
-}
-document.getElementById("textChanger3").onclick = function() {
-    document.getElementById("firstdiv3").innerHTML = "<div class='input-field col s12'><i class='material-icons prefix'>email</i><input id='email' type='email' class='validate'><label for='email'>Email</label></div>";
-}
+userRef.get().then((doc) => {
+    if (doc.exists) {
 
-var back = document.getElementById("terug");
-var opslaan = document.getElementById("opslaan");
-var verwijder = document.getElementById("verwijderen");
+        var email = document.getElementById('email');
+        var first = document.getElementById('first_name');
+        var last = document.getElementById('last_name');
 
-var checkbox2 = document.getElementsByName("group2");
-var funcArray = doc.data().Roles;
-    checkbox2.forEach((group) => {
-        funcArray.forEach((func) => {
-            if(func == group.value){
-                group.checked = true
-        }
-    });
-});
+        //werkt nog niet 
+        email.value =  doc.data().Email;
+        first.value =  doc.data().FirstName;
+        last.value =  doc.data().LastName;
 
-verwijder.addEventListener('click', (e) => {
-    deleteUser(userID2);
-    clearSessionStorage();
-});
+        var back = document.getElementById("terug");
+        var opslaan = document.getElementById("opslaan");
+        var verwijder = document.getElementById("verwijderen");
 
-opslaan.addEventListener('click', (e) => {
-    var funcName = [];
-        checkbox2.forEach((group) =>{
-        if(group.checked == true){
-            funcName.push(group.value);
-                    
-        }
-    });
-    /*
-    userRef.update({
-        Email: ,
-        FirstName: ,
-        Roles: [],
-        LastName: ,
-    });
-    clearSessionStorage();
-    */
-});
+        //werkt nu niet met references
+        var checkbox2 = document.getElementsByName("group2");
+        var funcArray = doc.data().Roles;
+            checkbox2.forEach((group) => {
+                funcArray.forEach((func) => {
+                    if(func == group.value){
+                        group.checked = true
+                }
+            });
+        });
+
+        verwijder.addEventListener('click', (e) => {
+            deleteUser(userID2);
+            clearSessionStorage();
+        });
+
+        // wil nog niet updaten
+        opslaan.addEventListener('click', (e) => {
+            // werkt nog niet met references
+            // var funcName = [];
+            //     checkbox2.forEach((group) =>{
+            //     if(group.checked == true){
+            //         funcName.push(group.value);
+                            
+            //     }
+            // });
+            userRef.update({
+                Email: email.value,
+                FirstName: first.value,
+                //Roles: [],
+                LastName: last.value,
+            });
+            clearSessionStorage();
+            
+        });
 
 
-back.addEventListener('click', (e) => {
-    clearSessionStorage();
+        back.addEventListener('click', (e) => {
+            clearSessionStorage();
+        });
+
+    } else {
+        console.log("No such document!");
+    }
+
+}).catch((error) => {
+console.log("Error getting document:", error);
 });
 
 function deleteUser(docID){

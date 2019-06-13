@@ -7,13 +7,25 @@
                     <h4>Gebruiker aanpasen</h4>
                     <h4>Gegevens</h4>
                     <div class="row">
-                        <div id="firstdiv1">Voornaam : Joapie <a href="#!" id="textChanger1" class="secondary-content "><i class="material-icons">edit</i></a></div>
+                        <div class='input-field col s12'>
+                            <i class='material-icons prefix'>account_circle</i>
+                            <input id='first_name' type='text' class='validate'>
+                            <label for='first_name'>Voornaam</label>
+                        </div>
                     </div>
                     <div class="row">
-                        <div id="firstdiv2">Achternaam : Jakkerman<a href="#!" id="textChanger2" class="secondary-content "><i class="material-icons">edit</i></a></div>
+                        <div class='input-field col s12'>
+                            <i class='material-icons prefix'>account_circle</i>
+                            <input id='last_name' type='text' class='validate'>
+                            <label for='last_name'>Achternaam</label>
+                        </div>
                     </div>
                     <div class="row">
-                        <div id="firstdiv3">Email adres : Jjakkerman@hunebedcentrum.nl <a href="#!" id="textChanger3" class="secondary-content "><i class="material-icons">edit</i></a></div>
+                        <div class='input-field col s12'>
+                            <i class='material-icons prefix'>email</i>
+                            <input id='email' type='email' class='validate'>
+                            <label for='email'>Email</label>
+                        </div>
                     </div>
                     <div class="row">
                         <div>Functie:<div class="input-field col s12">
