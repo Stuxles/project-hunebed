@@ -65,14 +65,21 @@
 </div>
 <script>
 
-function addUserFunction(firstName, lastName, email, password) {
+function addUserFunction(firstName, lastName, email, password, form) {
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
     return db.collection('Users').doc(cred.user.uid).set({
       FirstName: firstName,
       LastName: lastName
     });
   }).then(() => {
-    location.reload();
+    if(form != ''){
+    // close the signup modal & reset form
+    form.reset();
+    form.querySelector('.error').innerHTML = 'Gebruiker aangemaakt';
+  }}).catch(err => {
+      if(form != ''){
+        form.querySelector('.error').innerHTML = 'Er is iets misgegaan bij het aanmaken!';
+      }
   });
 }
 
@@ -80,7 +87,10 @@ const signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  addUserFunction(signupForm['first_name'].value, signupForm['last_name'].value, signupForm['signup_email'].value, 'password');
+  addUserFunction(signupForm['first_name'].value, signupForm['last_name'].value, signupForm['signup_email'].value, 'password', '');
+  
+  // get user info
+  const email = signupForm['signup_email'].value;
 });
 
 </script>
