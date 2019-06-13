@@ -7,12 +7,12 @@
                     <h4>Gegevens</h4>
                     <div class="edit-fields">
                         <div class="information-fields">
-                            
+
                         </div>
                         <div class="role-fields">
-                            
+
                         </div>
-                        
+
                     </div>
 
                     <div class="row center">
