@@ -29,26 +29,17 @@ if(isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mim
 
 
 
-
-
-
-
-
-    for ($c = 0; $c < $sheetDataLength; $c++) {
-        $fullName   = $sheetData[$c][0];                // Set full name
-        $email      = $sheetData[$c][1];                // Set email
-        $fullName   = explode(",",$fullName);  // explode on the , to separate first name from last name
-        $firstName  = trim($fullName[1]);               // set first name and remove the spaces
-        $lastName   = trim($fullName[0]);               // set last name  and remove the spaces
-
-
-        print("User " . $c . " First name " . $firstName . " Last name " . $lastName . " email " . $email ."<br>");
-    }
+//    for ($c = 0; $c < $sheetDataLength; $c++) {
+//        $fullName   = $sheetData[$c][0];                // Set full name
+//        $email      = $sheetData[$c][1];                // Set email
+//        $fullName   = explode(",",$fullName);  // explode on the , to separate first name from last name
+//        $firstName  = trim($fullName[1]);               // set first name and remove the spaces
+//        $lastName   = trim($fullName[0]);               // set last name  and remove the spaces
+//
+//
+//        print("User " . $c . " First name " . $firstName . " Last name " . $lastName . " email " . $email ."<br>");
+//    }
 }
-
-
-
-
 ?>
 <script type="text/javascript">
     var sheetData =  <?php echo json_encode($sheetData); ?>;
