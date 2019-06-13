@@ -73,7 +73,8 @@ function addUserFunction(firstName, lastName, email, password, form) {
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
     return db.collection('Users').doc(cred.user.uid).set({
       FirstName: firstName,
-      LastName: lastName
+      LastName: lastName,
+      Email: email
     });
   }).then(() => {
     if(form != ''){
