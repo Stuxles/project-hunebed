@@ -180,6 +180,9 @@ nav ul li:hover a {
     margin: 0 !important;
     width: 100%;
   }
+  footer {
+    width: 100% !important;
+  }
 }
 
 @media all and (min-width: 1201px) {
