@@ -1,5 +1,5 @@
 const userList = document.querySelector('#usertable');
-var user = ;
+var user  ;
 // create element & render user
 function renderUser(doc) {
 

@@ -50,7 +50,7 @@
                             <input type="file" multiple>
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" placeholder="Voeg CSV bestand in." type="text" name="file" id="file-upload">
+                            <input class="file-path validate" placeholder="Voeg CSV bestand in." type="file" name="file" id="file-upload">
                             <label for="exampleInputFile" >Voeg hier een .CSV bestand in om meerdere nieuwe medewerkers tegelijk toe te voegen.</label>
                         </div>
                     </div>
