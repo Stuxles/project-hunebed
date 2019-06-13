@@ -65,26 +65,22 @@
 </div>
 <script>
 
+function addUserFunction(firstName, lastName, email, password) {
+    auth.createUserWithEmailAndPassword(email, password).then(cred => {
+    return db.collection('Users').doc(cred.user.uid).set({
+      FirstName: firstName,
+      LastName: lastName
+    });
+  }).then(() => {
+    location.reload();
+  });
+}
+
 const signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  
-  // get user info
-  const email = signupForm['signup_email'].value;
 
-  // sign up the user & add firestore data
-  auth.createUserWithEmailAndPassword(email, "password").then(cred => {
-    return db.collection('Users').doc(cred.user.uid).set({
-      FirstName: signupForm['first_name'].value,
-      LastName: signupForm['last_name'].value
-    });
-  }).then(() => {
-    // close the signup modal & reset form
-    signupForm.reset();
-    signupForm.querySelector('.error').innerHTML = 'Gebruiker aangemaakt';
-  }).catch(err => {
-    signupForm.querySelector('.error').innerHTML = 'Er is iets misgegaan bij het aanmaken!';
-  });
+  addUserFunction(signupForm['first_name'].value, signupForm['last_name'].value, signupForm['signup_email'].value, 'password');
 });
 
 </script>
