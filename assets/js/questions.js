@@ -1,7 +1,7 @@
 let currentTab = 1;
 let maxTab = 1;
-let url = window.location.href;
-let aurl = url.split("/");
+// let url = window.location.href;
+// let aurl = url.split("/");
 
 /*
 Add data from the form in the database

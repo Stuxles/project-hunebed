@@ -14,9 +14,9 @@
                                     <i class="material-icons">account_circle</i>
                                 </div>
                                 <div class="col s10">
-                            <span class="black-text">
-                                Firstname Lastname
-                            </span>
+                                    <span class="black-text">
+                                        Firstname Lastname
+                                    </span>
                                 </div>
                             </div>
 
@@ -25,26 +25,18 @@
                                     <i class="material-icons">email</i>
                                 </div>
                                 <div class="col s10">
-                            <span class="black-text">
-                                Email Adres
-                            </span>
+                                    <span class="black-text">
+                                        Email Adres
+                                    </span>
                                 </div>
-                            </div>
+                            </div>  
 
-                            <div class="row valign-wrapper">
-                                <div class="col s2">
-                                    <i class="material-icons">equalizer</i>
-                                </div>
-                                <div class="col s10">
-                            <span class="black-text">
-                                Niveau
-                            </span>
-                                </div>
+                            <div class="row center">
+                                <a href="edit" class="btn hb-blue">Gegevens weizigen</a>
                             </div>
-
-                        </div>
-                        <div class="card-action">
-                            <a href="#">Aanpassen</a>
+                            <div class="row center">
+                                <a href="user/password" class="btn hb-blue"">Wachtwoord weizigen</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -86,6 +78,17 @@
                                     <div class="col s10">
                                         <span class="black-text">
                                             Theme
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row valign-wrapper">
+                                    <div class="col s2">
+                                        <i class="material-icons">equalizer</i>
+                                    </div>
+                                    <div class="col s10">
+                                        <span class="black-text">
+                                            Niveau
                                         </span>
                                     </div>
                                 </div>
