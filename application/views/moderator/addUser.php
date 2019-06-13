@@ -1,4 +1,7 @@
 <div class="container content">
+    <?php
+    require '/Applications/MAMP/htdocs/hunebed/project-hunebed/php/csv_reader_writer.php';
+    ?>
     <div class="section">
         <div class="container">
             <h4>Gebruiker toevoegen</h4>
@@ -37,7 +40,7 @@
     <div class="section no-pad-bot">
         <div class="container">
             <h4>Meerdere gebruikers tegelijk toevoegen</h4>
-            <form action="#">
+            <form method="post" enctype="multipart/form-data">
                 <div class="row">
 
 
@@ -47,8 +50,8 @@
                             <input type="file" multiple>
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" placeholder="Voeg excel bestand in." id="file-upload">
-                            <label for="file-upload">Voeg hier een Excel bestand in om meerdere nieuwe medewerkers tegelijk toe te voegen.</label>
+                            <input class="file-path validate" placeholder="Voeg CSV bestand in." type="file" name="file" id="file-upload">
+                            <label for="exampleInputFile" >Voeg hier een .CSV bestand in om meerdere nieuwe medewerkers tegelijk toe te voegen.</label>
                         </div>
                     </div>
                 </div>
@@ -59,9 +62,10 @@
                     </button>
                 </div>
             </form>
-            <div class="divider"></div>
+
         </div>
     </div>
+
 </div>
 <script>
 

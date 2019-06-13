@@ -1,5 +1,4 @@
 <div class="container content">
-
     <div class="section no-pad-bot">
         <div class="container">
             <div class="col s12 m6 offset-m3">
