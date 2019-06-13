@@ -131,7 +131,7 @@ nav ul li:hover a {
 }
 
 .question-card .card-content, .question-card .card-action {
-  padding: 15px;  
+  padding: 15px;
 }
 
 .question-card .card-content p {
@@ -231,12 +231,12 @@ nav ul li:hover a {
   text-align: center;
 }
 
+.name-field {
+  margin: 0 45px;
+}
+
 @media only screen and (max-width: 993px) {
   footer {
     width: 100% !important;
   }
-}
-
-.name-field {
-  margin: 0 45px;
 }
