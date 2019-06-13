@@ -2,12 +2,11 @@
     <?php
     require '/Applications/MAMP/htdocs/hunebed/project-hunebed/php/csv_reader_writer.php';
     ?>
-
     <div class="section">
         <div class="container">
             <h4>Gebruiker toevoegen</h4>
             <div class="row">
-                <form class="col s12">
+                <form class="col s12" id="signup-form">
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">account_circle</i>
@@ -22,14 +21,15 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">email</i>
-                            <input id="email" type="email" class="validate">
-                            <label for="email">Email</label>
+                            <input id="signup_email" type="email" class="validate">
+                            <label for="signup_email">Email</label>
                         </div>
                     </div>
                     <div class="row center">
                         <button class="btn waves-effect hb-red-bg waves-light" type="submit" name="action">Toevoegen
                             <i class="material-icons right">send</i>
                         </button>
+                        <p class="error pink-text center-align"></p>
                     </div>
                 </form>
             </div>
@@ -65,4 +65,36 @@
 
         </div>
     </div>
+
 </div>
+<script>
+
+function addUserFunction(firstName, lastName, email, password, form) {
+    auth.createUserWithEmailAndPassword(email, password).then(cred => {
+    return db.collection('Users').doc(cred.user.uid).set({
+      FirstName: firstName,
+      LastName: lastName
+    });
+  }).then(() => {
+    if(form != ''){
+    // close the signup modal & reset form
+    form.reset();
+    form.querySelector('.error').innerHTML = 'Gebruiker aangemaakt';
+  }}).catch(err => {
+      if(form != ''){
+        form.querySelector('.error').innerHTML = 'Er is iets misgegaan bij het aanmaken!';
+      }
+  });
+}
+
+const signupForm = document.querySelector('#signup-form');
+signupForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  addUserFunction(signupForm['first_name'].value, signupForm['last_name'].value, signupForm['signup_email'].value, 'password', '');
+  
+  // get user info
+  const email = signupForm['signup_email'].value;
+});
+
+</script>
