@@ -2,7 +2,7 @@
 class User extends CI_Controller
 {
 
-    public function view($page = 'user')
+    public function view($page = 'userpage')
     {
         if (!file_exists(APPPATH . 'views/user/' . $page . '.php')) {
             // Whoops, we don't have a page for that!
