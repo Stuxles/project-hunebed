@@ -18,10 +18,12 @@ exports.likeQuestion = functions.https.onCall((question, context) => {
                 Question: question.id.toString(),
                 Like: true
             })
+            return {message: "Succes!"};
         } else if (snapshot.docs.length == 1) {
             snapshot.docs[0].ref.update({
                 Like: true
             })
+            return {message: "Succes!"};
         }
     }).catch(err => {
         return err

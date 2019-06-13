@@ -221,7 +221,6 @@ const showQuestionDetails = (doc => {
         likeQuestion({ id: doc.id }).then(result => {
             console.log(result);
         })
-        // console.log(doc.id.toString())
     });
     
 
