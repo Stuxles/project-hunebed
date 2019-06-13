@@ -1,47 +1,62 @@
 <?php
-    //autoload from composer
-    require '../vendor/autoload.php';
 
-    use PhpOffice\PhpSpreadsheet\Spreadsheet;
-    use PhpOffice\PhpSpreadsheet\Writer\Csv;
-    use PhpOffice\PhpSpreadsheet\WorkSheet\ColumnDimension;
+require 'vendor/autoload.php';
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Reader\Csv;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
-    //creates new spreadsheet object
-    $spreadsheet = new Spreadsheet();
+$file_mimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 
-    /*
-    //create CSV reader and read existing CSV file 
-    $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
-    $reader->setDelimiter(';');
-    $reader->setEnclosure('');
-    $reader->setSheetIndex(5);
-    //Import existing CSV file into active spreadsheet
-    $reader->loadIntoExisting("CSV_FILE_TO_BE_IMPORTED_TO_NEWLY_CREATED_FILE.csv", $spreadsheet);*/
+if(isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mimes)) {
 
-    $sheet = $spreadsheet->getActiveSheet();
-    //write set data to a specifice coordinate 
-    $sheet->setCellValue('A1', 'Achternaam, Voornaam');
-    $sheet->setCellValue('B1','E-mail');
-    //automatically set width of spreadsheet cells
-    $sheet->calculateColumnWidths(); // line werkt niet 
-    
-    // creates writer
-    $writer = new Csv($spreadsheet);
+    $arr_file = explode('.', $_FILES['file']['name']);
+    $extension = end($arr_file);
 
-    //these four lines of code make sure that the data is inserted properly instead of being concat
-    $writer->setDelimiter(';');
-    $writer->setEnclosure('');
-    $writer->setLineEnding("\r\n");
-    $writer->setSheetIndex(0);
-
-    //saves written file to php folder
-    $writer->save('personeel.csv');
-    // if the CSV file is saved and written rename file and move file to another directory 
-    if($writer){
-        rename("personeel.csv", "../CSV_Files/personeel.csv");
-        echo "file created";
+    if('csv' == $extension) {
+        $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+    } else {
+        echo "FOUT: Dit is geen .CSV bestand, zie handleiding";
     }
-    //unsets spreadsheet inorder to prevent memory leaks
-    unset($spreadsheet);
+    $reader->setDelimiter(';');
+    $spreadsheet = $reader->load($_FILES['file']['tmp_name']);
+
+    $sheetData = $spreadsheet->getActiveSheet()->toArray();
+    //print_r($sheetData);
+
+    array_shift($sheetData);                 // Deletes first row of sheet
+    $sheetDataLength = count($sheetData);           // Get array length
+
+
+
+//    for ($c = 0; $c < $sheetDataLength; $c++) {
+//        $fullName   = $sheetData[$c][0];                // Set full name
+//        $email      = $sheetData[$c][1];                // Set email
+//        $fullName   = explode(",",$fullName);  // explode on the , to separate first name from last name
+//        $firstName  = trim($fullName[1]);               // set first name and remove the spaces
+//        $lastName   = trim($fullName[0]);               // set last name  and remove the spaces
+//
+//
+//        print("User " . $c . " First name " . $firstName . " Last name " . $lastName . " email " . $email ."<br>");
+//    }
+}
 ?>
+<script type="text/javascript">
+    var sheetData =  <?php echo json_encode($sheetData); ?>;
+    var sheetDataLength = sheetData.length;
+
+
+    $( document ).ready(function() {
+        for (var c = 0; c <  sheetDataLength; c++) {
+            var fullName   = sheetData[c][0];                // Set full name
+            var email      = sheetData[c][1];                // Set email
+            var fullName   = fullName.split(",");           // explode on the , to separate first name from last name
+            var firstName  = fullName[1].trim();               // set first name and remove the spaces
+            var lastName   = fullName[0].trim();               // set last name  and remove the spaces
+
+            addUserFunction(firstName, lastName, email, "wachtwoord", "");
+            console.log(email);
+        }
+    });
+
+</script>

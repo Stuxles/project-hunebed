@@ -61,6 +61,7 @@
 <script type="text/javascript" src="<?=base_url('assets/js/showQuestions.js')?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/js/updateQuestion.js')?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/js/editUser.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/moderator.js')?>"></script>
 <script src="<?= base_url('assets/js/questions.js') ?>"></script>
 <script src="<?=base_url('assets/js/index.js')?>"></script>
 <script src="<?=base_url('assets/js/auth.js')?>"></script>
