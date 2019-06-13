@@ -27,6 +27,13 @@ if(isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mim
     array_shift($sheetData);                 // Deletes first row of sheet
     $sheetDataLength = count($sheetData);           // Get array length
 
+
+
+
+
+
+
+
     for ($c = 0; $c < $sheetDataLength; $c++) {
         $fullName   = $sheetData[$c][0];                // Set full name
         $email      = $sheetData[$c][1];                // Set email
@@ -36,9 +43,6 @@ if(isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mim
 
 
         print("User " . $c . " First name " . $firstName . " Last name " . $lastName . " email " . $email ."<br>");
-
-
-
     }
 
 
@@ -64,9 +68,7 @@ if(isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mim
         var lastName   = fullName[0].trim();               // set last name  and remove the spaces
 
 
-        //print("User " . $c . " First name " . $firstName . " Last name " . $lastName . " email " . $email ."<br>");
-
-        console.log(lastName);
+        console.log(firstName);
     }
 
 
