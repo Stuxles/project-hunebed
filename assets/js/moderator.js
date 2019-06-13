@@ -19,12 +19,15 @@ function renderUser(doc) {
     Email.textContent = doc.data().Email;
     
     
-    //weergeeft de rollen (want rol is een reference in de user collection)
+    //!!!weergeeft de rollen (want rol is een reference in de user collection) en wil geen undefined (niet bestaande/onleesbare) rollen in Users lezen!!!!!
+    
     doc.data().Roles.forEach(ref => {
         ref.get().then(role => {
-            console.log(role.data().Naam);
-            Roles.textContent = role.data().Naam;
+                    
+        //stringRol = role.data().Naam;
+        Roles.textContent = role.data().Naam;
         })
+        
     })
     
 

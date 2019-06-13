@@ -18,23 +18,26 @@ userRef.get().then((doc) => {
         var opslaan = document.getElementById("opslaan");
         var verwijder = document.getElementById("verwijderen");
 
-        //werkt nu niet met references
         var checkbox2 = document.getElementsByName("group2");
-        var funcArray = doc.data().Roles;
-            checkbox2.forEach((group) => {
-                funcArray.forEach((func) => {
-                    if(func == group.value){
-                        group.checked = true
-                }
-            });
-        });
+        //werkt nu niet met references
+        //var funcArray = doc.data().Roles;
+        // checkbox2.forEach((group) => {
+        //     doc.data().Roles.forEach(ref => {
+        //         ref.get().then(role => {
+        //             console.log(role.Data().Naam);
+        //             if(role.Data().Naam == group.value){
+        //                 group.checked = true
+        //             }
+        //         })
+        //     })
+        // });
 
         verwijder.addEventListener('click', (e) => {
             deleteUser(userID2);
             clearSessionStorage();
         });
 
-        // wil nog niet updaten
+        // update niet meer textfields en checkboxes
         opslaan.addEventListener('click', (e) => {
             // werkt nog niet met references
             // var funcName = [];
