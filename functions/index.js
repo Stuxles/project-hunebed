@@ -98,3 +98,20 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
     return err;
   });
 });
+
+
+exports.createUser = functions.https.onCall((data, context) => {
+    console.log(data)
+    return admin.auth().createUser({
+        email: data.email,
+        password: data.password
+      })
+        .then(user => {
+            return {
+                response: user
+          }
+        })
+        .catch(error => {
+            throw new functions.https.HttpsError('failed to create a user')
+        });
+    });
