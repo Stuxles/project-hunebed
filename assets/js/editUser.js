@@ -98,8 +98,10 @@ function updateUser() {
 	userRef.get().then(function(doc){
 		let usr = { };
 		if(doc.exists){
-			if(document.getElementById("first_name") != null) { //this was processed from moderator pages
+			if(document.getElementById("first_name") != null) { 
 				usr.FirstName = document.getElementById("first_name").value;
+			}
+			if(document.getElementById("last_name") != null) {
 				usr.LastName = document.getElementById("last_name").value;
 			}
 			if(document.getElementById("email") != null){
