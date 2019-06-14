@@ -244,3 +244,10 @@ nav ul li:hover a {
   cursor: pointer;
   background-color: #3E9ABE !important;
 }
+
+.answer-right{
+  background-color: green !important;
+}
+.answer-wrong{
+  background-color: red !important;
+}
