@@ -258,3 +258,8 @@ nav ul li:hover a {
 .answer-wrong{
   background-color: red !important;
 }
+
+.like-number, .dislike-number {
+  display: block;
+  margin-block-start: 0.5em;
+}
