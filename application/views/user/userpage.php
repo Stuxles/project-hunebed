@@ -32,9 +32,7 @@
                             </div>
                             <div class="card-action">
                                 <a href="edit">Aanpassen</a>
-
                                 <a href="user/password">Wachtwoord wijzigen</a>
-
                             </div>
                         </div>
                     </div>
