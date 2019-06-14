@@ -1,5 +1,5 @@
 var user;
-const userList = (window.location.pathname == "/Projects/project-hunebed/moderator/") ? document.querySelector('#usertable') : document.createElement("ul");
+const userList = (window.location.pathnameindexOf("/moderator/") >= 0 && window.location.pathname.slice(-1) == "/") ? document.querySelector('#usertable') : document.createElement("ul");
 
 // create element & render user
 function renderUser(doc) {
@@ -41,7 +41,7 @@ function deleteUser(doc){
 }
 
 // getting data if we're on a moderator page
-if(window.location.pathname.indexOf("/Projects/project-hunebed/moderator/") >= 0) {
+if(window.location.pathname.indexOf("/moderator/") >= 0 && window.location.pathname.slice(-1) == "/") {
 	db.collection('Users').get().then(snapshot => {
 	    snapshot.docs.forEach(doc => {
 	        renderUser(doc);
