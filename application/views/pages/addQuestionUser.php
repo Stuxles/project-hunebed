@@ -2,7 +2,6 @@
 
     <div class="section">
         <div class="container">
-            <button onclick="addQuestion()" class="btn">Hoi</button>
             <div class="row">
                 <form class="col s12">
                     <h4 class="header center hb-blue-text">Vraag toevoegen</h4>
