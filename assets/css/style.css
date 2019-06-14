@@ -27,11 +27,11 @@ body {
   border-top: solid 10px #3E9ABE;
 }
 
-nav ul li:hover {
+nav ul .tab:hover {
   background-color: white;
 }
 
-nav ul li:hover a {
+nav ul .tab:hover a {
   color: black !important;
   background-color: transparent;
 }
