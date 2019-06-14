@@ -32,10 +32,10 @@
                             </div>  
 
                             <div class="row center">
-                                <a href="edit" class="btn hb-blue">Gegevens weizigen</a>
+                                <a href="edit" class="btn hb-blue">Gegevens wijzigen</a>
                             </div>
                             <div class="row center">
-                                <a href="user/password" class="btn hb-blue"">Wachtwoord weizigen</a>
+                                <a href="user/password" class="btn hb-blue"">Wachtwoord wijzigen</a>
                             </div>
                         </div>
                     </div>
