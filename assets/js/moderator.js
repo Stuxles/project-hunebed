@@ -20,7 +20,7 @@ function renderUser(doc) {
     
     
     //!!!weergeeft de rollen (want rol is een reference in de user collection) en wil geen undefined (niet bestaande/onleesbare) rollen in Users lezen!!!!!
-    
+    // niet volledig werkend
     doc.data().Roles.forEach(ref => {
         ref.get().then(role => {
                     
