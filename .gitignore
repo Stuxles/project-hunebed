@@ -132,3 +132,7 @@ application/config/config\.php
 .idea/php.xml
 .idea/project-hunebed.iml
 .idea/vcs.xml
+
+# Ignore node modules
+node_modules/
+firebase-debug.log
