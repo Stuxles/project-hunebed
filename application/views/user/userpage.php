@@ -14,9 +14,9 @@
                                     <i class="material-icons">account_circle</i>
                                 </div>
                                 <div class="col s10">
-                            <span class="black-text">
-                                Firstname Lastname
-                            </span>
+                                    <span class="black-text">
+                                        Firstname Lastname
+                                    </span>
                                 </div>
                             </div>
 
@@ -25,26 +25,15 @@
                                     <i class="material-icons">email</i>
                                 </div>
                                 <div class="col s10">
-                            <span class="black-text">
-                                Email Adres
-                            </span>
+                                    <span class="black-text">
+                                        Email Adres
+                                    </span>
                                 </div>
                             </div>
-
-                            <div class="row valign-wrapper">
-                                <div class="col s2">
-                                    <i class="material-icons">equalizer</i>
-                                </div>
-                                <div class="col s10">
-                            <span class="black-text">
-                                Niveau
-                            </span>
-                                </div>
+                            <div class="card-action">
+                                <a href="edit">Aanpassen</a>
+                                <a href="user/password">Wachtwoord wijzigen</a>
                             </div>
-
-                        </div>
-                        <div class="card-action">
-                            <a href="#">Aanpassen</a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +64,7 @@
                                             Taal
                                         </span>
                                     </div>
-                                    
+
 
                                 </div>
 
@@ -89,11 +78,23 @@
                                         </span>
                                     </div>
                                 </div>
+
+                                <div class="row valign-wrapper">
+                                    <div class="col s2">
+                                        <i class="material-icons">equalizer</i>
+                                    </div>
+                                    <div class="col s10">
+                                        <span class="black-text">
+                                            Niveau
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="card-action">
                                 <a href="#">Aanpassen</a>
                             </div>
+
 
                         </div>
                     </div>
