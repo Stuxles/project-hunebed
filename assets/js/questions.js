@@ -219,14 +219,14 @@ const showQuestionDetails = (doc => {
     document.querySelector('.like-button').addEventListener('click', () => {
         const likeQuestion = functions.httpsCallable('likeQuestion');
         likeQuestion({ id: doc.id, rate: 'like' }).then(result => {
-            console.log(result);
+            console.log(result.data);
         })
     });
 
     document.querySelector('.dislike-button').addEventListener('click', () => {
         const likeQuestion = functions.httpsCallable('likeQuestion');
         likeQuestion({ id: doc.id, rate: 'dislike' }).then(result => {
-            console.log(result);
+            console.log(result.data);
         })
     });
     

@@ -18,4 +18,3 @@ $('.fixed-action-btn').floatingActionButton({
 $(document).ready(function() {
   $('.materialboxed').materialbox();
 });
-

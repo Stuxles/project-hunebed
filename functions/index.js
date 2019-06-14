@@ -11,6 +11,7 @@ Like or Dislike a question
 exports.likeQuestion = functions.https.onCall((question, context) => {
     const user = context.auth;  // Set user
     let setLike = true; // Initial setLike to like a question
+    let message = 'success';
 
     // Check if quesiton is disliked
     if (question.rate === 'dislike')
@@ -43,7 +44,7 @@ exports.likeQuestion = functions.https.onCall((question, context) => {
             })
         } else if (snapshot.docs.length == 1) {
             // If the the user already liked or disliked the quesiton update the choice if necessary
-            snapshot.docs[0].ref.get().then(doc => {
+            return snapshot.docs[0].ref.get().then(doc => {
                 if (doc.data().Like != setLike) {
                     snapshot.docs[0].ref.update({
                         Like: setLike
@@ -61,12 +62,18 @@ exports.likeQuestion = functions.https.onCall((question, context) => {
                             })
                         }
                     })
+                } else {
+                    if (setLike) {
+                        return message = 'already liked';
+                    } else {
+                        return message = 'already disliked';
+                    }
                 }
             })
         }
     }).then(() => {
         // Message to return when successful
-        return { message: "Succes!" };
+        return { msg: message };
     }).catch(err => {
         // Return error message wheb fail
         return err;
