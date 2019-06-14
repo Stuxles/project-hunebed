@@ -68,11 +68,11 @@ $route['login'] = 'login/view/';
 $route['log-out'] = 'logout/view/';
 
 
-// Pages
-$route['default_controller'] = 'pages/view';
-$route['(:any)'] = 'pages/view/$1';
-
 // User
 $route['user'] = 'user/view';
 $route['user/(:any)'] = 'user/view/$1';
+
+// Pages
+$route['default_controller'] = 'pages/view';
+$route['(:any)'] = 'pages/view/$1';
 

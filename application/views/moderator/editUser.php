@@ -69,9 +69,9 @@
                             <a href="#modal3" class="modal-close waves-effect hb-red-bg btn modal-trigger" id="toevoegen">JA</a>
                         </div>
                     </div>
-
+                </form>
             </div>
-            </form>
+
         </div>
     </div>
 </div>
