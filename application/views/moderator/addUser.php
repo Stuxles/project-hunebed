@@ -13,7 +13,7 @@
 
                 <ul class="collapsible popout">
                     <li class="active">
-                        <div class="collapsible-header ac"><i class="material-icons">filter_drama</i>Gebruiker toevoegen</div>
+                        <div class="collapsible-header ac"><i class="material-icons">person_add</i>Gebruiker toevoegen</div>
                         <div class="collapsible-body">
                             <h4>Gebruiker toevoegen</h4>
                             <div class="row">
@@ -48,7 +48,7 @@
                     </li>
 
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">filter_drama</i>Meerdere gebruikers toevoegen</div>
+                        <div class="collapsible-header"><i class="material-icons">people</i>Meerdere gebruikers toevoegen</div>
                         <div class="collapsible-body">
                             <h4>Meerdere gebruikers tegelijk toevoegen</h4>
                             <form method="post" enctype="multipart/form-data">
@@ -68,6 +68,25 @@
                                     <button class="btn waves-effect hb-red-bg waves-light" type="submit" name="action">Toevoegen
                                         <i class="material-icons right">send</i>
                                     </button>
+                                </div>
+                                <div class="row center">
+                                    <hr>
+                                    <h4>Handleiding</h4>
+                                    <p>
+                                        1. Maak Excel bestand met A1 Achternaam, voornaam en B1 emailadres.
+                                    </p>
+                                    <p>
+                                        2. Exporteert Excel sheet naar CSV.
+                                    </p>
+                                    <p>
+                                        3. Importeer het CSV bestand met bovenstaande knop.
+                                    </p>
+                                    <p>
+                                        4. Klik op toevoegen.
+                                    </p>
+                                    <p>
+                                        5. Controleer of de gebruikers zijn aangemaakt.
+                                    </p>
                                 </div>
                             </form>
                         </div>

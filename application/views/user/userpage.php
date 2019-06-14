@@ -29,13 +29,10 @@
                                         Email Adres
                                     </span>
                                 </div>
-                            </div>  
-
-                            <div class="row center">
-                                <a href="edit" class="btn hb-blue">Gegevens weizigen</a>
                             </div>
-                            <div class="row center">
-                                <a href="user/password" class="btn hb-blue"">Wachtwoord weizigen</a>
+                            <div class="card-action">
+                                <a href="edit">Aanpassen</a>
+                                <a href="user/password">Wachtwoord wijzigen</a>
                             </div>
                         </div>
                     </div>
@@ -97,6 +94,7 @@
                             <div class="card-action">
                                 <a href="#">Aanpassen</a>
                             </div>
+
 
                         </div>
                     </div>
