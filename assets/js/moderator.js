@@ -1,5 +1,5 @@
 var user;
-const userList = (window.location.pathnameindexOf("/moderator/") >= 0 && window.location.pathname.slice(-1) == "/") ? document.querySelector('#usertable') : document.createElement("ul");
+const userList = (window.location.pathname.indexOf("/moderator/") >= 0 && window.location.pathname.slice(-1) == "/") ? document.querySelector('#usertable') : document.createElement("ul");
 
 // create element & render user
 function renderUser(doc) {
