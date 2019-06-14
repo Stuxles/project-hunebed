@@ -1,5 +1,6 @@
-const userList = document.querySelector('#usertable');
-var user  ;
+var user;
+const userList = (window.location.pathname == "/Projects/project-hunebed/moderator/") ? document.querySelector('#usertable') : document.createElement("ul");
+
 // create element & render user
 function renderUser(doc) {
 
@@ -20,7 +21,7 @@ function renderUser(doc) {
     console.log(doc.data().Roles);
     Roles.textContent = doc.data().Roles;
     Button.className = 'waves-effect waves-light hb-red-bg btn-floating';
-    Icon.className = 'material-icons left'; 
+    Icon.className = 'material-icons left';
     Icon.textContent = 'edit';
 
     tr.appendChild(FirstName);
@@ -39,12 +40,11 @@ function deleteUser(doc){
 
 }
 
-// getting data
-db.collection('Users').get().then(snapshot => {
-    snapshot.docs.forEach(doc => {
-        renderUser(doc);
-    });
-});
-
-
-
+// getting data if we're on a moderator page
+if(window.location.pathname.indexOf("/Projects/project-hunebed/moderator/") >= 0) {
+	db.collection('Users').get().then(snapshot => {
+	    snapshot.docs.forEach(doc => {
+	        renderUser(doc);
+	    });
+	});
+}
