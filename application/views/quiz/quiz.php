@@ -24,7 +24,7 @@
                         <img src="<?= base_url('assets/img/algemeen.jpg') ?>">
                     </div>
                     <div class="card-action right-align hb-blue">
-                    <div class="hb-red-bg btn">Doe de quiz!</div>
+                    <div class="hb-red btn">Doe de quiz!</div>
                     </div>
                 </div>
                 </a>
@@ -40,7 +40,7 @@
                         <img src="<?= base_url('assets/img/horeca.jpg') ?>">
                     </div>
                     <div class="card-action right-align hb-blue">
-                    <div class="hb-red-bg btn">Doe de quiz!</div>
+                    <div class="hb-red btn">Doe de quiz!</div>
                     </div>
                 </div>
                 </a>
@@ -56,7 +56,7 @@
                         <img src="<?= base_url('assets/img/museumwinkel.jpg') ?>">
                     </div>
                     <div class="card-action right-align hb-blue">
-                    <div class="hb-red-bg btn">Doe de quiz!</div>
+                    <div class="hb-red btn">Doe de quiz!</div>
                     </div>
                 </div>
                 </a>
@@ -72,7 +72,7 @@
                         <img src="<?= base_url('assets/img/museum.jpg') ?>">
                     </div>
                     <div class="card-action right-align hb-blue">
-                        <div class="hb-red-bg btn">Doe de quiz!</div>
+                        <div class="hb-red btn">Doe de quiz!</div>
                     </div>
                 </div>
                 </a>
@@ -88,7 +88,7 @@
                         <img src="<?= base_url('assets/img/oertijdpark.jpg') ?>">
                     </div>
                     <div class="card-action right-align hb-blue">
-                        <div class="hb-red-bg btn">Doe de quiz!</div>
+                        <div class="hb-red btn">Doe de quiz!</div>
                     </div>
                 </div>
                 </a>

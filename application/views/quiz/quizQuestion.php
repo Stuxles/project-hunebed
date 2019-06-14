@@ -62,11 +62,11 @@
             <ul id="quizQuestion"></ul>
             <div class="row center">
                 <p>Voor meer informatie over deze vraag:</p>
-                <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect hb-red-bg waves-light" id="terug"><i class="material-icons left">question_answer</i>klik hier</a>
+                <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect hb-red waves-light" id="terug"><i class="material-icons left">question_answer</i>klik hier</a>
             </div>
             <div class="row center">
-                <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect hb-red-bg waves-light" id="terug"><i class="material-icons left">arrow_back</i>Terug</a>
-                <button data-target="modal1" class="btn modal-trigger waves-effect hb-red-bg waves-light">Controleer antwoord
+                <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect hb-red waves-light" id="terug"><i class="material-icons left">arrow_back</i>Terug</a>
+                <button data-target="modal1" class="btn modal-trigger waves-effect hb-red waves-light">Controleer antwoord
                     <i class="material-icons right">check</i>
                 </button>
             </div>
