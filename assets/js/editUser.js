@@ -71,9 +71,8 @@ console.log("Error getting document:", error);
 });
 
 function deleteUser(docID){
-    var docID = doc;
     userRef.delete(docID).then(() => {
-        console.log("Document successfully deleted!");
+        console.log("User successfully deleted!");
     }).catch(() => {
         console.error("Error removing document: ", error);
     });
