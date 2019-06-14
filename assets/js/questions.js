@@ -1,12 +1,14 @@
-// let url = window.location.href;
-// let aurl = url.split("/");
-
+/*
+Loads the roles in the select input on the questions page
+*/
 const loadRolesInSelector = (() => {
-    const select = document.querySelector('.select-role');
+    const select = document.querySelector('.select-role');  // The selector
     db.collection('Roles').get().then(snapshot => {
         snapshot.forEach(doc => {
             select.innerHTML += `<option value="${doc.id}">${doc.data().Naam}</option>`;
         })
+        
+        // Reload the JS for the selector
         $(document).ready(function(){
             $('select').formSelect();
         });
