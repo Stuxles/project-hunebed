@@ -42,8 +42,11 @@ if(isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mim
             var firstName  = fullName[1].trim();               // set first name and remove the spaces
             var lastName   = fullName[0].trim();               // set last name  and remove the spaces
 
-            addUserFunction(firstName, lastName, email, "wachtwoord", "");
-            console.log(email);
+
+                addUserFunction(firstName, lastName, email, "wachtwoord", "");
+                console.log(email);
+            }
+
         }
     });
 
