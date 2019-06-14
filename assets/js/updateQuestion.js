@@ -1,9 +1,10 @@
-
 var dataID  = window.sessionStorage.getItem('data-id');
-var ref = db.collection('Questions').doc(dataID);
+var ref = (dataID != null && dataID != undefined && dataID != "") ? db.collection('Questions').doc(dataID) : null;
 
 
-ref.get().then((doc) => {
+if(ref != null)
+{
+	ref.get().then((doc) => {
     //checks if docs exits
     if (doc.exists) {
         //creates the variables that refer to the id's of the divs
@@ -18,7 +19,7 @@ ref.get().then((doc) => {
         checkbox.forEach((group) =>{
             funcArray.forEach((func) => {
                 if(func == group.value){
-                    group.checked = true
+                    group.checked = true;
                 }
             });
         });
@@ -41,9 +42,9 @@ ref.get().then((doc) => {
             checkbox.forEach((group) =>{
                 if(group.checked == true){
                     funcName.push(group.value);
-                    
+
                 }
-                
+
             });
             ref.update({
                 Related_User_Role: funcName,
@@ -55,16 +56,16 @@ ref.get().then((doc) => {
             });
             clearSessionStorage();
         })
-        
+
         // when button is pressed updaten and return to the moderator page and clears sessionStorage
         document.getElementById("bewerken").addEventListener('click', (e) => {
             var funcName = [];
             checkbox.forEach((group) =>{
                 if(group.checked == true){
                     funcName.push(group.value);
-                    
+
                 }
-                
+
             });
             ref.update({
                 Related_User_Role: funcName,
@@ -76,7 +77,7 @@ ref.get().then((doc) => {
             });
             clearSessionStorage();
         });
-        
+
     } else {
             console.log("No such document!");
     }
@@ -84,6 +85,7 @@ ref.get().then((doc) => {
 }).catch((error) => {
     console.log("Error getting document:", error);
 });
+}
 
 //function to call sessionstorage clear function.
 function clearSessionStorage(){
