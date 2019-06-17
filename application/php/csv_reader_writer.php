@@ -48,6 +48,6 @@ if(isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mim
             }
 
         }
-    });
+    );
 
 </script>

@@ -101,17 +101,21 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
 
 
 exports.createUser = functions.https.onCall((data, context) => {
-    console.log(data)
     return admin.auth().createUser({
         email: data.email,
         password: data.password
-      })
+    })
         .then(user => {
-            return {
-                response: user
-          }
-        })
+            // return admin.firestore().collection("Users").doc(user.uid).set({
+            //     firstname: data.firstname,
+            //     lastname: data.lastname,
+            //     email: data.email
+            // });
+        return {
+            response: user
+        }
+    })
         .catch(error => {
-            throw new functions.https.HttpsError('failed to create a user')
-        });
+        throw new functions.https.HttpsError('failed to create a user')
     });
+});
