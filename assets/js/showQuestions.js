@@ -1,7 +1,6 @@
 //create the IL tags and appends to the existing UL tag
 function create_il(){
 
-    var x = 0;
     // required to find the base url
     var pathArray = window.location.pathname.split( '/' );
     //gets questions from the firestore database
@@ -20,11 +19,26 @@ function create_il(){
             var questionP = document.createElement('P');
             questionP.textContent = doc.data().Question_answer;
             var a = document.createElement('A');
-            //create base url
+
+            //create base url for delete/approve Question
+            var butt_Delete_Approve = document.createElement("BUTTON");
+            butt_Delete_Approve.className = "waves-effect waves-light red btn";
+            butt_Delete_Approve.textContent = "Goedkeuring / verwijderen";
+            var aDelApr = document.createElement('A');
+            aDelApr.setAttribute('delete-id', doc.id);
+            aDelApr.appendChild(butt_Delete_Approve);
+            butt_Delete_Approve.addEventListener('click', (e) => {
+                var id = e.target.parentElement.getAttribute('delete-id');
+                window.sessionStorage.setItem('delete-id', id);
+                location.href = pathArray[3].replace("moderator", "").concat("removeApproveQuestion");
+            })
+
+            //create base url for update Question
             a.href = pathArray[3].replace("moderator", "").concat("updateQuestion");
             a.setAttribute('data-id', doc.id); 
             var butt = document.createElement('BUTTON');
             butt.className = "waves-effect waves-light btn";
+            butt.textContent = "Bewerken";
             //creates eventlistener on the created button which creates a sessionstorage with the Document ID from the firestore
             butt.addEventListener('click', (e) => {
                 var id = e.target.parentElement.getAttribute('data-id');
@@ -32,8 +46,9 @@ function create_il(){
                 
             })
             //append button to <A> tag
+            aDelApr.appendChild(butt_Delete_Approve);
             a.appendChild(butt);
-            
+            li.appendChild(aDelApr);
             //appends the rest of the elements to the UL Tag
             li.appendChild(b);
             li.appendChild(persoonP);
