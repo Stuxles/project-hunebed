@@ -22,7 +22,7 @@
                     <div class="row">
                         <div class='input-field col s12'>
                             <i class='material-icons prefix'>assignment_late</i>
-                            <input id='vraag3' type='email' class='validate'>
+                            <input id='vraag3' type='text' class='validate'>
                             <label for='vraag3'>fout antwoord 1</label>
                         </div>
                     </div>
