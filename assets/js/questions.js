@@ -249,16 +249,7 @@ const showQuestionError = (() => {
     document.getElementById('questionContent').innerHTML = html;
 })
 
-// Approve a question
-const approveQuestion = (questionId => {
-    db.collection('Questions').doc(questionId).collection('Approved').doc('Approved').set({
-        Approved: true
-    })
-})
-
-let currentTab = 1;
-let maxTab = 1;
-
+// Load questions form database
 if(aurl[aurl.length-1] == "questions") {
     db.collection('Questions').get().then(snapshot => {
         loadQuestions(snapshot);
