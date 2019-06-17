@@ -117,7 +117,7 @@
         //     }
         // });
         var addUser = firebase.functions().httpsCallable('createUser');
-        addUser({email: funcEmail, password: funcPassword, firstName: funcFirstName, lastname: funcLastName}).then(function(result) {
+        addUser({email: funcEmail, password: funcPassword, firstName: funcFirstName, lastName: funcLastName}).then(function(result) {
         // Read result of the Cloud Function.
         var sanitizedMessage = result.data.response;
         });
