@@ -116,6 +116,8 @@ const loadQuestions = (data => {
     let array = [];
     data.forEach(doc => {
         array.push(doc);
+        var source = data.metadata.fromCache ? "local cache" : "server";
+        console.log("Data came from " + source);
     })
 
     // Load write each page html
@@ -268,7 +270,10 @@ if(aurl[aurl.length-1] == "questions") {
     loadRolesInSelector();
 
     // Load questions form database
-    db.collection('Questions').get().then(snapshot => {
+    // db.collection('Questions').get().then(snapshot => {
+    //     loadQuestions(snapshot);
+    // })
+    db.collection('Questions').onSnapshot(snapshot => {
         loadQuestions(snapshot);
     })
 
@@ -279,7 +284,7 @@ if(aurl[aurl.length-1] == "questions") {
 
         db.collection('Roles').doc(out).get().then(doc => {
             if (doc.exists) {
-                db.collection('Questions').where('Related_User_Role', 'array-contains', doc.data().Naam).get().then(snapshot => {
+                db.collection('Questions').where('Related_User_Role', 'array-contains', doc.data().Naam).onSnapshot(snapshot => {
                     loadQuestions(snapshot);
                 })
             }
