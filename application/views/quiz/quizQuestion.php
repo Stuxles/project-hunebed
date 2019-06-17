@@ -2,7 +2,7 @@
     <div class="section">
         <div class="container">
             <div class="row">
-                <form class="col s12">
+                <form>
                     <h4 class="center">Quiz Algemeen</h4>
                     <div class="divider"></div>
                     <div class="row center">
@@ -21,44 +21,42 @@
                     </div>
                 </div>
             </div>
-            <form action="#">
-                <div class="row">
-                    <div class="col s12">
-                        <div class="card hoverable answer hb-blue">
-                            <div class="card-content white-text">
-                                <span class="card-title">2 Dagen oud</span>
-                            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card hoverable answer hb-blue">
+                        <div class="card-content white-text">
+                            <span class="card-title">2 Dagen oud</span>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s12">
-                        <div class="card hoverable answer hb-blue" onclick="">
-                            <div class="card-content white-text">
-                                <span class="card-title">10.000 Jaar oud</span>
-                            </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card hoverable answer hb-blue">
+                        <div class="card-content white-text">
+                            <span class="card-title">10.000 Jaar oud</span>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s12">
-                        <div class="card hoverable answer hb-blue">
-                            <div class="card-content white-text">
-                                <span class="card-title">5.000 Jaar oud</span>
-                            </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card hoverable answer hb-blue">
+                        <div class="card-content white-text">
+                            <span class="card-title">5.000 Jaar oud</span>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s12">
-                        <div class="card hoverable answer hb-blue">
-                            <div class="card-content white-text">
-                                <span class="card-title">Wat is een Hunebed?</span>
-                            </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card hoverable answer hb-blue">
+                        <div class="card-content white-text">
+                            <span class="card-title">Wat is een Hunebed?</span>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
             <ul id="quizQuestion"></ul>
             <div class="row center">
                 <p>Voor meer informatie over deze vraag:</p>

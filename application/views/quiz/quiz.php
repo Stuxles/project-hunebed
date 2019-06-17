@@ -14,7 +14,7 @@
         </section>
         <div class="row">
             <div class="col s12 m6">
-            <a href="<?= base_url('quiz/quizQuestion') ?>" class="white-text">
+            <a href="#" class="white-text quiz1">
                 <div class="card medium hoverable hb-blue">
                     
                     <div class="card-content center hb-blue">
