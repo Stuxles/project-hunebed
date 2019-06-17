@@ -301,10 +301,10 @@ exports.getRandomQuestion = functions.https.onCall((req, res) => {
 //   var questionRef = db.collection('Questions').doc(id.toString());
 var questionRef = db.collection('Questions').doc("2NYqtctslPaBKcCL71eP")
 
-questionRef.get().then(function(doc) {
+return questionRef.get().then(function(doc) {
     if (doc.exists) {
         console.log("Document data:", doc.data());
-        res.status(200).send(question_template({
+        return res.status(200).send(question_template({
                               id: doc.id,
                               Question: doc.get('Question'),
                               Option1: doc.get('Option1'),
@@ -316,6 +316,8 @@ questionRef.get().then(function(doc) {
         // doc.data() will be undefined in this case
         console.log("No such document!");
     }
+}).then(()=>{
+    return {msg: "succes"}
 }).catch(function(error) {
     console.log("Error getting document:", error);
 });
