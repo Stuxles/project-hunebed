@@ -33,10 +33,9 @@ const addQuestion = (resetForm => {
     })
 
     // Add the data to the database
-    db.collection('Questions').add({
+    db.collection('Submitted_Questions').add({
         Question: question,
-        Categories: categories,
-        Approved: false
+        Categories: categories
     })
 
     // Reset the form if needed
