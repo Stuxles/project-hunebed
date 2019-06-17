@@ -8,10 +8,11 @@ function showQuestion (){
         //checks if docs exits
         if (dataID3.exists) {
             console.log(dataID3.data().Question);
-            var vraag = document.getElementById('vraag1');
-            for(x=2; x <= 6;x++){
-            window["vraag" + x] = document.getElementById('vraag'.concat(x));
-            }
+            //!! werkt raar en niet helemaal !!!
+            // var vraag = document.getElementById('vraag1');
+            // for(x=2; x <= 6;x++){
+            // window["vraag" + x] = document.getElementById('vraag'.concat(x));
+            // }
             // vult niet alle input velden in 
             vraag.value = dataID3.data().Question;
             vraag2.value = dataID3.data().Question_answer;
