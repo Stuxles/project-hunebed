@@ -27,7 +27,7 @@
                         <div class="input-field col s12">
                             <i class="material-icons prefix green-text">check</i>
                             <textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
-                            <label for="textarea2">Vul hier het goed antwoord in</label>
+                            <label for="textarea2">Vul hier een goed antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
