@@ -210,6 +210,31 @@ const showQuestions = (tab => {
     currentTab = tab;
 })
 
+/*
+Shows top questions
+@param amount The amount of questions to show
+*/
+const showTopQuestions = ((amount = 3) => {
+    db.collection('Questions').orderBy('Likes', 'desc').limit(amount).get().then(snapshot => {
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            const html = `
+            <div class="card">
+                <div class="card-content small-card-content">
+                    <p>${data.Question}</p>
+                </div>
+                <div class="card-action ">
+                <form action="questions/show" method="POST">
+                    <button type="submit" name="showButton" class="btn  hb-blue" value="${doc.id}">Lees meer</button>
+                </form>
+                </div>
+            </div>
+            `;
+            document.querySelector('.top-questions').innerHTML += html;
+        })
+    })
+})
+
 // Writes the html for question details
 const showQuestionDetails = (doc => {
     const data = doc.data();
@@ -304,3 +329,5 @@ if(aurl[aurl.length-1] == "show") {
         docRef.get().then(doc => showQuestionDetails(doc));
     }
 }
+
+showTopQuestions();
