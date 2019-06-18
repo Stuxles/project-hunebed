@@ -45,10 +45,6 @@ function question(){
     });
 }
 
-//function to call sessionstorage clear function.
-function clearSessionStorage(){
-    window.sessionStorage.clear();
-}
 
 function sqQuestion(){
     sqRef.get().then((doc) => {
@@ -91,11 +87,11 @@ function sqQuestion(){
     });
 }
 
+
 //function to call sessionstorage clear function.
 function clearSessionStorage(){
     window.sessionStorage.clear();
 }
-
 //sqQuestion();
 
 question();
