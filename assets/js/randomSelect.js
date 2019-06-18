@@ -17,9 +17,13 @@ function randomSelect(arr, amount) {
 	}
 	//Add as many entries as requested to the return array
 	for(amount; amount > 0; amount--) {
-		let num = Math.floor( Math.random() * entry.length );
+		let num = Math.floor(Math.random() * entry.length);
 		//Remove from entries to prevent duplicate results
 		ret.push(entry.pop(num));
 	}
 	return ret;
+}
+
+function randomSelectOne(arr) {
+	return arr[Math.floor(Math.random() * arr.length)];
 }
