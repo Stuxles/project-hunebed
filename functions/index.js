@@ -294,7 +294,8 @@ let wrong_answer_template = ({
 }
 
 //Function to get a random question from the Firestore questions collection
-exports.getRandomQuestion = functions.https.onCall((req, res) => {
+exports.getRandomQuestion = functions.https.onCall((res, context) => {
+    let toReturn;
 
   //Get a random id
 //   const id = Math.floor(Math.random() * (countQuestions) + 1)
@@ -304,7 +305,7 @@ var questionRef = db.collection('Questions').doc("2NYqtctslPaBKcCL71eP")
 return questionRef.get().then(function(doc) {
     if (doc.exists) {
         console.log("Document data:", doc.data());
-        return res.status(200).send(question_template({
+        return toReturn = (question_template({
                               id: doc.id,
                               Question: doc.get('Question'),
                               Option1: doc.get('Option1'),
@@ -315,11 +316,13 @@ return questionRef.get().then(function(doc) {
     } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
+        return;
     }
 }).then(()=>{
-    return {msg: "succes"}
-}).catch(function(error) {
+    return {msg: "succes", out: toReturn}
+}).catch(error => {
     console.log("Error getting document:", error);
+    return error;
 });
 
 //   var getDoc = questionRef.get()
@@ -391,3 +394,4 @@ function getAnswer(doc, answer) {
   }
   return answer_text;
 }
+
