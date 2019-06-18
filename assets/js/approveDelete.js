@@ -1,26 +1,27 @@
-var dataID  = window.sessionStorage.getItem('data-id');
-console.log(dataID);
-var ref = db.collection('Questions').doc(dataID);
 
-function showApprovedQuestion (){
-    
-    ref.get().then((dataID) => {
+var dataID  = window.sessionStorage.getItem('data-id');
+var ref = db.collection('Questions').doc(dataID);
+console.log(dataID);
+function question(){
+    ref.get().then((doc) => {
+        console.log(doc.data().Question);
         //checks if docs exits
-        if (dataID.exists) {
-            console.log(dataID.data().Question);
-            //!! werkt raar en niet helemaal !!!
-            var vraag = document.getElementById('vraag1');
-            for(x=2; x <= 6;x++){
-            window["vraag" + x] = document.getElementById('vraag'.concat(x));
+        if (doc.exists) {
+            //creates the variables that refer to the id's of the divs
+            var text = document.getElementById('textarea1');
+            for(x=2; x <= 7;x++){
+            window["text" + x] = document.getElementById('textarea'.concat(x));
             }
-            // vult niet alle input velden in 
-            vraag.value = dataID.data().Question;
-            vraag2.value = dataID.data().Question_answer;
-            vraag3.value = dataID.data().Question_wrong[0];
-            vraag4.value = dataID.data().Question_wrong[1];
-            vraag5.value = dataID.data().Question_wrong[2];
-            vraag6.value = dataID.data().Source;
-            console.log("bubba");
+
+            //sets firestore data into input field values
+            text.textContent = doc.data().Question;
+
+            //when back button press clear sessionstorage
+            document.getElementById("terug").addEventListener('click', (e) => {
+                clearSessionStorage();
+            });
+
+            
         } else {
                 console.log("No such document!");
         }
@@ -28,19 +29,11 @@ function showApprovedQuestion (){
     }).catch((error) => {
         console.log("Error getting document:", error);
     });
-
 }
 
-function deleteQuestion(){
-    ref.delete().then(() => {
-        console.log("Document successfully deleted!");
-    }).catch(function(error) {
-        console.error("Error removing document: ", error);
-    });
+//function to call sessionstorage clear function.
+function clearSessionStorage(){
+    window.sessionStorage.clear();
 }
 
-function approveQuestion(){
-    
-}
-
-showApprovedQuestion();
+question();
