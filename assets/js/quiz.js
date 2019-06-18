@@ -12,7 +12,7 @@
         //Load the content
         //e.g.
         //load the page that the link was pointing to
-        //$('#content').load($(this).find(a).attr('href'));      
+        //$('#content').load($(this).find(a).attr('href'));
 
         event.preventDefault();
     });
@@ -22,7 +22,7 @@
 document.querySelector('.quiz1').addEventListener('click', () => {
   const getRandomQuestion = functions.httpsCallable('getRandomQuestion');
   getRandomQuestion().then(result => {
-      console.log(result.data);
+      document.getElementById
   })
 });
 
@@ -32,7 +32,7 @@ document.querySelector('.quiz1').addEventListener('click', () => {
 // //Number of Questions. We could have evaluated the count of questions, but thats for a future
 // //enhancement
 // const countQuestions = 10
-    
+
 // //HTML Template for question
 // let question_template = ({
 //   id,
