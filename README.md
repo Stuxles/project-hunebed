@@ -1,6 +1,5 @@
 # project-hunebed
 Hunebed management
 
-![alt text](https://imgur.com/a/hSO0Crn "Fokke/Sukke")
-
+![Imgur Image](http://i.imgur.com/hSO0Crn)
 
