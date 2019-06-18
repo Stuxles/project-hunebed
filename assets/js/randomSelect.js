@@ -27,3 +27,11 @@ function randomSelect(arr, amount) {
 function randomSelectOne(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
+
+function getRandomQuestions(amount = 0) {
+	let docArr = [];
+	db.collection('Questions').where('Related_User_Role', 'array-contains', doc.ref).onSnapshot(snapshot => {
+		snapshot.forEach(doc => docArr.push(doc));
+	});
+	return randomSelect(docArr, amount);
+}
