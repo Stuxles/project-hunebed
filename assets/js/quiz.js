@@ -22,7 +22,7 @@
 document.querySelector('.quiz1').addEventListener('click', () => {
   const getRandomQuestion = functions.httpsCallable('getRandomQuestion');
   getRandomQuestion().then(result => {
-      document.getElementById
+    console.log(result.data);
   })
 });
 
