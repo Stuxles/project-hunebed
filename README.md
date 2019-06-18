@@ -1,18 +1,6 @@
 # project-hunebed
 Hunebed management
 
-![alt text](https://f.jwwb.nl/public/r/o/e/temp-pjcmtzjvjotcpkkgglbg/01_a_hunebed-1.gif "Fokke/Sukke")
+![alt text](https://imgur.com/a/hSO0Crn "Fokke/Sukke")
 
-                                      /;    ;\
-                                  __  \\____//
-                                 /{_\_/   `'\____
-                                 \___   (o)  (o  }
-       _____________________________/          :--'
-   ,-,'`@@@@@@@@       @@@@@@         \_    `__\
-  ;:(  @@@@@@@@@        @@@             \___(o'o)
-  :: )  @@@@          @@@@@@        ,'@@(  `===='
-  :: : @@@@@:          @@@@         `@@@:
-  :: \  @@@@@:       @@@@@@@)    (  '@@@'
-  ;; /\      /`,    @@@@@@@@@\   :@@@@@)
-  ::/  )    {_----------------:  :~`,~~;
 
