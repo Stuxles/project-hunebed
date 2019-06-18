@@ -114,7 +114,7 @@ exports.createUser = functions.https.onCall((data, context) => {
             });
     }).then(user => {
         return {
-            respone: user
+            response: user
         }
     })
         .catch(error => {

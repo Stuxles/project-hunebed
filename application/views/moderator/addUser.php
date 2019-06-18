@@ -99,27 +99,19 @@
 <script>
 
     function addUserFunction(funcFirstName, funcLastName, funcEmail, funcPassword, funcForm) {
-        // auth.createUserWithEmailAndPassword(email, password).then(cred => {
-        //     return db.collection('Users').doc(cred.user.uid).set({
-        //         FirstName: firstName,
-        //         LastName: lastName,
-        //         Email: email
-        //     });
-        //     console.log(email);
-        // }).then(() => {
-        //     if(form != ''){
-        //         // close the signup modal & reset form
-        //         form.reset();
-        //         form.querySelector('.error').innerHTML = 'Gebruiker aangemaakt';
-        //     }}).catch(err => {
-        //     if(form != ''){
-        //         form.querySelector('.error').innerHTML = 'Er is iets misgegaan bij het aanmaken!';
-        //     }
-        // });
         var addUser = firebase.functions().httpsCallable('createUser');
         addUser({email: funcEmail, password: funcPassword, firstName: funcFirstName, lastName: funcLastName}).then(function(result) {
         // Read result of the Cloud Function.
         var sanitizedMessage = result.data.response;
+        if(funcForm != ''){
+            funcForm.reset();
+            if(sanitizedMessage){
+                funcForm.querySelector('.error').innerHTML = 'Gebruiker aangemaakt';
+            }else{
+                funcForm.querySelector('.error').innerHTML = 'Er is iets misgegaan bij het aanmaken!';
+            }
+        }
+
         });
     }
 
