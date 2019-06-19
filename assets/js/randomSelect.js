@@ -28,9 +28,11 @@ function randomSelectOne(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function getRandomQuestions(amount = 0) {
+//Give this function whatever it needs to compare the docs.
+//Selects all matching questions by default
+function getRandomQuestions(docRef, amount = 0) {
 	let docArr = [];
-	db.collection('Questions').where('Related_User_Role', 'array-contains', doc.ref).onSnapshot(snapshot => {
+	db.collection('Questions').where('Related_User_Role', 'array-contains', docRef).onSnapshot(snapshot => {
 		snapshot.forEach(doc => docArr.push(doc));
 	});
 	return randomSelect(docArr, amount);
