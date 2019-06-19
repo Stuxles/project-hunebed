@@ -1,3 +1,4 @@
+
 function showSubmittedQuestions(){
     var x = 1;
     db.collection('Submitted_Questions').get().then((snapshot) => {
