@@ -8,7 +8,7 @@ function renderUser(doc) {
     let FirstName = document.createElement('td');
     let LastName = document.createElement('td');
     let Email = document.createElement('td');
-    let Roles = document.createElement('td');
+    //let Roles = document.createElement('td');
     let Edit = document.createElement('td');
     let Button = document.createElement('a');
     let Icon = document.createElement('i');
@@ -21,22 +21,22 @@ function renderUser(doc) {
 
     //!!!weergeeft de rollen (want rol is een reference in de user collection) en wil geen undefined (niet bestaande/onleesbare) rollen in Users lezen!!!!!
     // niet volledig werkend
-    if (typeof doc.data().Roles !== 'undefined') {
-        doc.data().Roles.forEach(ref => {
-            ref.get().then(role => {
+    // if (typeof doc.data().Roles !== 'undefined') {
+    //     doc.data().Roles.forEach(ref => {
+    //         ref.get().then(role => {
 
-            //stringRol = role.data().Naam;
-            Roles.textContent = role.data().Naam;
-            });
+    //         //stringRol = role.data().Naam;
+    //         Roles.textContent = role.data().Naam;
+    //         });
 
-        });
-    }
+    //     });
+    // }
 
 
-    Button.className = 'waves-effect waves-light hb-red-bg btn-floating';
+    Button.className = 'waves-effect waves-light hb-red btn-floating';
     Icon.className = 'material-icons left';
     Icon.textContent = 'edit';
-    Button.href = pathArray[3].replace("moderator", "").concat("editUser");
+    //Button.href = pathArray[3].replace("moderator", "").concat("editUser");
     //set attribute on Button variable with idd as name and doc.id as value
     Button.setAttribute('idd', doc.id);
     //buttons sends id to editUser page to retrieve user
@@ -49,7 +49,7 @@ function renderUser(doc) {
     tr.appendChild(FirstName);
     tr.appendChild(LastName);
     tr.appendChild(Email);
-    tr.appendChild(Roles);
+    //tr.appendChild(Roles);
     tr.appendChild(Edit);
     Edit.appendChild(Button);
     Button.appendChild(Icon);
@@ -59,7 +59,7 @@ function renderUser(doc) {
 }
 
 // getting data if we're on a moderator page
-if(CURRENT_PAGE == 'moderator') {
+if(CURRENT_PAGE == 'showUsers') {
 userRef.get().then(snapshot => {
 	    snapshot.docs.forEach(doc => {
 	        renderUser(doc);
