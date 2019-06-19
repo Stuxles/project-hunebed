@@ -21,14 +21,16 @@ function renderUser(doc) {
 
     //!!!weergeeft de rollen (want rol is een reference in de user collection) en wil geen undefined (niet bestaande/onleesbare) rollen in Users lezen!!!!!
     // niet volledig werkend
-    doc.data().Roles.forEach(ref => {
-        ref.get().then(role => {
+    if (typeof doc.data().Roles !== 'undefined') {
+        doc.data().Roles.forEach(ref => {
+            ref.get().then(role => {
 
-        //stringRol = role.data().Naam;
-        Roles.textContent = role.data().Naam;
+            //stringRol = role.data().Naam;
+            Roles.textContent = role.data().Naam;
+            });
+
         });
-
-    });
+    }
 
 
     Button.className = 'waves-effect waves-light hb-red-bg btn-floating';
