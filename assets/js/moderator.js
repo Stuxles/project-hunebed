@@ -1,5 +1,5 @@
-const userList = document.querySelector('#usertable');
-var user  ;
+const userList = CURRENT_PAGE == 'moderator' ? document.querySelector('#usertable') : document.createElement("ul");
+
 // create element & render user
 function renderUser(doc) {
 
@@ -20,7 +20,7 @@ function renderUser(doc) {
     console.log(doc.data().Roles);
     Roles.textContent = doc.data().Roles;
     Button.className = 'waves-effect waves-light hb-red-bg btn-floating';
-    Icon.className = 'material-icons left'; 
+    Icon.className = 'material-icons left';
     Icon.textContent = 'edit';
 
     tr.appendChild(FirstName);
@@ -39,12 +39,11 @@ function deleteUser(doc){
 
 }
 
-// getting data
-db.collection('Users').get().then(snapshot => {
-    snapshot.docs.forEach(doc => {
-        renderUser(doc);
-    });
-});
-
-
-
+// getting data if we're on a moderator page
+if(CURRENT_PAGE == 'moderator') {
+	db.collection('Users').get().then(snapshot => {
+	    snapshot.docs.forEach(doc => {
+	        renderUser(doc);
+	    });
+	});
+}

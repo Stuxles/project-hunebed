@@ -1,7 +1,5 @@
 //create the IL tags and appends to the existing UL tag
 function create_il(){
-
-    var x = 0;
     // required to find the base url
     var pathArray = window.location.pathname.split( '/' );
     //gets questions from the firestore database
@@ -22,27 +20,26 @@ function create_il(){
             var a = document.createElement('A');
             //create base url
             a.href = pathArray[3].replace("moderator", "").concat("updateQuestion");
-            a.setAttribute('data-id', doc.id); 
+            a.setAttribute('data-id', doc.id);
             var butt = document.createElement('BUTTON');
             butt.className = "waves-effect waves-light btn";
             //creates eventlistener on the created button which creates a sessionstorage with the Document ID from the firestore
             butt.addEventListener('click', (e) => {
                 var id = e.target.parentElement.getAttribute('data-id');
                 window.sessionStorage.setItem('data-id', id);
-                
-            })
+            });
             //append button to <A> tag
             a.appendChild(butt);
-            
             //appends the rest of the elements to the UL Tag
             li.appendChild(b);
             li.appendChild(persoonP);
-            li.appendChild(questionP); 
+            li.appendChild(questionP);
             li.appendChild(a);
             ul.appendChild(li);
-        
-        })
-    })
+        });
+    });
 }
 //call function create_il()
-create_il();
+if(document.getElementById('qList')!=null){
+	create_il();
+}
