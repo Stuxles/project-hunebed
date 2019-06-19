@@ -26,3 +26,8 @@
         <br><br>
     </div>
 </div>
+<script>
+$(document).ready(() => {
+    showTopQuestions();
+})
+</script>
