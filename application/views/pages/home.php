@@ -16,7 +16,7 @@
             <!--   Icon Section   -->
             <div class="row">
                 <div class="row-content">
-                    <div class="col s12 m6 offset-m3 top-questions">
+                    <div class="col s12 m8 offset-m2 top-questions">
                         <h2 class="center hb-blue-text"><i class="medium material-icons">question_answer</i></h2>
                         <h5 class="center">Top 3 vragen</h5>
                     </div>

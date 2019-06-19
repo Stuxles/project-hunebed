@@ -118,7 +118,7 @@ const loadQuestions = (snapshot => {
     })
 
     // Load write each page html
-    for(i=0; i < array.length; i+= chunk) {
+    for(i=0; i < array.length; i += chunk) {
         // Create div with corresponding tab class
         let tabContentHTML = `<div id="content${tabAmount}" class="tabcontent">`;
            
@@ -139,11 +139,15 @@ const loadQuestions = (snapshot => {
 
             // Write the html with the data
             const item = `
-                <div class="card question-card hoverable">
-                    <div class="card-content">
-                        <span>${question.Question}</span>
-                        <div class="right">
-                            <span class=" badge like-badge" data-badge-caption="${likeString}">${likes}</span>
+                <div class="card question-card">
+                    <div class="card-content small-card-content">
+                        <div class="row">
+                            <div class="col s8">
+                                <span class="">${question.Question}</span>
+                            </div>
+                            <div class="col s4">
+                                <span class=" badge like-badge" data-badge-caption="${likeString}">${likes}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="card-action">
@@ -229,10 +233,25 @@ const showTopQuestions = ((amount = 3) => {
     db.collection('Questions').orderBy('Likes', 'desc').limit(amount).get().then(snapshot => {
         snapshot.forEach(doc => {
             const data = doc.data();
+
+            let likeString = 'Likes';
+            if (data.Likes === 1)
+                likeString = 'Like'
+            
+
+            let likes = data.Likes;
+            if (typeof data.Likes == 'undefined')
+                likes = 0;
+
             const html = `
-            <div class="card">
-                <div class="card-content small-card-content">
-                    <p>${data.Question}</p>
+            <div class="card question-card">
+                <div class="card-content small-card-content row">
+                    <div class="col s8">
+                        <span class="">${data.Question}</span>
+                    </div>
+                    <div class="col s4">
+                        <span class=" badge like-badge" data-badge-caption="${likeString}">${likes}</span>
+                    </div>
                 </div>
                 <div class="card-action ">
                 <form action="questions/show" method="POST">
