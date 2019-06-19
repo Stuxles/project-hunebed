@@ -1,7 +1,19 @@
-let currentTab = 1;
-let maxTab = 1;
-let url = window.location.href;
-let aurl = url.split("/");
+/*
+Loads the roles in the select input on the questions page
+*/
+const loadRolesInSelector = (() => {
+    const select = document.querySelector('.select-role');  // The selector
+    db.collection('Roles').get().then(snapshot => {
+        snapshot.forEach(doc => {
+            select.innerHTML += `<option value="${doc.id}">${doc.data().Naam}</option>`;
+        })
+        
+        // Reload the JS for the selector
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
+    })
+})
 
 /*
 Add data from the form in the database
@@ -42,19 +54,20 @@ Add data from the form in the database
 */
 const addModQuestion = (resetForm => {
     let question;
-    let categories = [];
+    let userRole = [];
     let answer;
     let wrongAnswers = [];
     let source;
 
     // Get the data from the form
     question = document.querySelector('#textarea1').value;
+    file = document.querySelector('#file').value;
     answer = document.querySelector('#textarea2').value;
     source = document.querySelector('#textarea6').value;
     const checkboxes = document.querySelectorAll(".catCheckbox");
     checkboxes.forEach(checkbox => {
         if(checkbox.checked){
-            categories.push(checkbox.value)
+            userRole.push(checkbox.value)
         }
     })
     const wrongs = document.querySelectorAll(".wrong-answer-text");
@@ -65,8 +78,8 @@ const addModQuestion = (resetForm => {
     // Add the data to the database
     db.collection('Questions').add({
         Question: question,
-        Categories: categories,
-        Approved: true,
+        Related_User_Role: userRole,
+        Picture: file,
         Question_answer: answer,
         Question_wrong: wrongAnswers,
         Source: source
@@ -76,6 +89,7 @@ const addModQuestion = (resetForm => {
     // Reset the form if needed
     if(resetForm == null){        
         document.querySelector('#textarea1').value = "";
+        document.querySelector('#file').value = "";
         document.querySelector('#textarea2').value = "";
         document.querySelector('#textarea6').value = "";
         checkboxes.forEach(checkbox => {
@@ -93,7 +107,7 @@ Generates the html with all the questions from the database.
 */
 const loadQuestions = (data => {
     let html = '';      // HTML to load
-    let tabHTML = '<li class="prev-tab disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>'; // The tab controller
+    let tabHTML = '<li class="prev-tab disabled"><a><i class="material-icons">chevron_left</i></a></li>'; // The tab controller
     let tempArray;      // Temporary array whichw will store single tab
     const chunk = 4;    // The amount of items in a tab
     let tabAmount = 1;  // The amount of tabs on the page
@@ -102,6 +116,8 @@ const loadQuestions = (data => {
     let array = [];
     data.forEach(doc => {
         array.push(doc);
+        var source = data.metadata.fromCache ? "local cache" : "server";
+        console.log("Data came from " + source);
     })
 
     // Load write each page html
@@ -109,7 +125,7 @@ const loadQuestions = (data => {
         // Create div with corresponding tab class
         let tabContentHTML = `<div id="content${tabAmount}" class="tabcontent">`;
            
-        tabHTML += `<li id="tablink${tabAmount}" class="tablink waves-effect"><a href="#!">${tabAmount}</a></li>`
+        tabHTML += `<li id="tablink${tabAmount}" class="tablink waves-effect"><a>${tabAmount}</a></li>`
         tabAmount++;
         tempArray = array.slice(i, i+chunk);
         tempArray.forEach(doc => {
@@ -132,7 +148,7 @@ const loadQuestions = (data => {
         tabContentHTML += `</div>`
         html += tabContentHTML;
     }
-    tabHTML += '<li class="next-tab waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>';
+    tabHTML += '<li class="next-tab waves-effect"><a><i class="material-icons">chevron_right</i></a></li>';
 
     // Set html
     document.querySelector('.question-pagination').innerHTML = tabHTML;
@@ -196,10 +212,11 @@ const showQuestions = (tab => {
 })
 
 // Writes the html for question details
-const showQuestionDetails = (data => {
+const showQuestionDetails = (doc => {
+    const data = doc.data();
     const mediaLink = '../assets/img/hunebed1800x400.jpg';  // Media link of the question
     let html = `
-        <div class="col xl12 s12 question-content">
+        <div class="question-content">
             <h4>${data.Question}</h4>
                 <img class="responsive-img materialboxed" src="${mediaLink}" alt="questionImage">
                 <h5 class="header">Antwoord</h5>
@@ -208,12 +225,33 @@ const showQuestionDetails = (data => {
         </div>
     `
     // Put the like and dislike bttons here aswell ^^^^
-    document.getElementById('questionContent').innerHTML += html;
+    document.getElementById('questionContent').innerHTML = html;
+
+    if(typeof data.Likes !== 'undefined')
+        document.querySelector('.like-number').innerHTML = data.Likes;
+    if(typeof data.Dislikes !== 'undefined')
+        document.querySelector('.dislike-number').innerHTML = data.Dislikes;
+
+    document.querySelector('.like-button').addEventListener('click', () => {
+        const likeQuestion = functions.httpsCallable('likeQuestion');
+        likeQuestion({ id: doc.id, rate: 'like' }).then(result => {
+            console.log(result.data);
+        })
+    });
+
+    document.querySelector('.dislike-button').addEventListener('click', () => {
+        const likeQuestion = functions.httpsCallable('likeQuestion');
+        likeQuestion({ id: doc.id, rate: 'dislike' }).then(result => {
+            console.log(result.data);
+        })
+    });
+    
 
     // Reload materialize script
     $(document).ready(function() {
         $('.materialboxed').materialbox();
     });
+
 })
 
 // Show an error on the page when a question that doesnt exist is asked
@@ -225,10 +263,33 @@ const showQuestionError = (() => {
     document.getElementById('questionContent').innerHTML = html;
 })
 
-// Load questions form database
+let currentTab = 1;
+let maxTab = 1;
+
 if(aurl[aurl.length-1] == "questions") {
-    db.collection('Questions').get().then(snapshot => {
+    loadRolesInSelector();
+
+    // Load questions form database
+    // db.collection('Questions').get().then(snapshot => {
+    //     loadQuestions(snapshot);
+    // })
+    db.collection('Questions').onSnapshot(snapshot => {
         loadQuestions(snapshot);
+    })
+
+    // Select specific questions with specific roles
+    document.querySelector('.test123').addEventListener('click', () => {
+        const selector = document.querySelector('.select-role');
+        const out = selector.options[selector.selectedIndex].value;
+
+        db.collection('Roles').doc(out).get().then(doc => {
+            if (doc.exists) {
+                db.collection('Questions').where('Related_User_Role', 'array-contains', doc.data().Naam).onSnapshot(snapshot => {
+                    loadQuestions(snapshot);
+                })
+            }
+        })
+        console.log(out)
     })
 }
 
@@ -241,6 +302,6 @@ if(aurl[aurl.length-1] == "show") {
         showQuestionError();
     }else {
         const docRef = db.collection('Questions').doc(docID);
-        docRef.get().then(doc => showQuestionDetails(doc.data()));
+        docRef.get().then(doc => showQuestionDetails(doc));
     }
 }

@@ -29,7 +29,7 @@
                         <span class="card-title black-text">Vraag toevoegen</span>
                     </div>
                     <div class="card-action center">
-                        <a href="<?= base_url('moderator/addQuestion') ?>" class="hb-blue-text">Voeg een vraag toe</a>
+                        <a href="<?= base_url('moderator/addQuestion') ?>" onclick="clearSessionStorage()" class="hb-blue-text">Voeg een vraag toe</a>
                     </div>
                 </div>
             </div>
@@ -67,28 +67,32 @@
                 <table class="highlight responsive-table">
                     <thead>
                         <tr>
-                            <th>Naam</th>
+                            <th>Voornaam</th>
+                            <th>Achternaam</th>
                             <th>E-mailadres</th>
                             <th>Functie</th>
                             <th>Aanpassen</th>
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody id="usertable">
                         <tr>
-                            <td>Harrie Wolters</td>
+                            <td>Harrie</td>
+                            <td>Wolters</td>
                             <td>hwolters@hunebedcentrum.nl</td>
                             <td>Algemeen Directeur</td>
                             <td><a href="<?= base_url('moderator/editUser') ?>" class="waves-effect waves-light hb-red-bg btn-floating"><i class="material-icons left">edit</i></a></td>
                         </tr>
                         <tr>
-                            <td>Gijs Klompmaker</td>
+                            <td>Gijs</td>
+                            <td>Klompmaker</td>
                             <td>gklompmaker@hunebedcentrum.nl</td>
                             <td>Marketing</td>
                             <td><a href="<?= base_url('moderator/editUser') ?>" class="waves-effect waves-light hb-red-bg btn-floating"><i class="material-icons left">edit</i></a></td>
                         </tr>
                         <tr>
-                            <td>Jopie Jakkerman</td>
+                            <td>Jopie</td>
+                            <td>Jakkerman</td>
                             <td>Jjakkerman@hunebedcentrum.nl</td>
                             <td>Winkel</td>
                             <td><a href="<?= base_url('moderator/editUser') ?>" class="waves-effect waves-light hb-red-bg btn-floating"><i class="material-icons left">edit</i></a></td>

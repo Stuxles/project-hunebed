@@ -27,11 +27,11 @@ body {
   border-top: solid 10px #3E9ABE;
 }
 
-nav ul li:hover {
+nav ul .tab:hover {
   background-color: white;
 }
 
-nav ul li:hover a {
+nav ul .tab:hover a {
   color: black !important;
   background-color: transparent;
 }
@@ -90,7 +90,7 @@ nav ul li:hover a {
   background-color: #3E9ABE !important;
 }
 
-.hb-red-bg {
+.hb-red {
   background-color: #EE2B4F !important;
 }
 
@@ -131,7 +131,7 @@ nav ul li:hover a {
 }
 
 .question-card .card-content, .question-card .card-action {
-  padding: 15px;  
+  padding: 15px;
 }
 
 .question-card .card-content p {
@@ -179,6 +179,9 @@ nav ul li:hover a {
   .content {
     margin: 0 !important;
     width: 100%;
+  }
+  footer {
+    width: 100% !important;
   }
 }
 
@@ -231,8 +234,17 @@ nav ul li:hover a {
   text-align: center;
 }
 
+.name-field {
+  margin: 0 45px;
+}
+
 @media only screen and (max-width: 993px) {
   footer {
     width: 100% !important;
   }
+}
+
+.like-number, .dislike-number {
+  display: block;
+  margin-block-start: 0.5em;
 }
