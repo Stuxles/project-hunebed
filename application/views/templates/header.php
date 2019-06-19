@@ -15,8 +15,8 @@
 <!--                Slide out side hamburger menu-->
                  <ul id="slide-out" class="sidenav">
                      <li><a href="<?=base_url()?>"><i class="material-icons">home</i>Home</a></li>
-                     <li><a href="<?=base_url('questions')?>"><i class="material-icons">cloud</i>Vragen</a></li>
-                     <li><a href="<?=base_url('user/userpage')?>"><i class="material-icons">people</i>Mijn account</a></li>
+                     <li class="tab logged-in" style="display:none"><a href="<?=base_url('questions')?>"><i class="material-icons">cloud</i>Vragen</a></li>
+                     <li class="tab logged-in" style="display:none"><a href="<?=base_url('user/userpage')?>"><i class="material-icons">people</i>Mijn account</a></li>
 
                      <li><div class="divider admin" style="display:none"></div></li>
                      <li><a class="subheader admin" style="display:none">Admin</a></li>
@@ -35,8 +35,8 @@
             <div class="nav-content container ">
                 <ul class="tabs tabs-transparent hide-on-med-and-down">
                     <li class="tab"><a href="<?=base_url()?>">Home</a></li>
-                    <li class="tab"><a href="<?=base_url('questions')?>">Vragen</a></li>
-                    <li class="tab"><a href="<?=base_url('user/userpage')?>">Mijn account</a></li>
+                    <li class="tab logged-in" style="display:none"><a href="<?=base_url('questions')?>">Vragen</a></li>
+                    <li class="tab logged-in" style="display:none"><a href="<?=base_url('user/userpage')?>">Mijn account</a></li>
                     <li class="tab admin" style="display:none"><a href="<?=base_url('moderator')?>">Moderatie</a></li>
                 </ul>
             </div>
