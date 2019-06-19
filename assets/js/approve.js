@@ -32,6 +32,7 @@ function question(){
                     Source: text6.value,
                     Question_answer: text2.value,
                     Picture:text7.value,
+                    Approved: true,
                 });
                 clearSessionStorage();
             });
@@ -45,6 +46,7 @@ function question(){
                     Source: text6.value,
                     Question_answer: text2.value,
                     Picture:text7.value,
+                    Approved: true,
                 });
                 clearSessionStorage();
             });
@@ -87,6 +89,7 @@ function sqQuestion(){
                     Source: text6.value,
                     Question_answer: text2.value,
                     Picture:text7.value,
+                    Approved: true,
                 });
                 clearSessionStorage();
             });
@@ -100,6 +103,7 @@ function sqQuestion(){
                     Source: text6.value,
                     Question_answer: text2.value,
                     Picture:text7.value,
+                    Approved: true,
                 });
                 clearSessionStorage();
             });
@@ -117,6 +121,14 @@ function sqQuestion(){
 //function to call sessionstorage clear function.
 function clearSessionStorage(){
     window.sessionStorage.clear();
+}
+
+function deleteQuestion(doc, ref){
+    ref.doc(doc).delete().then(() => {
+        console.log("Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
 }
 
 //function to fill inputs fields from Submitted_Questions collection
