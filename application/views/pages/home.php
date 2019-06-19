@@ -6,7 +6,7 @@
             <h5 class="header col s12 light"><?php $setInIndexDotPhp ?></h5>
         </div>
         <div class="row center">
-            <a href="<?= base_url('addQuestionUser') ?>" id="download-button" class="btn-large waves-effect waves-light hb-red-bg">Stel je vraag!</a>
+            <a href="<?= base_url('addQuestionUser') ?>" id="download-button" class="btn-large waves-effect waves-light hb-red">Stel je vraag!</a>
         </div>
         <br><br>
     </div>
@@ -16,65 +16,9 @@
             <!--   Icon Section   -->
             <div class="row">
                 <div class="row-content">
-                    <div class="col s12 m6">
-                        <div class="icon-block">
-                            <h2 class="center hb-blue-text"><i class="medium material-icons">question_answer</i></h2>
-                            <h5 class="center">Top 3 vragen</h5>
-                            <div class="card">
-                                <div class="card-content small-card-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
-                                </div>
-                                <div class="card-action ">
-                                    <a href="#" class="hb-blue-text"><strong>Zie het antwoord</strong></a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-content small-card-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
-                                </div>
-                                <div class="card-action">
-                                    <a href="#" class="hb-blue-text"><strong>Zie het antwoord</strong></a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-content small-card-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
-                                </div>
-                                <div class="card-action">
-                                    <a href="#" class="hb-blue-text"><strong>Zie het antwoord</strong></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s12 m6">
-                        <div class="icon-block">
-                            <h2 class="center hb-blue-text"><i class="medium material-icons">book</i></h2>
-                            <h5 class="center">Top 20 pagina's</h5>
-                            <div class="card">
-                                <div class="card-content small-card-content">
-                                    <h6>Lorem ipsum dolor sit amet</h6>
-                                </div>
-                                <div class="card-action">
-                                    <a href="#" class="hb-blue-text"><strong>lees meer</strong></a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-content small-card-content">
-                                    <h6>Lorem ipsum dolor sit amet</h6>
-                                </div>
-                                <div class="card-action">
-                                    <a href="#" class="hb-blue-text"><strong>lees meer</strong></a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-content small-card-content">
-                                    <h6>Lorem ipsum dolor sit amet</h6>
-                                </div>
-                                <div class="card-action">
-                                    <a href="#" class="hb-blue-text"><strong>lees meer</strong></a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col s12 m8 offset-m2 top-questions">
+                        <h2 class="center hb-blue-text"><i class="medium material-icons">question_answer</i></h2>
+                        <h5 class="center">Top 3 vragen</h5>
                     </div>
                 </div>
 			</div>
@@ -82,3 +26,8 @@
         <br><br>
     </div>
 </div>
+<script>
+$(document).ready(() => {
+    showTopQuestions();
+})
+</script>

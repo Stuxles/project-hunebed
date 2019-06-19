@@ -37,7 +37,7 @@
                                         </div>
                                     </div>
                                     <div class="row center">
-                                        <button class="btn waves-effect hb-red-bg waves-light" type="submit" name="action">Toevoegen
+                                        <button class="btn waves-effect hb-red waves-light" type="submit" name="action">Toevoegen
                                             <i class="material-icons right">send</i>
                                         </button>
                                         <p class="error pink-text center-align"></p>
@@ -59,13 +59,13 @@
                                             <input type="file" multiple>
                                         </div>
                                         <div class="file-path-wrapper">
-                                            <input class="file-path validate" placeholder="Voeg CSV bestand in." type="file" name="file" id="file-upload">
+                                            <input class="file-path validate hb-red" placeholder="Voeg CSV bestand in." type="file" name="file" id="file-upload">
                                             <label for="exampleInputFile" >Voeg hier een .CSV bestand in om meerdere nieuwe medewerkers tegelijk toe te voegen.</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row center">
-                                    <button class="btn waves-effect hb-red-bg waves-light" type="submit" name="action">Toevoegen
+                                    <button class="btn waves-effect hb-red waves-light" type="submit" name="action">Toevoegen
                                         <i class="material-icons right">send</i>
                                     </button>
                                 </div>

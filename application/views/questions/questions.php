@@ -11,7 +11,7 @@
                     <label>Zoek op afdeling: </label>
                 </div>
                 <div class="col s2" style="margin-left:0;">
-                    <button class="btn waves-effect waves-light test123" name="action">Zoek
+                    <button class="btn waves-effect waves-light search-question-button" name="action">Zoek
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
