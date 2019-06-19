@@ -64,7 +64,8 @@
         auth.signInWithEmailAndPassword(email, password).then(cred => {
             loginForm.reset();
             loginForm.querySelector('.error').innerHTML = '';
-            document.location.href="/hunebed";
+            var BASE_URL = "<?php echo base_url().index_page();?>";
+            document.location.href=BASE_URL;
         }).catch(err => {
             loginForm.querySelector('.error').innerHTML = "Combinatie van emaill en/of wachtwoord wordt niet herkend!";
         });
