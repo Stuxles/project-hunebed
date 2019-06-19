@@ -17,32 +17,32 @@ function renderUser(doc) {
     FirstName.textContent = doc.data().FirstName;
     LastName.textContent = doc.data().LastName;
     Email.textContent = doc.data().Email;
-    
-    
+
+
     //!!!weergeeft de rollen (want rol is een reference in de user collection) en wil geen undefined (niet bestaande/onleesbare) rollen in Users lezen!!!!!
     // niet volledig werkend
     doc.data().Roles.forEach(ref => {
         ref.get().then(role => {
-                    
+
         //stringRol = role.data().Naam;
         Roles.textContent = role.data().Naam;
-        })
-        
-    })
-    
+        });
+
+    });
+
 
     Button.className = 'waves-effect waves-light hb-red-bg btn-floating';
-    Icon.className = 'material-icons left'; 
+    Icon.className = 'material-icons left';
     Icon.textContent = 'edit';
     Button.href = pathArray[3].replace("moderator", "").concat("editUser");
     //set attribute on Button variable with idd as name and doc.id as value
-    Button.setAttribute('idd', doc.id); 
+    Button.setAttribute('idd', doc.id);
     //buttons sends id to editUser page to retrieve user
     Button.addEventListener('click', (e) => {
         var id = e.target.parentElement.getAttribute('idd');
         window.sessionStorage.setItem('idd', doc.id);
-        
-    })
+
+    });
 
     tr.appendChild(FirstName);
     tr.appendChild(LastName);
@@ -56,12 +56,11 @@ function renderUser(doc) {
 
 }
 
-// getting data
+// getting data if we're on a moderator page
+if(CURRENT_PAGE == 'moderator') {
 userRef.get().then(snapshot => {
-    snapshot.docs.forEach(doc => {
-        renderUser(doc);
-         
-    });
-});
-
-
+	    snapshot.docs.forEach(doc => {
+	        renderUser(doc);
+	    });
+	});
+}

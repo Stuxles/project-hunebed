@@ -1,9 +1,7 @@
 //!!!! FUNCTIES MOETEN AANGEZET WORDEN WANNEER GEBRUIK
 var dataID  = window.sessionStorage.getItem('data-id');
-var qRef = db.collection('Questions').doc(dataID);
-var sqRef = db.collection('Submitted_Questions').doc(dataID);
-console.log(dataID);
-console.log("HENK GING WINKELEN");
+var qRef = dataID ? db.collection('Questions').doc(dataID) : null;
+var sqRef = dataID ? db.collection('Submitted_Questions').doc(dataID) : null;
 
 function question(){
     qRef.get().then((doc) => {
@@ -22,9 +20,9 @@ function question(){
             document.getElementById("terug").addEventListener('click', (e) => {
                 clearSessionStorage();
             });
-            
+
             document.getElementById("weergoedkeuren").addEventListener('click', (e) => {
-                
+
                 qRef.update({
                     //Related_User_Role: funcName,
                     Question: text.value,
@@ -37,7 +35,7 @@ function question(){
             });
 
             document.getElementById("goedkeuren").addEventListener('click', (e) => {
-                
+
                 qRef.update({
                     //Related_User_Role: funcName,
                     Question: text.value,
@@ -79,7 +77,7 @@ function sqQuestion(){
             });
 
             document.getElementById("weergoedkeuren").addEventListener('click', (e) => {
-                
+
                 qRef.set({
                     //Related_User_Role: funcName,
                     Question: text.value,
@@ -92,7 +90,7 @@ function sqQuestion(){
             });
 
             document.getElementById("goedkeuren").addEventListener('click', (e) => {
-                
+
                 qRef.set({
                     //Related_User_Role: funcName,
                     Question: text.value,
