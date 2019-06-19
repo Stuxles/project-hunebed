@@ -1,4 +1,4 @@
-//!!!! FUNCTIES MOETEN AANGEZET WORDEN WANNEER GEBRUIK
+
 var dataID  = window.sessionStorage.getItem('data-id');
 var qRef = db.collection('Questions').doc(dataID);
 var sqRef = db.collection('Submitted_Questions').doc(dataID);
@@ -132,6 +132,6 @@ function deleteQuestion(doc, ref){
 }
 
 //function to fill inputs fields from Submitted_Questions collection
-//sqQuestion();
+sqQuestion();
 //function to fill inputs fields from Question collection
-//question();
+question();
