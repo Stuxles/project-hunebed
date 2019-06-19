@@ -6,7 +6,7 @@ function showSubmittedQuestions(){
             var ul = document.getElementById('qListSubmit');
             let ilItem = `
             <hr>
-            <il classname = 'collection-item avatar'> 
+            <il classname = 'collection-item avatar'>
                 <span classname = 'title'><b>Vraag ${x}</b> : ${doc.data().Question}</span>
                 <p><button onclick = 'clickGoedKeurKnop(this)' data-id = ${doc.id} class = 'waves-effect waves-light red btn'>Goedkeuren</button></p>
             </il>
@@ -29,13 +29,13 @@ function showApprovedQuestions(){
             var ul = document.getElementById('qListApproved');
             let ilItem = `
             <hr>
-            <il classname = 'collection-item avatar'> 
+            <il classname = 'collection-item avatar'>
                 <span classname = 'title'><b>Vraag ${x}</b> : ${doc.data().Question}</span>
                 <p><button onclick = 'clickGoedKeurKnop(this)' data-id = ${doc.id} class = 'waves-effect waves-light red btn'>Goedkeuren</button></p>
             </il>
             <hr>
             `;
-        
+
             //append <IL> to <UL> tag
             ul.insertAdjacentHTML('afterbegin',ilItem);
             x++;
@@ -50,7 +50,9 @@ function clickGoedKeurKnop(btn){
     location.href = pathArray[3].replace("moderator", "").concat("removeApproveQuestion");
 }
 
+if(CURRENT_PAGE.indexOf("dQuestions") > 0) {
 //call function showSubmittedQuestions()
 showSubmittedQuestions();
 //call function showApprovedQuestions()
 showApprovedQuestions();
+}
