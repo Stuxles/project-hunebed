@@ -1,5 +1,6 @@
-const userList = CURRENT_PAGE == 'moderator' ? document.querySelector('#usertable') : document.createElement("ul");
-
+const userList = document.querySelector('#usertable');
+var userRef = db.collection('Users');
+var pathArray = window.location.pathname.split( '/' );
 // create element & render user
 function renderUser(doc) {
 
@@ -16,12 +17,32 @@ function renderUser(doc) {
     FirstName.textContent = doc.data().FirstName;
     LastName.textContent = doc.data().LastName;
     Email.textContent = doc.data().Email;
-    // need id and independently query the role
-    console.log(doc.data().Roles);
-    Roles.textContent = doc.data().Roles;
+    
+    
+    //!!!weergeeft de rollen (want rol is een reference in de user collection) en wil geen undefined (niet bestaande/onleesbare) rollen in Users lezen!!!!!
+    // niet volledig werkend
+    doc.data().Roles.forEach(ref => {
+        ref.get().then(role => {
+                    
+        //stringRol = role.data().Naam;
+        Roles.textContent = role.data().Naam;
+        })
+        
+    })
+    
+
     Button.className = 'waves-effect waves-light hb-red-bg btn-floating';
-    Icon.className = 'material-icons left';
+    Icon.className = 'material-icons left'; 
     Icon.textContent = 'edit';
+    Button.href = pathArray[3].replace("moderator", "").concat("editUser");
+    //set attribute on Button variable with idd as name and doc.id as value
+    Button.setAttribute('idd', doc.id); 
+    //buttons sends id to editUser page to retrieve user
+    Button.addEventListener('click', (e) => {
+        var id = e.target.parentElement.getAttribute('idd');
+        window.sessionStorage.setItem('idd', doc.id);
+        
+    })
 
     tr.appendChild(FirstName);
     tr.appendChild(LastName);
@@ -35,15 +56,12 @@ function renderUser(doc) {
 
 }
 
-function deleteUser(doc){
+// getting data
+userRef.get().then(snapshot => {
+    snapshot.docs.forEach(doc => {
+        renderUser(doc);
+         
+    });
+});
 
-}
 
-// getting data if we're on a moderator page
-if(CURRENT_PAGE == 'moderator') {
-	db.collection('Users').get().then(snapshot => {
-	    snapshot.docs.forEach(doc => {
-	        renderUser(doc);
-	    });
-	});
-}
