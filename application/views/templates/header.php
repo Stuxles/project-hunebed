@@ -1,6 +1,10 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/materialize.min.js') ?>"></script>
-<body> 
+<script>
+    const BASE_URL = "<?php echo base_url().index_page();?>";
+	const CURRENT_PAGE = "<?php echo basename($_SERVER['PHP_SELF']) ?>";
+</script>
+<body>
     <div class="nav">
         <nav class="black nav-extended">
 
@@ -41,7 +45,4 @@
                 </ul>
             </div>
         </nav>
-
-
-
     </div>
