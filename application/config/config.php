@@ -24,7 +24,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // NOT NEEDED IN DEVELOPMENT
+<<<<<<< HEAD
 //  $config['base_url'] = 'http://localhost:/Hunebed/project-hunebed/';
+=======
+//  $config['base_url'] = 'http://localhost:8888/hunebed/project-hunebed/';
+>>>>>>> master
 // NOT NEEDED IN DEVELOPMENT :D
 /*
 |--------------------------------------------------------------------------

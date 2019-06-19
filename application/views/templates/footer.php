@@ -41,19 +41,18 @@
     const functions = firebase.functions();
 </script>
 
-<script type="text/javascript" src="<?= base_url('assets/js/init.js') ?>"></script>
 <!-- Load in custom javascript -->
 <script src="<?= base_url('assets/js/firestore.js') ?>"></script>
 
 <script src="<?= base_url('assets/js/scripts.js') ?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/js/showQuestions.js')?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/js/editUser.js')?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/js/moderator.js')?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/js/approveDelete.js')?>"></script>
+<script src="<?= base_url('assets/js/init.js') ?>"></script>
+<script src="<?=base_url('assets/js/showQuestions.js')?>"></script>
+<script src="<?=base_url('assets/js/updateQuestion.js')?>"></script>
+<script src="<?=base_url('assets/js/editUser.js')?>"></script>
+<script src="<?=base_url('assets/js/moderator.js')?>"></script>
+<script src="<?=base_url('assets/js/approveDelete.js')?>"></script>
 <script src="<?= base_url('assets/js/questions.js') ?>"></script>
 <script src="<?=base_url('assets/js/index.js')?>"></script>
 <script src="<?=base_url('assets/js/auth.js')?>"></script>
-<script src="<?=base_url('assets/js/init.js')?>"></script>
-<script src="<?= base_url('assets/js/scripts.js') ?>"></script>
 </body>
 </html>

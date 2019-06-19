@@ -98,3 +98,26 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
     return err;
   });
 });
+
+
+exports.createUser = functions.https.onCall((data, context) => {
+    const userData = data;
+    return admin.auth().createUser({
+        email: data.email,
+        password: data.password
+    })
+        .then(user => {
+            return db.collection("Users").doc(user.uid).set({
+                firstname: userData.firstName,
+                lastname: userData.lastName,
+                email: userData.email
+            });
+    }).then(user => {
+        return {
+            response: user
+        }
+    })
+        .catch(error => {
+        throw new functions.https.HttpsError(error)
+    });
+});
