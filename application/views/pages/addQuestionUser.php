@@ -53,8 +53,8 @@
                         </div>
                     </div>
                     <div class="row center">
-                        <a href="<?= base_url('home') ?>" class="btn waves-effect hb-red-bg waves-light"><i class="material-icons left" id="terug">arrow_back</i>Terug</a>
-                        <button data-target="modal1" class="btn modal-trigger waves-effect hb-red-bg waves-light">Toevoegen
+                        <a href="<?= base_url('home') ?>" class="btn waves-effect hb-red waves-light"><i class="material-icons left" id="terug">arrow_back</i>Terug</a>
+                        <button data-target="modal1" class="btn modal-trigger waves-effect hb-red waves-light">Toevoegen
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
