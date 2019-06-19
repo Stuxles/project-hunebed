@@ -6,7 +6,7 @@
             <h5 class="header col s12 light"><?php $setInIndexDotPhp ?></h5>
         </div>
         <div class="row center">
-            <a href="<?= base_url('addQuestionUser') ?>" id="download-button" class="btn-large waves-effect waves-light hb-red-bg">Stel je vraag!</a>
+            <a href="<?= base_url('addQuestionUser') ?>" id="download-button" class="btn-large waves-effect waves-light hb-red">Stel je vraag!</a>
         </div>
         <br><br>
     </div>
