@@ -27,3 +27,13 @@ function randomSelect(arr, amount) {
 function randomSelectOne(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
+
+//Give this function at least a Firebase documentReference to a Role.
+//Selects all matching questions by default
+function getRandomQuestions(roleReference, amount = 0) {
+	let docArray = [];
+	db.collection('Questions').where('Related_User_Role', 'array-contains', roleReference).onSnapshot(snapshot => {
+		snapshot.forEach(doc => docArray.push(doc));
+	});
+	return randomSelect(docArr, amount);
+}
