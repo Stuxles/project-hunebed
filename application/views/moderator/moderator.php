@@ -49,13 +49,13 @@
             <div class="col s12 m3">
                 <div class="card medium hoverable">
                     <div class="card-image">
-                        <img src="<?= base_url('assets/img/check.png') ?>">
+                        <img src="<?= base_url('assets/img/QA.jpg') ?>">
                     </div>
                     <div class="card-content">
-                        <span class="card-title black-text">Ingezonden vragen</span>
+                        <span class="card-title black-text">Alle vragen</span>
                     </div>
                     <div class="card-action center">
-                        <a href="<?= base_url('moderator/showQuestions') ?>" class="hb-blue-text">Ingezonden vragen</a>
+                        <a href="<?= base_url('moderator/allQuestions') ?>" class="hb-blue-text">Alle vragen</a>
                     </div>
                 </div>
             </div>

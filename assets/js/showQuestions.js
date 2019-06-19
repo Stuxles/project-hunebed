@@ -5,10 +5,10 @@ function showSubmittedQuestions(){
         snapshot.docs.forEach(doc => {
             var ul = document.getElementById('qListSubmit');
             let ilItem = `
-            
+            <hr>
             <il classname = 'collection-item avatar'> 
                 <span classname = 'title'><b>Vraag ${x}</b> : ${doc.data().Question}</span>
-                <p><button onclick = 'clickGoedKeurKnop()' data-id = ${doc.id} class = 'waves-effect waves-light red btn'>Goedkeuren</button></p>
+                <p><button onclick = 'clickGoedKeurKnop(this)' data-id = ${doc.id} class = 'waves-effect waves-light red btn'>Goedkeuren</button></p>
             </il>
             <hr>
             `;
@@ -28,10 +28,10 @@ function showApprovedQuestions(){
         snapshot.docs.forEach(doc => {
             var ul = document.getElementById('qListApproved');
             let ilItem = `
-            
+            <hr>
             <il classname = 'collection-item avatar'> 
                 <span classname = 'title'><b>Vraag ${x}</b> : ${doc.data().Question}</span>
-                <p><button onclick = 'clickGoedKeurKnop()' data-id = ${doc.id} class = 'waves-effect waves-light red btn'>Goedkeuren</button></p>
+                <p><button onclick = 'clickGoedKeurKnop(this)' data-id = ${doc.id} class = 'waves-effect waves-light red btn'>Goedkeuren</button></p>
             </il>
             <hr>
             `;
@@ -44,8 +44,8 @@ function showApprovedQuestions(){
 }
 
 //onlclick event that stores htmlsession storage value and redirects to removeApproveQuestionPage
-function clickGoedKeurKnop(){
-    var id = $( "button" ).attr( "data-id" );
+function clickGoedKeurKnop(btn){
+    var id = btn.getAttribute("data-id");
     window.sessionStorage.setItem('data-id', id);
     location.href = pathArray[3].replace("moderator", "").concat("removeApproveQuestion");
 }
