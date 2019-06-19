@@ -121,3 +121,26 @@ function updateUser() {
 		}
 	});
 }
+
+function sendPasswordResetMail() {
+	auth.onAuthStateChanged(function(user) {
+		if (user) {
+			console.log('currentUser', user.email)
+			auth.sendPasswordResetEmail(user.email).then(function() {
+				// Email sent.
+				console.log('Email send!');
+			}).catch(function(error) {
+				// An error happened.
+				throw error;
+			});
+		} else {
+			throw "No user is signed in!";
+		}
+	});
+}
+
+if (CURRENT_PAGE === '/user/password') {
+	document.querySelector('#reset-password-btn').addEventListener('click', () => sendPasswordResetMail());
+}
+
+  
