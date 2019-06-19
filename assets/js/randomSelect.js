@@ -28,12 +28,12 @@ function randomSelectOne(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
 
-//Give this function whatever it needs to compare the docs.
+//Give this function at least a Firebase documentReference to a Role.
 //Selects all matching questions by default
-function getRandomQuestions(docRef, amount = 0) {
-	let docArr = [];
-	db.collection('Questions').where('Related_User_Role', 'array-contains', docRef).onSnapshot(snapshot => {
-		snapshot.forEach(doc => docArr.push(doc));
+function getRandomQuestions(roleReference, amount = 0) {
+	let docArray = [];
+	db.collection('Questions').where('Related_User_Role', 'array-contains', roleReference).onSnapshot(snapshot => {
+		snapshot.forEach(doc => docArray.push(doc));
 	});
 	return randomSelect(docArr, amount);
 }
