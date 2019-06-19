@@ -69,9 +69,9 @@
                                 g niet toe tevoegen.</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect hb-red-bg btn" onclick="addQuestion(true)">Annuleren</a>
+                            <a href="#!" class="modal-close waves-effect hb-red btn" onclick="addQuestion(true)">Annuleren</a>
                             <a href="#modal2" class="modal-close waves-effect hb-blue btn btn modal-trigger" onclick="addQuestion()">Nog een vraag toevoegen</a>
-                            <a href="#modal3" class="modal-close waves-effect hb-red-bg btn modal-trigger" id="toevoegen"  onclick="addQuestion()">Toevoegen</a>
+                            <a href="#modal3" class="modal-close waves-effect hb-red btn modal-trigger" id="toevoegen"  onclick="addQuestion()">Toevoegen</a>
                         </div>
                     </div>
 
@@ -82,7 +82,7 @@
                             <p>Klik op doorgaan om een nieuwe vraag toe te voegen</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect hb-red-bg btn">Doorgaan</a>
+                            <a href="#!" class="modal-close waves-effect hb-red btn">Doorgaan</a>
                         </div>
                     </div>
 
