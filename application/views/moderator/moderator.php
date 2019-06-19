@@ -39,10 +39,10 @@
                         <img src="<?= base_url('assets/img/statistics.png') ?>">
                     </div>
                     <div class="card-content">
-                        <span class="card-title black-text">Statistieken</span>
+                        <span class="card-title black-text">Gebruikers</span>
                     </div>
                     <div class="card-action center">
-                        <a href="<?= base_url('moderator/showUsers') ?>" class="hb-blue-text">Bekijk Statistieken</a>
+                        <a href="<?= base_url('moderator/showUsers') ?>" class="hb-blue-text">Bekijk Gebruikers</a>
                     </div>
                 </div>
             </div>
@@ -58,48 +58,6 @@
                         <a href="<?= base_url('moderator/allQuestions') ?>" class="hb-blue-text">Alle vragen</a>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="section no-pad-bot">
-            <div class="container">
-                <h4>Accountoverzicht</h4>
-                <table class="highlight responsive-table">
-                    <thead>
-                        <tr>
-                            <th>Voornaam</th>
-                            <th>Achternaam</th>
-                            <th>E-mailadres</th>
-                            <th>Functie</th>
-                            <th>Aanpassen</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="usertable">
-                        <tr>
-                            <td>Harrie</td>
-                            <td>Wolters</td>
-                            <td>hwolters@hunebedcentrum.nl</td>
-                            <td>Algemeen Directeur</td>
-                            <td><a href="<?= base_url('moderator/editUser') ?>" class="waves-effect waves-light hb-red-bg btn-floating"><i class="material-icons left">edit</i></a></td>
-                        </tr>
-                        <tr>
-                            <td>Gijs</td>
-                            <td>Klompmaker</td>
-                            <td>gklompmaker@hunebedcentrum.nl</td>
-                            <td>Marketing</td>
-                            <td><a href="<?= base_url('moderator/editUser') ?>" class="waves-effect waves-light hb-red-bg btn-floating"><i class="material-icons left">edit</i></a></td>
-                        </tr>
-                        <tr>
-                            <td>Jopie</td>
-                            <td>Jakkerman</td>
-                            <td>Jjakkerman@hunebedcentrum.nl</td>
-                            <td>Winkel</td>
-                            <td><a href="<?= base_url('moderator/editUser') ?>" class="waves-effect waves-light hb-red-bg btn-floating"><i class="material-icons left">edit</i></a></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="divider"></div>
             </div>
         </div>
     </div>
