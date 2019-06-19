@@ -3,10 +3,11 @@
 }
 
 body {
-  /*background: #cccccc url("../img/bg1.jpg");*/
-  /*background-repeat: no-repeat;*/
-  /*background-attachment: fixed;*/
-  /*background-size: cover;*/
+  background: #cccccc url("../img/bg2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
   background-color: grey;
 }
 
@@ -260,4 +261,8 @@ nav ul .tab:hover a {
   width: 45px;
   float: right;
   padding-left: 5px;
+}
+
+.question-card .row {
+  margin-bottom: 0;
 }
