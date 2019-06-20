@@ -17,7 +17,7 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            Made with <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            Made by <a href="<?=base_url('about')?>">NHL Stenden Students</a>
         </div>
     </div>
 </footer>
