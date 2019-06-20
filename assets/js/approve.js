@@ -1,15 +1,17 @@
-//!!!! FUNCTIES MOETEN AANGEZET WORDEN WANNEER GEBRUIK
-var dataID  = window.sessionStorage.getItem('data-id');
-var qRef = dataID ? db.collection('Questions').doc(dataID) : null;
-var sqRef = dataID ? db.collection('Submitted_Questions').doc(dataID) : null;
 
+
+var dataID  = window.sessionStorage.getItem('data-id');
+var qRef = db.collection('Questions').doc(dataID);
+var sqRef = db.collection('Submitted_Questions').doc(dataID);
+console.log(dataID);
 function question(){
     qRef.get().then((doc) => {
         //checks if docs exits
         if (doc.exists) {
             //creates the variables that refer to the id's of the divs
             var text = document.getElementById('vraag1');
-            for(x=2; x <= 7;x++){
+
+            for(x=2; x <= 8;x++){
             window["text" + x] = document.getElementById('vraag'.concat(x));
             }
 
@@ -21,34 +23,45 @@ function question(){
                 clearSessionStorage();
             });
 
+            
             document.getElementById("weergoedkeuren").addEventListener('click', (e) => {
-
-                qRef.update({
+                
+                qRef.set({
                     //Related_User_Role: funcName,
-                    Question: text.value,
-                    Question_wrong: [text3.value,text4.value,text5.value],
+                    Dislikes: 0,
+                    Likes: 0,
+                    Answer: text.value,
+                    Options: [text3.value,text4.value,text5.value,text8.value],
                     Source: text6.value,
                     Question_answer: text2.value,
                     Picture:text7.value,
+                    Approved: true,
                 });
                 clearSessionStorage();
             });
 
             document.getElementById("goedkeuren").addEventListener('click', (e) => {
 
-                qRef.update({
+                
+                qRef.set({
                     //Related_User_Role: funcName,
-                    Question: text.value,
-                    Question_wrong: [text3.value,text4.value,text5.value],
+                    Dislikes: 0,
+                    Likes: 0,
+                    Answer: text.value,
+                    Options: [text3.value,text4.value,text5.value,text8.value],
                     Source: text6.value,
                     Question_answer: text2.value,
                     Picture:text7.value,
+                    Approved: true,
+
                 });
                 clearSessionStorage();
             });
 
         } else {
-                console.log("No such document!");
+
+                console.log("No such document in Questions collection!");
+
         }
 
     }).catch((error) => {
@@ -59,12 +72,14 @@ function question(){
 //needs doesnt create new document in Questions
 function sqQuestion(){
     sqRef.get().then((doc) => {
-        console.log(doc);
+
         //checks if docs exits
         if (doc.exists) {
             //creates the variables that refer to the id's of the divs
             var text = document.getElementById('vraag1');
-            for(x=2; x <= 7;x++){
+
+            for(x=2; x <= 8;x++){
+
             window["text" + x] = document.getElementById('vraag'.concat(x));
             }
 
@@ -78,32 +93,44 @@ function sqQuestion(){
 
             document.getElementById("weergoedkeuren").addEventListener('click', (e) => {
 
+                
                 qRef.set({
                     //Related_User_Role: funcName,
-                    Question: text.value,
-                    Question_wrong: [text3.value,text4.value,text5.value],
+                    Dislikes: 0,
+                    Likes: 0,
+                    Answer: text.value,
+                    Options: [text3.value,text4.value,text5.value,text8.value],
                     Source: text6.value,
                     Question_answer: text2.value,
                     Picture:text7.value,
+                    Approved: true,
+
                 });
                 clearSessionStorage();
             });
 
             document.getElementById("goedkeuren").addEventListener('click', (e) => {
 
+                
                 qRef.set({
                     //Related_User_Role: funcName,
-                    Question: text.value,
-                    Question_wrong: [text3.value,text4.value,text5.value],
+                    Dislikes: 0,
+                    Likes: 0,
+                    Answer: text.value,
+                    Options: [text3.value,text4.value,text5.value,text8.value],
                     Source: text6.value,
                     Question_answer: text2.value,
                     Picture:text7.value,
+                    Approved: true,
+
                 });
                 clearSessionStorage();
             });
 
         } else {
-                console.log("No such document!");
+
+                console.log("No such document in Submitted_Questions collection!");
+
         }
 
     }).catch((error) => {
@@ -117,7 +144,17 @@ function clearSessionStorage(){
     window.sessionStorage.clear();
 }
 
+
+function deleteQuestion(doc, ref){
+    ref.doc(doc).delete().then(() => {
+        console.log("Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
+}
+
 //function to fill inputs fields from Submitted_Questions collection
-//sqQuestion();
+sqQuestion();
 //function to fill inputs fields from Question collection
-//question();
+question();
+
