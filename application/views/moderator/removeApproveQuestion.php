@@ -41,14 +41,14 @@
                         <div class="input-field col s12">
                             <i class="material-icons prefix red-text">filter_2</i>
                             <textarea id="vraag4" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
-                            <label for="vraag8">vul hier een fout antwoord in</label>
+                            <label for="vraag4">vul hier een fout antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix red-text">filter_3</i>
-                            <textarea id="vraag4" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
-                            <label for="vraag4">vul hier een fout antwoord in</label>
+                            <textarea id="vraag8" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
+                            <label for="vraag8">vul hier een fout antwoord in</label>
                         </div>
                     </div>
                     <div class="row">

@@ -11,7 +11,7 @@ function question(){
         if (doc.exists) {
             //creates the variables that refer to the id's of the divs
             var text = document.getElementById('vraag1');
-            for(x=2; x <= 7;x++){
+            for(x=2; x <= 8;x++){
             window["text" + x] = document.getElementById('vraag'.concat(x));
             }
 
@@ -25,10 +25,12 @@ function question(){
             
             document.getElementById("weergoedkeuren").addEventListener('click', (e) => {
                 
-                qRef.update({
+                qRef.set({
                     //Related_User_Role: funcName,
-                    Question: text.value,
-                    Question_wrong: [text3.value,text4.value,text5.value],
+                    Dislikes: 0,
+                    Likes: 0,
+                    Answer: text.value,
+                    Options: [text3.value,text4.value,text5.value,text8.value],
                     Source: text6.value,
                     Question_answer: text2.value,
                     Picture:text7.value,
@@ -39,10 +41,12 @@ function question(){
 
             document.getElementById("goedkeuren").addEventListener('click', (e) => {
                 
-                qRef.update({
+                qRef.set({
                     //Related_User_Role: funcName,
-                    Question: text.value,
-                    Question_wrong: [text3.value,text4.value,text5.value],
+                    Dislikes: 0,
+                    Likes: 0,
+                    Answer: text.value,
+                    Options: [text3.value,text4.value,text5.value,text8.value],
                     Source: text6.value,
                     Question_answer: text2.value,
                     Picture:text7.value,
@@ -63,12 +67,11 @@ function question(){
 //needs doesnt create new document in Questions
 function sqQuestion(){
     sqRef.get().then((doc) => {
-        console.log(doc);
         //checks if docs exits
         if (doc.exists) {
             //creates the variables that refer to the id's of the divs
             var text = document.getElementById('vraag1');
-            for(x=2; x <= 7;x++){
+            for(x=2; x <= 8;x++){
             window["text" + x] = document.getElementById('vraag'.concat(x));
             }
 
@@ -84,8 +87,10 @@ function sqQuestion(){
                 
                 qRef.set({
                     //Related_User_Role: funcName,
-                    Question: text.value,
-                    Question_wrong: [text3.value,text4.value,text5.value],
+                    Dislikes: 0,
+                    Likes: 0,
+                    Answer: text.value,
+                    Options: [text3.value,text4.value,text5.value,text8.value],
                     Source: text6.value,
                     Question_answer: text2.value,
                     Picture:text7.value,
@@ -98,8 +103,10 @@ function sqQuestion(){
                 
                 qRef.set({
                     //Related_User_Role: funcName,
-                    Question: text.value,
-                    Question_wrong: [text3.value,text4.value,text5.value],
+                    Dislikes: 0,
+                    Likes: 0,
+                    Answer: text.value,
+                    Options: [text3.value,text4.value,text5.value,text8.value],
                     Source: text6.value,
                     Question_answer: text2.value,
                     Picture:text7.value,
