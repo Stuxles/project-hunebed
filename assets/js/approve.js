@@ -3,7 +3,6 @@ var dataID  = window.sessionStorage.getItem('data-id');
 var qRef = db.collection('Questions').doc(dataID);
 var sqRef = db.collection('Submitted_Questions').doc(dataID);
 console.log(dataID);
-console.log("HENK GING WINKELEN");
 
 function question(){
     qRef.get().then((doc) => {
