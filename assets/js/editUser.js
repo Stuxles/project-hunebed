@@ -122,25 +122,74 @@ function updateUser() {
 	});
 }
 
-function sendPasswordResetMail() {
+function resetPassword() {
+	if (CURRENT_PAGE !== '/user/password')
+		throw 'Not the right page';
+		
+	const newPassword = document.querySelector('#password').value;
+	const repeatPassword = document.querySelector('#repeat_password').value;
+	const oldPassword = document.querySelector('#old_password').value;
+
+	if (newPassword !== repeatPassword)
+		throw 'Not same password';
+
+		document.querySelector("#reset-content").innerHTML = `
+		<h4>Wachtwoord weizigen</h4>
+		<br><br><br>
+		<div class="preloader-wrapper big active">
+			<div class="spinner-layer spinner-green-only">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div>
+				<div class="gap-patch">
+					<div class="circle"></div>
+				</div>
+				<div class="circle-clipper right">
+					<div class="circle"></div>
+				</div>
+			</div>
+		</div>
+		`
+
 	auth.onAuthStateChanged(function(user) {
 		if (user) {
+			const email = user.email;
+			const credential = firebase.auth.EmailAuthProvider.credential(email, oldPassword);
 			console.log('currentUser', user.email)
-			auth.sendPasswordResetEmail(user.email).then(function() {
-				// Email sent.
-				console.log('Email send!');
+			console.log('Pass', oldPassword)
+			console.log(credential)
+
+			user.reauthenticateWithCredential(credential).then(function() {
+				// User re-authenticated.
+				user.updatePassword(newPassword).then(function() {
+					// Update successful.
+					console.log('succes');
+				
+					$('#succes-modal').modal({
+						dismissible: true, // Modal can be dismissed by clicking outside of the modal
+						onCloseEnd: function() { // Callback for Modal close
+							console.log('modal closed')
+							window.location.href = BASE_URL + 'user/userpage';
+						}
+					});
+				
+					$('#succes-modal').modal('open');
+				}).catch(function(error) {
+					// An error happened.
+					throw error.message
+				});
 			}).catch(function(error) {
 				// An error happened.
-				throw error;
+				throw error.message;
 			});
 		} else {
-			throw "No user is signed in!";
+			throw "user not logged in"
 		}
 	});
 }
 
 if (CURRENT_PAGE === '/user/password') {
-	document.querySelector('#reset-password-btn').addEventListener('click', () => sendPasswordResetMail());
+	document.querySelector('#send-password-reset').addEventListener('click', () => resetPassword())
 }
 
   
