@@ -24,10 +24,10 @@
                 </div>
             </div>
             <div class="row center">
-                <button class="btn waves-effect hb-red-bg waves-light" name="action">Terug
+                <button class="btn waves-effect hb-red waves-light" name="action">Terug
                     <i class="material-icons left">arrow_back</i>
                 </button>
-                <button class="btn waves-effect hb-red-bg waves-light" id="send-password-reset" name="action">Opslaan
+                <button class="btn waves-effect hb-red waves-light" id="send-password-reset" name="action">Opslaan
                     <i class="material-icons right">send</i>
                 </button>
             </div>
