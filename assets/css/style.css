@@ -3,10 +3,11 @@
 }
 
 body {
-  /*background: #cccccc url("../img/bg1.jpg");*/
-  /*background-repeat: no-repeat;*/
-  /*background-attachment: fixed;*/
-  /*background-size: cover;*/
+  background: #cccccc url("../img/bg2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
   background-color: grey;
 }
 
@@ -247,4 +248,21 @@ nav ul .tab:hover a {
 .like-number, .dislike-number {
   display: block;
   margin-block-start: 0.5em;
+}
+
+.like-badge {
+  font-size: 1.2rem !important; 
+  text-align: left !important;
+  margin: 0 !important;
+  /* color: white !important; */
+}
+
+.like-badge::after {
+  width: 45px;
+  float: right;
+  padding-left: 5px;
+}
+
+.question-card .row {
+  margin-bottom: 0;
 }

@@ -46,9 +46,12 @@ const showUserData = (user => {
 			// User data
 			const userInfo = doc.data();
 			// Get the user roles
-			userInfo.Roles.forEach(userRole => {
-				userRoles.push(userRole.id);
-			});
+			if (typeof userInfo.Roles !== 'undefined') {
+				userInfo.Roles.forEach(userRole => {
+					userRoles.push(userRole.id);
+				});
+			}
+			
 			// Write user data
 			html += `
 				<div class="row">
