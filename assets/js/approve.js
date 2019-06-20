@@ -56,7 +56,7 @@ function question(){
             });
 
         } else {
-                console.log("No such document!");
+                console.log("No such document in Questions collection!");
         }
 
     }).catch((error) => {
@@ -116,7 +116,7 @@ function sqQuestion(){
             });
 
         } else {
-                console.log("No such document!");
+                console.log("No such document in Submitted_Questions collection!");
         }
 
     }).catch((error) => {
