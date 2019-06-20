@@ -20,10 +20,12 @@
 
 //select wich quiz the user wants to make
 document.querySelector('.quiz1').addEventListener('click', () => {
-  const getRandomQuestion = functions.httpsCallable('getRandomQuestion');
-  getRandomQuestion().then(result => {
-    console.log(result.data);
-  })
+	//There should be only one result, but better safe than sorry
+	let resCount = 0;
+	db.collection('Roles').where('Naam', '==', 'Algemeen').onSnapshot(snap => {
+		snap.forEach(doc => window.sessionStorage.setItem("document-" + resCount.toString(), doc.ref));
+	});
+	window.location.href += "/quizQuestion";
 });
 
 // //Initialize Firebase
