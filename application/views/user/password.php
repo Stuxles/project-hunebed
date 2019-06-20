@@ -2,7 +2,7 @@
 <div class="container content">
     <div class="section">
         <div class="container center" id="reset-content">      
-            <h4>Wachtwoord weizigen</h4>
+            <h4>Wachtwoord wijzigen</h4>
             <div class="row">
                 <div class="input-field col s6 offset-s3">
                     <i class="fas fa-key prefix"></i>
