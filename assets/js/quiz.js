@@ -23,10 +23,20 @@ document.querySelector('.quiz1').addEventListener('click', () => {
 	//There should be only one result, but better safe than sorry
 	let resCount = 0;
 	db.collection('Roles').where('Naam', '==', 'Algemeen').onSnapshot(snap => {
-		snap.forEach(doc => window.sessionStorage.setItem("document-" + resCount.toString(), doc.ref));
+		snap.forEach(doc =>{
+			//Now push the array of document references into the sessionStorage
+			window.sessionStorage.setItem("Questions-" + resCount.toString(), getRandomQuestions(doc));
+			window.sessionStorage.setItem("questionNumber", 0);
+			resCount++;
+		});
 	});
+	//Redirect to the quizQuestionpage
 	window.location.href += "/quizQuestion";
 });
+
+function loadQuestion(question) {
+
+}
 
 // //Initialize Firebase
 // admin.initializeApp(functions.config().firebase);

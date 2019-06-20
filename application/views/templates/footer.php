@@ -55,5 +55,6 @@
 <script src="<?=base_url('assets/js/auth.js')?>"></script>
 <script src="<?=base_url('assets/js/init.js')?>"></script>
 <script src="<?= base_url('assets/js/scripts.js') ?>"></script>
+<script type="text/javascript" src="<?= base_url('assets/js/randomSelect.js')?>"></script>
 </body>
 </html>

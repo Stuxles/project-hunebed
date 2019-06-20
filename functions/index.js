@@ -77,7 +77,7 @@ exports.likeQuestion = functions.https.onCall((question, context) => {
     }).catch(err => {
         // Return error message wheb fail
         return err;
-    })  
+    })
 })
 
 exports.addAdminRole = functions.https.onCall((data, context) => {
@@ -103,7 +103,7 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
 //Number of Questions. We could have evaluated the count of questions, but thats for a future
 //enhancement
 const countQuestions = 10
-    
+
 //HTML Template for question
 let question_template = ({
   id,
@@ -245,7 +245,6 @@ let wrong_answer_template = ({
   correct_answer
 }) => {
   return `
-  <div class="container content">
   <div class="section">
       <div class="container">
           <div class="row">
@@ -277,7 +276,7 @@ let wrong_answer_template = ({
                           </div>
                       </div>
                   </div>
-              </div>          
+              </div>
           </form>
           <ul id="quizQuestion"></ul>
           <div class="row center">
@@ -289,41 +288,8 @@ let wrong_answer_template = ({
           </div>
       </div>
       </form>
-  </div>
-</div>`;
-}
-
-//Function to get a random question from the Firestore questions collection
-exports.getRandomQuestion = functions.https.onCall((res, context) => {
-    let toReturn;
-
-  //Get a random id
-//   const id = Math.floor(Math.random() * (countQuestions) + 1)
-//   var questionRef = db.collection('Questions').doc(id.toString());
-var questionRef = db.collection('Questions').doc("2NYqtctslPaBKcCL71eP")
-
-return questionRef.get().then(function(doc) {
-    if (doc.exists) {
-        console.log("Document data:", doc.data());
-        return toReturn = (question_template({
-                              id: doc.id,
-                              Question: doc.get('Question'),
-                              Option1: doc.get('Option1'),
-                              Option2: doc.get('Option2'),
-                              Option3: doc.get('Option3'),
-                              Option4: doc.get('Option4')
-                          }));
-    } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-        return;
-    }
-}).then(()=>{
-    return {msg: "succes", out: toReturn}
-}).catch(error => {
-    console.log("Error getting document:", error);
-    return error;
-});
+  </div>`;
+};
 
 //   var getDoc = questionRef.get()
 //       .then(doc => {
@@ -394,4 +360,3 @@ function getAnswer(doc, answer) {
   }
   return answer_text;
 }
-
