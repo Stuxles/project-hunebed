@@ -17,7 +17,7 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            Made with <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            Made by <a href="<?=base_url('about')?>">NHL Stenden Students</a>
         </div>
     </div>
 </footer>
@@ -32,7 +32,7 @@
 <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-functions.js"></script>
 
 <!-- Include firebase config file -->
-<script src="<?=base_url('assets/js/firebase.js')?>"></script>
+<script src="<?= base_url('assets/js/firebase.js')?>"></script>
 
 <!-- Firebase variables -->
 <script>

@@ -46,9 +46,12 @@ const showUserData = (user => {
 			// User data
 			const userInfo = doc.data();
 			// Get the user roles
-			userInfo.Roles.forEach(userRole => {
-				userRoles.push(userRole.id);
-			});
+			if (typeof userInfo.Roles !== 'undefined') {
+				userInfo.Roles.forEach(userRole => {
+					userRoles.push(userRole.id);
+				});
+			}
+			
 			// Write user data
 			html += `
 				<div class="row">
@@ -118,3 +121,77 @@ function updateUser() {
 		}
 	});
 }
+
+/*
+Reset the password of the currently logged in user
+*/
+function resetPassword() {
+	// Check if on the correct page
+	if (CURRENT_PAGE !== '/user/password')
+		throw 'Not the right page';
+		
+	const newPassword = document.querySelector('#password').value;
+	const repeatPassword = document.querySelector('#repeat_password').value;
+	const oldPassword = document.querySelector('#old_password').value;
+
+	// Reset icon colors
+	document.querySelector('.fa-unlock-alt').style.color = "black";
+	document.querySelector('.fa-redo-alt').style.color = "black";
+	document.querySelector('.fa-key').style.color = "black";
+
+
+	// Check if the new passwords match
+	if (newPassword !== repeatPassword) {
+		document.querySelector('.error-message').innerHTML = `<span class='red-text'>De wachtwoorden komen niet overeen</span>`
+		document.querySelector('.fa-unlock-alt').style.color = "red";
+		document.querySelector('.fa-redo-alt').style.color = "red";
+		return;
+	}
+
+	// Get the current user information
+	auth.onAuthStateChanged(function(user) {
+		if (user) {
+			const email = user.email;
+			const credential = firebase.auth.EmailAuthProvider.credential(email, oldPassword);
+
+			// re authenticate the user with the created credential
+			user.reauthenticateWithCredential(credential).then(function() {
+				// User re-authenticated.
+				user.updatePassword(newPassword).then(function() {
+					// Update successful.
+					// Show the success modal
+					$('#succes-modal').modal({
+						dismissible: true, // Modal can be dismissed by clicking outside of the modal
+						onCloseEnd: function() { // Callback for Modal close
+							window.location.href = BASE_URL + 'user/userpage';
+						}
+					});
+					$('#succes-modal').modal('open');
+				}).catch(function(error) {
+					// Cant log the use rin for a reason. most likely wrong password was given
+					document.querySelector('.error-message').innerHTML = `<span class='red-text'>${error.message}</span>`;
+					// If the wrong password was given
+					if (error.message == 'The password must be 6 characters long or more.') {
+						document.querySelector('.fa-unlock-alt').style.color = "red";
+						document.querySelector('.fa-redo-alt').style.color = "red";
+						console.log('jo')
+					}
+					return;
+				});
+			}).catch(function() {
+				// An error happened.
+				document.querySelector('.error-message').innerHTML = `<span class='red-text'>Is het correcte wachtwoord ingevuld?</span>`;
+				document.querySelector('.fa-key').style.color = "red";
+				return;
+			});
+		} else {
+			throw "user not logged in"
+		}
+	});
+}
+
+if (CURRENT_PAGE === '/user/password') {
+	document.querySelector('#send-password-reset').addEventListener('click', () => resetPassword())
+}
+
+  

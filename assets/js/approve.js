@@ -1,15 +1,16 @@
 
+
 var dataID  = window.sessionStorage.getItem('data-id');
 var qRef = db.collection('Questions').doc(dataID);
 var sqRef = db.collection('Submitted_Questions').doc(dataID);
 console.log(dataID);
-
 function question(){
     qRef.get().then((doc) => {
         //checks if docs exits
         if (doc.exists) {
             //creates the variables that refer to the id's of the divs
             var text = document.getElementById('vraag1');
+
             for(x=2; x <= 8;x++){
             window["text" + x] = document.getElementById('vraag'.concat(x));
             }
@@ -21,6 +22,7 @@ function question(){
             document.getElementById("terug").addEventListener('click', (e) => {
                 clearSessionStorage();
             });
+
             
             document.getElementById("weergoedkeuren").addEventListener('click', (e) => {
                 
@@ -39,6 +41,7 @@ function question(){
             });
 
             document.getElementById("goedkeuren").addEventListener('click', (e) => {
+
                 
                 qRef.set({
                     //Related_User_Role: funcName,
@@ -50,12 +53,15 @@ function question(){
                     Question_answer: text2.value,
                     Picture:text7.value,
                     Approved: true,
+
                 });
                 clearSessionStorage();
             });
 
         } else {
+
                 console.log("No such document in Questions collection!");
+
         }
 
     }).catch((error) => {
@@ -66,11 +72,14 @@ function question(){
 //needs doesnt create new document in Questions
 function sqQuestion(){
     sqRef.get().then((doc) => {
+
         //checks if docs exits
         if (doc.exists) {
             //creates the variables that refer to the id's of the divs
             var text = document.getElementById('vraag1');
+
             for(x=2; x <= 8;x++){
+
             window["text" + x] = document.getElementById('vraag'.concat(x));
             }
 
@@ -83,6 +92,7 @@ function sqQuestion(){
             });
 
             document.getElementById("weergoedkeuren").addEventListener('click', (e) => {
+
                 
                 qRef.set({
                     //Related_User_Role: funcName,
@@ -94,11 +104,13 @@ function sqQuestion(){
                     Question_answer: text2.value,
                     Picture:text7.value,
                     Approved: true,
+
                 });
                 clearSessionStorage();
             });
 
             document.getElementById("goedkeuren").addEventListener('click', (e) => {
+
                 
                 qRef.set({
                     //Related_User_Role: funcName,
@@ -110,12 +122,15 @@ function sqQuestion(){
                     Question_answer: text2.value,
                     Picture:text7.value,
                     Approved: true,
+
                 });
                 clearSessionStorage();
             });
 
         } else {
+
                 console.log("No such document in Submitted_Questions collection!");
+
         }
 
     }).catch((error) => {
@@ -129,6 +144,7 @@ function clearSessionStorage(){
     window.sessionStorage.clear();
 }
 
+
 function deleteQuestion(doc, ref){
     ref.doc(doc).delete().then(() => {
         console.log("Document successfully deleted!");
@@ -141,3 +157,4 @@ function deleteQuestion(doc, ref){
 sqQuestion();
 //function to fill inputs fields from Question collection
 question();
+

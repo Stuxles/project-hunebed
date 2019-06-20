@@ -17,4 +17,8 @@ $(document).ready(function() {
 $(document).ready(function(){
   $('select').formSelect();
 });
-     
+
+// For the sidenav
+$(document).ready(function(){
+  $('.sidenav').sidenav();
+});
