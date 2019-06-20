@@ -122,7 +122,11 @@ function updateUser() {
 	});
 }
 
+/*
+Reset the password of the currently logged in user
+*/
 function resetPassword() {
+	// Check if on the correct page
 	if (CURRENT_PAGE !== '/user/password')
 		throw 'Not the right page';
 		
@@ -130,26 +134,19 @@ function resetPassword() {
 	const repeatPassword = document.querySelector('#repeat_password').value;
 	const oldPassword = document.querySelector('#old_password').value;
 
-	if (newPassword !== repeatPassword)
-		throw 'Not same password';
+	// Reset icon colors
+	document.querySelector('.fa-unlock-alt').style.color = "black";
+	document.querySelector('.fa-redo-alt').style.color = "black";
+	document.querySelector('.fa-key').style.color = "black";
 
-		document.querySelector("#reset-content").innerHTML = `
-		<h4>Wachtwoord weizigen</h4>
-		<br><br><br>
-		<div class="preloader-wrapper big active">
-			<div class="spinner-layer spinner-green-only">
-				<div class="circle-clipper left">
-					<div class="circle"></div>
-				</div>
-				<div class="gap-patch">
-					<div class="circle"></div>
-				</div>
-				<div class="circle-clipper right">
-					<div class="circle"></div>
-				</div>
-			</div>
-		</div>
-		`
+
+	// Check if the new passwords match
+	if (newPassword !== repeatPassword) {
+		document.querySelector('.error-message').innerHTML = `<span class='red-text'>De wachtwoorden komen niet overeen</span>`
+		document.querySelector('.fa-unlock-alt').style.color = "red";
+		document.querySelector('.fa-redo-alt').style.color = "red";
+		return;
+	}
 
 	auth.onAuthStateChanged(function(user) {
 		if (user) {
@@ -163,7 +160,6 @@ function resetPassword() {
 				// User re-authenticated.
 				user.updatePassword(newPassword).then(function() {
 					// Update successful.
-					console.log('succes');
 				
 					$('#succes-modal').modal({
 						dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -176,11 +172,19 @@ function resetPassword() {
 					$('#succes-modal').modal('open');
 				}).catch(function(error) {
 					// An error happened.
-					throw error.message
+					document.querySelector('.error-message').innerHTML = `<span class='red-text'>${error.message}</span>`;
+					if (error.message == 'The password must be 6 characters long or more.') {
+						document.querySelector('.fa-unlock-alt').style.color = "red";
+						document.querySelector('.fa-redo-alt').style.color = "red";
+						console.log('jo')
+					}
+					return;
 				});
 			}).catch(function(error) {
 				// An error happened.
-				throw error.message;
+				document.querySelector('.error-message').innerHTML = `<span class='red-text'>Is het correcte wachtwoord ingevuld?</span>`;
+				document.querySelector('.fa-key').style.color = "red";
+				return;
 			});
 		} else {
 			throw "user not logged in"

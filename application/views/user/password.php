@@ -19,6 +19,9 @@
                     <input id="repeat_password" type="password" class="validate">
                     <label for="repeat_password">Herhaal Nieuw Wachtwoord</label>  
                 </div>
+                <div class="error-message col s12">
+                    
+                </div>
             </div>
             <div class="row center">
                 <button class="btn waves-effect hb-red-bg waves-light" name="action">Terug
