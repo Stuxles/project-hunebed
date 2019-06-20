@@ -17,7 +17,7 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            Made with <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            Made by <a href="<?=base_url('about')?>">NHL Stenden Students</a>
         </div>
     </div>
 </footer>
@@ -49,7 +49,7 @@
 <script src="<?=base_url('assets/js/showQuestions.js')?>"></script>
 <script src="<?=base_url('assets/js/editUser.js')?>"></script>
 <script src="<?=base_url('assets/js/moderator.js')?>"></script>
-<script src="<?=base_url('assets/js/approveDelete.js')?>"></script>
+<script src="<?=base_url('assets/js/approve.js')?>"></script>
 <script src="<?= base_url('assets/js/questions.js') ?>"></script>
 <script src="<?=base_url('assets/js/index.js')?>"></script>
 <script src="<?=base_url('assets/js/auth.js')?>"></script>
