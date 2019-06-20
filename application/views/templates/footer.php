@@ -32,7 +32,7 @@
 <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-functions.js"></script>
 
 <!-- Include firebase config file -->
-<script src="<?=base_url('assets/js/firebase.js')?>"></script>
+<script src="<?= base_url('assets/js/firebase.js')?>"></script>
 
 <!-- Firebase variables -->
 <script>

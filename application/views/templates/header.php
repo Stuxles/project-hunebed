@@ -2,7 +2,7 @@
 <script type="text/javascript" src="<?= base_url('assets/js/materialize.min.js') ?>"></script>
 <script>
     const BASE_URL = "<?php echo base_url().index_page();?>";
-	const CURRENT_PAGE = "<?php echo basename($_SERVER['PHP_SELF']) ?>";
+    const CURRENT_PAGE = '/<?= current_url() ?>'.replace('<?= base_url() ?>', '');
 </script>
 <body>
     <div class="nav">
