@@ -1,1 +1,11 @@
-<h1>This is the about Page</h1>
+<div class="container content">
+    <div class="section no-pad-bot">
+
+        <div class="container">
+            <h4>Made by NHL Stenden students</h4>
+            <img src="assets/img/madeByStudents.png">
+            <p>My By Kevin Tabak, Dennis Boer, Sander Paping, Soner Mulder, Justin Westerling en Martin Veldwijk.</p>
+        </div>
+
+    </div>
+</div>
