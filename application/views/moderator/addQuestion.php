@@ -98,8 +98,8 @@
                         </div>
                     </div>
                     <div class="row center">
-                        <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect orange waves-light" id = "terug"><i class="material-icons left" >arrow_back</i>Terug</a>
-                        <button data-target="modal1" class="btn modal-trigger waves-effect orange waves-light">Toevoegen
+                        <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect hb-red waves-light" id = "terug"><i class="material-icons left" >arrow_back</i>Terug</a>
+                        <button data-target="modal1" class="btn modal-trigger waves-effect hb-red waves-light">Toevoegen
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -115,9 +115,9 @@
                         </div>
                         <div class="modal-footer">
 
-                            <a href="#!" class="modal-close waves-effect red waves-red btn">Annuleren</a>
-                            <a href="#modal2" class="modal-close waves-effect orange waves-orange btn btn modal-trigger" onclick="addModQuestion()">Nog een vraag toevoegen</a>
-                            <a href="#modal3" class="modal-close waves-effect green waves-green btn modal-trigger"  onclick="addModQuestion()">Toevoegen</a>
+                            <a href="#!" class="modal-close waves-effect hb-red btn">Annuleren</a>
+                            <a href="#modal2" class="modal-close waves-effect hb-blue btn modal-trigger" onclick="addModQuestion()">Nog een vraag toevoegen</a>
+                            <a href="#modal3" class="modal-close waves-effect hb-red btn modal-trigger"  onclick="addModQuestion()">Toevoegen</a>
 
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                             <p>Klik op doorgaan om een nieuwe vraag toe te voegen</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect hb-red-bg btn">Doorgaan</a>
+                            <a href="#!" class="modal-close waves-effect hb-red btn">Doorgaan</a>
                         </div>
                     </div>
 
@@ -140,7 +140,7 @@
                             <p>Klik op terug om terug te gaan naar het hoofdscherm</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="<?= base_url('moderator/moderator') ?>" class="modal-close waves-effect hb-red-bg btn">Terug</a>
+                            <a href="<?= base_url('moderator/moderator') ?>" class="modal-close waves-effect hb-red btn">Terug</a>
                         </div>
                     </div>
 
