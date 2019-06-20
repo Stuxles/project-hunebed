@@ -148,31 +148,29 @@ function resetPassword() {
 		return;
 	}
 
+	// Get the current user information
 	auth.onAuthStateChanged(function(user) {
 		if (user) {
 			const email = user.email;
 			const credential = firebase.auth.EmailAuthProvider.credential(email, oldPassword);
-			console.log('currentUser', user.email)
-			console.log('Pass', oldPassword)
-			console.log(credential)
 
+			// re authenticate the user with the created credential
 			user.reauthenticateWithCredential(credential).then(function() {
 				// User re-authenticated.
 				user.updatePassword(newPassword).then(function() {
 					// Update successful.
-				
+					// Show the success modal
 					$('#succes-modal').modal({
 						dismissible: true, // Modal can be dismissed by clicking outside of the modal
 						onCloseEnd: function() { // Callback for Modal close
-							console.log('modal closed')
 							window.location.href = BASE_URL + 'user/userpage';
 						}
 					});
-				
 					$('#succes-modal').modal('open');
 				}).catch(function(error) {
-					// An error happened.
+					// Cant log the use rin for a reason. most likely wrong password was given
 					document.querySelector('.error-message').innerHTML = `<span class='red-text'>${error.message}</span>`;
+					// If the wrong password was given
 					if (error.message == 'The password must be 6 characters long or more.') {
 						document.querySelector('.fa-unlock-alt').style.color = "red";
 						document.querySelector('.fa-redo-alt').style.color = "red";
@@ -180,7 +178,7 @@ function resetPassword() {
 					}
 					return;
 				});
-			}).catch(function(error) {
+			}).catch(function() {
 				// An error happened.
 				document.querySelector('.error-message').innerHTML = `<span class='red-text'>Is het correcte wachtwoord ingevuld?</span>`;
 				document.querySelector('.fa-key').style.color = "red";
