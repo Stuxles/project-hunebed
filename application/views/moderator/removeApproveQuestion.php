@@ -27,26 +27,33 @@
                         <div class="input-field col s12">
                             <i class="material-icons prefix green-text">check</i>
                             <textarea id="vraag2" class="materialize-textarea" data-length="120"></textarea>
-                            <label for="vraag2">Vul hier een goed antwoord in</label>
+                            <label for="vraag2">Vul hier het antwoord nummer in </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix red-text">cancel</i>
+                            <i class="material-icons prefix red-text">filter_1</i>
                             <textarea id="vraag3" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
                             <label for="vraag3">vul hier een fout antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix red-text">cancel</i>
+                            <i class="material-icons prefix red-text">filter_2</i>
+                            <textarea id="vraag4" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
+                            <label for="vraag8">vul hier een fout antwoord in</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix red-text">filter_3</i>
                             <textarea id="vraag4" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
                             <label for="vraag4">vul hier een fout antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix red-text">cancel</i>
+                            <i class="material-icons prefix red-text">filter_4</i>
                             <textarea id="vraag5" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
                             <label for="vraag5">vul hier een fout antwoord in</label>
                         </div>
@@ -126,7 +133,7 @@
                             <p>Klik op "Doorgaan" om een andere vraag te goedkeuren</p>
                         </div>
                         <div class="modal-footer">
-                        <a href="<?= base_url('moderator/showQuestions') ?>" class="modal-close waves-effect hb-red-bg btn">Doorgaan</a>
+                        <a href="<?= base_url('moderator/allQuestions') ?>" class="modal-close waves-effect hb-red-bg btn">Doorgaan</a>
                         </div>
                     </div>
 
@@ -137,7 +144,7 @@
                             <p>Klik op terug om terug te gaan naar het hoofdscherm</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="<?= base_url('moderator/moderator') ?>" class="modal-close waves-effect hb-red-bg btn">Terug</a>
+                            <a href="<?= base_url('moderator/allQuestions') ?>" class="modal-close waves-effect hb-red-bg btn">Terug</a>
                         </div>
                     </div>
 
