@@ -31,8 +31,8 @@
                                 </div>
                             </div>
                             <div class="card-action">
-                                <a href="edit">Aanpassen</a>
-                                <a href="password">Wachtwoord wijzigen</a>
+                                <a href="edit" class="hb-blue-text">Aanpassen</a>
+                                <a href="password" class="hb-blue-text">Wachtwoord wijzigen</a>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                             </div>
 
                             <div class="card-action">
-                                <a href="#">Aanpassen</a>
+                                <a href="#" class="hb-blue-text">Aanpassen</a>
                             </div>
 
 
