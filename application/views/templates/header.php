@@ -20,7 +20,7 @@
                  <ul id="slide-out" class="sidenav">
                      <li><a href="<?=base_url()?>"><i class="material-icons">home</i>Home</a></li>
                      <li class="tab logged-in" style="display:none"><a href="<?=base_url('questions')?>"><i class="material-icons">cloud</i>Vragen</a></li>
-                     <li class="tab logged-in" style="display:none"><a href="<?=base_url('user/userpage')?>"><i class="material-icons">people</i>Mijn account</a></li>
+                     <li class="tab logged-in" style="display:none"><a href="<?=base_url('user')?>"><i class="material-icons">people</i>Mijn account</a></li>
 
                      <li><div class="divider admin" style="display:none"></div></li>
                      <li><a class="subheader admin" style="display:none">Admin</a></li>
