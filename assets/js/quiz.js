@@ -25,19 +25,35 @@ document.querySelector('.quiz1').addEventListener('click', () => {
 	db.collection('Roles').where('Naam', '==', 'Algemeen').onSnapshot(snap => {
 		snap.forEach(doc =>{
 			//Now push the array of document references into the sessionStorage
-			window.sessionStorage.setItem("Questions-" + resCount.toString(), getRandomQuestions(doc));
-			window.sessionStorage.setItem("questionNumber", 0);
+			window.sessionStorage.setItem("Questions-" + resCount.toString(), getRandomQuestions(doc.ref));
 			resCount++;
 		});
+		window.sessionStorage.setItem("questionNumber", 0);
+		window.sessionStorage.setItem("arrayCount", resCount);
 	});
-	//Redirect to the quizQuestionpage
-	window.location.href += "/quizQuestion";
+	//REPLACE WITH DYNAMIC URL
+	window.location.replace("http://127.0.0.1/Projects/project-hunebed/quiz/quizQuestion");
 });
-
-function loadQuestion(question) {
-
+var categories = {};
+function loadQuestionPage() {
+	let count = window.sessionStorage.getItem("arrayCount");
+	//Shouldn't fill further than cat1, but make sure that we can handle multiples.
+	for(let i = 0; i < count; i++) {
+		categories["cat" + (i+1).toString()] = window.sessionStorage.getItem("Questions-" + window.sessionStorage.getItem("arrayCount").toString());
+	}
+	nextQuestion(categories.cat1[0].data());
 }
 
+function nextQuestion(q) {
+	//build and print the question
+	functions.httpsCallable('buildQuestion')(q).then(result => {
+		document.getElementsByClassName("container")[0].innerHTML = result;
+	});
+	//Increment the current question to call the next
+	window.sessionStorage.setItem("questionNumber", window.sessionStorage.getItem("questionNumber")+1);
+}
+
+jQuery(document).ready(loadQuestionPage());
 // //Initialize Firebase
 // admin.initializeApp(functions.config().firebase);
 
@@ -371,3 +387,4 @@ function loadQuestion(question) {
 //   }
 //   return answer_text;
 // }
+

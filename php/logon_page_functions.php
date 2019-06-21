@@ -7,12 +7,12 @@
     */
     function hashPass($pass, $username) {
         //Got the pseudo-random string from https://www.random.org/strings/?num=2&len=11&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new
-        $salt = str_pad(str_rot13($username), 22, "DCtNSdPbK9Ad9JNigUuKkK");
+        $salt = str_pad(str_rot13($pass), 22, "DCtNSdPbK9Ad9JNigUuKkK");
         //Make sure it's no more than 22 characters long.
         $salt = substr($salt, 0, 22);
         return password_hash(str_pad($pass, 72, $salt), PASSWORD_BCRYPT, ["salt" => $salt]);
     }
-    
+
     /*
      *Get the browser's rendering engine and version.
      *Purposefully ignores extremely outdated browsers due to support issues.
@@ -50,7 +50,7 @@
         }
         return $uaEngine . " version " . $uaVersion;
     }
-    
+
     /*
      *Get the type of device someone is using.
      *This is taken from the standard buildup of the User-Agent.
@@ -94,7 +94,7 @@
             return $device;
         }
     }
-    
+
     /*
      *Gets the User-Agent in a safe manner.
      *If there's no UA, it returns the value "No User-Agent given"

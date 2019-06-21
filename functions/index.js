@@ -99,10 +99,16 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
   });
 });
 
-
-//Number of Questions. We could have evaluated the count of questions, but thats for a future
-//enhancement
-const countQuestions = 10
+exports.buildQuestion = functions.https.onCall((req, res) => {
+	return res.status(200).send(question_template({
+		id: req.id,
+		Question: req.Question,
+		Option1: req.Options[0],
+		Option2: req.Options[1],
+		Option3: req.Options[2],
+		Option4: req.Options[3]
+	}));
+});
 
 //HTML Template for question
 let question_template = ({
@@ -311,7 +317,6 @@ let wrong_answer_template = ({
 //           console.log('Error getting document', err);
 //           res.status(400).send('Error');
 //       });
-})
 
 //Function to check the answer submitted
 exports.checkanswer = functions.https.onCall((req, res) => {
