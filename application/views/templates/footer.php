@@ -49,9 +49,13 @@
 <script src="<?=base_url('assets/js/showQuestions.js')?>"></script>
 <script src="<?=base_url('assets/js/editUser.js')?>"></script>
 <script src="<?=base_url('assets/js/moderator.js')?>"></script>
-<script src="<?=base_url('assets/js/approveDelete.js')?>"></script>
+<script src="<?=base_url('assets/js/approve.js')?>"></script>
 <script src="<?= base_url('assets/js/questions.js') ?>"></script>
 <script src="<?=base_url('assets/js/index.js')?>"></script>
 <script src="<?=base_url('assets/js/auth.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/updateQuestion.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/quiz.js')?>"></script>
+<script src="<?= base_url('assets/js/scripts.js') ?>"></script>
+<script type="text/javascript" src="<?= base_url('assets/js/randomSelect.js')?>"></script>
 </body>
 </html>

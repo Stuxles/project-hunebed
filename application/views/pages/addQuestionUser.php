@@ -8,8 +8,8 @@
                     <div class="row">
                         <div class="input-field col s6 offset-s3">
                             <i class="material-icons prefix">question_answer</i>
-                            <textarea id="questionText" class="materialize-textarea" data-length="120"></textarea>
-                            <label for="textarea1">Voeg een vraag toe</label>
+                            <input id="questionText" type="text" data-length="120">
+                            <label for="questionText">Voeg een vraag toe</label>
                         </div>
                         <div class="input-field col s6 offset-s3">
                             <i class="fas fa-key prefix"></i>

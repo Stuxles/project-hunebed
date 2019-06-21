@@ -245,6 +245,21 @@ nav ul .tab:hover a {
   }
 }
 
+.answer-selected{
+  background-color: #EE2B4F !important;
+}
+.answer{
+  cursor: pointer;
+  background-color: #3E9ABE !important;
+}
+
+.answer-right{
+  background-color: green !important;
+}
+.answer-wrong{
+  background-color: red !important;
+}
+
 .like-number, .dislike-number {
   display: block;
   margin-block-start: 0.5em;
