@@ -100,7 +100,7 @@
 
     function addUserFunction(funcFirstName, funcLastName, funcEmail, funcPassword, funcForm) {
         var addUser = firebase.functions().httpsCallable('createUser');
-        addUser({email: funcEmail, password: funcPassword, firstName: funcFirstName, lastName: funcLastName}).then(function(result) {
+        addUser({Email: funcEmail, password: funcPassword, FirstName: funcFirstName, lastName: funcLastName}).then(function(result) {
         // Read result of the Cloud Function.
         var sanitizedMessage = result.data.response;
         if(funcForm != ''){
