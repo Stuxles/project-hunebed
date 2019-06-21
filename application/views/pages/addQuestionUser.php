@@ -11,12 +11,6 @@
                             <input id="questionText" type="text" data-length="120">
                             <label for="questionText">Voeg een vraag toe</label>
                         </div>
-                        <div class="input-field col s6 offset-s3">
-                            <i class="fas fa-key prefix"></i>
-                            <input id="old_password" type="password" class="validate">
-                            <label for="old_password">Oud Wachtwoord</label>
-                        </div>
-
                     </div>
                     <div class="row">
                         <div class="file-field input-field col s6 offset-s3">
