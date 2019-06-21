@@ -92,7 +92,7 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
     })
   }).then(() => {
     return {
-      message: `Success! ${data.email} has been made an admin.`
+      message: `Success! ${data.email} is nu een admin!`
     }
   }).catch(err => {
     return err;
@@ -100,10 +100,27 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
 });
 
 
-//Number of Questions. We could have evaluated the count of questions, but thats for a future
-//enhancement
-const countQuestions = 10
-
+exports.createUser = functions.https.onCall((data, context) => {
+    const userData = data;
+    return admin.auth().createUser({
+        email: data.email,
+        password: data.password
+    })
+        .then(user => {
+            return db.collection("Users").doc(user.uid).set({
+                firstname: userData.firstName,
+                lastname: userData.lastName,
+                email: userData.email
+            });
+    }).then(user => {
+        return {
+            response: user
+        }
+    })
+        .catch(error => {
+        throw new functions.https.HttpsError(error)
+    });
+});
 //HTML Template for question
 let question_template = ({
   id,
@@ -290,28 +307,6 @@ let wrong_answer_template = ({
       </form>
   </div>`;
 };
-
-//   var getDoc = questionRef.get()
-//       .then(doc => {
-//           if (!doc.exists) {
-//               throw new Error("Deze vraag bestaat niet");
-//           } else {
-//               console.log('Document data:', doc.data());
-//               res.status(200).send(question_template({
-//                   id: doc.id,
-//                   Question: doc.get('Question'),
-//                   Option1: doc.get('Option1'),
-//                   Option2: doc.get('Option2'),
-//                   Option3: doc.get('Option3'),
-//                   Option4: doc.get('Option4')
-//               }));
-//           }
-//       })
-//       .catch(err => {
-//           console.log('Error getting document', err);
-//           res.status(400).send('Error');
-//       });
-})
 
 //Function to check the answer submitted
 exports.checkanswer = functions.https.onCall((req, res) => {

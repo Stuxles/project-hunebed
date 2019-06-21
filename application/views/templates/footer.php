@@ -17,7 +17,7 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            Made with <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            Made by <a href="<?=base_url('about')?>">NHL Stenden Students</a>
         </div>
     </div>
 </footer>
@@ -32,7 +32,7 @@
 <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-functions.js"></script>
 
 <!-- Include firebase config file -->
-<script src="<?=base_url('assets/js/firebase.js')?>"></script>
+<script src="<?= base_url('assets/js/firebase.js')?>"></script>
 
 <!-- Firebase variables -->
 <script>
@@ -41,19 +41,20 @@
     const functions = firebase.functions();
 </script>
 
-<script type="text/javascript" src="<?= base_url('assets/js/init.js') ?>"></script>
 <!-- Load in custom javascript -->
 <script src="<?= base_url('assets/js/firestore.js') ?>"></script>
 
 <script src="<?= base_url('assets/js/scripts.js') ?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/js/showQuestions.js')?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/js/updateQuestion.js')?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/js/editUser.js')?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/js/quiz.js')?>"></script>
+<script src="<?= base_url('assets/js/init.js') ?>"></script>
+<script src="<?=base_url('assets/js/showQuestions.js')?>"></script>
+<script src="<?=base_url('assets/js/editUser.js')?>"></script>
+<script src="<?=base_url('assets/js/moderator.js')?>"></script>
+<script src="<?=base_url('assets/js/approve.js')?>"></script>
 <script src="<?= base_url('assets/js/questions.js') ?>"></script>
 <script src="<?=base_url('assets/js/index.js')?>"></script>
 <script src="<?=base_url('assets/js/auth.js')?>"></script>
-<script src="<?=base_url('assets/js/init.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/updateQuestion.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/quiz.js')?>"></script>
 <script src="<?= base_url('assets/js/scripts.js') ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/randomSelect.js')?>"></script>
 </body>

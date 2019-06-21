@@ -1,48 +1,58 @@
-//create the IL tags and appends to the existing UL tag
-function create_il(){
 
-    var x = 0;
-    // required to find the base url
-    var pathArray = window.location.pathname.split( '/' );
-    //gets questions from the firestore database
+function showSubmittedQuestions(){
+    var x = 1;
+    db.collection('Submitted_Questions').get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            var ul = document.getElementById('qListSubmit');
+            let ilItem = `
+            <hr>
+            <il classname = 'collection-item avatar'>
+                <span classname = 'title'><b>Vraag ${x}</b> : ${doc.data().Question}</span>
+                <p><button onclick = 'clickGoedKeurKnop(this)' data-id = ${doc.id} class = 'waves-effect waves-light red btn'>Goedkeuren</button></p>
+            </il>
+            <hr>
+            `;
+
+            //append <UL> to <UL> tag
+            ul.insertAdjacentHTML('afterbegin',ilItem);
+            x++;
+        });
+    });
+}
+
+
+//create the IL tags and appends to the existing UL tag
+function showApprovedQuestions(){
+    var x = 1;
     db.collection('Questions').get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
-            //creates LI elements which partiallu displays the question contents
-            var ul = document.getElementById('qList');
-            var li = document.createElement('LI');
-            li.className = "collection-item avatar";
-            var span = document.createElement('SPAN');
-            span.classname = "title";
-            span.textContent = doc.data().Question;
-            var b = document.createElement('B');
-            b.appendChild(span);
-            var persoonP = document.createElement('P');
-            var questionP = document.createElement('P');
-            questionP.textContent = doc.data().Question_answer;
-            var a = document.createElement('A');
-            //create base url
-            a.href = pathArray[3].replace("moderator", "").concat("updateQuestion");
-            a.setAttribute('data-id', doc.id); 
-            var butt = document.createElement('BUTTON');
-            butt.className = "waves-effect waves-light btn";
-            //creates eventlistener on the created button which creates a sessionstorage with the Document ID from the firestore
-            butt.addEventListener('click', (e) => {
-                var id = e.target.parentElement.getAttribute('data-id');
-                window.sessionStorage.setItem('data-id', id);
-                
-            })
-            //append button to <A> tag
-            a.appendChild(butt);
-            
-            //appends the rest of the elements to the UL Tag
-            li.appendChild(b);
-            li.appendChild(persoonP);
-            li.appendChild(questionP); 
-            li.appendChild(a);
-            ul.appendChild(li);
-        
-        })
-    })
+            var ul = document.getElementById('qListApproved');
+            let ilItem = `
+            <hr>
+            <il classname = 'collection-item avatar'>
+                <span classname = 'title'><b>Vraag ${x}</b> : ${doc.data().Question}</span>
+                <p><button onclick = 'clickGoedKeurKnop(this)' data-id = ${doc.id} class = 'waves-effect waves-light red btn'>Goedkeuren</button></p>
+            </il>
+            <hr>
+            `;
+
+            //append <IL> to <UL> tag
+            ul.insertAdjacentHTML('afterbegin',ilItem);
+            x++;
+        });
+    });
 }
-//call function create_il()
-create_il();
+
+//onlclick event that stores htmlsession storage value and redirects to removeApproveQuestionPage
+function clickGoedKeurKnop(btn){
+    var id = btn.getAttribute("data-id");
+    window.sessionStorage.setItem('data-id', id);
+    location.href = pathArray[3].replace("moderator", "").concat("removeApproveQuestion");
+}
+
+if(CURRENT_PAGE.indexOf("dQuestions") > 0) {
+//call function showSubmittedQuestions()
+showSubmittedQuestions();
+//call function showApprovedQuestions()
+showApprovedQuestions();
+}

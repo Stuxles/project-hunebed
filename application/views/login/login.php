@@ -44,7 +44,9 @@
                 </div>
                 <div class="card logged-in" id="logged-container" style="display:none">
                     <div class="card-action hb-blue white-text center-align">
-                        <h3>Gebruiker al ingelogd</h3>
+                        <h3>Je bent al ingelogd.</h3>
+                        <li class="logged-in" style="display:none;" ><a class="waves-effect waves-light btn hb-red" href="<?=base_url('log-out')?>"></i>Klik hier om als een andere gebruiker in te loggen</a></li>
+
                     </div>
                 </div>
             </div>
@@ -64,9 +66,10 @@
         auth.signInWithEmailAndPassword(email, password).then(cred => {
             loginForm.reset();
             loginForm.querySelector('.error').innerHTML = '';
-            document.location.href="/hunebed";
+            var BASE_URL = "<?php echo base_url().index_page();?>";
+            document.location.href=BASE_URL;
         }).catch(err => {
-            loginForm.querySelector('.error').innerHTML = "Combinatie van emaill en/of wachtwoord wordt niet herkend!";
+            loginForm.querySelector('.error').innerHTML = "Combinatie van email en/of wachtwoord wordt niet herkend!";
         });
     });
 
