@@ -6782,12 +6782,12 @@ textarea.materialize-textarea {
 [type="radio"]:checked + span:after,
 [type="radio"].with-gap:checked + span:before,
 [type="radio"].with-gap:checked + span:after {
-  border: 2px solid #26a69a;
+  border: 2px solid #EE2B4F;
 }
 
 [type="radio"]:checked + span:after,
 [type="radio"].with-gap:checked + span:after {
-  background-color: #26a69a;
+  background-color: #EE2B4F;
 }
 
 [type="radio"]:checked + span:after {
@@ -7002,8 +7002,8 @@ textarea.materialize-textarea {
   top: 0;
   width: 20px;
   height: 20px;
-  border: 2px solid #26a69a;
-  background-color: #26a69a;
+  border: 2px solid #EE2B4F;
+  background-color: #EE2B4F;
   z-index: 0;
 }
 
@@ -7015,8 +7015,8 @@ textarea.materialize-textarea {
 
 [type="checkbox"].filled-in.tabbed:checked:focus + span:not(.lever):after {
   border-radius: 2px;
-  background-color: #26a69a;
-  border-color: #26a69a;
+  background-color: #EE2B4F;
+  border-color: #EE2B4F;
 }
 
 [type="checkbox"].filled-in:disabled:not(:checked) + span:not(.lever):before {
