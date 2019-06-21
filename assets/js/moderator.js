@@ -59,7 +59,7 @@ function renderUser(doc) {
 }
 
 // getting data if we're on a moderator page
-if(CURRENT_PAGE == 'showUsers') {
+if(CURRENT_PAGE == '/moderator/showUsers') {
 userRef.get().then(snapshot => {
 	    snapshot.docs.forEach(doc => {
 	        renderUser(doc);
