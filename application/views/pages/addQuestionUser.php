@@ -6,11 +6,17 @@
                 <form class="col s12">
                     <h4 class="header center hb-blue-text">Vraag toevoegen</h4>
                     <div class="row">
-                        <div class="input-field col s12">
+                        <div class="input-field col s6 offset-s3">
                             <i class="material-icons prefix">question_answer</i>
                             <textarea id="questionText" class="materialize-textarea" data-length="120"></textarea>
                             <label for="textarea1">Voeg een vraag toe</label>
                         </div>
+                        <div class="input-field col s6 offset-s3">
+                            <i class="fas fa-key prefix"></i>
+                            <input id="old_password" type="password" class="validate">
+                            <label for="old_password">Oud Wachtwoord</label>
+                        </div>
+
                     </div>
                     <div class="row">
                         <div class="file-field input-field col s6 offset-s3">
