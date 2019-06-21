@@ -1,7 +1,4 @@
 <div class="container content">
-
-
-
     <div class="section no-pad-bot">
         <div class="container">
             <h4>Accountoverzicht</h4>
