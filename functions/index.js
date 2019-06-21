@@ -108,9 +108,9 @@ exports.createUser = functions.https.onCall((data, context) => {
     })
         .then(user => {
             return db.collection("Users").doc(user.uid).set({
-                firstname: userData.firstName,
-                lastname: userData.lastName,
-                email: userData.email
+                FirstName: userData.firstName,
+                LastName: userData.lastName,
+                Email: userData.email
             });
     }).then(user => {
         return {
