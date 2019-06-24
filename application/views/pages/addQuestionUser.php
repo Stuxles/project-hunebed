@@ -12,7 +12,7 @@
                             <label for="questionText">Voeg een vraag toe</label>
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="file-field input-field col s6 offset-s3">
                             <div class="btn hb-red-bg">
                                 <span>File</span>
@@ -22,7 +22,7 @@
                                 <input class="file-path validate" type="text" placeholder="Upload een foto of video">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="input-field col s12">
                             <p>Kies de functie waar de vraag bij hoort</p>
