@@ -202,14 +202,14 @@ const showQuestions = (tab => {
     // If first or last tab dont go further
     // Enable and disable the prev and next buttons depending on current page
     if(tab == 1){
-    document.querySelector('.prev-tab').className = "prev-tab disabled waves-effect";
-    document.querySelector('.next-tab').className = "next-tab waves-effect";
+        document.querySelector('.prev-tab').className = "prev-tab disabled waves-effect";
+        document.querySelector('.next-tab').className = "next-tab waves-effect";
     } else if(tab == maxTab){
-    document.querySelector('.next-tab').className = "next-tab disabled waves-effect";
-    document.querySelector('.prev-tab').className = "prev-tab waves-effect";
+        document.querySelector('.next-tab').className = "next-tab disabled waves-effect";
+        document.querySelector('.prev-tab').className = "prev-tab waves-effect";
     } else {
-    document.querySelector('.prev-tab').className = "prev-tab waves-effect";
-    document.querySelector('.next-tab').className = "next-tab waves-effect";
+        document.querySelector('.prev-tab').className = "prev-tab waves-effect";
+        document.querySelector('.next-tab').className = "next-tab waves-effect";
     }
     // Stop showing current tab
     const tabcontent = document.querySelectorAll('.tabcontent');
@@ -283,22 +283,12 @@ const showQuestionDetails = (doc => {
 
     if(typeof data.Likes !== 'undefined')
         document.querySelector('.like-number').innerHTML = data.Likes;
+        document.querySelector('.like-number').value = data.Likes;
     if(typeof data.Dislikes !== 'undefined')
         document.querySelector('.dislike-number').innerHTML = data.Dislikes;
+        document.querySelector('.dislike-number').value = data.Dislikes;
 
-    document.querySelector('.like-button').addEventListener('click', () => {
-        const likeQuestion = functions.httpsCallable('likeQuestion');
-        likeQuestion({ id: doc.id, rate: 'like' }).then(result => {
-            console.log(result.data);
-        })
-    });
-
-    document.querySelector('.dislike-button').addEventListener('click', () => {
-        const likeQuestion = functions.httpsCallable('likeQuestion');
-        likeQuestion({ id: doc.id, rate: 'dislike' }).then(result => {
-            console.log(result.data);
-        })
-    });
+    
     
 
     // Reload materialize script
@@ -353,6 +343,50 @@ if(aurl[aurl.length-1] == "show") {
         showQuestionError();
     }else {
         const docRef = db.collection('Questions').doc(docID);
-        docRef.get().then(doc => showQuestionDetails(doc));
+        docRef.onSnapshot(doc => showQuestionDetails(doc));
+
+        document.querySelector('.like-button').addEventListener('click', () => {
+            const likeSpan = document.querySelector('.like-number');
+            likeSpan.innerHTML = `
+            <div class="preloader-wrapper small active" style="height:20px;width:20px;">
+            <div class="spinner-layer spinner-green-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>`
+            const likeQuestion = functions.httpsCallable('likeQuestion');
+            likeQuestion({ id: docID, rate: 'like' }).then(result => {
+                console.log(result.data);
+                if (result.data.msg === 'already liked')
+                    likeSpan.innerHTML = likeSpan.value;
+            })
+        });
+    
+        document.querySelector('.dislike-button').addEventListener('click', () => {
+            dislikeSpan = document.querySelector('.dislike-number');
+            dislikeSpan.innerHTML = `
+            <div class="preloader-wrapper small active" style="height:20px;width:20px;">
+            <div class="spinner-layer spinner-red-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>`
+            const likeQuestion = functions.httpsCallable('likeQuestion');
+            likeQuestion({ id: docID, rate: 'dislike' }).then(result => {
+                console.log(result.data);
+                if (result.data.msg === 'already disliked')
+                    dislikeSpan.innerHTML = dislikeSpan.value;
+            })
+        });
     }
 }
