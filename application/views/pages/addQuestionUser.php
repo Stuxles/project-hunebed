@@ -8,8 +8,8 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">question_answer</i>
-                            <textarea id="questionText" class="materialize-textarea" data-length="120"></textarea>
-                            <label for="textarea1">Voeg een vraag toe</label>
+                            <input id="questionText" type="text" data-length="120">
+                            <label for="questionText">Voeg een vraag toe</label>
                         </div>
                     </div>
                     <div class="row">
@@ -53,8 +53,8 @@
                         </div>
                     </div>
                     <div class="row center">
-                        <a href="<?= base_url('home') ?>" class="btn waves-effect hb-red-bg waves-light"><i class="material-icons left" id="terug">arrow_back</i>Terug</a>
-                        <button data-target="modal1" class="btn modal-trigger waves-effect hb-red-bg waves-light">Toevoegen
+                        <a href="<?= base_url('home') ?>" class="btn waves-effect hb-red waves-light"><i class="material-icons left" id="terug">arrow_back</i>Terug</a>
+                        <button data-target="modal1" class="btn modal-trigger waves-effect hb-red waves-light">Toevoegen
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -69,9 +69,9 @@
                                 g niet toe tevoegen.</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect hb-red-bg btn" onclick="addQuestion(true)">Annuleren</a>
+                            <a href="#!" class="modal-close waves-effect hb-red btn" onclick="addQuestion(true)">Annuleren</a>
                             <a href="#modal2" class="modal-close waves-effect hb-blue btn btn modal-trigger" onclick="addQuestion()">Nog een vraag toevoegen</a>
-                            <a href="#modal3" class="modal-close waves-effect hb-red-bg btn modal-trigger" id="toevoegen"  onclick="addQuestion()">Toevoegen</a>
+                            <a href="#modal3" class="modal-close waves-effect hb-red btn modal-trigger" id="toevoegen"  onclick="addQuestion()">Toevoegen</a>
                         </div>
                     </div>
 
@@ -82,7 +82,7 @@
                             <p>Klik op doorgaan om een nieuwe vraag toe te voegen</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect hb-red-bg btn">Doorgaan</a>
+                            <a href="#!" class="modal-close waves-effect hb-red btn">Doorgaan</a>
                         </div>
                     </div>
 

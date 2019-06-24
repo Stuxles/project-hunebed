@@ -6,6 +6,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Reader\Csv;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
+$sheetData = [];
 $file_mimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 
 if(isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mimes)) {
@@ -48,6 +49,6 @@ if(isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mim
             }
 
         }
-    });
+    );
 
 </script>
