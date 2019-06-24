@@ -26,30 +26,9 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <p>Kies de functie waar de vraag bij hoort</p>
-                            <p>
-                                <label>
-                                    <input class="catCheckbox" type="checkbox" value="Winkel" />
-                                    <span>Winkel</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input class="catCheckbox" type="checkbox" value="Horeca" />
-                                    <span>Horeca</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input class="catCheckbox" type="checkbox" value="Museum" />
-                                    <span>Museum</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input class="catCheckbox" type="checkbox" value="Algemeen" />
-                                    <span>Algemeen</span>
-                                </label>
-                            </p>
+                            <div class="roles-list">
+                                
+                            </div>
                         </div>
                     </div>
                     <div class="row center">

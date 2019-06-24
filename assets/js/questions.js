@@ -16,6 +16,26 @@ const loadRolesInSelector = (() => {
 })
 
 /*
+Shows the roles in add questions in a list
+*/
+const showRolesChecklist = (() => {
+    const rolesList = document.querySelector('.roles-list');
+    db.collection('Roles').get().then(roles => {
+        roles.forEach(role => {
+            console.log(role)
+            rolesList.innerHTML += `
+            <p>
+                <label>
+                    <input class="catCheckbox" type="checkbox" value="${role.id}" />
+                    <span>${role.data().Naam}</span>
+                </label>
+            </p>
+            `
+        })
+    })
+})
+
+/*
 Add data from the form in the database
 @param resetForm fill in anything when form needs to be resetted.
 */
@@ -28,7 +48,7 @@ const addQuestion = (resetForm => {
     const checkboxes = document.querySelectorAll(".catCheckbox");
     checkboxes.forEach(checkbox => {
         if(checkbox.checked){
-            categories.push(checkbox.value)
+            categories.push(db.doc('/Roles/' + checkbox.value))
         }
     })
 
@@ -309,13 +329,16 @@ const showQuestionError = (() => {
 let currentTab = 1;
 let maxTab = 1;
 
-if(aurl[aurl.length-1] == "questions") {
+if(CURRENT_PAGE == "/questions") {
     loadRolesInSelector();
 
+    // NOT REALTIME
     // Load questions form database
     // db.collection('Questions').get().then(snapshot => {
     //     loadQuestions(snapshot);
     // })
+
+    // REALTIME
     db.collection('Questions').onSnapshot(snapshot => {
         loadQuestions(snapshot);
     })
@@ -337,7 +360,7 @@ if(aurl[aurl.length-1] == "questions") {
 
 // Show the details of a question if the url ends with show
 // And get the data from post
-if(aurl[aurl.length-1] == "show") {
+if(CURRENT_PAGE == "/questions/show") {
     const docID = document.querySelector('#questionContainter').getAttribute('value');
     if(docID == ""){
         showQuestionError();
@@ -389,4 +412,8 @@ if(aurl[aurl.length-1] == "show") {
             })
         });
     }
+}
+
+if (CURRENT_PAGE === '/addQuestionUser') {
+	showRolesChecklist();
 }
