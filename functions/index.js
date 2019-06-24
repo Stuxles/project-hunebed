@@ -35,13 +35,13 @@ exports.likeQuestion = functions.https.onCall((question, context) => {
                 if (setLike) {
                     return db.collection('Questions').doc(question.id).update({
                         Likes: admin.firestore.FieldValue.increment(1)
-                    })
+                    });
                 } else if (!setLike) {
                     return db.collection('Questions').doc(question.id).update({
                         Dislikes: admin.firestore.FieldValue.increment(1)
-                    })
+                    });
                 }
-            })
+            });
         } else if (snapshot.docs.length == 1) {
             // If the the user already liked or disliked the quesiton update the choice if necessary
             return snapshot.docs[0].ref.get().then(doc => {
@@ -54,14 +54,14 @@ exports.likeQuestion = functions.https.onCall((question, context) => {
                             return db.collection('Questions').doc(question.id).update({
                                 Likes: admin.firestore.FieldValue.increment(1),
                                 Dislikes: admin.firestore.FieldValue.increment(-1)
-                            })
+                            });
                         } else if (!setLike) {
                             return db.collection('Questions').doc(question.id).update({
                                 Likes: admin.firestore.FieldValue.increment(-1),
                                 Dislikes: admin.firestore.FieldValue.increment(1)
-                            })
+                            });
                         }
-                    })
+                    });
                 } else {
                     if (setLike) {
                         return message = 'already liked';
@@ -69,7 +69,7 @@ exports.likeQuestion = functions.https.onCall((question, context) => {
                         return message = 'already disliked';
                     }
                 }
-            })
+            });
         }
     }).then(() => {
         // Message to return when successful
@@ -77,23 +77,23 @@ exports.likeQuestion = functions.https.onCall((question, context) => {
     }).catch(err => {
         // Return error message wheb fail
         return err;
-    })
-})
+    });
+});
 
 exports.addAdminRole = functions.https.onCall((data, context) => {
   // check request is made by an admin
   if ( context.auth.token.admin !== true ) {
-    return { error: 'Only admins can add other admins' }
+    return { error: 'Only admins can add other admins' };
   }
   // get user and add admin custom claim
   return admin.auth().getUserByEmail(data.email).then(user => {
     return admin.auth().setCustomUserClaims(user.uid, {
       admin: true
-    })
+    });
   }).then(() => {
     return {
       message: `Success! ${data.email} is nu een admin!`
-    }
+    };
   }).catch(err => {
     return err;
   });
@@ -125,10 +125,10 @@ exports.createUser = functions.https.onCall((data, context) => {
     }).then(user => {
         return {
             response: user
-        }
+        };
     })
         .catch(error => {
-        throw new functions.https.HttpsError(error)
+        throw new functions.https.HttpsError(error);
     });
 });
 
@@ -216,7 +216,7 @@ let question_template = ({
       </form>
   </div>
 </div>`;
-}
+};
 
 let correct_answer_template = () => {
   return `
@@ -266,7 +266,7 @@ let correct_answer_template = () => {
       </form>
   </div>
 </div>`;
-}
+};
 
 //HTML Template for wrong answer
 let wrong_answer_template = ({
@@ -344,7 +344,7 @@ exports.checkanswer = functions.https.onCall((req, res) => {
           console.log('Error getting document', err);
           res.status(400).send('Error');
       });
-})
+});
 
 //Retrieve the answer from the Question DocumentRef based on the option provided
 function getAnswer(doc, answer) {
@@ -364,4 +364,4 @@ function getAnswer(doc, answer) {
           break;
   }
   return answer_text;
-}
+};
