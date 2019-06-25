@@ -19,10 +19,12 @@
 });
 
 //select wich quiz the user wants to make
-jQuery(document).ready(function() { if(document.querySelector('.quiz1')) {document.querySelector('.quiz1').click(function(event) {
+if(document.querySelector('.quiz1')) {
+	document.querySelector('.quiz1').click(function(event) {
+		alert("Made it in");
 //There should be only one result, but better safe than sorry
-	let resCount = 0;
-	db.collection('Roles').where('Naam', '==', 'Algemeen').onSnapshot(snap => {
+		let resCount = 0;
+		db.collection('Roles').where('Naam', '==', 'Horeca').onSnapshot(snap => {
 		snap.forEach(doc =>{
 			//Now push the array of document references into the sessionStorage
 			window.sessionStorage.setItem("Questions-" + resCount.toString(), getRandomQuestions(doc.ref));
@@ -30,11 +32,10 @@ jQuery(document).ready(function() { if(document.querySelector('.quiz1')) {docume
 		});
 		window.sessionStorage.setItem("questionNumber", 0);
 		window.sessionStorage.setItem("arrayCount", resCount);
-		alert(Object.keys(window.sessionStorage));
 	});
 	event.preventDefault();
 });
-}});
+}
 
 var categories = {};
 function loadQuestionPage() {
