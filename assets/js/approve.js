@@ -18,6 +18,10 @@ function question(){
             //sets firestore data into input field values
             text.value = doc.data().Question;
 
+            doc.data().Roles.forEach(userRole => {
+                console.log(userRole.Naam);
+            });
+
             //when back button press clear sessionstorage
             document.getElementById("terug").addEventListener('click', (e) => {
                 clearSessionStorage();
@@ -77,6 +81,9 @@ function sqQuestion(){
         if (doc.exists) {
             //creates the variables that refer to the id's of the divs
             var text = document.getElementById('vraag1');
+            doc.data().Roles.forEach(userRole => {
+                console.log(userRole.Naam);
+            });
 
             for(x=2; x <= 8;x++){
 
@@ -158,3 +165,5 @@ sqQuestion();
 //function to fill inputs fields from Question collection
 question();
 
+
+        
