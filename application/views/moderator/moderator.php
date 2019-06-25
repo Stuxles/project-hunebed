@@ -8,7 +8,7 @@
         </section>
         <div class="container">
         <div class="row">
-            <div class="col s12 m3">
+            <div class="col s12 m4">
                 <a href="<?= base_url('moderator/addUser') ?>" class="hb-blue-text">
                     <div class="card medium hoverable">
                         <div class="card-image">
@@ -23,7 +23,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col s12 m3">
+            <div class="col s12 m4">
                 <a href="<?= base_url('moderator/addQuestion') ?>" onclick="clearSessionStorage()" class="hb-blue-text">
                     <div class="card medium hoverable">
                         <div class="card-image">
@@ -38,7 +38,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col s12 m3">
+            <div class="col s12 m4">
                 <a href="<?= base_url('moderator/showUsers') ?>" class="hb-blue-text">
                     <div class="card medium hoverable">
                         <div class="card-image">
@@ -53,7 +53,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col s12 m3">
+            <div class="col s12 m4">
                 <a href="<?= base_url('moderator/allQuestions') ?>" class="hb-blue-text">
                     <div class="card medium hoverable">
                         <div class="card-image">
@@ -64,6 +64,21 @@
                         </div>
                         <div class="card-action center">
                             Alle vragen
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col s12 m4">
+                <a href="<?= base_url('moderator/addAdmin') ?>" class="hb-blue-text">
+                    <div class="card medium hoverable">
+                        <div class="card-image">
+                            <img src="<?= base_url('assets/img/admin.png') ?>">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title black-text">Administrator toewijzen</span>
+                        </div>
+                        <div class="card-action center">
+                            Administrator toewijzen
                         </div>
                     </div>
                 </a>
