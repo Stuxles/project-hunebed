@@ -17,7 +17,7 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            Made by <a href="<?=base_url('about')?>">NHL Stenden Students</a>
+            Gemaakt door <a href="<?=base_url('about')?>">NHL Stenden studenten</a>
         </div>
     </div>
 </footer>

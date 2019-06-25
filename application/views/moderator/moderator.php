@@ -2,10 +2,11 @@
     <div class="section">
         <div class="row">
             <div class="col s12 center">
-                <h3 class="hb-blue-text">Beheerder</h3>
+                <h3 class="hb-blue-text">Beheer</h3>
             </div>
         </div>
         </section>
+        <div class="container">
         <div class="row">
             <div class="col s12 m3">
                 <a href="<?= base_url('moderator/addUser') ?>" class="hb-blue-text">
@@ -67,6 +68,7 @@
                     </div>
                 </a>
             </div>
+        </div>
         </div>
     </div>
 </div>
