@@ -99,17 +99,6 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
   });
 });
 
-exports.buildQuestion = functions.https.onCall((req, res) => {
-	return res.status(200).send(question_template({
-		id: req.id,
-		Question: req.Question,
-		Option1: req.Options[0],
-		Option2: req.Options[1],
-		Option3: req.Options[2],
-		Option4: req.Options[3]
-	}));
-});
-
 exports.createUser = functions.https.onCall((data, context) => {
     const userData = data;
     return admin.auth().createUser({
@@ -131,92 +120,6 @@ exports.createUser = functions.https.onCall((data, context) => {
         throw new functions.https.HttpsError(error);
     });
 });
-
-//HTML Template for question
-let question_template = ({
-  id,
-  Question,
-  Option1,
-  Option2,
-  Option3,
-  Option4
-}) => {
-  return `
-  <div class="container content">
-  <div class="section">
-      <div class="container">
-          <div class="row">
-              <form name="quizform" action="/checkanswer" method="POST">
-                  <h4 class="center">Quiz Algemeen</h4>
-                  <div class="divider"></div>
-                  <div class="row center">
-                      <ul class="pagination center question-pagination">
-                      </ul>
-                      <div class="questionListContainer">
-                      </div>
-                  </div>
-          </div>
-
-          <div class="col s12">
-              <div class="card">
-                  <div class="card-content center">
-                      <span class="card-title">${Question}</span>
-                      <img class="responsive-img" src="<?= base_url('assets/img/bg1.jpg') ?>">
-                  </div>
-              </div>
-          </div>
-              <div class="row">
-                  <div class="col s12">
-                      <div class="card hoverable answer hb-blue">
-                          <div class="card-content white-text">
-                              <span class="card-title">${Option1}</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col s12">
-                      <div class="card hoverable answer hb-blue" onclick="">
-                          <div class="card-content white-text">
-                              <span class="card-title">${Option2}</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col s12">
-                      <div class="card hoverable answer hb-blue">
-                          <div class="card-content white-text">
-                              <span class="card-title">${Option3}</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col s12">
-                      <div class="card hoverable answer hb-blue">
-                          <div class="card-content white-text">
-                              <span class="card-title">${Option4}</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          <ul id="quizQuestion"></ul>
-          <div class="row center">
-              <p>Voor meer informatie over deze vraag:</p>
-              <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect hb-red-bg waves-light" id="terug"><i class="material-icons left">question_answer</i>klik hier</a>
-          </div>
-          <div class="row center">
-              <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect hb-red-bg waves-light" id="terug"><i class="material-icons left">arrow_back</i>Terug</a>
-              <button data-target="modal1" class="btn modal-trigger waves-effect hb-red-bg waves-light">Controleer antwoord
-                  <i class="material-icons right">check</i>
-              </button>
-          </div>
-      </div>
-      </form>
-  </div>
-</div>`;
-};
 
 let correct_answer_template = () => {
   return `

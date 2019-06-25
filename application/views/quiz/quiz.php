@@ -14,9 +14,9 @@
         </section>
         <div class="row">
             <div class="col s12 m6">
-            <a href="#" class="white-text quiz1">
+            <a href="<?php echo base_url() . "quiz/quizQuestion" ?>" class="white-text quiz1">
                 <div class="card medium hoverable hb-blue">
-                    
+
                     <div class="card-content center hb-blue">
                         <span class="card-title white-text">Algemeen</span>
                     </div>
@@ -32,7 +32,7 @@
             <div class="col s12 m6">
             <a href="<?= base_url('quiz/quizQuestion') ?>" class="white-text">
                 <div class="card medium hoverable hb-blue">
-                    
+
                     <div class="card-content center hb-blue">
                         <span class="card-title white-text">Horeca</span>
                     </div>
@@ -48,7 +48,7 @@
             <div class="col s12 m6">
             <a href="<?= base_url('quiz/quizQuestion') ?>" class="white-text">
                 <div class="card medium hoverable hb-blue">
-                    
+
                     <div class="card-content center hb-blue">
                         <span class="card-title white-text">Museumwinkel</span>
                     </div>
@@ -64,7 +64,7 @@
             <div class="col s12 m6">
             <a href="<?= base_url('quiz/quizQuestion') ?>" class="white-text">
                 <div class="card medium hoverable hb-blue">
-                    
+
                     <div class="card-content center hb-blue">
                         <span class="card-title white-text">Museum</span>
                     </div>
@@ -80,7 +80,7 @@
             <div class="col s12 m6">
             <a href="<?= base_url('quiz/quizQuestion') ?>" class="white-text">
                 <div class="card medium hoverable hb-blue">
-                    
+
                     <div class="card-content center hb-blue">
                         <span class="card-title white-text">Oertijdpark</span>
                     </div>
