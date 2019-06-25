@@ -27,17 +27,7 @@
                             <i class="material-icons right">delete</i>
                         </button>
                     </div>
-
-                    <!-- Modal1 Structure -->
-                    <div id="modal1" class="modal">
-                        <div class="modal-content">
-                            <h4>Weet u zeker dat u deze vraag wilt toevoegen?</h4>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect hb-red-bg btn">Nee</a>
-                            <a href="#modal3" class="modal-close waves-effect hb-red-bg btn modal-trigger" id="toevoegen">JA</a>
-                        </div>
-                    </div>
+                    
                 </form>
             </div>
         </div>
