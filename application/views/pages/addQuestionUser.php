@@ -27,7 +27,7 @@
                         <div class="input-field col s12">
                             <p>Kies de functie waar de vraag bij hoort</p>
                             <div class="roles-list">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                         <div class="modal-footer">
                             <a href="#!" class="modal-close waves-effect hb-red btn" onclick="addQuestion(true)">Annuleren</a>
                             <a href="#modal2" class="modal-close waves-effect hb-blue btn btn modal-trigger" onclick="addQuestion()">Nog een vraag toevoegen</a>
-                            <a href="#modal3" class="modal-close waves-effect hb-red btn modal-trigger" id="toevoegen"  onclick="addQuestion()">Toevoegen</a>
+                            <a href="#modal3" id="redirect" class="modal-close waves-effect green btn modal-trigger" id="toevoegen" onclick="addQuestion()">Toevoegen</a>
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@
                             <p>Klik op doorgaan om een nieuwe vraag toe te voegen</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect hb-red btn">Doorgaan</a>
+                            <a href="#!" class="modal-close waves-effect green btn">Doorgaan</a>
                         </div>
                     </div>
 
@@ -69,10 +69,12 @@
                     <div id="modal3" class="modal">
                         <div class="modal-content">
                             <h4>De vraag is toegevoegd.</h4>
-                            <p>Klik op terug om terug te gaan naar het hoofdpagina</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="<?= base_url('home') ?>" class="modal-close waves-effect hb-red-bg btn">Terug</a>
+                            <div class="progress">
+                                <div class="indeterminate"></div>
+                            </div>
+                            <!-- <a href="<?= base_url('home') ?>" class="modal-close waves-effect hb-red btn">Terug</a> -->
                         </div>
                     </div>
 
@@ -81,3 +83,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById("redirect").onclick = function() {
+        setTimeout(function() {
+            window.location.href = "home";
+        }, 1234);
+    };
+</script>
