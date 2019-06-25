@@ -7,6 +7,10 @@
         </div>
         <div class="row center">
             <a href="<?= base_url('addQuestionUser') ?>" id="download-button" class="btn-large waves-effect waves-light hb-red">Stel je vraag!</a>
+            <a href="<?= base_url('questions') ?>" id="download-button" class="btn-large waves-effect waves-light hb-red">Bekijk vragen</a>
+        </div>
+        <div class="row center">
+            <a href="<?= base_url('quiz') ?>" id="download-button" class="btn-large waves-effect waves-light hb-blue">Doe de quiz</a>
         </div>
         <br><br>
     </div>
