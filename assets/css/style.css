@@ -11,6 +11,10 @@ body {
   background-color: grey;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 #search-question {
   max-width: 20em;
   margin: 0;
