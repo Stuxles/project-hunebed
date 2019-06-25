@@ -8,97 +8,46 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">question_answer</i>
-                            <textarea id="vraag1" class="materialize-textarea" data-length="120"></textarea>
-                            <label for="vraag1">Vraag</label>
+                            <textarea id="question-text" class="materialize-textarea" data-length="120"></textarea>
+                            <label for="question-text">Vraag</label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="file-field input-field col s6 offset-s3">
-                            <div class="btn hb-red-bg">
-                                <span>File</span>
-                                <input type="file" multiple>
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" id="vraag7" type="text" placeholder="Upload een foto of video">
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix green-text">check</i>
-                            <textarea id="vraag2" class="materialize-textarea" data-length="120"></textarea>
-                            <label for="vraag2">Vul hier het antwoord nummer in </label>
+                            <textarea id="correct-awnser-field" class="materialize-textarea" data-length="120"></textarea>
+                            <label for="correct-awnser-field">Vul hier het correcte antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix red-text">filter_1</i>
-                            <textarea id="vraag3" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
-                            <label for="vraag3">vul hier een fout antwoord in</label>
+                            <textarea id="wrong-answer-1" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
+                            <label for="wrong-answer-1">vul hier een fout antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix red-text">filter_2</i>
-                            <textarea id="vraag4" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
+                            <textarea id="wrong-answer-2" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
                             <label for="vraag4">vul hier een fout antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix red-text">filter_3</i>
-                            <textarea id="vraag8" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
-                            <label for="vraag8">vul hier een fout antwoord in</label>
+                            <textarea id="wrong-answer-3" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
+                            <label for="wrong-answer-3">vul hier een fout antwoord in</label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix red-text">filter_4</i>
-                            <textarea id="vraag5" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
-                            <label for="vraag5">vul hier een fout antwoord in</label>
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="input-field col s12">
                             <p>Kies de functie waar de vraag bij hoort</p>
-                            <p>
-                                <label>
-
-                                    <input type="checkbox" name = "group1" value="Winkel"/>
-                                    <span>Winkel</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-
-                                    <input type="checkbox" name = "group1" value="Horeca"/>
-
-                                    <span>Horeca</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-
-                                    <input type="checkbox" name = "group1" value="Museum"/>
-
-                                    <span>Museum</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-
-                                    <input type="checkbox" name = "group1" value="Algemeen"/>
-
-                                    <span>Algemeen</span>
-                                </label>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">library_books</i>
-                            <textarea id="vraag6" class="materialize-textarea" data-length="120"></textarea>
-                            <label for="vraag6">vul hier een bron in</label>
+                            <div class="roles-list">
+                                
+                            </div>
                         </div>
                     </div>
                     <div class="row center">
@@ -120,20 +69,8 @@
                         <div class="modal-footer">
 
                             <a href="#!" class="modal-close waves-effect red waves-red btn">Annuleren</a>
-                            <a href="#modal2" class="modal-close waves-effect orange waves-orange btn btn modal-trigger" id ="weergoedkeuren">Nog een vraag goedkeuren</a>
                             <a href="#modal3" class="modal-close waves-effect green waves-green btn modal-trigger" id = "goedkeuren">goedkeuren</a>
 
-                        </div>
-                    </div>
-
-                    <!-- Modal2 Structure -->
-                    <div id="modal2" class="modal">
-                        <div class="modal-content">
-                            <h4>De vraag is bewerkt.</h4>
-                            <p>Klik op "Doorgaan" om een andere vraag te goedkeuren</p>
-                        </div>
-                        <div class="modal-footer">
-                        <a href="<?= base_url('moderator/allQuestions') ?>" class="modal-close waves-effect hb-red-bg btn">Doorgaan</a>
                         </div>
                     </div>
 
