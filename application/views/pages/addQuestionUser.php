@@ -42,14 +42,10 @@
                     <div id="modal1" class="modal">
                         <div class="modal-content">
                             <h4>Weet u zeker dat u deze vraag wilt toevoegen?</h4>
-                            <p>Klik op Toevoegen om de vraag toe te voegen.<br>
-                                Klik op Nog een vraag toevoegen om de vraag toe tevoegen en daarna nog een vraag toe te voegen.<br>
-                                Klik op annuleren om de vraa
-                                g niet toe tevoegen.</p>
                         </div>
                         <div class="modal-footer">
                             <a href="#!" class="modal-close waves-effect hb-red btn" onclick="addQuestion(true)">Annuleren</a>
-                            <a href="#modal2" class="modal-close waves-effect hb-blue btn btn modal-trigger" onclick="addQuestion()">Nog een vraag toevoegen</a>
+                            <a href="#modal2" class="modal-close waves-effect hb-blue btn modal-trigger tooltipped" data-position="bottom" data-tooltip="Voeg deze vraag toe en voeg gelijk nog een vraag toe" onclick="addQuestion()">Meerdere vragen toevoegen</a>
                             <a href="#modal3" id="redirect" class="modal-close waves-effect green btn modal-trigger" id="toevoegen" onclick="addQuestion()">Toevoegen</a>
                         </div>
                     </div>
@@ -90,4 +86,9 @@
             window.location.href = "home";
         }, 1234);
     };
+
+    //For the tooltips
+    $(document).ready(function() {
+        $('.tooltipped').tooltip();
+    });
 </script>
