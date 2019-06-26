@@ -117,7 +117,11 @@ function updateUser() {
 				}
 			}
 			usr.Roles = activeRoles;
-			userRef.update(usr);
+			userRef.update(usr).then(function(){
+				window.location.href="../user/userpage";
+			});
+
+
 		}
 	});
 }

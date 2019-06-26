@@ -17,9 +17,7 @@
 
                     <div class="row center">
                         <a href="<?= base_url('user/userpage') ?>" class="btn waves-effect hb-blue waves-light"><i class="material-icons left">arrow_back</i>Terug</a>
-                        <button class="btn waves-effect hb-blue waves-light" type="submit" name="action" id="updateButton">opslaan
-                            <i class="material-icons right">save</i>
-                        </button>
+                        <button class="btn waves-effect hb-blue waves-light" type="submit" name="action" id="updateButton"><i class="material-icons right">save</i>Opslaan</button>
                     </div>
                 </form>
             </div>
