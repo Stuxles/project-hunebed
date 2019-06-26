@@ -27,9 +27,10 @@
                             <i class="material-icons right">delete</i>
                         </button>
                     </div>
-                    
+
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script src="<?=base_url('assets/js/editUser.js')?>"></script>

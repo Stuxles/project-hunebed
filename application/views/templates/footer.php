@@ -47,7 +47,6 @@
 <script src="<?= base_url('assets/js/scripts.js') ?>"></script>
 <script src="<?= base_url('assets/js/init.js') ?>"></script>
 <script src="<?=base_url('assets/js/showQuestions.js')?>"></script>
-<script src="<?=base_url('assets/js/editUser.js')?>"></script>
 <script src="<?=base_url('assets/js/moderator.js')?>"></script>
 <script src="<?=base_url('assets/js/approve.js')?>"></script>
 <script src="<?= base_url('assets/js/questions.js') ?>"></script>
