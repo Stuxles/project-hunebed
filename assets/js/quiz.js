@@ -16,32 +16,35 @@ $(function() {
 //select wich quiz the user wants to make
 if($('.quiz1')) {
     $('.quiz1').click(function(event) {
+						event.preventDefault();
         //There should be only one result, but better safe than sorry
 		let resCount = 0;
-		db.collection('Roles').where('Naam', '==', 'Horeca').onSnapshot(snap => {
-            snap.forEach(doc =>{
-                //Now push the array of document references into the sessionStorage
-                window.sessionStorage.setItem("Questions-" + resCount.toString(), getRandomQuestions(doc.ref));
+			db.collection('Roles').where('Naam', '==', 'Museum').onSnapshot(snap => {
+            snap.docs.forEach(doc =>{
+                //Now push the array of document references into the localStorage
+								console.log(doc);
+								console.log(doc.ref);
+                localStorage.setItem("Questions-" + resCount.toString(), getRandomQuestions(doc.ref));
                 resCount++;
             });
-            window.sessionStorage.setItem("questionNumber", 0);
-            window.sessionStorage.setItem("arrayCount", resCount);
+            localStorage.setItem("questionNumber", 0);
+            localStorage.setItem("arrayCount", resCount);
 	    });
     });
 }
 
-var categories = {};
+let categories = {};
 function loadQuestionPage() {
-	let count = window.sessionStorage.getItem("arrayCount");
+	let count = localStorage.getItem("arrayCount");
 	//Shouldn't fill further than cat1, but make sure that we can handle multiples.
-	for(let i = 0; i < count; i++) {
-		categories["cat" + (i+1).toString()] = window.sessionStorage.getItem("Questions-" + count.toString());
+	for(let i = 0; i <= count; i++) {
+		categories["cat" + (i+1).toString()] = localStorage.getItem("Questions-" + count.toString());
 	}
-	nextQuestion(categories.cat1[window.sessionStorage.getItem("questionNumber")].data());
+	nextQuestion(categories.cat1[localStorage.getItem("questionNumber")]);
 }
 
 function nextQuestion(q) {
-	window.sessionStorage.setItem("questionNumber", window.sessionStorage.getItem("questionNumber")+1);
+	localStorage.setItem("questionNumber", localStorage.getItem("questionNumber")+1);
 	$(".container").innerHTML = question_template({
 		id: q.id,
 		Question: q.Question,

@@ -30,10 +30,14 @@ function randomSelectOne(arr) {
 
 //Give this function at least a Firebase documentReference to a Role.
 //Selects all matching questions by default
-function getRandomQuestions(roleReference, amount = 0) {
+async function getRandomQuestions(roleReference, amount = 0) {
 	let docArray = [];
-	db.collection('Questions').where('Related_User_Role', 'array-contains', roleReference).onSnapshot(snapshot => {
-		snapshot.forEach(doc => docArray.push(doc));
+	console.log(roleReference);
+	await db.collection('Questions').where('Categories', 'array-contains', roleReference).onSnapshot(snapshot => {
+		snapshot.forEach(doc =>{
+			console.log(doc);
+			docArray.push(doc);
+		});
 	});
 	return randomSelect(docArray, amount);
 }
