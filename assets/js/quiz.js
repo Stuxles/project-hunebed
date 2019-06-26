@@ -28,7 +28,6 @@ if($('.quiz1')) {
             window.sessionStorage.setItem("questionNumber", 0);
             window.sessionStorage.setItem("arrayCount", resCount);
 	    });
-	    event.preventDefault();
     });
 }
 
@@ -37,13 +36,14 @@ function loadQuestionPage() {
 	let count = window.sessionStorage.getItem("arrayCount");
 	//Shouldn't fill further than cat1, but make sure that we can handle multiples.
 	for(let i = 0; i < count; i++) {
-		categories["cat" + (i+1).toString()] = window.sessionStorage.getItem("Questions-" + window.sessionStorage.getItem("arrayCount").toString());
+		categories["cat" + (i+1).toString()] = window.sessionStorage.getItem("Questions-" + count.toString());
 	}
-	nextQuestion(categories.cat1[0].data());
+	nextQuestion(categories.cat1[window.sessionStorage.getItem("questionNumber")].data());
 }
 
 function nextQuestion(q) {
-	question_template({
+	window.sessionStorage.setItem("questionNumber", window.sessionStorage.getItem("questionNumber")+1);
+	$(".container").innerHTML = question_template({
 		id: q.id,
 		Question: q.Question,
 		Option1: q.Options[0],

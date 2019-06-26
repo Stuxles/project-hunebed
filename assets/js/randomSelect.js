@@ -35,5 +35,5 @@ function getRandomQuestions(roleReference, amount = 0) {
 	db.collection('Questions').where('Related_User_Role', 'array-contains', roleReference).onSnapshot(snapshot => {
 		snapshot.forEach(doc => docArray.push(doc));
 	});
-	return randomSelect(docArr, amount);
+	return randomSelect(docArray, amount);
 }
