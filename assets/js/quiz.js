@@ -20,21 +20,21 @@
 
 //select wich quiz the user wants to make
 if(document.querySelector('.quiz1')) {
-	document.querySelector('.quiz1').click(function(event) {
+	document.querySelector('.quiz1').addEventListener('click', function(event) {
 		alert("Made it in");
-//There should be only one result, but better safe than sorry
+        //There should be only one result, but better safe than sorry
 		let resCount = 0;
 		db.collection('Roles').where('Naam', '==', 'Horeca').onSnapshot(snap => {
-		snap.forEach(doc =>{
-			//Now push the array of document references into the sessionStorage
-			window.sessionStorage.setItem("Questions-" + resCount.toString(), getRandomQuestions(doc.ref));
-			resCount++;
-		});
-		window.sessionStorage.setItem("questionNumber", 0);
-		window.sessionStorage.setItem("arrayCount", resCount);
-	});
-	event.preventDefault();
-});
+            snap.forEach(doc =>{
+                //Now push the array of document references into the sessionStorage
+                window.sessionStorage.setItem("Questions-" + resCount.toString(), getRandomQuestions(doc.ref));
+                resCount++;
+            });
+            window.sessionStorage.setItem("questionNumber", 0);
+            window.sessionStorage.setItem("arrayCount", resCount);
+	    });
+	    event.preventDefault();
+    });
 }
 
 var categories = {};
@@ -144,7 +144,6 @@ let question_template = ({
 </div>`;
 };
 
-jQuery(document).ready(loadQuestionPage());
 // //Initialize Firebase
 // admin.initializeApp(functions.config().firebase);
 
