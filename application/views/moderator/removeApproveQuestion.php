@@ -102,8 +102,8 @@
                         </div>
                     </div>
                     <div class="row center">
-                        <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect orange waves-light" id = "terug"><i class="material-icons left" >arrow_back</i>Terug</a>
-                        <button data-target="modal1" class="btn modal-trigger waves-effect orange waves-light">goedkeuren
+                        <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect hb-red waves-light" id = "terug"><i class="material-icons left" >arrow_back</i>Terug</a>
+                        <button data-target="modal1" class="btn modal-trigger waves-effect hb-red waves-light">goedkeuren
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
