@@ -21,16 +21,11 @@
                             <i class="material-icons right">save</i>
                         </button>
                     </div>
-
-                    <div class="row center">
-                        <button data-target="modal1" class="btn modal-trigger waves-effect hb-red-bg waves-light" type="submit" name="action">verwijderen
-                            <i class="material-icons right">delete</i>
-                        </button>
-                    </div>
-
                 </form>
             </div>
         </div>
     </div>
 </div>
 <script src="<?=base_url('assets/js/editUser.js')?>"></script>
+
+
