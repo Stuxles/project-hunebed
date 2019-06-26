@@ -94,7 +94,7 @@
                         <div class="input-field col s12">
                             <i class="material-icons prefix">library_books</i>
                             <textarea id="textarea6" class="materialize-textarea" data-length="120"></textarea>
-                            <label for="textarea6">vul hier een bron in</label>
+                            <label for="textarea6">Vul hier een bron in</label>
                         </div>
                     </div>
                     <div class="row center">
