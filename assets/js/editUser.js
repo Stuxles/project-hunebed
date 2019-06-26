@@ -65,32 +65,14 @@ const showUserData = (user => {
 				</div>
 				<div class="row">
 					<div>Functie:
-						<div class="input-field col s12">
-					`;
-
-			// Write the roles and check the user roles
-			roles.forEach(role => {
-				let checked = "";
-				if(userRoles.includes(role.id)){
-					checked = 'checked="checked"';
-				}
-				html += `
-				<p>
-					<label>
-						<input type="checkbox" ${checked} class="roleCheckbox" id="${role._key.toString()}" />
-						<span>${role.data().Naam}</span>
-					</label>
-				</p>
-				`;
-			});
-
-			html += `
+						<div class="input-field col s12 roles-checklist">
+						</div>
 					</div>
 				</div>
-			</div>
 			`;
 			// Write all the HTML and load the JS
 			document.querySelector('.edit-fields').innerHTML = html;
+			loadRolesChecklist(roles, userRoles);
 			addEditFields();
 		});
 	});

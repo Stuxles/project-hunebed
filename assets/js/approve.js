@@ -160,17 +160,12 @@
 //function to fill inputs fields from Question collection
 // question();
 
-if (typeof parseURLParams(window.location.href) !== 'undefined') {
-    console.log(parseURLParams(window.location.href).id[0])
-    approveQuestionForm(parseURLParams(window.location.href).id[0]);
-}
-
 function getCheckedUserRoles() {
     let categories = [];
-    const checkboxes = document.querySelectorAll(".catCheckbox");
+    const checkboxes = document.querySelectorAll(".roleCheckbox");
     checkboxes.forEach(checkbox => {
         if(checkbox.checked){
-            categories.push(db.doc('/Roles/' + checkbox.value))
+            categories.push(db.doc(checkbox.id))
         }
     })
     return categories;
@@ -184,59 +179,105 @@ function shuffleArray(array) {
     return array;
 }
 
-function approveQuestionForm(questionID){
-    console.log("HELLLOOO")
-    const questionRef = db.collection('Questions').doc(questionID);
+function approvedQuestionForm(questionID, collection){
+    const questionRef = db.collection(collection).doc(questionID);
+    console.log('reffe:', questionRef)
+    const rolesRef = db.collection('Roles');
+    let questionRoles = [];
     
     questionRef.get().then(question => {
-        //checks if question exits
-        if (question.exists) {
-            //creates the variables that refer to the id's of the divs
-            var questionText = document.querySelector('#question-text');
+        rolesRef.get().then(roles => {
+            //checks if question exits
+            if (question.exists) {
+                //creates the variables that refer to the id's of the divs
+                var questionText = document.querySelector('#question-text');
 
-            //sets firestore data into input field values
-            questionText.value = question.data().Question;
+                //sets firestore data into input fields values
+                if (typeof question.data().Question != 'undefined')
+                    questionText.value = question.data().Question;
+                    
+                if (typeof question.data().Options != 'undefined' && typeof question.data().Answer != 'undefined') {
+                    let correctHasSet = false;
+                    for (let i = 0; i < question.data().Options.length; i++) {
+                        if (i == question.data().Answer) {
+                            document.querySelector('#correct-awnser-field').value = question.data().Options[i];
+                            correctHasSet = true;
+                            i++
+                        }
 
-            // Get all the answers from the form
-            const correctAnswer = document.querySelector('#correct-awnser-field').value;
-            const wrongAnswer1 = document.querySelector('#wrong-answer-1').value;
-            const wrongAnswer2 = document.querySelector('#wrong-answer-2').value;
-            const wrongAnswer3 = document.querySelector('#wrong-answer-3').value;
-            let answers = [correctAnswer,wrongAnswer1,wrongAnswer2,wrongAnswer3]
-            answers = shuffleArray(answers);
+                        let y = (i+1);
+                        if (correctHasSet)
+                            y--;
+                        
+                        console.log('#wrong-answer-' + y)
+                        document.querySelector('#wrong-answer-' + y).value = question.data().Options[i];
+                        
+                    }
+                }
+                
+                console.log(question.data().Options[question.data().Answer])
 
-            let correctIndex = 0;
+                M.updateTextFields();
 
-            //get correct answer index
-            for (let i = 0; i < answers.length; i++) {
-                if (answers[i] === correctAnswer)
-                    correctIndex = i;
-            }
+                // Get the related question roles
+                questionRolesRef = question.data().Related_User_Roles;
+                if (typeof questionRolesRef === 'array') {
+                    questionRolesRef.forEach(questionRole => {
+                        questionRoles.push(questionRole.id);
+                    });
+                }
 
-            //when back button is pressed return to questions list
-            document.getElementById("terug").addEventListener('click', (e) => {
-                window.location.href = BASE_URL + 'moderator/submittedQuestions';
-            });
+                // Load in RoleS
+                loadRolesChecklist(roles, questionRoles);
 
-            document.getElementById("goedkeuren").addEventListener('click', (e) => {
-                questionRef.set({
-                    Answer: questionText.value,
-                    Likes: 0,
-                    Options: answers,
-                    Question: questionText,
-                    Related_User_Roles: getCheckedUserRoles()
+                //when back button is pressed return to questions list
+                document.getElementById("terug").addEventListener('click', (e) => {
+                    window.location.href = BASE_URL + 'moderator/submittedQuestions';
                 });
-            });
 
-        } else {
-                console.log("No such document in Questions collection!");
+                
+                document.getElementById("goedkeuren").addEventListener('click', (e) => {
+                    // Get all the answers from the form
+                    const correctAnswer = document.querySelector('#correct-awnser-field').value;
+                    const wrongAnswer1 = document.querySelector('#wrong-answer-1').value;
+                    const wrongAnswer2 = document.querySelector('#wrong-answer-2').value;
+                    const wrongAnswer3 = document.querySelector('#wrong-answer-3').value;
+                    let answers = [correctAnswer,wrongAnswer1,wrongAnswer2,wrongAnswer3]
+                    answers = shuffleArray(answers);
+    
+                    //get correct answer index
+                    let correctIndex = 0;
+                    for (let i = 0; i < answers.length; i++) {
+                        if (answers[i] === correctAnswer)
+                            correctIndex = i;
+                    }
 
-        }
+                    relatedRoles = getCheckedUserRoles();
 
+                    console.log('Answers', answers);
+                    console.log(relatedRoles);
+
+                    questionRef.set({
+                        Question: questionText.value,
+                        Likes: 0,
+                        Options: answers,
+                        Related_User_Roles: relatedRoles,
+                        Answer: correctIndex
+                    });
+                });
+
+            } else {
+                    console.log("No such document in Questions collection!");
+
+            }
+        })
     }).catch((error) => {
         console.log("Error getting document:", error);
     });
 }
 
-// showRolesChecklist();
+if (typeof parseURLParams(window.location.href) !== 'undefined') {
+    console.log(parseURLParams(window.location.href).id[0])
+    approvedQuestionForm(parseURLParams(window.location.href).id[0], 'Questions');
+}
 

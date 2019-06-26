@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <p>Kies de functie waar de vraag bij hoort</p>
-                            <div class="roles-list">
+                            <div class="roles-checklist">
                                 
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                         <div class="modal-footer">
 
                             <a href="#!" class="modal-close waves-effect red waves-red btn">Annuleren</a>
-                            <a href="#modal3" class="modal-close waves-effect green waves-green btn modal-trigger" id = "goedkeuren">goedkeuren</a>
+                            <a href="#modal3" class="modal-close waves-effect green waves-green btn modal-trigger" id="goedkeuren">goedkeuren</a>
 
                         </div>
                     </div>
