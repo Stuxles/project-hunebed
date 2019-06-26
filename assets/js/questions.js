@@ -78,58 +78,6 @@ const addQuestion = (resetForm => {
 })
 
 /*
-Add data from the form in the database
-@param resetForm fill in anything when form needs to be resetted.
-*/
-// const addModQuestion = (resetForm => {
-//     let question;
-//     let userRole = [];
-//     let answer;
-//     let wrongAnswers = [];
-//     let source;
-
-//     // Get the data from the form
-//     question = document.querySelector('#textarea1').value;
-//     file = document.querySelector('#file').value;
-//     answer = document.querySelector('#textarea2').value;
-//     source = document.querySelector('#textarea6').value;
-//     const checkboxes = document.querySelectorAll(".catCheckbox");
-//     checkboxes.forEach(checkbox => {
-//         if(checkbox.checked){
-//             userRole.push(checkbox.value)
-//         }
-//     })
-//     const wrongs = document.querySelectorAll(".wrong-answer-text");
-//     wrongs.forEach(wrong => {
-//         wrongAnswers.push(wrong.value)
-//     })
-
-//     // Add the data to the database
-//     db.collection('Questions').add({
-//         Question: questionText.value,
-//         Likes: 0,
-//         Options: answers,
-//         Categories: relatedRoles,
-//         Answer: correctIndex
-//     })
-
-//     // Reset the form
-//     // Reset the form if needed
-//     if(resetForm == null){        
-//         document.querySelector('#textarea1').value = "";
-//         document.querySelector('#file').value = "";
-//         document.querySelector('#textarea2').value = "";
-//         document.querySelector('#textarea6').value = "";
-//         checkboxes.forEach(checkbox => {
-//             checkbox.checked = false;
-//         })
-//         wrongs.forEach(wrong => {
-//             wrong.value = "";
-//         })
-//     }
-// })
-
-/*
 Generates the html with all the questions from the database.
 @param snapshot Is a snapshot with all the documnents from a firestore database.
 */

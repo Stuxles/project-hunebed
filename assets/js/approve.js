@@ -1,3 +1,6 @@
+/*
+Returns the categories which are checked in the checklist
+*/
 function getCheckedUserRoles() {
     let categories = [];
     const checkboxes = document.querySelectorAll(".roleCheckbox");
@@ -9,6 +12,9 @@ function getCheckedUserRoles() {
     return categories;
 }
 
+/*
+Shuffles an array
+*/
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -17,9 +23,11 @@ function shuffleArray(array) {
     return array;
 }
 
+/*
+Load the form to edit and aprove a question
+*/
 function approvedQuestionForm(questionID, collection){
     const questionRef = db.collection(collection).doc(questionID);
-    console.log('reffe:', questionRef)
     const rolesRef = db.collection('Roles');
     let questionRoles = [];
     
@@ -90,9 +98,6 @@ function approvedQuestionForm(questionID, collection){
 
                     relatedRoles = getCheckedUserRoles();
 
-                    console.log('Answers', answers);
-                    console.log(relatedRoles);
-
                     if (collection == 'Questions') {
                         questionRef.set({
                             Question: questionText.value,
@@ -123,7 +128,10 @@ function approvedQuestionForm(questionID, collection){
     });
 }
 
-function addModQuestion() {
+/*
+Add a question to questions. This is only for admins
+*/
+function addAdminQuestion() {
     const questionText = document.querySelector('#question-text');
     // Get all the answers from the form
     const correctAnswer = document.querySelector('#correct-awnser-field').value;
@@ -142,6 +150,7 @@ function addModQuestion() {
             correctIndex = i;
     }
 
+    // Add the question to the database
     db.collection('Questions').add({
         Question: questionText.value,
         Likes: 0,
@@ -149,6 +158,7 @@ function addModQuestion() {
         Categories: relatedRoles,
         Answer: correctIndex
     }).then(() => {
+        // Give feedback that the question has been added
         $('#add-success-modal').modal({
             onCloseEnd: function() {
                 window.location.href = BASE_URL + '/moderator';
@@ -159,6 +169,9 @@ function addModQuestion() {
 
 }
 
+/*
+Delete a question from a collection
+*/
 function deleteQuestion(quesitonID, collection) {
     const questionRef = db.collection(collection).doc(quesitonID);
     questionRef.delete().then(() => {
@@ -174,6 +187,7 @@ function deleteQuestion(quesitonID, collection) {
     })
 }
 
+// Load approve / edit form
 if (CURRENT_PAGE == '/moderator/removeApproveQuestion') {
     if (typeof parseURLParams(window.location.href) !== 'undefined') {
         const id = parseURLParams(window.location.href).id[0];
@@ -182,6 +196,7 @@ if (CURRENT_PAGE == '/moderator/removeApproveQuestion') {
     }
 }
 
+// Add event listender to delete button
 if (document.querySelector('#delete-question-btn') !== null) {
     document.querySelector('#delete-question-btn').addEventListener('click', () => {
         const id = parseURLParams(window.location.href).id[0];
@@ -190,11 +205,12 @@ if (document.querySelector('#delete-question-btn') !== null) {
     })
 }
 
+// Add event lister for adding a question
 if (CURRENT_PAGE == '/moderator/addQuestion') {
     db.collection('Roles').get().then(roles => {
         loadRolesChecklist(roles);
         document.querySelector('#add-question-btn').addEventListener('click', () => {
-            addModQuestion();
+            addAdminQuestion();
         })
     })
 }
