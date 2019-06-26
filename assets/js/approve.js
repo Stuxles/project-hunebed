@@ -280,3 +280,5 @@ if (typeof parseURLParams(window.location.href) !== 'undefined') {
     approvedQuestionForm(id, collection);
 }
 
+
+        

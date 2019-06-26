@@ -34,7 +34,7 @@
                         <div class="input-field col s12">
                             <i class="material-icons prefix red-text">cancel</i>
                             <textarea id="textarea3" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
-                            <label for="textarea3">vul hier een fout antwoord in</label>
+                            <label for="textarea3">Vul hier een fout antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
@@ -48,7 +48,7 @@
                         <div class="input-field col s12">
                             <i class="material-icons prefix red-text">cancel</i>
                             <textarea id="textarea5" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
-                            <label for="textarea5">vul hier een fout antwoord in</label>
+                            <label for="textarea5">Vul hier een fout antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
@@ -94,7 +94,7 @@
                         <div class="input-field col s12">
                             <i class="material-icons prefix">library_books</i>
                             <textarea id="textarea6" class="materialize-textarea" data-length="120"></textarea>
-                            <label for="textarea6">vul hier een bron in</label>
+                            <label for="textarea6">Vul hier een bron in</label>
                         </div>
                     </div>
                     <div class="row center">

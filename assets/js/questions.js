@@ -56,6 +56,14 @@ const addQuestion = (resetForm => {
     db.collection('Submitted_Questions').add({
         Question: question,
         Categories: categories
+    }).then(() => {
+        $('#modal3').modal({
+            dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            onCloseEnd: setTimeout( function() { // Callback for Modal close
+                window.location.href = BASE_URL;
+            }, 1234)
+        })
+        $('#modal3').modal('open');
     })
 
     // Reset the form if needed
@@ -65,6 +73,8 @@ const addQuestion = (resetForm => {
             checkbox.checked = false;
         })
     }
+
+    
 })
 
 /*
