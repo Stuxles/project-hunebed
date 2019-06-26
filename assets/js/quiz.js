@@ -1,26 +1,21 @@
-  //select answer
-  jQuery(document).ready(function() {
-    jQuery('.answer').click(function(event) {
+//select answer
+$(function() {
+    $('.answer').click(function(event) {
         //remove all pre-existing active classes
-        jQuery('.answer-selected').removeClass('answer-selected');
+        $('.answer-selected').removeClass('answer-selected');
 
         //add the active class to the link we clicked
-        jQuery(this).addClass('answer-selected');
-        jQuery(this).removeClass('answer');
-        jQuery('.answer').addClass('answer');
-
-        //Load the content
-        //e.g.
-        //load the page that the link was pointing to
-        //$('#content').load($(this).find(a).attr('href'));
+        $(this).addClass('answer-selected');
+        $(this).removeClass('answer');
+        $('.answer').addClass('answer');
 
         event.preventDefault();
     });
 });
 
 //select wich quiz the user wants to make
-if(document.querySelector('.quiz1')) {
-	document.querySelector('.quiz1').addEventListener('click', function(event) {
+if($('.quiz1')) {
+    $('.quiz1').click(function(event) {
 		alert("Made it in");
         //There should be only one result, but better safe than sorry
 		let resCount = 0;
