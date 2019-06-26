@@ -123,11 +123,31 @@ function approvedQuestionForm(questionID, collection){
     });
 }
 
+function deleteQuestion(quesitonID, collection) {
+    const questionRef = db.collection(collection).doc(quesitonID);
+    questionRef.delete().then(() => {
+        console.log('Succesfully delted the question');
+            $('#delete-success-modal').modal({
+                onCloseEnd: function() {
+                    window.location.href = BASE_URL + 'moderator/allQuestions';
+                }
+            })
+            $('#delete-success-modal').modal('open');
+    }).catch(err => {
+        console.log('Error: ', err.message);
+    })
+}
+
 if (typeof parseURLParams(window.location.href) !== 'undefined') {
     const id = parseURLParams(window.location.href).id[0];
     const collection = parseURLParams(window.location.href).collection[0];
     approvedQuestionForm(id, collection);
 }
 
-
-        
+if (document.querySelector('#delete-question-btn') !== null) {
+    document.querySelector('#delete-question-btn').addEventListener('click', () => {
+        const id = parseURLParams(window.location.href).id[0];
+        const collection = parseURLParams(window.location.href).collection[0];
+        deleteQuestion(id, collection);
+    })
+}

@@ -95,9 +95,27 @@
                     <div id="delete-modal" class="modal">
                         <div class="modal-content">
                             <h4>Weet je het zeker?</h4>
-                            <p>Weet je zeker datdeze vraag verwijdert moet worden?</p>
+                            <p>Weet je zeker dat deze vraag verwijdert moet worden?</p>
                         </div>
                         <div class="modal-footer">
+                            <div class="center">
+                                <a onclick="closeModal('#delete-modal')" class="btn waves-effect orange waves-light"><i class="material-icons left" >arrow_back</i>Terug</a>
+                                <a class="btn waves-effect hb-red waves-light" id="delete-question-btn"><i class="fas fa-trash-alt left"></i></i>Verwijderen</a>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="delete-success-modal" class="modal">
+                        <div class="modal-content center">
+                            <h4>Gelukt</h4>
+                            <p>De vraag is verwijderd</p>
+                            <i class="far fa-check-circle fa-9x hb-green-text"></i>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="center">
+                                <a href="allQuestions" class="modal-close waves-effect waves-light btn hb-blue">Ga verder</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -105,3 +123,8 @@
         </div>
     </div>
 </div>
+<script>
+function closeModal(modalID){
+    $(modalID).modal('close');
+}
+</script>
