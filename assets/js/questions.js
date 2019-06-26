@@ -255,15 +255,12 @@ const showQuestionDetails = (doc => {
             </div>
         </div>
     `
-    // Put the like and dislike bttons here aswell ^^^^
+    // Put the like btton here aswell ^^^^
     document.getElementById('questionContent').innerHTML = html;
 
     if(typeof data.Likes !== 'undefined')
         document.querySelector('.like-number').innerHTML = data.Likes;
         document.querySelector('.like-number').value = data.Likes;
-    if(typeof data.Dislikes !== 'undefined')
-        document.querySelector('.dislike-number').innerHTML = data.Dislikes;
-        document.querySelector('.dislike-number').value = data.Dislikes;
 
     
     
@@ -344,28 +341,6 @@ if(CURRENT_PAGE == "/questions/show") {
                 console.log(result.data);
                 if (result.data.msg === 'already liked')
                     likeSpan.innerHTML = likeSpan.value;
-            })
-        });
-    
-        document.querySelector('.dislike-button').addEventListener('click', () => {
-            dislikeSpan = document.querySelector('.dislike-number');
-            dislikeSpan.innerHTML = `
-            <div class="preloader-wrapper small active" style="height:20px;width:20px;">
-            <div class="spinner-layer spinner-red-only">
-              <div class="circle-clipper left">
-                <div class="circle"></div>
-              </div><div class="gap-patch">
-                <div class="circle"></div>
-              </div><div class="circle-clipper right">
-                <div class="circle"></div>
-              </div>
-            </div>
-          </div>`
-            const likeQuestion = functions.httpsCallable('likeQuestion');
-            likeQuestion({ id: docID, rate: 'dislike' }).then(result => {
-                console.log(result.data);
-                if (result.data.msg === 'already disliked')
-                    dislikeSpan.innerHTML = dislikeSpan.value;
             })
         });
     }

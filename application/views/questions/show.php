@@ -12,13 +12,6 @@
                         </div>
                         <span class="like-number">0</span>
                     </div>
-                    <div class="col 6 dislike-button-box">
-                        <div class="dislike-button">
-                            <i class="far fa-thumbs-down fa-3x"></i>
-                        </div>
-                        <span class="dislike-number">0</span>
-                    </div>
-                    </div>
                 </div>
             </div>
         </div>

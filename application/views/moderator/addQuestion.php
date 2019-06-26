@@ -64,8 +64,8 @@
                         </div>
                         <div class="modal-footer">
                             <div class="center">
-                                <a href="#!" class="modal-close waves-effect red waves-red btn">Annuleren</a>
-                                <a class="modal-close waves-effect green waves-green btn modal-trigger" id="add-question-btn">Toevoegen</a>
+                                <a href="#!" class="modal-close waves-effect hb-red waves-red btn">Annuleren</a>
+                                <a class="modal-close waves-effect hb-green waves-green btn modal-trigger" id="add-question-btn">Toevoegen</a>
                             </div>
                         </div>
                     </div>
