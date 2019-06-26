@@ -12,17 +12,6 @@
                             <label for="questionText">Voeg een vraag toe</label>
                         </div>
                     </div>
-                    <!-- <div class="row">
-                        <div class="file-field input-field col s6 offset-s3">
-                            <div class="btn hb-red-bg">
-                                <span>File</span>
-                                <input type="file" multiple>
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" placeholder="Upload een foto of video">
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="row">
                         <div class="input-field col s12">
                             <p>Kies de functie waar de vraag bij hoort</p>
@@ -46,7 +35,7 @@
                         <div class="modal-footer">
                             <a href="#!" class="modal-close waves-effect hb-red btn" onclick="addQuestion(true)">Annuleren</a>
                             <a href="#modal2" class="modal-close waves-effect hb-blue btn btn modal-trigger" onclick="addQuestion()">Nog een vraag toevoegen</a>
-                            <a href="#modal3" class="modal-close waves-effect hb-red btn modal-trigger" id="toevoegen"  onclick="addQuestion()">Toevoegen</a>
+                            <a class="modal-close waves-effect btn modal-trigger hb-green" id="toevoegen"  onclick="addQuestion()">Toevoegen</a>
                         </div>
                     </div>
 
@@ -57,18 +46,15 @@
                             <p>Klik op doorgaan om een nieuwe vraag toe te voegen</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect hb-red btn">Doorgaan</a>
+                            <a class="modal-close waves-effect hb-red btn">Doorgaan</a>
                         </div>
                     </div>
 
                     <!-- Modal3 Structure -->
                     <div id="modal3" class="modal">
-                        <div class="modal-content">
+                        <div class="modal-content center">
                             <h4>De vraag is toegevoegd.</h4>
-                            <p>Klik op terug om terug te gaan naar het hoofdpagina</p>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="<?= base_url('home') ?>" class="modal-close waves-effect hb-red-bg btn">Terug</a>
+                            <i class="far fa-check-circle fa-9x hb-green-text"></i>
                         </div>
                     </div>
 
