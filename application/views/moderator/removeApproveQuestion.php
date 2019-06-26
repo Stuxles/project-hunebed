@@ -52,8 +52,14 @@
                     </div>
                     <div class="row center">
                         <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect orange waves-light" id = "terug"><i class="material-icons left" >arrow_back</i>Terug</a>
-                        <button data-target="modal1" class="btn modal-trigger waves-effect orange waves-light">goedkeuren
+                        <button data-target="modal1" class="btn modal-trigger waves-effect hb-green waves-light">goedkeuren
                             <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                    <div class="row center">
+                        <button data-target="delete-modal" class="btn modal-trigger waves-effect hb-red waves-light">
+                            Verwijderen
+                            <i class="fas fa-trash-alt left"></i>
                         </button>
                     </div>
 
@@ -85,7 +91,16 @@
                         </div>
                     </div>
 
-            </div>
+                    <!-- Delete modal Structure -->
+                    <div id="delete-modal" class="modal">
+                        <div class="modal-content">
+                            <h4>Weet je het zeker?</h4>
+                            <p>Weet je zeker datdeze vraag verwijdert moet worden?</p>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

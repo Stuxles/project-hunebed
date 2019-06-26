@@ -99,6 +99,10 @@ nav ul .tab:hover a {
   background-color: #EE2B4F !important;
 }
 
+.hb-green {
+  background-color: #92B83E !important;
+}
+
 .content {
   background-color: white;
 }
