@@ -5,12 +5,10 @@ function showSubmittedQuestions(){
         snapshot.docs.forEach(doc => {
             var ul = document.getElementById('qListSubmit');
             let ilItem = `
-            <hr>
-            <il classname = 'collection-item avatar'>
-                <span classname = 'title'><b>Vraag ${x}</b> : ${doc.data().Question}</span>
+            <li class = 'collection-item avatar'>
+                <span class = 'title'><b>Vraag ${x}</b> : ${doc.data().Question}</span>
                 <p><button onclick = 'clickGoedKeurKnop(this)' data-id = ${doc.id} class = 'waves-effect waves-light red btn'>Goedkeuren</button></p>
-            </il>
-            <hr>
+            </li>
             `;
 
             //append <UL> to <UL> tag
@@ -28,11 +26,10 @@ function showApprovedQuestions(){
         snapshot.docs.forEach(doc => {
             var ul = document.getElementById('qListApproved');
             let ilItem = `
-            <hr>
-            <il classname = 'collection-item avatar'>
-                <span classname = 'title'><b>Vraag ${x}</b> : ${doc.data().Question}</span>
+            <li class = 'collection-item avatar'>
+                <span class = 'title'><b>Vraag ${x}</b> : ${doc.data().Question}</span>
                 <p><button onclick = 'clickGoedKeurKnop(this)' data-id = ${doc.id} class = 'waves-effect waves-light red btn'>Bewerken</button></p>
-            </il>
+            </li>
             `;
 
             //append <IL> to <UL> tag
