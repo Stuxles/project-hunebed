@@ -31,7 +31,7 @@ function showApprovedQuestions(){
             <hr>
             <il classname = 'collection-item avatar'>
                 <span classname = 'title'><b>Vraag ${x}</b> : ${doc.data().Question}</span>
-                <p><button onclick = 'clickGoedKeurKnop(this)' data-id = ${doc.id} class = 'waves-effect waves-light red btn'>Goedkeuren</button></p>
+                <p><button onclick = 'clickGoedKeurKnop(this)' data-id = ${doc.id} class = 'waves-effect waves-light red btn'>Bewerken</button></p>
             </il>
             <hr>
             `;
