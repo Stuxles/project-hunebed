@@ -214,16 +214,14 @@ function approvedQuestionForm(questionID, collection){
                         
                     }
                 }
-                
-                console.log(question.data().Options[question.data().Answer])
-
                 M.updateTextFields();
 
                 // Get the related question roles
-                questionRolesRef = question.data().Related_User_Roles;
-                if (typeof questionRolesRef === 'array') {
+                questionRolesRef = question.data().Categories;
+                if (typeof questionRolesRef !== 'undefined') {
                     questionRolesRef.forEach(questionRole => {
                         questionRoles.push(questionRole.id);
+                        console.log(questionRole)
                     });
                 }
 
@@ -261,7 +259,7 @@ function approvedQuestionForm(questionID, collection){
                         Question: questionText.value,
                         Likes: 0,
                         Options: answers,
-                        Related_User_Roles: relatedRoles,
+                        Categories: relatedRoles,
                         Answer: correctIndex
                     });
                 });
@@ -277,7 +275,8 @@ function approvedQuestionForm(questionID, collection){
 }
 
 if (typeof parseURLParams(window.location.href) !== 'undefined') {
-    console.log(parseURLParams(window.location.href).id[0])
-    approvedQuestionForm(parseURLParams(window.location.href).id[0], 'Questions');
+    const id = parseURLParams(window.location.href).id[0];
+    const collection = parseURLParams(window.location.href).collection[0];
+    approvedQuestionForm(id, collection);
 }
 
