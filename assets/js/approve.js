@@ -28,7 +28,7 @@ function approvedQuestionForm(questionID, collection){
             //checks if question exits
             if (question.exists) {
                 //creates the variables that refer to the id's of the divs
-                var questionText = document.querySelector('#question-text');
+                const questionText = document.querySelector('#question-text');
 
                 //sets firestore data into input fields values
                 if (typeof question.data().Question != 'undefined')
@@ -123,6 +123,42 @@ function approvedQuestionForm(questionID, collection){
     });
 }
 
+function addModQuestion() {
+    const questionText = document.querySelector('#question-text');
+    // Get all the answers from the form
+    const correctAnswer = document.querySelector('#correct-awnser-field').value;
+    const wrongAnswer1 = document.querySelector('#wrong-answer-1').value;
+    const wrongAnswer2 = document.querySelector('#wrong-answer-2').value;
+    const wrongAnswer3 = document.querySelector('#wrong-answer-3').value;
+    let answers = [correctAnswer,wrongAnswer1,wrongAnswer2,wrongAnswer3]
+    answers = shuffleArray(answers);
+    
+    const relatedRoles = getCheckedUserRoles();
+
+    //get correct answer index
+    let correctIndex = 0;
+    for (let i = 0; i < answers.length; i++) {
+        if (answers[i] === correctAnswer)
+            correctIndex = i;
+    }
+
+    db.collection('Questions').add({
+        Question: questionText.value,
+        Likes: 0,
+        Options: answers,
+        Categories: relatedRoles,
+        Answer: correctIndex
+    }).then(() => {
+        $('#add-success-modal').modal({
+            onCloseEnd: function() {
+                window.location.href = BASE_URL + '/moderator';
+            }
+        })
+        $('#add-success-modal').modal('open');
+    })
+
+}
+
 function deleteQuestion(quesitonID, collection) {
     const questionRef = db.collection(collection).doc(quesitonID);
     questionRef.delete().then(() => {
@@ -138,10 +174,12 @@ function deleteQuestion(quesitonID, collection) {
     })
 }
 
-if (typeof parseURLParams(window.location.href) !== 'undefined') {
-    const id = parseURLParams(window.location.href).id[0];
-    const collection = parseURLParams(window.location.href).collection[0];
-    approvedQuestionForm(id, collection);
+if (CURRENT_PAGE == '/moderator/removeApproveQuestion') {
+    if (typeof parseURLParams(window.location.href) !== 'undefined') {
+        const id = parseURLParams(window.location.href).id[0];
+        const collection = parseURLParams(window.location.href).collection[0];
+        approvedQuestionForm(id, collection);
+    }
 }
 
 if (document.querySelector('#delete-question-btn') !== null) {
@@ -149,5 +187,14 @@ if (document.querySelector('#delete-question-btn') !== null) {
         const id = parseURLParams(window.location.href).id[0];
         const collection = parseURLParams(window.location.href).collection[0];
         deleteQuestion(id, collection);
+    })
+}
+
+if (CURRENT_PAGE == '/moderator/addQuestion') {
+    db.collection('Roles').get().then(roles => {
+        loadRolesChecklist(roles);
+        document.querySelector('#add-question-btn').addEventListener('click', () => {
+            addModQuestion();
+        })
     })
 }
