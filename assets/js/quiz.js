@@ -13,48 +13,37 @@ $(function() {
     });
 });
 
-let categories = {};
-function loadQuestionPage() {event.preventDefault();
-        //There should be only one result, but better safe than sorry
-			let resCount = 0;
-			db.collection('Roles').where('Naam', '==', 'Museum').onSnapshot(snap => {
+let questions = [];
+let currentQuestion = 0;
+async function loadQuestionPage() {
+	      //There should be only one result, but better safe than sorry
+			let category = parseURLParams().cat[0];
+			console.log(category);
+			await db.collection('Roles').where('Naam', '==', category).onSnapshot(snap => {
             snap.docs.forEach(doc =>{
                 //Now push the array of document references into the localStorage
 								console.log(doc);
 								console.log(doc.ref);
-                localStorage.setItem("Questions-" + resCount.toString(), JSON.stringify(doc));
-                resCount++;
+								getRandomQuestions(doc.ref);
             });
-            localStorage.setItem("questionNumber", 0);
-            localStorage.setItem("arrayCount", resCount);
-	    });
-    });
-	let count = localStorage.getItem("arrayCount");
-	//Shouldn't fill further than cat1, but make sure that we can handle multiples.
-	for(let i = 0; i <= count; i++) {
-		categories["cat" + (i+1).toString()] = localStorage.getItem("Questions-" + count.toString());
-	}
-	nextQuestion(categories.cat1[localStorage.getItem("questionNumber")]);
+	  });
+				nextQuestion();
 }
 
-function nextQuestion(questionPromise) {
-	questionPromise.then( questionArray => {
-		let q = questionArray[localStorage.getItem("questionNumber")];
+function nextQuestion() {
+	let q = questions[currentQuestion];
 		$(".container").innerHTML = question_template({
-			id: q.id,
 			Question: q.Question,
 			Option1: q.Options[0],
 			Option2: q.Options[1],
 			Option3: q.Options[2],
 			Option4: q.Options[3]
 		});
-	});
-	localStorage.setItem("questionNumber", localStorage.getItem("questionNumber")+1);
+	currentQuestion++;
 }
 
 //HTML Template for question
 let question_template = ({
-  id,
   Question,
   Option1,
   Option2,
