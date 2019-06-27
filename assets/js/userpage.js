@@ -33,7 +33,7 @@ const showUserDataUserPage = (user => {
             // Write user data
             html +=`
             <div class="row valign-wrapper">
-                                <div class="col s2">
+                                <div class="col s1 m1 l1">
                                     <i class="material-icons">account_circle</i>
                                 </div>
                                 <div class="col s10">
@@ -42,7 +42,7 @@ const showUserDataUserPage = (user => {
                             </div>
 
                             <div class="row valign-wrapper">
-                                <div class="col s2">
+                                <div class="col s1 m1 l1">
                                     <i class="material-icons">email</i>
                                 </div>
                                 <div class="col s10">
@@ -63,12 +63,12 @@ const showUserDataUserPage = (user => {
                     checked = 'checked="checked"';
                 }
                 html += `
-				<p>
-					<label>
-						<input type="checkbox" ${checked} class="roleCheckbox" disabled="disabled" id="${role._key.toString()}" />
-						<span>${role.data().Naam}</span>
-					</label>
-				</p>
+				<div class="row valign-wrapper">
+                <label>
+                    <input type="checkbox" ${checked} class="roleCheckbox" disabled="disabled" id="${role._key.toString()}" />
+                    <span>${role.data().Naam}</span>
+                  </label>
+				</div>
 				`;
             });
 

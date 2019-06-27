@@ -5,7 +5,7 @@
 
             <div class="row">
                 <div class="col s12 m12">
-                    <div class="card grey lighten-5 z-depth-1">
+                    <div class="card white lighten-5 z-depth-1">
                         <div class="card-content">
                             <span class="card-title">Informatie</span>
                             <div class="edit-fields">
