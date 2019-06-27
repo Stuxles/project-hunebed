@@ -4,102 +4,55 @@
         <div class="container">
             <div class="row">
                 <form class="col s12">
-                    <h4>Vraag toevoegen</h4>
+                    <h4>vraag toevoegen</h4>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">question_answer</i>
-                            <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
-                            <label for="textarea1">Voeg een vraag toe</label>
+                            <textarea id="question-text" class="materialize-textarea" data-length="120"></textarea>
+                            <label for="question-text">Vraag</label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="file-field input-field col s6 offset-s3">
-                            <div class="btn hb-red-bg">
-                                <span>File</span>
-                                <input type="file" multiple>
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" id="file" placeholder="Upload een foto of video">
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix green-text">check</i>
-                            <textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
-                            <label for="textarea2">Vul hier het goed antwoord in</label>
+                            <textarea id="correct-awnser-field" class="materialize-textarea" data-length="120"></textarea>
+                            <label for="correct-awnser-field">Vul hier het correcte antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix red-text">cancel</i>
-                            <textarea id="textarea3" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
-                            <label for="textarea3">vul hier een fout antwoord in</label>
+                            <i class="material-icons prefix red-text">filter_1</i>
+                            <textarea id="wrong-answer-1" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
+                            <label for="wrong-answer-1">vul hier een fout antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix red-text">cancel</i>
-                            <textarea id="textarea4" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
-                            <label for="textarea4">vul hier een fout antwoord in</label>
+                            <i class="material-icons prefix red-text">filter_2</i>
+                            <textarea id="wrong-answer-2" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
+                            <label for="vraag4">vul hier een fout antwoord in</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix red-text">cancel</i>
-                            <textarea id="textarea5" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
-                            <label for="textarea5">vul hier een fout antwoord in</label>
+                            <i class="material-icons prefix red-text">filter_3</i>
+                            <textarea id="wrong-answer-3" class="materialize-textarea wrong-answer-text" data-length="120"></textarea>
+                            <label for="wrong-answer-3">vul hier een fout antwoord in</label>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="input-field col s12">
                             <p>Kies de functie waar de vraag bij hoort</p>
-                            <p>
-                                <label>
-
-                                    <input class="catCheckbox" type="checkbox" value="Winkel" />
-                                    <span>Winkel</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-
-
-                                    <input class="catCheckbox" type="checkbox" value="Horeca" />
-
-                                    <span>Horeca</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-
-
-                                    <input class="catCheckbox" type="checkbox" value="Museum" />
-
-                                    <span>Museum</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-
-
-                                    <input class="catCheckbox" type="checkbox" value="Algemeen" />
-
-                                    <span>Algemeen</span>
-                                </label>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">library_books</i>
-                            <textarea id="textarea6" class="materialize-textarea" data-length="120"></textarea>
-                            <label for="textarea6">vul hier een bron in</label>
+                            <div class="roles-checklist">
+                                
+                            </div>
                         </div>
                     </div>
                     <div class="row center">
-                        <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect hb-red waves-light" id = "terug"><i class="material-icons left" >arrow_back</i>Terug</a>
-                        <button data-target="modal1" class="btn modal-trigger waves-effect hb-red waves-light">Toevoegen
+                        <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect orange waves-light" id = "terug"><i class="material-icons left" >arrow_back</i>Terug</a>
+                        <button data-target="modal1" class="btn modal-trigger waves-effect hb-green waves-light">Toevogen
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -108,43 +61,29 @@
                     <div id="modal1" class="modal">
                         <div class="modal-content">
                             <h4>Weet u zeker dat u deze vraag wilt toevoegen?</h4>
-                            <p>Klik op Toevoegen om de vraag toe te voegen.<br>
-                                Klik op Nog een vraag toevoegen om de vraag toe tevoegen en daarna nog een vraag toe te voegen.<br>
-                                Klik op annuleren om de vraa
-                                g niet toe tevoegen.</p>
                         </div>
                         <div class="modal-footer">
-
-                            <a href="#!" class="modal-close waves-effect hb-red btn">Annuleren</a>
-                            <a href="#modal2" class="modal-close waves-effect hb-blue btn modal-trigger" onclick="addModQuestion()">Nog een vraag toevoegen</a>
-                            <a href="#modal3" class="modal-close waves-effect hb-red btn modal-trigger"  onclick="addModQuestion()">Toevoegen</a>
-
+                            <div class="center">
+                                <a href="#!" class="modal-close waves-effect hb-red waves-red btn">Annuleren</a>
+                                <a class="modal-close waves-effect hb-green waves-green btn modal-trigger" id="add-question-btn">Toevoegen</a>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Modal2 Structure -->
-                    <div id="modal2" class="modal">
-                        <div class="modal-content">
-                            <h4>De vraag is toegevoegd.</h4>
-                            <p>Klik op doorgaan om een nieuwe vraag toe te voegen</p>
+                    <!-- add-modal Structure -->
+                    <div id="add-success-modal" class="modal">
+                        <div class="modal-content center">
+                            <h4>Gelukt</h4>
+                            <p>De vraag is toegevoegd</p>
+                            <i class="far fa-check-circle fa-9x hb-green-text"></i>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect hb-red btn">Doorgaan</a>
+                            <div class="center">
+                                <a class="modal-close waves-effect waves-light btn hb-blue">Ga verder</a>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Modal3 Structure -->
-                    <div id="modal3" class="modal">
-                        <div class="modal-content">
-                            <h4>De vraag is toegevoegd.</h4>
-                            <p>Klik op terug om terug te gaan naar het hoofdscherm</p>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="<?= base_url('moderator/moderator') ?>" class="modal-close waves-effect hb-red btn">Terug</a>
-                        </div>
-                    </div>
-
-            </div>
+                </div>
             </form>
         </div>
     </div>

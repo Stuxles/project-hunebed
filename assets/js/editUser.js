@@ -11,9 +11,6 @@ const addEditFields = (() => {
     document.getElementById("textChanger2").onclick = function() {
         document.getElementById("firstdiv2").innerHTML = "<div class='input-field col s12'><i class='material-icons prefix'>account_circle</i><input id='last_name' type='text' class='validate'><label for='last_name'>Achternaam</label></div>";
     };
-    document.getElementById("textChanger3").onclick = function() {
-        document.getElementById("firstdiv3").innerHTML = "<div class='input-field col s12'><i class='material-icons prefix'>email</i><input id='email' type='email' class='validate'><label for='email'>Email</label></div>";
-    };
 	document.getElementsByTagName('form')[0].addEventListener('submit', (e) => {
 		e.preventDefault();
 		updateUser();
@@ -24,7 +21,7 @@ const addEditFields = (() => {
 Shows the data of the logged in user on the /user/edit page
 @param user The user who is logged in
 */
-const showUserData = (user => {
+const showUserDataEditUser = (user => {
     let url = window.location.href;
 	let aurl = url.split("/");
 	let html = ``;
@@ -61,36 +58,18 @@ const showUserData = (user => {
 					<div id="firstdiv2">Achternaam : <span id="change-lastname-label">${userInfo.LastName}</span><a href="#!" id="textChanger2" class="secondary-content "><i class="material-icons">edit</i></a></div>
 				</div>
 				<div class="row">
-					<div id="firstdiv3">Email adres : <span id="change-email-label">${userInfo.Email}</span><a href="#!" id="textChanger3" class="secondary-content "><i class="material-icons">edit</i></a></div>
+					<div id="firstdiv3">Email adres : <span id="change-email-label">${userInfo.Email}</span></div>
 				</div>
 				<div class="row">
 					<div>Functie:
-						<div class="input-field col s12">
-					`;
-
-			// Write the roles and check the user roles
-			roles.forEach(role => {
-				let checked = "";
-				if(userRoles.includes(role.id)){
-					checked = 'checked="checked"';
-				}
-				html += `
-				<p>
-					<label>
-						<input type="checkbox" ${checked} class="roleCheckbox" id="${role._key.toString()}" />
-						<span>${role.data().Naam}</span>
-					</label>
-				</p>
-				`;
-			});
-
-			html += `
+						<div class="input-field col s12 roles-checklist">
+						</div>
 					</div>
 				</div>
-			</div>
 			`;
 			// Write all the HTML and load the JS
 			document.querySelector('.edit-fields').innerHTML = html;
+			loadRolesChecklist(roles, userRoles);
 			addEditFields();
 		});
 	});
@@ -117,7 +96,11 @@ function updateUser() {
 				}
 			}
 			usr.Roles = activeRoles;
-			userRef.update(usr);
+			userRef.update(usr).then(function(){
+				window.location.href="../user/userpage";
+			});
+
+
 		}
 	});
 }

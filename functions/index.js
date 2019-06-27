@@ -92,8 +92,8 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
     });
   }).then(() => {
     return {
-      message: `Success! ${data.email} is nu een admin!`
-    };
+      message: `Succes! ${data.email} is nu een admin!`
+    }
   }).catch(err => {
     return err;
   });
@@ -107,9 +107,9 @@ exports.createUser = functions.https.onCall((data, context) => {
     })
         .then(user => {
             return db.collection("Users").doc(user.uid).set({
-                firstname: userData.firstName,
-                lastname: userData.lastName,
-                email: userData.email
+                FirstName: userData.firstName,
+                LastName: userData.lastName,
+                Email: userData.email
             });
     }).then(user => {
         return {

@@ -16,6 +16,25 @@ const loadRolesInSelector = (() => {
 })
 
 /*
+Shows the roles in add questions in a list
+*/
+const showRolesChecklist = (() => {
+    const rolesList = document.querySelector('.roles-list');
+    db.collection('Roles').get().then(roles => {
+        roles.forEach(role => {
+            rolesList.innerHTML += `
+            <p>
+                <label>
+                    <input class="catCheckbox" type="checkbox" value="${role.id}" />
+                    <span>${role.data().Naam}</span>
+                </label>
+            </p>
+            `
+        })
+    })
+})
+
+/*
 Add data from the form in the database
 @param resetForm fill in anything when form needs to be resetted.
 */
@@ -28,7 +47,7 @@ const addQuestion = (resetForm => {
     const checkboxes = document.querySelectorAll(".catCheckbox");
     checkboxes.forEach(checkbox => {
         if(checkbox.checked){
-            categories.push(checkbox.value)
+            categories.push(db.doc('/Roles/' + checkbox.value))
         }
     })
 
@@ -36,6 +55,14 @@ const addQuestion = (resetForm => {
     db.collection('Submitted_Questions').add({
         Question: question,
         Categories: categories
+    }).then(() => {
+        $('#modal3').modal({
+            dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            onCloseEnd: setTimeout( function() { // Callback for Modal close
+                window.location.href = BASE_URL;
+            }, 1234)
+        })
+        $('#modal3').modal('open');
     })
 
     // Reset the form if needed
@@ -45,59 +72,8 @@ const addQuestion = (resetForm => {
             checkbox.checked = false;
         })
     }
-})
 
-/*
-Add data from the form in the database
-@param resetForm fill in anything when form needs to be resetted.
-*/
-const addModQuestion = (resetForm => {
-    let question;
-    let userRole = [];
-    let answer;
-    let wrongAnswers = [];
-    let source;
-
-    // Get the data from the form
-    question = document.querySelector('#textarea1').value;
-    file = document.querySelector('#file').value;
-    answer = document.querySelector('#textarea2').value;
-    source = document.querySelector('#textarea6').value;
-    const checkboxes = document.querySelectorAll(".catCheckbox");
-    checkboxes.forEach(checkbox => {
-        if(checkbox.checked){
-            userRole.push(checkbox.value)
-        }
-    })
-    const wrongs = document.querySelectorAll(".wrong-answer-text");
-    wrongs.forEach(wrong => {
-        wrongAnswers.push(wrong.value)
-    })
-
-    // Add the data to the database
-    db.collection('Questions').add({
-        Question: question,
-        Related_User_Role: userRole,
-        Picture: file,
-        Question_answer: answer,
-        Question_wrong: wrongAnswers,
-        Source: source
-    })
-
-    // Reset the form
-    // Reset the form if needed
-    if(resetForm == null){        
-        document.querySelector('#textarea1').value = "";
-        document.querySelector('#file').value = "";
-        document.querySelector('#textarea2').value = "";
-        document.querySelector('#textarea6').value = "";
-        checkboxes.forEach(checkbox => {
-            checkbox.checked = false;
-        })
-        wrongs.forEach(wrong => {
-            wrong.value = "";
-        })
-    }
+    
 })
 
 /*
@@ -202,14 +178,14 @@ const showQuestions = (tab => {
     // If first or last tab dont go further
     // Enable and disable the prev and next buttons depending on current page
     if(tab == 1){
-    document.querySelector('.prev-tab').className = "prev-tab disabled waves-effect";
-    document.querySelector('.next-tab').className = "next-tab waves-effect";
+        document.querySelector('.prev-tab').className = "prev-tab disabled waves-effect";
+        document.querySelector('.next-tab').className = "next-tab waves-effect";
     } else if(tab == maxTab){
-    document.querySelector('.next-tab').className = "next-tab disabled waves-effect";
-    document.querySelector('.prev-tab').className = "prev-tab waves-effect";
+        document.querySelector('.next-tab').className = "next-tab disabled waves-effect";
+        document.querySelector('.prev-tab').className = "prev-tab waves-effect";
     } else {
-    document.querySelector('.prev-tab').className = "prev-tab waves-effect";
-    document.querySelector('.next-tab').className = "next-tab waves-effect";
+        document.querySelector('.prev-tab').className = "prev-tab waves-effect";
+        document.querySelector('.next-tab').className = "next-tab waves-effect";
     }
     // Stop showing current tab
     const tabcontent = document.querySelectorAll('.tabcontent');
@@ -274,31 +250,18 @@ const showQuestionDetails = (doc => {
             <h4>${data.Question}</h4>
                 <img class="responsive-img materialboxed" src="${mediaLink}" alt="questionImage">
                 <h5 class="header">Antwoord</h5>
-                <p id="short-answer">${data.Question_answer}</p>
+                <p id="short-answer">${data.Options[data.Answer]}</p>
             </div>
         </div>
     `
-    // Put the like and dislike bttons here aswell ^^^^
+    // Put the like btton here aswell ^^^^
     document.getElementById('questionContent').innerHTML = html;
 
     if(typeof data.Likes !== 'undefined')
         document.querySelector('.like-number').innerHTML = data.Likes;
-    if(typeof data.Dislikes !== 'undefined')
-        document.querySelector('.dislike-number').innerHTML = data.Dislikes;
+        document.querySelector('.like-number').value = data.Likes;
 
-    document.querySelector('.like-button').addEventListener('click', () => {
-        const likeQuestion = functions.httpsCallable('likeQuestion');
-        likeQuestion({ id: doc.id, rate: 'like' }).then(result => {
-            console.log(result.data);
-        })
-    });
-
-    document.querySelector('.dislike-button').addEventListener('click', () => {
-        const likeQuestion = functions.httpsCallable('likeQuestion');
-        likeQuestion({ id: doc.id, rate: 'dislike' }).then(result => {
-            console.log(result.data);
-        })
-    });
+    
     
 
     // Reload materialize script
@@ -319,13 +282,16 @@ const showQuestionError = (() => {
 let currentTab = 1;
 let maxTab = 1;
 
-if(aurl[aurl.length-1] == "questions") {
+if(CURRENT_PAGE == "/questions") {
     loadRolesInSelector();
 
+    // NOT REALTIME
     // Load questions form database
     // db.collection('Questions').get().then(snapshot => {
     //     loadQuestions(snapshot);
     // })
+
+    // REALTIME
     db.collection('Questions').onSnapshot(snapshot => {
         loadQuestions(snapshot);
     })
@@ -347,12 +313,38 @@ if(aurl[aurl.length-1] == "questions") {
 
 // Show the details of a question if the url ends with show
 // And get the data from post
-if(aurl[aurl.length-1] == "show") {
+if(CURRENT_PAGE == "/questions/show") {
     const docID = document.querySelector('#questionContainter').getAttribute('value');
     if(docID == ""){
         showQuestionError();
     }else {
         const docRef = db.collection('Questions').doc(docID);
-        docRef.get().then(doc => showQuestionDetails(doc));
+        docRef.onSnapshot(doc => showQuestionDetails(doc));
+
+        document.querySelector('.like-button').addEventListener('click', () => {
+            const likeSpan = document.querySelector('.like-number');
+            likeSpan.innerHTML = `
+            <div class="preloader-wrapper small active" style="height:20px;width:20px;">
+            <div class="spinner-layer spinner-green-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>`
+            const likeQuestion = functions.httpsCallable('likeQuestion');
+            likeQuestion({ id: docID, rate: 'like' }).then(result => {
+                console.log(result.data);
+                if (result.data.msg === 'already liked')
+                    likeSpan.innerHTML = likeSpan.value;
+            })
+        });
     }
+}
+
+if (CURRENT_PAGE === '/addQuestionUser') {
+	showRolesChecklist();
 }

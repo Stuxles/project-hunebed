@@ -17,7 +17,7 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            Made by <a href="<?=base_url('about')?>">NHL Stenden Students</a>
+            Gemaakt door <a href="<?=base_url('about')?>">NHL Stenden studenten</a>
         </div>
     </div>
 </footer>
@@ -43,14 +43,14 @@
 
 <!-- Load in custom javascript -->
 <script src="<?= base_url('assets/js/firestore.js') ?>"></script>
-
+<script src="<?= base_url('assets/js/editUser.js') ?>"></script>
+<script src="<?= base_url('assets/js/userpage.js') ?>"></script>
 <script src="<?= base_url('assets/js/scripts.js') ?>"></script>
 <script src="<?= base_url('assets/js/init.js') ?>"></script>
 <script src="<?=base_url('assets/js/showQuestions.js')?>"></script>
-<script src="<?=base_url('assets/js/editUser.js')?>"></script>
 <script src="<?=base_url('assets/js/moderator.js')?>"></script>
-<script src="<?=base_url('assets/js/approve.js')?>"></script>
 <script src="<?= base_url('assets/js/questions.js') ?>"></script>
+<script src="<?=base_url('assets/js/approve.js')?>"></script>
 <script src="<?=base_url('assets/js/index.js')?>"></script>
 <script src="<?=base_url('assets/js/auth.js')?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/js/quiz.js')?>"></script>

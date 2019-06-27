@@ -11,8 +11,8 @@
             <div class="nav-wrapper container">
                 <a href="<?=base_url()?>" class="brand-logo"><i class="hb-ico" style="width:73px;"></i><span class="hide-on-med-and-down">Hunebedcentrum</span></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li class="logged-in" style="display:none;" ><a class="waves-effect waves-light btn hb-red" href="<?=base_url('log-out')?>"></i>Logout</a></li>
-                    <li class="logged-out" style="display:none;" ><a class="waves-effect waves-light btn hb-red" href="<?=base_url('login')?>">Login</a></li>
+                    <li class="logged-in" style="display:none;" ><a class="waves-effect waves-light btn hb-red" href="<?=base_url('log-out')?>"></i>Uitloggen</a></li>
+                    <li class="logged-out" style="display:none;" ><a class="waves-effect waves-light btn hb-red" href="<?=base_url('login')?>">Inloggen</a></li>
                 </ul>
 
 
@@ -24,10 +24,10 @@
 
                      <li><div class="divider admin" style="display:none"></div></li>
                      <li><a class="subheader admin" style="display:none">Admin</a></li>
-                     <li class="admin" style="display:none"><a href="<?=base_url('moderator')?>"><i class="material-icons">settings</i>Moderatie</a></li>
+                     <li class="admin" style="display:none"><a href="<?=base_url('moderator')?>"><i class="material-icons">settings</i>Beheer</a></li>
 
-                     <li class="logged-in" style="display:none;" ><a class="waves-effect waves-light btn hb-red" href="<?=base_url('log-out')?>"></i>Logout</a></li>
-                     <li class="logged-out" style="display:none;" ><a class="waves-effect waves-light btn hb-red" href="<?=base_url('login')?>">Login</a></li>
+                     <li class="logged-in" style="display:none;" ><a class="waves-effect waves-light btn hb-red" href="<?=base_url('log-out')?>"></i>Uitloggen</a></li>
+                     <li class="logged-out" style="display:none;" ><a class="waves-effect waves-light btn hb-red" href="<?=base_url('login')?>">Inloggen</a></li>
 
 
 
@@ -41,7 +41,7 @@
                     <li class="tab"><a href="<?=base_url()?>">Home</a></li>
                     <li class="tab logged-in" style="display:none"><a href="<?=base_url('questions')?>">Vragen</a></li>
                     <li class="tab logged-in" style="display:none"><a href="<?=base_url('user/userpage')?>">Mijn account</a></li>
-                    <li class="tab admin" style="display:none"><a href="<?=base_url('moderator')?>">Moderatie</a></li>
+                    <li class="tab admin" style="display:none"><a href="<?=base_url('moderator')?>">Beheer</a></li>
                 </ul>
             </div>
         </nav>

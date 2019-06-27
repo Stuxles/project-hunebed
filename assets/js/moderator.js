@@ -36,14 +36,14 @@ function renderUser(doc) {
     Button.className = 'waves-effect waves-light hb-red btn-floating';
     Icon.className = 'material-icons left';
     Icon.textContent = 'edit';
-    //Button.href = pathArray[3].replace("moderator", "").concat("editUser");
+    Button.href = pathArray[3].replace("showUsers", "").concat("editUser");
     //set attribute on Button variable with idd as name and doc.id as value
     Button.setAttribute('idd', doc.id);
     //buttons sends id to editUser page to retrieve user
     Button.addEventListener('click', (e) => {
-        var id = e.target.parentElement.getAttribute('idd');
+        let id = e.target.parentElement.getAttribute('idd');
         window.sessionStorage.setItem('idd', doc.id);
-
+       
     });
 
     tr.appendChild(FirstName);
@@ -58,11 +58,41 @@ function renderUser(doc) {
 
 }
 
-// getting data if we're on a moderator page
-if(CURRENT_PAGE == 'showUsers') {
+// getting data if we're on a showUsers page
+if(CURRENT_PAGE == '/moderator/showUsers') {
 userRef.get().then(snapshot => {
 	    snapshot.docs.forEach(doc => {
 	        renderUser(doc);
 	    });
+	});
+}
+
+function updateUser() {
+	let userRef = db.collection("Users").doc(firebase.auth().currentUser.uid.toString());
+	userRef.get().then(function(doc){
+		let usr = { };
+		if(doc.exists){
+			if(document.getElementById("first_name") != null) { 
+				usr.FirstName = document.getElementById("first_name").value;
+			}
+			if(document.getElementById("last_name") != null) {
+				usr.LastName = document.getElementById("last_name").value;
+			}
+			if(document.getElementById("email") != null){
+				usr.Email = document.getElementById("email").value;
+			}
+			let checkboxes = document.getElementsByClassName("roleCheckbox");
+			for(let r of checkboxes){
+				if(r.checked) {
+					activeRoles.push(db.doc("/" + r.id));
+				}
+			}
+			usr.Roles = activeRoles;
+			userRef.update(usr).then(function(){
+				window.location.href="../user/userpage";
+			});
+
+
+		}
 	});
 }

@@ -24,10 +24,10 @@
                 </div>
             </div>
             <div class="row center">
-                <button class="btn waves-effect hb-red waves-light" name="action">Terug
+                <a href="<?= base_url() ?>" class="btn waves-effect hb-red waves-light" name="action">Terug
                     <i class="material-icons left">arrow_back</i>
-                </button>
-                <button class="btn waves-effect hb-red waves-light" id="send-password-reset" name="action">Opslaan
+                </a>
+                <button class="btn waves-effect hb-green waves-light" id="send-password-reset" name="action">Opslaan
                     <i class="material-icons right">send</i>
                 </button>
             </div>
