@@ -24,7 +24,10 @@ if($('.quiz1')) {
                 //Now push the array of document references into the localStorage
 								console.log(doc);
 								console.log(doc.ref);
-                localStorage.setItem("Questions-" + resCount.toString(), getRandomQuestions(doc.ref));
+								console.log(doc.data());
+								let data;
+								getRandomQuestions(doc.ref).then(p => { console.log(p); });
+                localStorage.setItem("Questions-" + resCount.toString(), data);
                 resCount++;
             });
             localStorage.setItem("questionNumber", 0);
@@ -43,16 +46,19 @@ function loadQuestionPage() {
 	nextQuestion(categories.cat1[localStorage.getItem("questionNumber")]);
 }
 
-function nextQuestion(q) {
-	localStorage.setItem("questionNumber", localStorage.getItem("questionNumber")+1);
-	$(".container").innerHTML = question_template({
-		id: q.id,
-		Question: q.Question,
-		Option1: q.Options[0],
-		Option2: q.Options[1],
-		Option3: q.Options[2],
-		Option4: q.Options[3]
+function nextQuestion(questionPromise) {
+	questionPromise.then( questionArray => {
+		let q = questionArray[localStorage.getItem("questionNumber")];
+		$(".container").innerHTML = question_template({
+			id: q.id,
+			Question: q.Question,
+			Option1: q.Options[0],
+			Option2: q.Options[1],
+			Option3: q.Options[2],
+			Option4: q.Options[3]
+		});
 	});
+	localStorage.setItem("questionNumber", localStorage.getItem("questionNumber")+1);
 }
 
 //HTML Template for question

@@ -32,10 +32,8 @@ function randomSelectOne(arr) {
 //Selects all matching questions by default
 async function getRandomQuestions(roleReference, amount = 0) {
 	let docArray = [];
-	console.log(roleReference);
 	await db.collection('Questions').where('Categories', 'array-contains', roleReference).onSnapshot(snapshot => {
 		snapshot.forEach(doc =>{
-			console.log(doc);
 			docArray.push(doc);
 		});
 	});
