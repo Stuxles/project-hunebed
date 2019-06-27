@@ -35,13 +35,13 @@ exports.likeQuestion = functions.https.onCall((question, context) => {
                 if (setLike) {
                     return db.collection('Questions').doc(question.id).update({
                         Likes: admin.firestore.FieldValue.increment(1)
-                    })
+                    });
                 } else if (!setLike) {
                     return db.collection('Questions').doc(question.id).update({
                         Dislikes: admin.firestore.FieldValue.increment(1)
-                    })
+                    });
                 }
-            })
+            });
         } else if (snapshot.docs.length == 1) {
             // If the the user already liked or disliked the quesiton update the choice if necessary
             return snapshot.docs[0].ref.get().then(doc => {
@@ -54,14 +54,14 @@ exports.likeQuestion = functions.https.onCall((question, context) => {
                             return db.collection('Questions').doc(question.id).update({
                                 Likes: admin.firestore.FieldValue.increment(1),
                                 Dislikes: admin.firestore.FieldValue.increment(-1)
-                            })
+                            });
                         } else if (!setLike) {
                             return db.collection('Questions').doc(question.id).update({
                                 Likes: admin.firestore.FieldValue.increment(-1),
                                 Dislikes: admin.firestore.FieldValue.increment(1)
-                            })
+                            });
                         }
-                    })
+                    });
                 } else {
                     if (setLike) {
                         return message = 'already liked';
@@ -69,7 +69,7 @@ exports.likeQuestion = functions.https.onCall((question, context) => {
                         return message = 'already disliked';
                     }
                 }
-            })
+            });
         }
     }).then(() => {
         // Message to return when successful
@@ -77,19 +77,19 @@ exports.likeQuestion = functions.https.onCall((question, context) => {
     }).catch(err => {
         // Return error message wheb fail
         return err;
-    })
-})
+    });
+});
 
 exports.addAdminRole = functions.https.onCall((data, context) => {
   // check request is made by an admin
   if ( context.auth.token.admin !== true ) {
-    return { error: 'Only admins can add other admins' }
+    return { error: 'Only admins can add other admins' };
   }
   // get user and add admin custom claim
   return admin.auth().getUserByEmail(data.email).then(user => {
     return admin.auth().setCustomUserClaims(user.uid, {
       admin: true
-    })
+    });
   }).then(() => {
     return {
       message: `Succes! ${data.email} is nu een admin!`
@@ -98,7 +98,6 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
     return err;
   });
 });
-
 
 exports.createUser = functions.https.onCall((data, context) => {
     const userData = data;
@@ -115,97 +114,12 @@ exports.createUser = functions.https.onCall((data, context) => {
     }).then(user => {
         return {
             response: user
-        }
+        };
     })
         .catch(error => {
-        throw new functions.https.HttpsError(error)
+        throw new functions.https.HttpsError(error);
     });
 });
-//HTML Template for question
-let question_template = ({
-  id,
-  Question,
-  Option1,
-  Option2,
-  Option3,
-  Option4
-}) => {
-  return `
-  <div class="container content">
-  <div class="section">
-      <div class="container">
-          <div class="row">
-              <form name="quizform" action="/checkanswer" method="POST">
-                  <h4 class="center">Quiz Algemeen</h4>
-                  <div class="divider"></div>
-                  <div class="row center">
-                      <ul class="pagination center question-pagination">
-                      </ul>
-                      <div class="questionListContainer">
-                      </div>
-                  </div>
-          </div>
-
-          <div class="col s12">
-              <div class="card">
-                  <div class="card-content center">
-                      <span class="card-title">${Question}</span>
-                      <img class="responsive-img" src="<?= base_url('assets/img/bg1.jpg') ?>">
-                  </div>
-              </div>
-          </div>
-              <div class="row">
-                  <div class="col s12">
-                      <div class="card hoverable answer hb-blue">
-                          <div class="card-content white-text">
-                              <span class="card-title">${Option1}</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col s12">
-                      <div class="card hoverable answer hb-blue" onclick="">
-                          <div class="card-content white-text">
-                              <span class="card-title">${Option2}</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col s12">
-                      <div class="card hoverable answer hb-blue">
-                          <div class="card-content white-text">
-                              <span class="card-title">${Option3}</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col s12">
-                      <div class="card hoverable answer hb-blue">
-                          <div class="card-content white-text">
-                              <span class="card-title">${Option4}</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          <ul id="quizQuestion"></ul>
-          <div class="row center">
-              <p>Voor meer informatie over deze vraag:</p>
-              <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect hb-red-bg waves-light" id="terug"><i class="material-icons left">question_answer</i>klik hier</a>
-          </div>
-          <div class="row center">
-              <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect hb-red-bg waves-light" id="terug"><i class="material-icons left">arrow_back</i>Terug</a>
-              <button data-target="modal1" class="btn modal-trigger waves-effect hb-red-bg waves-light">Controleer antwoord
-                  <i class="material-icons right">check</i>
-              </button>
-          </div>
-      </div>
-      </form>
-  </div>
-</div>`;
-}
 
 let correct_answer_template = () => {
   return `
@@ -255,7 +169,7 @@ let correct_answer_template = () => {
       </form>
   </div>
 </div>`;
-}
+};
 
 //HTML Template for wrong answer
 let wrong_answer_template = ({
@@ -307,7 +221,6 @@ let wrong_answer_template = ({
       </form>
   </div>`;
 };
-
 //Function to check the answer submitted
 exports.checkanswer = functions.https.onCall((req, res) => {
 
@@ -334,7 +247,7 @@ exports.checkanswer = functions.https.onCall((req, res) => {
           console.log('Error getting document', err);
           res.status(400).send('Error');
       });
-})
+});
 
 //Retrieve the answer from the Question DocumentRef based on the option provided
 function getAnswer(doc, answer) {
@@ -354,4 +267,4 @@ function getAnswer(doc, answer) {
           break;
   }
   return answer_text;
-}
+};

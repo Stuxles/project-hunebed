@@ -1,0 +1,22 @@
+{
+  "name": "project-hunebed",
+  "version": "1.0.0",
+  "description": "Hunebed management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stuxles/project-hunebed.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stuxles/project-hunebed/issues"
+  },
+  "homepage": "https://github.com/Stuxles/project-hunebed#readme",
+  "dependencies": {
+    "firebase": "^6.2.1"
+  }
+}
