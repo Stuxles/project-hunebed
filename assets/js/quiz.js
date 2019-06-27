@@ -13,31 +13,22 @@ $(function() {
     });
 });
 
-//select wich quiz the user wants to make
-if($('.quiz1')) {
-    $('.quiz1').click(function(event) {
-						event.preventDefault();
+let categories = {};
+function loadQuestionPage() {event.preventDefault();
         //There should be only one result, but better safe than sorry
-		let resCount = 0;
+			let resCount = 0;
 			db.collection('Roles').where('Naam', '==', 'Museum').onSnapshot(snap => {
             snap.docs.forEach(doc =>{
                 //Now push the array of document references into the localStorage
 								console.log(doc);
 								console.log(doc.ref);
-								console.log(doc.data());
-								let data;
-								getRandomQuestions(doc.ref).then(p => { console.log(p); });
-                localStorage.setItem("Questions-" + resCount.toString(), data);
+                localStorage.setItem("Questions-" + resCount.toString(), JSON.stringify(doc));
                 resCount++;
             });
             localStorage.setItem("questionNumber", 0);
             localStorage.setItem("arrayCount", resCount);
 	    });
     });
-}
-
-let categories = {};
-function loadQuestionPage() {
 	let count = localStorage.getItem("arrayCount");
 	//Shouldn't fill further than cat1, but make sure that we can handle multiples.
 	for(let i = 0; i <= count; i++) {
