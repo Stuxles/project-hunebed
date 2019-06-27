@@ -5,7 +5,6 @@ const loadRolesInSelector = (() => {
     const select = document.querySelector('.select-role');  // The selector
     db.collection('Roles').get().then(snapshot => {
         snapshot.forEach(doc => {
-            console.log(doc.id)
             select.innerHTML += `<option value="${doc.id}">${doc.data().Naam}</option>`;
         })
         
