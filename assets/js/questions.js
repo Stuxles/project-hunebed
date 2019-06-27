@@ -250,7 +250,7 @@ const showQuestionDetails = (doc => {
             <h4>${data.Question}</h4>
                 <img class="responsive-img materialboxed" src="${mediaLink}" alt="questionImage">
                 <h5 class="header">Antwoord</h5>
-                <p id="short-answer">${data.Question_answer}</p>
+                <p id="short-answer">${data.Options[data.Answer]}</p>
             </div>
         </div>
     `

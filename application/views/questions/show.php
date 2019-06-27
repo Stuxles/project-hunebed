@@ -7,16 +7,14 @@
                 <div class="row">
                     <div class="rate-buttons">
                         <div class="col 6 like-button-box">
-                        <div class="like-button">
-                            <i class="far fa-thumbs-up fa-3x"></i>
+                            <div class="like-button">
+                                <i class="far fa-thumbs-up fa-3x"></i>
+                            </div>
+                            <span class="like-number">0</span>
                         </div>
-                        <span class="like-number">0</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-
-</script>
