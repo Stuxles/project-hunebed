@@ -7,7 +7,7 @@ function showEditQuestions(collection){
             let ilItem = `
             <hr>
             <il classname='collection-item avatar'>
-                <span classname = 'title'><b>Vraag ${x}</b> : ${doc.data().Question}</span>
+                <span class = 'title'><b>Vraag ${x}</b> : ${doc.data().Question}</span>
                 <p><button onclick='clickApprovedBtn("${doc.id}", "${collection}")' class='approve-btn waves-effect waves-light red btn'>Goedkeuren / Verwijderen</button></p>
             </il>
             <hr>
