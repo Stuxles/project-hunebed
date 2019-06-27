@@ -119,7 +119,7 @@
     signupForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        addUserFunction(signupForm['first_name'].value, signupForm['last_name'].value, signupForm['signup_email'].value, 'password', signupForm);
+        addUserFunction(signupForm['first_name'].value, signupForm['last_name'].value, signupForm['signup_email'].value, 'Borger2019', signupForm);
     });
 
 
