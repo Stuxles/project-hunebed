@@ -99,6 +99,10 @@ nav ul .tab:hover a {
   background-color: #EE2B4F !important;
 }
 
+.hb-green {
+  background-color: #92B83E !important;
+}
+
 .content {
   background-color: white;
 }
@@ -173,7 +177,7 @@ nav ul .tab:hover a {
 
 .like-button-box {
   /* border-left: 2px solid black; */
-  color: green;
+  color: #92B83E;
 }
 
 .like-button-box i:hover {
@@ -224,7 +228,7 @@ nav ul .tab:hover a {
 }
 
 .like-button {
-  border: 2px solid green;
+  border: 2px solid #92B83E;
   border-radius: 0.1875rem;
   text-align: center;
   width: 60px;

@@ -5,6 +5,7 @@ const loadRolesInSelector = (() => {
     const select = document.querySelector('.select-role');  // The selector
     db.collection('Roles').get().then(snapshot => {
         snapshot.forEach(doc => {
+            console.log(doc.id)
             select.innerHTML += `<option value="${doc.id}">${doc.data().Naam}</option>`;
         })
         
@@ -22,7 +23,6 @@ const showRolesChecklist = (() => {
     const rolesList = document.querySelector('.roles-list');
     db.collection('Roles').get().then(roles => {
         roles.forEach(role => {
-            console.log(role)
             rolesList.innerHTML += `
             <p>
                 <label>
@@ -75,59 +75,6 @@ const addQuestion = (resetForm => {
     }
 
     
-})
-
-/*
-Add data from the form in the database
-@param resetForm fill in anything when form needs to be resetted.
-*/
-const addModQuestion = (resetForm => {
-    let question;
-    let userRole = [];
-    let answer;
-    let wrongAnswers = [];
-    let source;
-
-    // Get the data from the form
-    question = document.querySelector('#textarea1').value;
-    file = document.querySelector('#file').value;
-    answer = document.querySelector('#textarea2').value;
-    source = document.querySelector('#textarea6').value;
-    const checkboxes = document.querySelectorAll(".catCheckbox");
-    checkboxes.forEach(checkbox => {
-        if(checkbox.checked){
-            userRole.push(checkbox.value)
-        }
-    })
-    const wrongs = document.querySelectorAll(".wrong-answer-text");
-    wrongs.forEach(wrong => {
-        wrongAnswers.push(wrong.value)
-    })
-
-    // Add the data to the database
-    db.collection('Questions').add({
-        Question: question,
-        Related_User_Role: userRole,
-        Picture: file,
-        Question_answer: answer,
-        Question_wrong: wrongAnswers,
-        Source: source
-    })
-
-    // Reset the form
-    // Reset the form if needed
-    if(resetForm == null){        
-        document.querySelector('#textarea1').value = "";
-        document.querySelector('#file').value = "";
-        document.querySelector('#textarea2').value = "";
-        document.querySelector('#textarea6').value = "";
-        checkboxes.forEach(checkbox => {
-            checkbox.checked = false;
-        })
-        wrongs.forEach(wrong => {
-            wrong.value = "";
-        })
-    }
 })
 
 /*
@@ -308,15 +255,12 @@ const showQuestionDetails = (doc => {
             </div>
         </div>
     `
-    // Put the like and dislike bttons here aswell ^^^^
+    // Put the like btton here aswell ^^^^
     document.getElementById('questionContent').innerHTML = html;
 
     if(typeof data.Likes !== 'undefined')
         document.querySelector('.like-number').innerHTML = data.Likes;
         document.querySelector('.like-number').value = data.Likes;
-    if(typeof data.Dislikes !== 'undefined')
-        document.querySelector('.dislike-number').innerHTML = data.Dislikes;
-        document.querySelector('.dislike-number').value = data.Dislikes;
 
     
     
@@ -397,28 +341,6 @@ if(CURRENT_PAGE == "/questions/show") {
                 console.log(result.data);
                 if (result.data.msg === 'already liked')
                     likeSpan.innerHTML = likeSpan.value;
-            })
-        });
-    
-        document.querySelector('.dislike-button').addEventListener('click', () => {
-            dislikeSpan = document.querySelector('.dislike-number');
-            dislikeSpan.innerHTML = `
-            <div class="preloader-wrapper small active" style="height:20px;width:20px;">
-            <div class="spinner-layer spinner-red-only">
-              <div class="circle-clipper left">
-                <div class="circle"></div>
-              </div><div class="gap-patch">
-                <div class="circle"></div>
-              </div><div class="circle-clipper right">
-                <div class="circle"></div>
-              </div>
-            </div>
-          </div>`
-            const likeQuestion = functions.httpsCallable('likeQuestion');
-            likeQuestion({ id: docID, rate: 'dislike' }).then(result => {
-                console.log(result.data);
-                if (result.data.msg === 'already disliked')
-                    dislikeSpan.innerHTML = dislikeSpan.value;
             })
         });
     }

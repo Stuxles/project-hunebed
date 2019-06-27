@@ -6,7 +6,7 @@
       </div>
    </div>
    <div class="container">
-      <ul class="collection" id = 'qListSubmit'>
+      <ul class="collection" id = 'qListApproved'>
       </ul>
    </div>
 </div>
