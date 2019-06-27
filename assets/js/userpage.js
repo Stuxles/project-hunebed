@@ -2,7 +2,7 @@
 Shows the data of the logged in user on the /user/userpage page
 @param user The user who is logged in
 */
-const showUserData = (user => {
+const showUserDataUserPage = (user => {
     let url = window.location.href;
     let aurl = url.split("/");
     let html = ``;

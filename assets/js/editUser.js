@@ -21,7 +21,7 @@ const addEditFields = (() => {
 Shows the data of the logged in user on the /user/edit page
 @param user The user who is logged in
 */
-const showUserData = (user => {
+const showUserDataEditUser = (user => {
     let url = window.location.href;
 	let aurl = url.split("/");
 	let html = ``;

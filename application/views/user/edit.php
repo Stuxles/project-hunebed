@@ -12,7 +12,6 @@
                         <div class="role-fields">
 
                         </div>
-
                     </div>
 
                     <div class="row center">
@@ -24,6 +23,5 @@
         </div>
     </div>
 </div>
-<script src="<?=base_url('assets/js/editUser.js')?>"></script>
 
 
