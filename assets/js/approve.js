@@ -101,7 +101,6 @@ function approvedQuestionForm(questionID, collection){
                     if (collection == 'Questions') {
                         questionRef.set({
                             Question: questionText.value,
-                            Likes: 0,
                             Options: answers,
                             Categories: relatedRoles,
                             Answer: correctIndex
@@ -109,7 +108,6 @@ function approvedQuestionForm(questionID, collection){
                     } else if (collection == 'Submitted_Questions') {
                         db.collection('Questions').add({
                             Question: questionText.value,
-                            Likes: 0,
                             Options: answers,
                             Categories: relatedRoles,
                             Answer: correctIndex
@@ -153,7 +151,6 @@ function addAdminQuestion() {
     // Add the question to the database
     db.collection('Questions').add({
         Question: questionText.value,
-        Likes: 0,
         Options: answers,
         Categories: relatedRoles,
         Answer: correctIndex
