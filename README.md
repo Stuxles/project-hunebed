@@ -1,5 +1,5 @@
 # project-hunebed
 Hunebed management
 
-![Imgur](https://imgur.com/a/hSO0Crn)
+![Imgur Image](https://imgur.com/a/hSO0Crn.jpg)
 
