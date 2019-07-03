@@ -55,9 +55,7 @@ function approvedQuestionForm(questionID, collection){
                         let y = (i+1);
                         if (correctHasSet)
                             y--;
-                        
-                        console.log(document.querySelector('#wrong-answer-' + y))
-                        console.log(question.data().Options.length)
+                            
                         document.querySelector('#wrong-answer-' + y).value = question.data().Options[i];
                         
                     }
