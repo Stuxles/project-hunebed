@@ -48,14 +48,16 @@ function approvedQuestionForm(questionID, collection){
                         if (i == question.data().Answer) {
                             document.querySelector('#correct-awnser-field').value = question.data().Options[i];
                             correctHasSet = true;
-                            i++
+                            if (i != 3)
+                                i++
                         }
 
                         let y = (i+1);
                         if (correctHasSet)
                             y--;
                         
-                        console.log('#wrong-answer-' + y)
+                        console.log(document.querySelector('#wrong-answer-' + y))
+                        console.log(question.data().Options.length)
                         document.querySelector('#wrong-answer-' + y).value = question.data().Options[i];
                         
                     }
