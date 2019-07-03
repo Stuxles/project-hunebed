@@ -52,7 +52,7 @@
                     </div>
                     <div class="row center">
                         <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect orange waves-light" id = "terug"><i class="material-icons left" >arrow_back</i>Terug</a>
-                        <button data-target="modal1" class="btn modal-trigger waves-effect hb-green waves-light">Toevogen
+                        <button data-target="modal1" class="btn modal-trigger waves-effect hb-green waves-light">Toevoegen
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
