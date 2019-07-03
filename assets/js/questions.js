@@ -303,8 +303,8 @@ if(CURRENT_PAGE == "/questions") {
 
         db.collection('Roles').doc(out).get().then(doc => {
             if (doc.exists) {
-                db.collection('Questions').where('Related_User_Roles', 'array-contains', doc.ref).onSnapshot(snapshot => {
-                    loadQuestions(snapshot);
+                db.collection('Questions').where('Categories', 'array-contains', doc.ref).onSnapshot(snapshot => {
+                    loadQuestions(snapshot);    
                 })
             }
         })
