@@ -14,7 +14,7 @@
         </section>
         <div class="row">
             <div class="col s12 m6">
-            <a href="<?php echo base_url() . "quiz/quizQuestion?cat=Museum" ?>" class="white-text quiz1">
+            <a href="<?php echo base_url() . "quiz/quizQuestion?cat=dIQfWKaJSNZ9raCPu1QN" ?>" class="white-text quiz1">
                 <div class="card medium hoverable hb-blue">
 
                     <div class="card-content center hb-blue">
