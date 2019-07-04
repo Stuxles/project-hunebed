@@ -1,68 +1,148 @@
-//select answer
-$(function() {
-    $('.answer').click(function(event) {
-        //remove all pre-existing active classes
-        $('.answer-selected').removeClass('answer-selected');
+function generateQuiz(questions) {
+    const quizContainer = document.querySelector('#quiz');
+    const submitButton = document.querySelector('#submit');
 
-        //add the active class to the link we clicked
-        $(this).addClass('answer-selected');
-        $(this).removeClass('answer');
-        $('.answer').addClass('answer');
+    function showQuestionResult(question, questionContainer) {
+        var userAnswer = '';
+            
+        userAnswer = questionContainer.querySelector('.answer-selected').getAttribute('index');
 
-        event.preventDefault();
-    });
-});
+        console.log(typeof parseInt(userAnswer))
+        console.log(typeof question.Answer)
+        if (userAnswer == question.Answer) {
+            console.log('Correct');
+            questionContainer.querySelector('.next-question').classList.remove('disabled');
+            $('.answer-right').removeClass('answer-right');
+            $('.answer-wrong').removeClass('answer-wrong');
+            $('.answer-selected').addClass('answer-right');
+        } else {
+            console.log('wrong')
+            $('.answer-right').removeClass('answer-right');
+            $('.answer-wrong').removeClass('answer-wrong');
+            $('.answer-selected').addClass('answer-wrong');
+        }
+    }
 
-let categories = {};
-function loadQuestionPage() {event.preventDefault();
-        //There should be only one result, but better safe than sorry
-			let resCount = 0;
-			db.collection('Roles').where('Naam', '==', 'Museum').onSnapshot(snap => {
-            snap.docs.forEach(doc =>{
-                //Now push the array of document references into the localStorage
-								console.log(doc);
-								console.log(doc.ref);
-                localStorage.setItem("Questions-" + resCount.toString(), JSON.stringify(doc));
-                resCount++;
+    function showNextQuestion(index, max) {
+        if (index != max) {
+            if (index != 0) {
+                document.querySelectorAll('.question').forEach(questionDiv => {
+                    questionDiv.classList.add('hidden')
+                })
+            }
+            document.querySelector('#question'+index).classList.remove('hidden');
+        }
+    }
+
+    function showPrevQuestion(index) {
+        if (index >= 0) {
+            document.querySelectorAll('.question').forEach(questionDiv => {
+                questionDiv.classList.add('hidden')
+            })
+
+            document.querySelector('#question'+index).classList.remove('hidden');
+        }
+    }
+
+    function showQuestions(questions, quizContainer) {
+        for (var i=0; i < questions.length; i++) {
+            quizContainer.innerHTML += question_template('', questions[i].id, questions[i].Question, questions[i].Options, i);
+            
+        }
+
+        for (var i=0; i < questions.length; i++) {
+            const index = i;
+            document.querySelector('#submit'+index).addEventListener('click', function() {
+                showQuestionResult(questions[index], document.querySelector('#question'+index));
+            })
+
+            document.querySelector('#next-question'+index).addEventListener('click', function() {
+                showNextQuestion(index+1, questions.length);
+            })
+
+            document.querySelector('#prev-question'+index).addEventListener('click', function() {
+                showPrevQuestion(index-1);
+            })
+        }
+        
+        showNextQuestion(0, questions.length);
+    }
+
+    function showResult(questions, quizContainer) {
+        var answerContainers = quizContainer.querySelectorAll('.answers');
+        var userAnswer = '';
+        var numCorrect = 0;
+
+        for (var i=0; i < questions.length; i++) {
+            userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+
+            if (userAnswer == questions[i].Answer) {
+                numCorrect++;
+
+                answerContainers[i].style.color = 'lightgreen';
+            } else {
+                answerContainers[i].style.color = 'red';
+            }
+        }
+
+        console.log(numCorrect + ' out of ' + questions.length);
+    }
+
+    showQuestions(questions, quizContainer);
+
+    submitButton.onclick = function() {
+        //showResult(questions, quizContainer);
+        console.log(document.querySelector('.answer-selected').index);
+    }
+}
+
+const getQuestions = ((categorie, limit = 5) => {
+    const questionsRef = db.collection('Questions');
+    const categorieRef = db.collection('Roles').doc(categorie);
+
+    questionsRef.where('Categories', 'array-contains', categorieRef).get().then(snap => {
+        const array = shuffleArray(snap.docs);
+        let questions = [];
+        for (let i = 0; i < limit && i < array.length; i++) {
+
+            questions.push(array[i].data());
+        }
+
+        generateQuiz(questions);
+
+        //select answer
+        $(function() {
+            $('.answer').click(function(event) {
+                //remove all pre-existing active classes
+                $('.answer-selected').removeClass('answer-selected');
+
+                //add the active class to the link we clicked
+                $(this).addClass('answer-selected');
+                $(this).removeClass('answer');
+                $('.answer').addClass('answer');
+
+                event.preventDefault();
             });
-            localStorage.setItem("questionNumber", 0);
-            localStorage.setItem("arrayCount", resCount);
-	    });
-    });
-	let count = localStorage.getItem("arrayCount");
-	//Shouldn't fill further than cat1, but make sure that we can handle multiples.
-	for(let i = 0; i <= count; i++) {
-		categories["cat" + (i+1).toString()] = localStorage.getItem("Questions-" + count.toString());
-	}
-	nextQuestion(categories.cat1[localStorage.getItem("questionNumber")]);
+        });
+    })
+
+    
+})
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
 }
 
-function nextQuestion(questionPromise) {
-	questionPromise.then( questionArray => {
-		let q = questionArray[localStorage.getItem("questionNumber")];
-		$(".container").innerHTML = question_template({
-			id: q.id,
-			Question: q.Question,
-			Option1: q.Options[0],
-			Option2: q.Options[1],
-			Option3: q.Options[2],
-			Option4: q.Options[3]
-		});
-	});
-	localStorage.setItem("questionNumber", localStorage.getItem("questionNumber")+1);
-}
+
 
 //HTML Template for question
-let question_template = ({
-  id,
-  Question,
-  Option1,
-  Option2,
-  Option3,
-  Option4
-}) => {
-  return `
-  <div class="container content">
+let question_template = ((hidden, id, Question, Options, index) => {
+  let html = `
+  <div id="question${index}" class="question container hidden" ${hidden}>
   <div class="section">
       <div class="container">
           <div class="row">
@@ -81,59 +161,46 @@ let question_template = ({
               <div class="card">
                   <div class="card-content center">
                       <span class="card-title">${Question}</span>
-                      <img class="responsive-img" src="<?= base_url('assets/img/bg1.jpg') ?>">
                   </div>
               </div>
-          </div>
-              <div class="row">
-                  <div class="col s12">
-                      <div class="card hoverable answer hb-blue">
-                          <div class="card-content white-text">
-                              <span class="card-title">${Option1}</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col s12">
-                      <div class="card hoverable answer hb-blue" onclick="">
-                          <div class="card-content white-text">
-                              <span class="card-title">${Option2}</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col s12">
-                      <div class="card hoverable answer hb-blue">
-                          <div class="card-content white-text">
-                              <span class="card-title">${Option3}</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col s12">
-                      <div class="card hoverable answer hb-blue">
-                          <div class="card-content white-text">
-                              <span class="card-title">${Option4}</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          <ul id="quizQuestion"></ul>
-          <div class="row center">
-              <p>Voor meer informatie over deze vraag:</p>
-              <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect hb-red-bg waves-light" id="terug"><i class="material-icons left">question_answer</i>klik hier</a>
-          </div>
-          <div class="row center">
-              <a href="<?= base_url('moderator/moderator') ?>" class="btn waves-effect hb-red-bg waves-light" id="terug"><i class="material-icons left">arrow_back</i>Terug</a>
-              <button data-target="modal1" class="btn modal-trigger waves-effect hb-red-bg waves-light">Controleer antwoord
-                  <i class="material-icons right">check</i>
-              </button>
-          </div>
-      </div>
+          </div>`
+
+    for (let i=0; i < Options.length; i++) {
+        html += `
+        <div class="row">
+            <div class="col s12">
+                <div index="${i}" id="option${i}" class="card hoverable answer hb-blue">
+                    <div class="card-content white-text">
+                        <span class="card-title">${Options[i]}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `
+    };
+
+    html += `
+            <ul id="quizQuestion"></ul>
+            <div class="row center">
+                <button id="submit${index}" data-target="modal1" class="btn modal-trigger waves-effect hb-red-bg waves-light">Controleer antwoord
+                <i class="material-icons right">check</i>
+                </button>            
+            </div>
+            <div class="row center">
+                <button id="prev-question${index}" class="btn waves-effect hb-red-bg waves-light">Vorrige
+                <i class="material-icons left">arrow_back</i>
+                </button>                
+                <button id="next-question${index}" class="next-question btn waves-effect hb-red-bg waves-light disabled">Volgende
+                <i class="material-icons right">arrow_forward</i>
+                </button>
+            </div>
+        </div>
       </form>
   </div>
 </div>`;
-};
+return html;
+});
+
+if (CURRENT_PAGE == '/quiz/quizQuestion') {
+    getQuestions(parseURLParams(window.location.href).cat[0]);
+}

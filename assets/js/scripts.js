@@ -31,7 +31,8 @@ $(document).ready(function () {
 /*
 Parses get request for Javascript
 */
-function parseURLParams(url) {
+function parseURLParams() {
+	let url = window.location.href;
   var queryStart = url.indexOf("?") + 1,
     queryEnd = url.indexOf("#") + 1 || url.length + 1,
     query = url.slice(queryStart, queryEnd - 1),
