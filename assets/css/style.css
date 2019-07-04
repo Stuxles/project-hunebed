@@ -254,7 +254,7 @@ nav ul .tab:hover a {
 }
 
 .answer-selected{
-  background-color: #EE2B4F !important;
+  background-color: #DC9F29 !important;
 }
 .answer{
   cursor: pointer;
@@ -288,4 +288,8 @@ nav ul .tab:hover a {
 
 .question-card .row {
   margin-bottom: 0;
+}
+
+.hidden {
+  display: none;
 }

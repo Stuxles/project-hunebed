@@ -244,11 +244,10 @@ const showTopQuestions = ((amount = 3) => {
 // Writes the html for question details
 const showQuestionDetails = (doc => {
     const data = doc.data();
-    const mediaLink = '../assets/img/hunebed1800x400.jpg';  // Media link of the question
     let html = `
         <div class="question-content">
             <h4>${data.Question}</h4>
-                <img class="responsive-img materialboxed" src="${mediaLink}" alt="questionImage">
+            <hr>
                 <h5 class="header">Antwoord</h5>
                 <p id="short-answer">${data.Options[data.Answer]}</p>
             </div>
