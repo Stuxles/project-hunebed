@@ -126,6 +126,10 @@ exports.createUser = functions.https.onCall((data, context) => {
 });
 
 exports.deleteUser = functions.https.onCall((data, context) => {
+       // check request is made by an admin
+  if ( context.auth.token.admin !== true ) {
+    return { error: 'Only admins can add other admins' };
+  }
     const userData = data;
     db.collection("Users").doc(data.uid).delete()
     .then(function() {
