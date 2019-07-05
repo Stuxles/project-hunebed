@@ -100,6 +100,10 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
 });
 
 exports.createUser = functions.https.onCall((data, context) => {
+    // check request is made by an admin
+  if ( context.auth.token.admin !== true ) {
+    return { error: 'Only admins can add other admins' };
+  }
     const userData = data;
     return admin.auth().createUser({
         email: data.email,
