@@ -21,12 +21,9 @@ function generateQuiz(questions) {
             $('.answer-selected').addClass('answer-right');
         } else {
             console.log('wrong')
+            question.givenAnswer = document.querySelector('.answer-selected').querySelector('span').innerHTML;
             if (!correctAnswered.includes(question) && !wrongAnswered.includes(question)) {
-                const answer = {
-                    question: question,
-                    givenAnswer: document.querySelector('.answer-selected').querySelector('span').innerHTML
-                }
-                wrongAnswered.push(answer);
+                wrongAnswered.push(question);
             }
 
             $('.answer-right').removeClass('answer-right');
@@ -86,9 +83,9 @@ function generateQuiz(questions) {
         wrongAnswered.forEach(answer => {
             const html = `
                 <div class="question-result">
-                    <h5>${answer.question.Question}</h5>
+                    <h5>${answer.Question}</h5>
                     <p class="hb-red-text">Uw antwoord: ${answer.givenAnswer}</p>
-                    <p class="hb-green-text">Juiste antwoord: ${answer.question.Options[answer.question.Answer]}</p>
+                    <p class="hb-green-text">Juiste antwoord: ${answer.Options[answer.Answer]}</p>
                 </div>
             `
             document.querySelector('.wrong-content').innerHTML += html;
