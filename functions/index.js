@@ -121,6 +121,27 @@ exports.createUser = functions.https.onCall((data, context) => {
     });
 });
 
+exports.deleteUser = functions.https.onCall((data, context) => {
+    const userData = data;
+    db.collection("Users").doc(data.uid).delete()
+    .then(function() {
+        admin.auth().deleteUser(userData.uid).then(() => {
+            return{
+                response: 'Gebruiker verwijderd'
+            };
+        }).catch(function(error) {
+            return{
+                response: 'Fout bij het verwijderen in de  database:', error
+            };
+        });
+    })
+    .catch(function(error) {
+        return{
+            response: 'Fout bij verwijderen van de gebruiker:', error
+        };
+    });
+});
+
 let correct_answer_template = () => {
   return `
   <div class="container content">
