@@ -1,6 +1,15 @@
 const userList = document.querySelector('#usertable');
 var userRef = db.collection('Users');
 var pathArray = window.location.pathname.split( '/' );
+
+// function to delete user
+function deleteUserFunction(funcUid) {
+    var deleteUser = firebase.functions().httpsCallable('deleteUser');
+    deleteUser({uid: funcUid}).then(function(result) {
+        M.toast({html: 'Gebruiker wordt binnen enkele minuten verwijderd'})
+    });
+}
+
 // create element & render user
 function renderUser(doc) {
 
@@ -35,15 +44,15 @@ function renderUser(doc) {
 
     Button.className = 'waves-effect waves-light hb-red btn-floating';
     Icon.className = 'material-icons left';
-    Icon.textContent = 'edit';
-    Button.href = pathArray[3].replace("showUsers", "").concat("editUser");
+    Icon.textContent = 'delete_forever';
+    // Button.href = pathArray[3].replace("showUsers", "").concat("editUser");
     //set attribute on Button variable with idd as name and doc.id as value
     Button.setAttribute('idd', doc.id);
     //buttons sends id to editUser page to retrieve user
     Button.addEventListener('click', (e) => {
-        let id = e.target.parentElement.getAttribute('idd');
-        window.sessionStorage.setItem('idd', doc.id);
-       
+        // let id = e.target.parentElement.getAttribute('idd');
+        // window.sessionStorage.setItem('idd', doc.id);
+       deleteUserFunction(doc.id);
     });
 
     tr.appendChild(FirstName);
