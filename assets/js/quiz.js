@@ -1,6 +1,7 @@
 function generateQuiz(questions) {
     const quizContainer = document.querySelector('#quiz');
-    const submitButton = document.querySelector('#submit');
+    const wrongAnswered = [];
+    const correctAnswered = [];
 
     function showQuestionResult(question, questionContainer) {
         var userAnswer = '';
@@ -11,12 +12,23 @@ function generateQuiz(questions) {
         console.log(typeof question.Answer)
         if (userAnswer == question.Answer) {
             console.log('Correct');
+            if (!correctAnswered.includes(question) && !wrongAnswered.includes(question))
+                correctAnswered.push(question);
+
             questionContainer.querySelector('.next-question').classList.remove('disabled');
             $('.answer-right').removeClass('answer-right');
             $('.answer-wrong').removeClass('answer-wrong');
             $('.answer-selected').addClass('answer-right');
         } else {
             console.log('wrong')
+            if (!correctAnswered.includes(question) && !wrongAnswered.includes(question)) {
+                const answer = {
+                    question: question,
+                    givenAnswer: document.querySelector('.answer-selected').querySelector('span').innerHTML
+                }
+                wrongAnswered.push(answer);
+            }
+
             $('.answer-right').removeClass('answer-right');
             $('.answer-wrong').removeClass('answer-wrong');
             $('.answer-selected').addClass('answer-wrong');
@@ -31,6 +43,8 @@ function generateQuiz(questions) {
                 })
             }
             document.querySelector('#question'+index).classList.remove('hidden');
+        } else {
+            showResult();
         }
     }
 
@@ -68,37 +82,43 @@ function generateQuiz(questions) {
         showNextQuestion(0, questions.length);
     }
 
-    function showResult(questions, quizContainer) {
-        var answerContainers = quizContainer.querySelectorAll('.answers');
-        var userAnswer = '';
-        var numCorrect = 0;
+    function showResult() {
+        wrongAnswered.forEach(answer => {
+            const html = `
+                <div class="question-result">
+                    <h5>${answer.question.Question}</h5>
+                    <p class="hb-red-text">Uw antwoord: ${answer.givenAnswer}</p>
+                    <p class="hb-green-text">Juiste antwoord: ${answer.question.Options[answer.question.Answer]}</p>
+                </div>
+            `
+            document.querySelector('.wrong-content').innerHTML += html;
+        });
+        correctAnswered.forEach(answer => {
+            const html = `
+                <div class="question-result">
+                    <h5>${answer.Question}</h5>
+                    <p class="hb-green-text">Het antwoord: ${answer.Options[answer.Answer]}</p>
+                </div>
+            `
+            document.querySelector('.correct-content').innerHTML += html;
+        })
 
-        for (var i=0; i < questions.length; i++) {
-            userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+        document.querySelector('#quiz').style.display = 'none';
+        document.querySelector('.results').style.display = 'block';
 
-            if (userAnswer == questions[i].Answer) {
-                numCorrect++;
-
-                answerContainers[i].style.color = 'lightgreen';
-            } else {
-                answerContainers[i].style.color = 'red';
-            }
-        }
-
-        console.log(numCorrect + ' out of ' + questions.length);
     }
 
     showQuestions(questions, quizContainer);
-
-    submitButton.onclick = function() {
-        //showResult(questions, quizContainer);
-        console.log(document.querySelector('.answer-selected').index);
-    }
 }
 
 const getQuestions = ((categorie, limit = 5) => {
     const questionsRef = db.collection('Questions');
     const categorieRef = db.collection('Roles').doc(categorie);
+
+    categorieRef.get().then(categorie => {
+        console.log(categorie)
+        document.querySelector('.quiz-title').innerHTML = categorie.data().Naam;
+    })
 
     questionsRef.where('Categories', 'array-contains', categorieRef).get().then(snap => {
         const array = shuffleArray(snap.docs);
@@ -137,26 +157,12 @@ function shuffleArray(array) {
     return array;
 }
 
-
-
 //HTML Template for question
 let question_template = ((hidden, id, Question, Options, index) => {
   let html = `
   <div id="question${index}" class="question container hidden" ${hidden}>
   <div class="section">
       <div class="container">
-          <div class="row">
-              <form name="quizform" action="/checkanswer" method="POST">
-                  <h4 class="center">Quiz Algemeen</h4>
-                  <div class="divider"></div>
-                  <div class="row center">
-                      <ul class="pagination center question-pagination">
-                      </ul>
-                      <div class="questionListContainer">
-                      </div>
-                  </div>
-          </div>
-
           <div class="col s12">
               <div class="card">
                   <div class="card-content center">
@@ -201,6 +207,37 @@ let question_template = ((hidden, id, Question, Options, index) => {
 return html;
 });
 
+function showQuiz() {
+    db.collection('Roles').get().then(snapshot => {
+        snapshot.forEach(role => {
+            console.log(role);
+            console.log(role.data());
+            const html = `
+            <div class="col s12 m6">
+                <a href="${BASE_URL}/quiz/quizQuestion?cat=${role.id}" class="white-text">
+                <div class="card medium hoverable hb-blue">
+                    <div class="card-content center hb-blue">
+                        <span class="card-title white-text">${role.data().Naam}</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="${BASE_URL}/assets/img/${role.data().Naam}.jpg">
+                    </div>
+                    <div class="card-action center hb-blue">
+                    <div class="hb-red btn">Doe de quiz!</div>
+                    </div>
+                </div>
+                </a>
+            </div>
+            `
+            document.querySelector('.categories').innerHTML += html;
+        })
+    })
+}
+
 if (CURRENT_PAGE == '/quiz/quizQuestion') {
     getQuestions(parseURLParams(window.location.href).cat[0]);
+}
+
+if (CURRENT_PAGE == '/quiz') {
+    showQuiz();
 }
