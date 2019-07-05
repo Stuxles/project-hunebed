@@ -100,6 +100,10 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
 });
 
 exports.createUser = functions.https.onCall((data, context) => {
+    // check request is made by an admin
+  if ( context.auth.token.admin !== true ) {
+    return { error: 'Only admins can add other admins' };
+  }
     const userData = data;
     return admin.auth().createUser({
         email: data.email,
@@ -118,6 +122,31 @@ exports.createUser = functions.https.onCall((data, context) => {
     })
         .catch(error => {
         throw new functions.https.HttpsError(error);
+    });
+});
+
+exports.deleteUser = functions.https.onCall((data, context) => {
+       // check request is made by an admin
+  if ( context.auth.token.admin !== true ) {
+    return { error: 'Only admins can add other admins' };
+  }
+    const userData = data;
+    db.collection("Users").doc(data.uid).delete()
+    .then(function() {
+        admin.auth().deleteUser(userData.uid).then(() => {
+            return{
+                response: 'Gebruiker verwijderd'
+            };
+        }).catch(function(error) {
+            return{
+                response: 'Fout bij het verwijderen in de  database:', error
+            };
+        });
+    })
+    .catch(function(error) {
+        return{
+            response: 'Fout bij verwijderen van de gebruiker:', error
+        };
     });
 });
 
