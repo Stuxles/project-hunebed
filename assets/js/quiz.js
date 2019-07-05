@@ -220,7 +220,7 @@ function showQuiz() {
                         <span class="card-title white-text">${role.data().Naam}</span>
                     </div>
                     <div class="card-image">
-                        <img src="${BASE_URL}/assets/img/${role.data().Naam}.jpg">
+                        <img src="${BASE_URL}assets/img/${role.data().Naam}.jpg">
                     </div>
                     <div class="card-action center hb-blue">
                     <div class="hb-red btn">Doe de quiz!</div>
